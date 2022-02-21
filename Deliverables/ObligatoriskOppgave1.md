@@ -30,6 +30,7 @@
 # Deloppgave 2 (uke 6): Velg og tilpass en prosess for laget
 ## Prosess og prosjektmetodikk
 Byggesystem - Maven
+
 Prosjektmetoden vil være en agile tilnærming og en blanding av Scrum og Kanban, der vi skal prøve oss litt frem for å se hvilken strategi som fungerer best for teamet, ettersom vi ønsker å få oversikt over styrker og svakheter til de forskjellige metodene. Samtidig ønsker vi en konkret struktur som gjør at uenigheter og konflikter kommer sjeldnere og er lettere å fikse når de oppstår. En konkret struktur vil også sørge for en bedre kodekvalitet, som vi ønsker skal gjøre bugs lettere både å finne og å fikse. 
 
 ### Møter og hyppighet av dem
