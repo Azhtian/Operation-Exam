@@ -51,6 +51,7 @@ Vi har benyttet et privat GitLab repository for oppbevaring av all koden. Alle g
 Kode diagram blir laget i Lucidchart som er et enkelt verktøy for å lage ER-diagram.
 Vi har brukt Trello til å sette opp en prosjekt tavle hvor vi enkelt kan se arbeidsoppgaver
 
+# Deloppgave 3 (uke 6–7): Få oversikt over forventet produkt
 ## Oversikt over forventet produkt 
 
 ### Viktige aspekter
@@ -125,3 +126,4 @@ Vi har brukt Trello til å sette opp en prosjekt tavle hvor vi enkelt kan se arb
 	- Parallakse
 	- "No food or drink in this area" plakat
 
+# Deloppgave 5: Oppsummering
