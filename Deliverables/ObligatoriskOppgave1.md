@@ -55,6 +55,13 @@ Vi har brukt Trello til å sette opp en prosjekt tavle hvor vi enkelt kan se arb
 # Deloppgave 3 (uke 6–7): Få oversikt over forventet produkt
 ## Oversikt over forventet produkt 
 
+Dette programmeringsprosjektet handler om å lage et 2D-spill der du beveger deg rundt ved å gå eller hoppe og samler ting mens du passer deg for fiender for å komme i mål (innen gitt tidsramme). Vi har bestemt at plottet til spillet skal ta utgangspunkt i Kurt-Mario eksempelet:
+
+>_«Kurt-Mario er i trøbbel igjen! Han er sent ute til eksamen, han har ikke lest nok – og hvor er egentlig eksamenslokalet? Hjelp Kurt-Mario å hoppe fra etasje til etasje på Høyteknologisenteret, plukke opp viktig kunnskap (og snacks!) på veien og nå frem til eksamen i tide. Men pass opp for de skumle professorene – vi har ikke tid til å høre om flere teoremer nå!»_
+
+Det overordnede målet for applikasjonen er altså å lage et spill, hvor Kurt Mario skal komme fram til eksamen i tide mens han møter på fiender.
+
+
 ### Viktige aspekter
 - Spillfigur som kan styres – gå til høyre/venstre, hoppe oppover 
 - Todimensjonal verden:
@@ -66,42 +73,59 @@ Vi har brukt Trello til å sette opp en prosjekt tavle hvor vi enkelt kan se arb
 - Utfordringen i spillet er gjerne en eller flere av: å bevege seg gjennom terrenget uten å falle utfor, å samle nok poeng, å bekjempe fiendene, å nå frem til og bekjempe en «big boss»
 
 
-### MVP oversikt
-- En kort beskrivelse av det overordnede målet for applikasjonen
-- En liste over brukerhistorier til systemet basert på MVP-kravene.
-- For hver brukerhistorie, skal dere ha akseptansekriterier og arbeidsoppgaver, samt beskrivelse av hvilke krav brukerhistorien oppfyller (dette lager dere kun for historier dere er ferdige med, holder på med, eller skal til å begynne med)
-- En prioritert liste over hvilke brukerhistorier dere vil ha med i første iterasjon (altså frem til levering av denne oppgaven, se deloppgave 4 for forslag).
-- (Frivillig) Krav til MVP er gitt i neste deloppgave. Dersom dere ønsker å utvide denne listen med ytterligere funksjonalitet, skal det også med som en del av denne spesifikasjonen.
-
 ### Brukerhistorier/MVP
 1. Vise et spillebrett
-	1. Som programmerer trenger jeg et spillbrett for å kunne gjøre endringer og se om alt fungerer.
-	2. Som spiller trenger jeg å se et spillbrett slik at jeg vet hva mine muligheter er, og hvordan banen ser ut.
+	1. Arbeidsoppgave: For å vise et spillbrett må man starte spillet.
+	2. Brukerhistorie: Som programmerer trenger jeg et spillbrett for å kunne gjøre endringer og se om alt fungerer.
+	3. Brukerhistorie: Som spiller trenger jeg å se et spillbrett slik at jeg vet hva mine muligheter er, og hvordan banen ser ut.
+	4. Akseptansekrav: Når en programmerer/spiller starter spillet skal et vindu vises med grafikk av spillbrettet.
 2. Vise spiller på spillebrett
-	1. Som spiller trenger jeg å se spillfiguren for å vite hvor jeg er.
-	2. Som fiende trenger jeg å se spillfiguren for å vite når jeg kan angripe.
+	1. For å vise en spiller på brettet må man startet spillet.
+	2. Som spiller trenger jeg å se spillfiguren for å vite hvor jeg er.
+	3. Som fiende trenger jeg å se spillfiguren for å vite når jeg kan angripe.
+	4. Det skal være mulig å se en spillbrikke på spillbrettet på skjermen. 
 3. Flytte spiller (vha. taster e.l.)
-	1. Som spiller trenger jeg å kunne flytte spillfiguren for å kunne bevege meg og interagere med spillverdenen.
+	1. For å flytte en brikke må man trykke på en piltast.
+	2. Som spiller trenger jeg å kunne flytte spillfiguren for å kunne bevege meg og interagere med spillverdenen.
+	3. Når en av piltastene blir trykket på skal spillfiguren flytte seg på brettet. 
+	4. Når man trykker piltasten for høyre skal brikken bevege seg i den retningen og x-verdien øker med en fastsatt verdi.
+	5. Når man trykker piltasten venstre skal brikken bevege seg i den retningen og x-verdien synke med en fastsatt verdi.
+	6. Når man trykker piltasten opp skal brikken “hoppe” dersom det er mulig.
+	7. Når man trykker piltasten ned skal brikken bevege gjennom plattformen den står på, dersom mulig.
 4. Spiller interagerer med terreng
-	1. Som spiller trenger jeg å kunne kollidere med terreng for å ikke falle gjennom bakken og holde meg innenfor spillets områder.
+	1. For å interagerer med terreng må man starte spillet og bruke piltastene til å bevege seg rundt på brettet. Terrenget må bestå av flere overflater som man ikke kan trenge gjennom med mindre man kommer fra riktig side. 
+	2. Som spiller trenger jeg å kunne kollidere med terreng for å ikke falle gjennom bakken og holde meg innenfor spillets områder.
+	3. Når spiller interagerer med terrenget skal spillbrikken stoppe bevegelsen i den retningen terrenget befinner seg i.
+	4. Spilleren skal stoppe å falle dersom terrenget befinner seg under spilleren.
+	5. Spilleren skal stoppe sidelengs bevegelse dersom terrenget er en vegg som spiller løper inn i. 
 5. Spiller har poeng og interagerer med poenggjenstander
-	1. Som spiller trenger jeg å interagere med poenggjenstander for å samle poeng
-	2. Som spill(et) trenger jeg poenggjenstander slik at jeg kan rangere spillere etter hvor bra de gjorde det
+	1. For at spiller skal interagere med poenggjenstander må de være plassert rundt på brettet, og de må være mulige å plukke opp. 
+	2. Som spiller trenger jeg å interagere med poenggjenstander for å samle poeng
+	3. Som spill(et) trenger jeg poenggjenstander slik at jeg kan rangere spillere etter hvor bra de gjorde det
+	4. Når spilleren plukker opp en poenggjenstand skal spillet gi mer poeng til spilleren på en synlig måte ved hjelp av en poengteller i hjørnet i spillet. 
 6. Vise fiender/monstre; de skal interagere med terreng og spiller 
-	1. Som fiende trenger jeg å interagere med terreng og spiller for å stoppe spillfiguren.
-	2. Som spiller trenger jeg å vite hvor fiender er slik at jeg kan unngå dem
+	1. For at fiender interagerer med terreng og spiller må de komme opp på spillebrettet når spillet starter.
+	2. Som fiende trenger jeg å interagere med terreng og spiller for å stoppe spillfiguren.
+	3. Som spiller trenger jeg å vite hvor fiender er slik at jeg kan unngå dem
+	4. Når en fiende treffer en spiller skal spilleren ta skade
+	5. Når en fiende kommer opp på spillbrettet skal den være synlig
 7. Spiller kan dø (ved kontakt med fiender, eller ved å falle utenfor skjermen)
-	1. Som spiller er det viktig at jeg kan se når jeg jeg dør slik at jeg vet at spillet er ferdig.
+	1. For at en spiller kan dø må man starte spillet og bevege seg på spillbrettet vha. piltastene. Deretter kan en spiller dø ved å bevege seg mot en fiende, mot kanten av skjermen eller bunnen av etasjen.
+	2. Som spiller er det viktig at jeg kan se når jeg jeg dør slik at jeg vet at spillet er ferdig.
+	3. Når en spiller dør skal liv-counten minke. 
 8. Mål for spillbrett (enten et sted, en mengde poeng, drepe alle fiender e.l.)
 	1. Som spiller trenger jeg et mål slik at jeg kan ha noe å jobbe mot
 	2. DVS at jeg må nå eksamen for å ikke stryke
 9. Nytt spillbrett når forrige er ferdig
-	1. Som spiller trenger jeg nytt spillbrett når forrige er ferdig så jeg kan spille en gang til.
+	1. For at et nytt spillbrett skal være tilgjengelig må det være flere spillbrett å velge mellom
+	2. Som spiller trenger jeg nytt spillbrett når forrige er ferdig så jeg kan spille en gang til.
+	3. Når spillet er ferdig får spiller valget om å fortsette å spille. Dersom spiller ønsker å fortsette vil spiller få et nytt spillbrett å spille på. 
 10. Start-skjerm ved oppstart / game over
 	1. Som spiller trenger jeg en start-skjerm og en game over skjerm slik at jeg enkelt vet hvilken tilstand spillet er i og på den måten kan avgjøre hvordan jeg kommer meg videre.
 11. Støtte flere spillere (enten på samme maskin eller over nettverk)
 	1. Som spiller trenger jeg støtte for flere spillere slik at jeg kan spille sammen med vennene mine.
 	2. Som spiller trenger jeg å kunne skille mellom min karakter og vennen(e) mine sin(e) karakter(er)
+
 
 ## Idemyldring
 «Kurt-Mario er i trøbbel igjen! Han er sent ute til eksamen, han har ikke lest nok – og hvor er egentlig eksamenslokalet? Hjelp Kurt-Mario å hoppe fra etasje til etasje på Høyteknologisenteret, plukke opp viktig kunnskap (og snacks!) på veien og nå frem til eksamen i tide. Men pass opp for de skumle professorene – vi har ikke tid til å høre om flere teoremer nå!»
@@ -128,3 +152,4 @@ Vi har brukt Trello til å sette opp en prosjekt tavle hvor vi enkelt kan se arb
 	- "No food or drink in this area" plakat
 
 # Deloppgave 5: Oppsummering
+Prosjektet hadde en god start, hvor vi raskt og effektivt fikk delt de viktigste rollene mellom oss. Vi kom raskt frem til hvordan vi ville organisere oss, både med tanke på kommunikasjon og planlegging. Vi opplevde å ha litt knapp tid rett før innlevering pga. sykdom blant medlemmer av teamet. Det førte til at vi ikke fikk møttes i henhold til planen og kommunikasjon rundt prosjektet ikke ble optimal. I tillegg brukte vi litt tid på å lære oss nødvendige/ekstra programmer og biblioteker som Tiled og libgdx. I løpet av neste obligatoriske oppgave må vi forbedre kommunikasjon og ta hensyn til at ikke alle i teamet kan være til stede på alle møtene. I løpet av videre arbeid i prosjektet tenkte vi å prøve ut XP og pair programming på noen av møtene. Vi har ikke kommet så langt med koden som vi hadde ønsket. Til neste gang tenker vi å levere et minimum viable product (MVP kravene 1-12). I tillegg til å forbedre kodekvaliteten til de påbegynte MVP kravene 1-3, og implementere tester og god dokumentasjon. 
