@@ -31,7 +31,7 @@ public class GameScreen implements Screen {
 	Rectangle enemy;
 	Boolean rendering;
 	TiledMap tileMap;
-	TiledMapTileLayer stageLayer, playerLayer, enemyLayer, itemLayer;
+	TiledMapTileLayer bgLayer, platformsLayer, skullsBoxesEnemiesLayer;
 	OrthogonalTiledMapRenderer renderer;
 	Cell playerWonCell, playerDiedCell, playerCell; 
     // Texture texture;
@@ -68,10 +68,9 @@ public class GameScreen implements Screen {
 		
 		// create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
-		stageLayer = (TiledMapTileLayer) tileMap.getLayers().get("Stage"); // no layers are active atm
-		playerLayer = (TiledMapTileLayer) tileMap.getLayers().get("Player"); 
-		enemyLayer = (TiledMapTileLayer) tileMap.getLayers().get("Enemy"); 
-		itemLayer = (TiledMapTileLayer) tileMap.getLayers().get("Item");
+		bgLayer = (TiledMapTileLayer) tileMap.getLayers().get("bg"); // no layers are active atm
+		platformsLayer = (TiledMapTileLayer) tileMap.getLayers().get("platforms"); 
+		skullsBoxesEnemiesLayer = (TiledMapTileLayer) tileMap.getLayers().get("items"); 
 		renderer = new OrthogonalTiledMapRenderer(tileMap); 		
 	}
 
