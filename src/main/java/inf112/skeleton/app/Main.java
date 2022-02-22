@@ -7,8 +7,8 @@ public class Main{
 	public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         // Application Title and Window Size
-        cfg.setTitle("hello");
-        cfg.setWindowedMode(1200, 800);
+        cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
+        cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
         new Lwjgl3Application(new Exam(), cfg);
     }
 }

@@ -12,7 +12,7 @@ public class HomeScreen implements Screen {
 	public HomeScreen(final Exam game) {
 		this.game = game;
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 1000, 1000); 
+		camera.setToOrtho(false, 1200, 800); 
 	}
 	
 	@Override
