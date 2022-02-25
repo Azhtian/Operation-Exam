@@ -28,7 +28,7 @@ public class HomeScreen implements Screen {
 		camera.update();
 		game.batch.begin();
 		game.font.draw(game.batch, "OPERATION EXAM", 500, 600);
-		game.font.draw(game.batch, "Press ENTER to start...", 500, 200);
+		game.font.draw(game.batch, "choose 1 or 2 players", 500, 200);
 		game.batch.end();
 		
 		if (Gdx.input.isTouched()) {

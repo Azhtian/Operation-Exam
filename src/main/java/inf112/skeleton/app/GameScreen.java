@@ -23,12 +23,12 @@ public class GameScreen implements Screen {
 	final int width = 800;
 	final int height = 320;
 	
+	Player p1;
+	Player enemy;
 	Texture enemyImage;
 	Texture playerImage;
 	OrthographicCamera camera;
 	SpriteBatch batch;
-	Rectangle player;
-	Rectangle enemy;
 	Boolean rendering;
 	TiledMap tileMap;
 	TiledMapTileLayer bgLayer, platformsLayer, skullsBoxesEnemiesLayer;
@@ -53,25 +53,17 @@ public class GameScreen implements Screen {
 		batch = new SpriteBatch();
 		
 		// create player object, we should move this (and enemy) to a player class later
-		player = new Rectangle();
-		player.x = 16;
-		player.y = 16;
-		player.width = 16;
-		player.height = 16;
+		p1 = new Player(16, 16, 0, playerImage);
 		
 		// create enemy object
-		enemy = new Rectangle();
-		enemy.x = width-16;
-		enemy.y = 16;
-		enemy.width = 16;
-		enemy.height = 16;
+		enemy = new Player(width-16, 16, 0, enemyImage);
 		
 		// create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
 		bgLayer = (TiledMapTileLayer) tileMap.getLayers().get("bg"); // no layers are active atm
 		platformsLayer = (TiledMapTileLayer) tileMap.getLayers().get("platforms"); 
 		skullsBoxesEnemiesLayer = (TiledMapTileLayer) tileMap.getLayers().get("items"); 
-		renderer = new OrthogonalTiledMapRenderer(tileMap); 		
+		renderer = new OrthogonalTiledMapRenderer(tileMap);
 	}
 
 	@Override
@@ -88,11 +80,11 @@ public class GameScreen implements Screen {
 		// start batch
 		game.batch.begin();
 		// player death
-		if (player.overlaps(enemy)) {
+		if (p1.overlaps(enemy)) {
 			game.font.draw(game.batch, "You Died", 0, 200); // just some text
 		}
-		game.batch.draw(enemyImage, enemy.x, enemy.y, enemy.width, enemy.height);
-		game.batch.draw(playerImage, player.x, player.y, player.width, player.height);
+		game.batch.draw(enemy.playerImage, enemy.x, enemy.y, enemy.width, enemy.height);
+		game.batch.draw(p1.playerImage, p1.x, p1.y, p1.width, p1.height);
 		game.batch.end();
 		
 		// TODO mouse movement (remove later)
@@ -100,18 +92,18 @@ public class GameScreen implements Screen {
 			Vector3 touchPos = new Vector3();
 			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 			camera.unproject(touchPos);
-			player.x = touchPos.x - 64/2;
+			p1.x = touchPos.x - 64/2;
 		}
 		
 		// left right movement
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) 
-			player.x -= 400 * Gdx.graphics.getDeltaTime();
+			p1.x -= 400 * Gdx.graphics.getDeltaTime();
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) 
-			player.x += 400 * Gdx.graphics.getDeltaTime();
+			p1.x += 400 * Gdx.graphics.getDeltaTime();
 		
 		// player x constraint
-		if (player.x < 0) player.x = 0;
-		if (player.x > width-player.width) player.x = width-player.width;
+		if (p1.x < 0) p1.x = 0;
+		if (p1.x > width - p1.width) p1.x = width - p1.width;
 	}
 
 	@Override
