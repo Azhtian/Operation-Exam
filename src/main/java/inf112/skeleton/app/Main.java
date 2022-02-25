@@ -6,10 +6,9 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 public class Main {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("hello-world");
-        cfg.setWindowedMode(480, 320);
-
-        new Lwjgl3Application(new HelloWorld(), cfg);
-        //This is a test
+        // Application Title and Window Size
+        cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
+        cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
+        new Lwjgl3Application(new Exam(), cfg);
     }
 }
