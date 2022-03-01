@@ -1,15 +1,16 @@
-package inf112.skeleton.app;
+package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
+import core.OperationExam;
 
 public class HomeScreen implements Screen {
-	final Exam game;
+	final OperationExam game;
 	OrthographicCamera camera;
 	
-	public HomeScreen(final Exam game) {
+	public HomeScreen(final OperationExam game) {
 		this.game = game;
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1200, 800); 

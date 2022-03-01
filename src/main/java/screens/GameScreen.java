@@ -1,4 +1,4 @@
-package inf112.skeleton.app;
+package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -7,37 +7,35 @@ import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import core.OperationExam;
+import sprites.Player;
 
 public class GameScreen implements Screen {
-	final Exam game;
-	final int width = 800;
-	final int height = 320;
+	private final OperationExam game;
+	private final int width = 800;
+	private final int height = 320;
 	
-	Player p1;
-	Player enemy;
-	Texture enemyImage;
-	Texture playerImage;
-	OrthographicCamera camera;
-	SpriteBatch batch;
-	Boolean rendering;
-	TiledMap tileMap;
-	TiledMapTileLayer bgLayer, platformsLayer, skullsBoxesEnemiesLayer;
-	OrthogonalTiledMapRenderer renderer;
-	Cell playerWonCell, playerDiedCell, playerCell; 
+	private Player p1;
+	private Player enemy;
+	private Texture enemyImage;
+	private Texture playerImage;
+	private OrthographicCamera camera;
+	private SpriteBatch batch;
+	private Boolean rendering;
+	private TiledMap tileMap;
+	private TiledMapTileLayer bgLayer, platformsLayer, skullsBoxesEnemiesLayer;
+	private OrthogonalTiledMapRenderer renderer;
+	private Cell playerWonCell, playerDiedCell, playerCell;
     // Texture texture;
     // TiledMapTile[] tile; 
 	
-	public GameScreen(final Exam game) {
+	public GameScreen(final OperationExam game) {
 		this.game = game;
 		
 		// load images
@@ -83,8 +81,8 @@ public class GameScreen implements Screen {
 		if (p1.overlaps(enemy)) {
 			game.font.draw(game.batch, "You Died", 0, 200); // just some text
 		}
-		game.batch.draw(enemy.playerImage, enemy.x, enemy.y, enemy.width, enemy.height);
-		game.batch.draw(p1.playerImage, p1.x, p1.y, p1.width, p1.height);
+		game.batch.draw(enemy.getPlayerImage(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getWidth());
+		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
 		game.batch.end();
 		
 		// TODO mouse movement (remove later)
@@ -92,18 +90,18 @@ public class GameScreen implements Screen {
 			Vector3 touchPos = new Vector3();
 			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 			camera.unproject(touchPos);
-			p1.x = touchPos.x - 64/2;
+			p1.setX(touchPos.x - 64/2);
 		}
 		
 		// left right movement
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) 
-			p1.x -= 400 * Gdx.graphics.getDeltaTime();
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) 
-			p1.x += 400 * Gdx.graphics.getDeltaTime();
-		
+		if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+			p1.moveLeft();
+
+		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+			p1.moveRight();
 		// player x constraint
-		if (p1.x < 0) p1.x = 0;
-		if (p1.x > width - p1.width) p1.x = width - p1.width;
+		if (p1.getX() < 0) p1.setX(0);
+		if (p1.getX() > width - p1.getWidth()) p1.setX(width - p1.getWidth());
 	}
 
 	@Override
