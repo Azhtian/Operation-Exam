@@ -4,13 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
-import core.OperationExam;
+import core.Exam;
+import screens.GameScreen;
 
 public class HomeScreen implements Screen {
-	final OperationExam game;
+	final Exam game;
 	OrthographicCamera camera;
 	
-	public HomeScreen(final OperationExam game) {
+	public HomeScreen(final Exam game) {
 		this.game = game;
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1200, 800); 

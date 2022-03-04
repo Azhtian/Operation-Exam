@@ -1,4 +1,4 @@
-package inf112.skeleton.app;
+package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -17,14 +17,16 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import core.Exam;
+import sprites.Player;
 
 public class GameScreen implements Screen {
 	final Exam game;
 	final int width = 800;
 	final int height = 320;
 
-	inf112.skeleton.app.Player p1;
-	inf112.skeleton.app.Player enemy;
+	Player p1;
+	Player enemy;
 	Rectangle floor;
 	Texture enemyImage;
 	Texture playerImage;
@@ -54,10 +56,10 @@ public class GameScreen implements Screen {
 		batch = new SpriteBatch();
 
 		// create player object, we should move this (and enemy) to a player class later
-		p1 = new inf112.skeleton.app.Player(16, 16, playerImage);
+		p1 = new Player(16, 16, playerImage);
 
 		// create enemy object
-		enemy = new inf112.skeleton.app.Player(width-16, 16, enemyImage);
+		enemy = new Player(width-16, 16, enemyImage);
 
 		// create floor rectangle
 		floor = new Rectangle(0, 0, width, 16);
@@ -84,11 +86,11 @@ public class GameScreen implements Screen {
 		// start batch
 		game.batch.begin();
 		// player death
-		if (p1.bounds.overlaps(enemy.bounds)) {
+		if (p1.getBounds().overlaps(enemy.getBounds())) {
 			game.font.draw(game.batch, "You Died", 0, 200); // just some text
 		}
-		game.batch.draw(enemy.playerImage, enemy.x, enemy.y, enemy.width, enemy.height);
-		game.batch.draw(p1.playerImage, p1.x, p1.y, p1.width, p1.height);
+		game.batch.draw(enemy.getPlayerImage(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
+		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
 		game.batch.end();
 
 		// TODO mouse movement (remove later)
@@ -96,18 +98,18 @@ public class GameScreen implements Screen {
 			Vector3 touchPos = new Vector3();
 			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 			camera.unproject(touchPos);
-			p1.x = touchPos.x - 64/2;
+			p1.setX(touchPos.x - 64/2);
 		}
 
 		// Left right movement
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
 			p1.changePos(-10, 0);
-		if (p1.bounds.overlaps(enemy.bounds))
-			p1.setPos(enemy.x + 16, p1.y);
+		if (p1.getBounds().overlaps(enemy.getBounds()))
+			p1.setPos(enemy.getX() + 16, p1.getY());
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
 			p1.changePos(10, 0);
-		if (p1.bounds.overlaps(enemy.bounds))
-			p1.setPos(enemy.x - 16, p1.y);
+		if (p1.getBounds().overlaps(enemy.getBounds()))
+			p1.setPos(enemy.getX() - 16, p1.getY());
 
 
 
@@ -116,23 +118,23 @@ public class GameScreen implements Screen {
 			p1.setSpeed(25);
 
 		// Gravity
-		p1.changeSpeed(p1.a);
+		p1.changeSpeed(p1.getA());
 
 		// player Y movement
-		p1.changePos(0, p1.speedY);
-		if (p1.bounds.overlaps(floor)) {
-			if (p1.speedY < 0) {
-				p1.setPos(p1.x, floor.y + 16);
+		p1.changePos(0, p1.getSpeedY());
+		if (p1.getBounds().overlaps(floor)) {
+			if (p1.getSpeedY() < 0) {
+				p1.setPos(p1.getX(), floor.y + 16);
 			} else {
-				p1.setPos(p1.x, floor.y - 16);
+				p1.setPos(p1.getX(), floor.y - 16);
 			}
 			p1.setSpeed(0);
 		}
 
 
 		// player x constraint
-		if (p1.x < 0) p1.setPos(0, p1.y);
-		if (p1.x > width - p1.width) p1.setPos(width - p1.width, p1.y);
+		if (p1.getX() < 0) p1.setPos(0, p1.getY());
+		if (p1.getX() > width - p1.getWidth()) p1.setPos(width - p1.getWidth(), p1.getY());
 	}
 
 	@Override

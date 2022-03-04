@@ -1,21 +1,21 @@
-package inf112.skeleton.app;
+package sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Player extends Sprite {
-	float x;
-	float y;
-	int speedY = 0;
+
+	private float x;
+	private float y;
+	private int speedY = 0;
 	Boolean grounded;
-	int a = -1;
-	int score = 0;
-	int width = 16;
-	int height = 16;
-	Rectangle bounds;
-	Texture playerImage;
+	private int a = -1;
+	private int score = 0;
+	public int width = 16;
+	public int height = 16;
+	private Rectangle bounds;
+	private Texture playerImage;
 	// String playerName;
 
 
@@ -53,5 +53,47 @@ public class Player extends Sprite {
 	public void moveY() {
 		this.y += this.speedY;
 	}
+
+	public float getX(){
+		return this.x;
+	}
+
+	public float getY(){
+		return this.y;
+	}
+
+	public float getWidth(){
+		return this.width;
+	}
+
+	public float getHeight(){
+		return this.height;
+	}
+
+
+	public int getSpeedY() {
+		return speedY;
+	}
+
+	public Boolean getGrounded() {
+		return grounded;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public Rectangle getBounds() {
+		return bounds;
+	}
+
+	public Texture getPlayerImage() {
+		return playerImage;
+	}
+
 
 }
