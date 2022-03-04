@@ -21,22 +21,22 @@ import core.Exam;
 import sprites.Player;
 
 public class GameScreen implements Screen {
-	final Exam game;
-	final int width = 800;
-	final int height = 320;
+	private final Exam game;
+	private final int width = 800;
+	private final int height = 320;
 
-	Player p1;
-	Player enemy;
-	Rectangle floor;
-	Texture enemyImage;
-	Texture playerImage;
-	OrthographicCamera camera;
-	SpriteBatch batch;
-	Boolean rendering;
-	TiledMap tileMap;
-	TiledMapTileLayer bgLayer, platformsLayer, skullsBoxesEnemiesLayer;
-	OrthogonalTiledMapRenderer renderer;
-	Cell playerWonCell, playerDiedCell, playerCell;
+	private Player p1;
+	private Player enemy;
+	private Rectangle floor;
+	private Texture enemyImage;
+	private Texture playerImage;
+	private OrthographicCamera camera;
+	private SpriteBatch batch;
+	private Boolean rendering;
+	private TiledMap tileMap;
+	private TiledMapTileLayer bgLayer, platformsLayer, skullsBoxesEnemiesLayer;
+	private OrthogonalTiledMapRenderer renderer;
+	private Cell playerWonCell, playerDiedCell, playerCell;
 	// Texture texture;
 	// TiledMapTile[] tile;
 
