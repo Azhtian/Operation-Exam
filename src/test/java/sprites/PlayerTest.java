@@ -5,12 +5,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import core.Exam;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
 
@@ -30,21 +34,46 @@ public class PlayerTest {
         cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
         cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
         Lwjgl3Application lw3 = new Lwjgl3Application(exam, cfg);
-
     }
+
 
     @BeforeEach
     void setupPlayer(){
         player = new Player(0, 0, playerImage);
     }
 
+
     @Test
-    void testPos(){
-        assertEquals(true, true);
+    void testSpeed(){
+        assertEquals(player.getSpeedY(), 0);
+        player.setSpeed(5);
+        assertEquals(player.getSpeedY(), 5);
+        player.changeSpeed(-5);
+        assertEquals(player.getSpeedY(), 0);
+        player.changeSpeed(-5);
+        assertEquals(player.getSpeedY(), -5);
+    }
+
+
+    @Test
+    void testSetPos(){
+        assertEquals(player.getX(), 0);
+        assertEquals(player.getY(), 0);
+        player.setPos(5, 5);
+        assertEquals(player.getX(), 5);
+        assertEquals(player.getY(), 5);
     }
 
     @Test
-    void testPlayer1(){
-        assertEquals(player.getHeight(), 16);
+    void testPosAndRectanglePos(){
+        Rectangle rect = player.getBounds();
+        assertEquals(rect.getX(), player.getX());
+        assertEquals(rect.getY(), player.getY());
+        player.setPos(15, 15);
+        rect = player.getBounds();
+        assertEquals(rect.getX(), player.getX());
+        assertEquals(rect.getY(), player.getY());
     }
+
+
 }
