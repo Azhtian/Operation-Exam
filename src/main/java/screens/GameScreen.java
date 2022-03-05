@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -17,6 +20,8 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
+
 import core.Exam;
 import sprites.Player;
 
@@ -27,24 +32,22 @@ public class GameScreen implements Screen {
 
 	private Player p1;
 	private Player enemy;
-	private Rectangle floor;
 	private Texture enemyImage;
 	private Texture playerImage;
 	private OrthographicCamera camera;
-	private SpriteBatch batch;
-	private Boolean rendering;
 	private TiledMap tileMap;
-	private TiledMapTileLayer bgLayer, platformsLayer, skullsBoxesEnemiesLayer;
+	private TiledMapTileLayer bgLayer, platformsLayer, playerLayer, itemsLayer;
 	private OrthogonalTiledMapRenderer renderer;
-	private Cell playerWonCell, playerDiedCell, playerCell;
-	// Texture texture;
-	// TiledMapTile[] tile;
+    private MapObjects objects;
+    private Array<Rectangle> platforms = new Array<Rectangle>(100);
+    private Array<Player> enemies;
+    // TODO private Array<Item> scoreItems;
 
 	public GameScreen(final Exam game) {
 		this.game = game;
 
 		// load images
-		enemyImage = new Texture(Gdx.files.internal("assets/enemy.png")); // internal references the directory root (learned after 1h research)
+		enemyImage = new Texture(Gdx.files.internal("assets/enemy.png"));
 		playerImage = new Texture(Gdx.files.internal("assets/player.png"));
 
 		// create camera and viewport
@@ -52,24 +55,40 @@ public class GameScreen implements Screen {
 		camera.setToOrtho(false, 800, 320); // dimensions of castle board
 		camera.position.set(400, 160, 3); // centers the camera to middle of board instead of (by default) window.
 
-		// create batch
-		batch = new SpriteBatch();
-
 		// create player object, we should move this (and enemy) to a player class later
 		p1 = new Player(16, 16, playerImage);
 
 		// create enemy object
 		enemy = new Player(width-16, 16, enemyImage);
 
-		// create floor rectangle
-		floor = new Rectangle(0, 0, width, 16);
-
-		// create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
+		// Create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
-		bgLayer = (TiledMapTileLayer) tileMap.getLayers().get("bg"); // no layers are active atm
-		platformsLayer = (TiledMapTileLayer) tileMap.getLayers().get("platforms");
-		skullsBoxesEnemiesLayer = (TiledMapTileLayer) tileMap.getLayers().get("items");
 		renderer = new OrthogonalTiledMapRenderer(tileMap);
+		
+		// Get objects from map
+		objects = tileMap.getLayers().get("objects").getObjects();
+		for (MapObject object : objects) {
+			if (object instanceof RectangleMapObject) {
+				if (object.getProperties().get("type").equals("Platform")) {
+					Rectangle rect = ((RectangleMapObject) object).getRectangle();
+					platforms.add(rect);
+				}
+				else if (object.getProperties().get("type").equals("scoreItem")) {
+					
+				}
+				else if (object.getProperties().get("type").equals("Enemy")) {
+					
+				}
+				else if (object.getProperties().get("type").equals("Player")) {
+					
+				}
+				else {
+					System.out.println(object.getProperties().get("type") + " not added from map");
+				}
+			}
+		}	
+		
+		
 	}
 
 	@Override
@@ -85,52 +104,51 @@ public class GameScreen implements Screen {
 
 		// start batch
 		game.batch.begin();
-		// player death
-		if (p1.getBounds().overlaps(enemy.getBounds())) {
-			game.font.draw(game.batch, "You Died", 0, 200); // just some text
-		}
 		game.batch.draw(enemy.getPlayerImage(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
 		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
 		game.batch.end();
 
-		// TODO mouse movement (remove later)
-		if (Gdx.input.isTouched()) {
-			Vector3 touchPos = new Vector3();
-			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-			camera.unproject(touchPos);
-			p1.setX(touchPos.x - 64/2);
+		// TODO player death
+		if (p1.getBounds().overlaps(enemy.getBounds())) {
+			p1.setPos(16, 16);
 		}
 
 		// Left right movement
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
-			p1.changePos(-10, 0);
-		if (p1.getBounds().overlaps(enemy.getBounds()))
-			p1.setPos(enemy.getX() + 16, p1.getY());
+			p1.changePos(-5, 0);
+			for (Rectangle rect : platforms) {
+				if (p1.getBounds().overlaps(rect)) {
+					p1.setPos(rect.x + rect.width, p1.getY());
+				}
+			}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
-			p1.changePos(10, 0);
-		if (p1.getBounds().overlaps(enemy.getBounds()))
-			p1.setPos(enemy.getX() - 16, p1.getY());
-
+			p1.changePos(5, 0);
+			for (Rectangle rect : platforms) {
+				if (p1.getBounds().overlaps(rect)) {
+					p1.setPos(rect.x - p1.width, p1.getY());
+				}
+			}
 
 
 		// Jump
 		if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
-			p1.setSpeed(25);
+			p1.setSpeed(10);
 
-		// Gravity
+		// Apply Gravity
 		p1.changeSpeed(p1.getA());
-
-		// player Y movement
 		p1.changePos(0, p1.getSpeedY());
-		if (p1.getBounds().overlaps(floor)) {
-			if (p1.getSpeedY() < 0) {
-				p1.setPos(p1.getX(), floor.y + 16);
-			} else {
-				p1.setPos(p1.getX(), floor.y - 16);
-			}
-			p1.setSpeed(0);
-		}
 
+		// player Y constraint
+		for (Rectangle rect : platforms) {
+			if (p1.getBounds().overlaps(rect)) {
+				if (p1.getSpeedY() < 0) {
+					p1.setPos(p1.getX(), rect.height + rect.y);
+				} else {
+					p1.setPos(p1.getX(), rect.y - p1.height);
+				}
+				p1.setSpeed(0);
+			}
+		}
 
 		// player x constraint
 		if (p1.getX() < 0) p1.setPos(0, p1.getY());
