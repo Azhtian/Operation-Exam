@@ -104,6 +104,7 @@ public class GameScreen implements Screen {
 
 		// start batch
 		game.batch.begin();
+		game.font.draw(game.batch, "Score: " + p1.getScore(), 0, height);
 		game.batch.draw(enemy.getPlayerImage(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
 		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
 		game.batch.end();
@@ -116,13 +117,14 @@ public class GameScreen implements Screen {
 		// Left right movement
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
 			p1.changePos(-5, 0);
-			for (Rectangle rect : platforms) {
+		for (Rectangle rect : platforms) {
 				if (p1.getBounds().overlaps(rect)) {
 					p1.setPos(rect.x + rect.width, p1.getY());
 				}
 			}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 			p1.changePos(5, 0);
+		}
 			for (Rectangle rect : platforms) {
 				if (p1.getBounds().overlaps(rect)) {
 					p1.setPos(rect.x - p1.width, p1.getY());

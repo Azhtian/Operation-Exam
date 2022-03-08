@@ -1,11 +1,11 @@
 package screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 import core.Exam;
-import screens.GameScreen;
 
 public class HomeScreen implements Screen {
 	final Exam game;
@@ -32,7 +32,10 @@ public class HomeScreen implements Screen {
 		game.font.draw(game.batch, "OPERATION EXAM", 500, 600);
 		game.font.draw(game.batch, "choose 1 or 2 players", 500, 200);
 		game.batch.end();
-		
+
+		if (Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
+		}
+
 		if (Gdx.input.isTouched()) {
 			game.setScreen(new GameScreen(game));
 			dispose();
