@@ -42,6 +42,7 @@ public class Player extends Sprite {
 		bounds.y += y;
 	}
 
+<<<<<<< HEAD
 	public void setSpeed(int y) {
 		this.speedY = y;
 	}
@@ -50,12 +51,27 @@ public class Player extends Sprite {
 		this.speedY += y;
 	}
 
+=======
+	public void setOnGround(boolean ground){
+		this.grounded = ground;
+	}
+
+	public void setSpeed(int y) {
+		this.speedY = y;
+	}
+
+	public void changeSpeed(float y) {
+		this.speedY += y;
+	}
+
+>>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 	public void moveY() {
 		this.y += this.speedY;
 	}
 
 	public float getX(){
 		return this.x;
+<<<<<<< HEAD
 	}
 
 	public float getY(){
@@ -94,4 +110,50 @@ public class Player extends Sprite {
 	public Texture getPlayerImage() {
 		return playerImage;
 	}
+=======
+	}
+
+	public float getY(){
+		return this.y;
+	}
+
+	public float getWidth(){
+		return this.width;
+	}
+
+	public float getHeight(){
+		return this.height;
+	}
+
+
+	public int getSpeedY() {
+		return speedY;
+	}
+
+	public Boolean getGrounded() {
+		return grounded;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score){this.score = score;}
+
+	public void addScore(int score){this.score += score;}
+
+	public Rectangle getBounds() {
+		return bounds;
+	}
+
+	public Texture getPlayerImage() {
+		return playerImage;
+	}
+
+
+>>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 }
