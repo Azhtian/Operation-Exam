@@ -42,6 +42,10 @@ public class Player extends Sprite {
 		bounds.y += y;
 	}
 
+	public void setOnGround(boolean ground){
+		this.grounded = ground;
+	}
+
 	public void setSpeed(int y) {
 		this.speedY = y;
 	}

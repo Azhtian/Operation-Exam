@@ -131,8 +131,10 @@ public class GameScreen implements Screen {
 
 
 		// Jump
-		if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
+		if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p1.getGrounded()) {
 			p1.setSpeed(10);
+			p1.setOnGround(false);
+		}
 
 		// Apply Gravity
 		p1.changeSpeed(p1.getA());
@@ -147,6 +149,7 @@ public class GameScreen implements Screen {
 					p1.setPos(p1.getX(), rect.y - p1.height);
 				}
 				p1.setSpeed(0);
+				p1.setOnGround(true);
 			}
 		}
 
