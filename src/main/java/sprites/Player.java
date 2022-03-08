@@ -8,6 +8,7 @@ public class Player extends Sprite {
 
 	private float x;
 	private float y;
+	private int health;
 	private int speedY = 0;
 	Boolean grounded;
 	private int a = -1;
@@ -27,6 +28,13 @@ public class Player extends Sprite {
 		bounds = new Rectangle(x, y, 16, 16);
 	}
 
+	public void setHealth(int health){
+		this.health = health;
+	}
+
+	public void damage(int damage){
+		this.health = this.health - damage;
+	}
 
 	public void setPos(float x, float y) {
 		this.x = x;
@@ -60,8 +68,6 @@ public class Player extends Sprite {
 
 	public float getX(){
 		return this.x;
-
-
 	}
 
 	public float getY(){
@@ -103,6 +109,10 @@ public class Player extends Sprite {
 
 	public Texture getPlayerImage() {
 		return playerImage;
+	}
+
+	public int getHealth(){
+		return this.health;
 	}
 
 }

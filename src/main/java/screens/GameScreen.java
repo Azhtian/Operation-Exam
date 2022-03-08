@@ -77,6 +77,7 @@ public class GameScreen implements Screen {
 
 		// create player object, we should move this (and enemy) to a player class later
 		p1 = new Player(16, 16, playerImage);
+		p1.setHealth(3);
 
 		// create enemy object
 		enemy = new Player(width-16, 16, enemyImage);
@@ -129,9 +130,16 @@ public class GameScreen implements Screen {
 		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
 		game.batch.end();
 
-		// TODO player death
+		// If player touches an enemy
 		if (p1.getBounds().overlaps(enemy.getBounds())) {
+			// Reset player to start-pos
 			p1.setPos(16, 16);
+			// Player takes damage
+			p1.damage(1);
+			if (p1.getHealth() <= 0){
+				// Changes screen to game-over screen
+				game.changeScreen(6);
+			}
 		}
 
 		// Left right movement
