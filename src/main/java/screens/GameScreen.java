@@ -20,7 +20,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-<<<<<<< HEAD
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -34,17 +33,13 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import core.ScreenManager;
 import sprites.Player;
 
-public class GameScreen implements Screen {
-	private final ScreenManager game;
-=======
 import com.badlogic.gdx.utils.Array;
 
 import core.Exam;
 import sprites.Player;
 
 public class GameScreen implements Screen {
-	private final Exam game;
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
+	private final ScreenManager game;
 	private final int width = 800;
 	private final int height = 320;
 
@@ -60,7 +55,7 @@ public class GameScreen implements Screen {
     private Array<Rectangle> platforms = new Array<Rectangle>(100);
     private Array<Player> enemies;
     // TODO private Array<Item> scoreItems;
-<<<<<<< HEAD
+
     
     public Stage stage;
 
@@ -73,15 +68,7 @@ public class GameScreen implements Screen {
 		// load images
 		enemyImage = new Texture(Gdx.files.internal("assets/sprites/enemy.png"));
 		playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
-=======
 
-	public GameScreen(final Exam game) {
-		this.game = game;
-
-		// load images
-		enemyImage = new Texture(Gdx.files.internal("assets/enemy.png"));
-		playerImage = new Texture(Gdx.files.internal("assets/player.png"));
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 
 		// create camera and viewport
 		camera = new OrthographicCamera();
@@ -137,10 +124,7 @@ public class GameScreen implements Screen {
 
 		// start batch
 		game.batch.begin();
-<<<<<<< HEAD
-=======
 		game.font.draw(game.batch, "Score: " + p1.getScore(), 0, height);
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 		game.batch.draw(enemy.getPlayerImage(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
 		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
 		game.batch.end();
@@ -153,23 +137,16 @@ public class GameScreen implements Screen {
 		// Left right movement
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
 			p1.changePos(-5, 0);
-<<<<<<< HEAD
-			for (Rectangle rect : platforms) {
-=======
+
 		for (Rectangle rect : platforms) {
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 				if (p1.getBounds().overlaps(rect)) {
 					p1.setPos(rect.x + rect.width, p1.getY());
 				}
 			}
-<<<<<<< HEAD
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
-			p1.changePos(5, 0);
-=======
+
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 			p1.changePos(5, 0);
 		}
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 			for (Rectangle rect : platforms) {
 				if (p1.getBounds().overlaps(rect)) {
 					p1.setPos(rect.x - p1.width, p1.getY());
@@ -178,15 +155,10 @@ public class GameScreen implements Screen {
 
 
 		// Jump
-<<<<<<< HEAD
-		if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
-			p1.setSpeed(10);
-=======
 		if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p1.getGrounded()) {
 			p1.setSpeed(10);
 			p1.setOnGround(false);
 		}
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 
 		// Apply Gravity
 		p1.changeSpeed(p1.getA());
@@ -201,10 +173,7 @@ public class GameScreen implements Screen {
 					p1.setPos(p1.getX(), rect.y - p1.height);
 				}
 				p1.setSpeed(0);
-<<<<<<< HEAD
-=======
 				p1.setOnGround(true);
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 			}
 		}
 

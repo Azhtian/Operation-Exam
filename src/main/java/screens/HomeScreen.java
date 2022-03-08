@@ -3,7 +3,6 @@ package screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-<<<<<<< HEAD
 import com.badlogic.gdx.graphics.GL20;
 //import com.badlogic.gdx.graphics.OrthographicCamera;
 //import com.badlogic.gdx.utils.ScreenUtils;
@@ -14,11 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-=======
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 import core.Exam;
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
+
 
 import core.ScreenManager;
 
@@ -27,7 +25,7 @@ import core.ScreenManager;
  */
 		
 public class HomeScreen implements Screen {
-<<<<<<< HEAD
+
 	final ScreenManager game;
 //	OrthographicCamera camera;
 	public Stage stage;
@@ -35,12 +33,6 @@ public class HomeScreen implements Screen {
 	public Skin skin;
 	
 	public HomeScreen(ScreenManager game) {
-=======
-	final Exam game;
-	OrthographicCamera camera;
-	
-	public HomeScreen(final Exam game) {
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 		this.game = game;
 //		camera = new OrthographicCamera();
 //		camera.setToOrtho(false, 1200, 800); 
@@ -109,7 +101,6 @@ public class HomeScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-<<<<<<< HEAD
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
@@ -126,23 +117,7 @@ public class HomeScreen implements Screen {
 //			game.setScreen(new GameScreen(game));
 //			dispose();
 //		}
-=======
-		ScreenUtils.clear(0, 0, .2f, 0);
-		
-		camera.update();
-		game.batch.begin();
-		game.font.draw(game.batch, "OPERATION EXAM", 500, 600);
-		game.font.draw(game.batch, "choose 1 or 2 players", 500, 200);
-		game.batch.end();
 
-		if (Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
-		}
-
-		if (Gdx.input.isTouched()) {
-			game.setScreen(new GameScreen(game));
-			dispose();
-		}
->>>>>>> 215f35358f465a5e9c6dea9c5513af033ef8ac47
 	}
 
 	@Override
