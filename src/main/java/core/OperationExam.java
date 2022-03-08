@@ -13,7 +13,7 @@ public class OperationExam extends Game{
 	public void create() {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
-		this.setScreen(new HomeScreen(this));
+		//this.setScreen(new HomeScreen(this));
 	}
 	
 	public void render() {

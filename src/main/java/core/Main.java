@@ -9,6 +9,6 @@ public class Main {
         // Application Title and Window Size
         cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
         cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
-        new Lwjgl3Application(new OperationExam(), cfg);
+        new Lwjgl3Application(new ScreenManager(), cfg);
     }
 }
