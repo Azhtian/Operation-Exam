@@ -83,15 +83,20 @@ public class ScreenManager extends Game {
 		case GAME:
 			if (gameScreen == null) gameScreen = new GameScreen(this);
 			this.setScreen(gameScreen);
+			this.batch = new SpriteBatch();
+			this.font = new BitmapFont();
+			break;
 		case PAUSE:
 			if (pauseScreen == null) pauseScreen = new PauseScreen(this);
 			this.setScreen(pauseScreen);
+			break;
 		case GAMEOVER:
 			if (gameOverScreen == null) gameOverScreen = new GameOverScreen(this);
 			this.setScreen(gameOverScreen);
+			break;
 		case WINNER:
 			if (winnerScreen == null) winnerScreen = new WinnerScreen(this);
-			this.setScreen(winnerScreen);
+			break;
 		}
 	}
 
