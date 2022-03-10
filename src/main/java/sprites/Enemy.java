@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Enemy extends Player {
 	
 	private Boolean movingRight = false;
-	private int moveSpeed = 5;
+	private int moveSpeed = 3;
 
 	public Enemy(int x, int y, Texture playerImage) {
 		super(x, y, playerImage);

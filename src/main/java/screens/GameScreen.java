@@ -178,7 +178,18 @@ public class GameScreen implements Screen {
 						enemy.setSpeed(0);
 				}
 			}
+			// Enemy border constraint
+			if (enemy.getX() < 0){
+				enemy.setPos(0, enemy.getY());
+				enemy.setMovingRight(true);
+			}
+			if (enemy.getX() > width - enemy.getWidth()){
+				enemy.setPos(width - enemy.getWidth(), enemy.getY());
+				enemy.setMovingRight(false);
+			}
 		}
+
+
 		
 
 		// Left right movement
