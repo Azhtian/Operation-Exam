@@ -43,7 +43,10 @@ public class GameScreen implements Screen {
 	private final ScreenManager game;
 	private final int width = 800;
 	private final int height = 320;
+	private final int maxHealth = 3;
 
+	private Texture fullHeart;
+	private Texture emptyHeart;
 	private Player p1;
 	private Enemy enemy;
 	private Texture enemyImage;
@@ -78,7 +81,9 @@ public class GameScreen implements Screen {
 
 		// create player object, we should move this (and enemy) to a player class later
 		p1 = new Player(16, 16, playerImage);
-		p1.setHealth(3);
+		p1.setHealth(maxHealth);
+		fullHeart = new Texture("assets/sprites/fullHeartContainer.png");
+		emptyHeart = new Texture("assets/sprites/emptyHeartContainer.png");
 
 		// create enemy object
 		enemy = new Enemy(width-16, 16, enemyImage);
@@ -127,9 +132,17 @@ public class GameScreen implements Screen {
 
 		// start batch
 		game.batch.begin();
-		game.font.draw(game.batch, "Score: " + p1.getScore(), 0, height);
+		game.font.draw(game.batch, "Score: " + p1.getScore(), 2, height-2);
 		game.batch.draw(enemy.getPlayerImage(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
 		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
+		// Draw heart containers
+		for (int iter = 0; iter < maxHealth; iter++){
+			if (iter < p1.getHealth()) {
+				game.batch.draw(fullHeart, 5 + iter * (30 + 5), height - 50, 30, 30);
+			} else {
+				game.batch.draw(emptyHeart, 5 + iter * (30 + 5), height - 50, 30, 30);
+			}
+		}
 		game.batch.end();
 
 		// If player touches an enemy
