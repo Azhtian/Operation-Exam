@@ -36,6 +36,7 @@ import sprites.Player;
 import com.badlogic.gdx.utils.Array;
 
 import core.Exam;
+import sprites.Enemy;
 import sprites.Player;
 
 public class GameScreen implements Screen {
@@ -44,7 +45,7 @@ public class GameScreen implements Screen {
 	private final int height = 320;
 
 	private Player p1;
-	private Player enemy;
+	private Enemy enemy;
 	private Texture enemyImage;
 	private Texture playerImage;
 	private OrthographicCamera camera;
@@ -53,7 +54,7 @@ public class GameScreen implements Screen {
 	private OrthogonalTiledMapRenderer renderer;
     private MapObjects objects;
     private Array<Rectangle> platforms = new Array<Rectangle>(100);
-    private Array<Player> enemies;
+    private Array<Enemy> enemies = new Array<Enemy>(100);
     // TODO private Array<Item> scoreItems;
 
     
@@ -80,7 +81,8 @@ public class GameScreen implements Screen {
 		p1.setHealth(3);
 
 		// create enemy object
-		enemy = new Player(width-16, 16, enemyImage);
+		enemy = new Enemy(width-16, 16, enemyImage);
+		enemies.add(enemy);
 
 		// Create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
@@ -141,6 +143,43 @@ public class GameScreen implements Screen {
 				game.changeScreen(6);
 			}
 		}
+		
+		// Enemy movement
+		for (Enemy enemy : enemies) {
+			enemy.move();
+		}
+		
+		// Enemy X collisions
+		for (Enemy enemy : enemies) {
+			for (Rectangle rect : platforms) {
+				if (enemy.getBounds().overlaps(rect)) {
+					if (enemy.getMovingRight()) {
+						enemy.setPos(rect.x - enemy.width, enemy.getY());
+						enemy.setMovingRight(false);
+					} else {
+						enemy.setPos(rect.x + enemy.width, enemy.getY());
+						enemy.setMovingRight(true);
+					}
+				}
+			}
+		}
+		
+		// Enemy falling
+		for (Enemy enemy : enemies) {
+			enemy.changeSpeed(enemy.getA());
+			enemy.changePos(0, enemy.getSpeedY());
+		}
+		
+		// Enemy Y collisions
+		for (Enemy enemy : enemies) {
+			for (Rectangle rect : platforms) {
+				if (enemy.getBounds().overlaps(rect)) {
+						enemy.setPos(enemy.getX(), rect.getY() + rect.getHeight());
+						enemy.setSpeed(0);
+				}
+			}
+		}
+		
 
 		// Left right movement
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
