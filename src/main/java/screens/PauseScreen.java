@@ -62,6 +62,7 @@ public class PauseScreen implements Screen {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				// reset game ..
+				game.newGame();
 				game.changeScreen(ScreenManager.GAME); 
 			}
 		});
