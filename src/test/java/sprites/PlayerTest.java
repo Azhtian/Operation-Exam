@@ -39,7 +39,7 @@ public class PlayerTest {
 
     @BeforeEach
     void setupPlayer(){
-        player = new Player(0, 0, playerImage);
+        player = new Player(0, 0, 0, 0, playerImage);
     }
 
 

@@ -13,19 +13,21 @@ public class Player extends Sprite {
 	Boolean grounded;
 	private int a = -1;
 	private int score = 0;
-	public int width = 16;
-	public int height = 16;
+	public float width = 16;
+	public float height = 16;
 	private Rectangle bounds;
 	private Texture playerImage;
 	// String playerName;
 
 
-	public Player(int x, int y, Texture playerImage) {
+	public Player(float x, float y, float width, float height, Texture playerImage) {
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 		this.playerImage = playerImage;
 
-		bounds = new Rectangle(x, y, 16, 16);
+		bounds = new Rectangle(x, y, width, height);
 	}
 
 	public void setHealth(int health){

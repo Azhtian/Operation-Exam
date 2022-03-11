@@ -7,8 +7,8 @@ public class Enemy extends Player {
 	private Boolean movingRight = false;
 	private int moveSpeed = 3;
 
-	public Enemy(int x, int y, Texture playerImage) {
-		super(x, y, playerImage);
+	public Enemy(float x, float y, float width, float height, Texture playerImage) {
+		super(x, y, width, height, playerImage);
 	}
 	
 	public void move () {
