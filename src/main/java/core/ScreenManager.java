@@ -52,7 +52,11 @@ public class ScreenManager extends Game {
 		setScreen(loadingScreen);
 		preferences = new AppPreferences();
 	}
-	
+
+	public void newGame(){
+		gameScreen = null;
+	}
+
 	public void render() {
 		super.render();
 	}

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapObject;
@@ -217,6 +218,7 @@ public class GameScreen implements Screen {
 				}
 			}
 		}
+
 		
 		// Enemy falling
 		for (Enemy enemy : enemies) {
@@ -243,6 +245,12 @@ public class GameScreen implements Screen {
 				enemy.setMovingRight(false);
 			}
 		}
+		
+		// press SPACE to pause game
+		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
+			game.changeScreen(ScreenManager.PAUSE);
+		
+
 	}
 
 	@Override
@@ -252,22 +260,14 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
+		//map = new TmxMapLoader().load("assets/maps/map.tmx");
+		//renderer = new OrthogonalTiledMapRenderer(tileMap);
+		//camera = new OrthographicCamera();
+		//player = new Player(new Sprite(new Texture(Gdx.files.internal("assets/sprites/player.png")), (Tiled;
+
 		stage.clear();
 		Gdx.input.setInputProcessor(stage);
-		
-		Table table = new Table();
-		table.setFillParent(true);
-		table.setDebug(true);
-		stage.addActor(table);
-		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-		TextButton pause = new TextButton("Pause", skin);
-		table.add(pause).fillX().uniform();
-		pause.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.PAUSE);
-			}
-		});
+	
 	}
 
 	@Override
