@@ -233,6 +233,7 @@ public class GameScreen implements Screen {
 				}
 			}
 			// Enemy border constraint
+			// TODO remove when bounds are implemented
 			if (enemy.getX() < 0){
 				enemy.setPos(0, enemy.getY());
 				enemy.setMovingRight(true);
