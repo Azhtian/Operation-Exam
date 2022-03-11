@@ -199,13 +199,15 @@ public class GameScreen implements Screen {
 			// Jump
 			if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) p.setSpeed(10);
 		}
+		// press SPACE to pause game
+		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
+			game.changeScreen(ScreenManager.PAUSE);
+
 		// Enemy movement
 		for (Enemy enemy : enemies) {
 			enemy.move();
-		}
-		
-		// Enemy X collisions
-		for (Enemy enemy : enemies) {
+
+			// Enemy X collisions
 			for (Rectangle rect : platforms) {
 				if (enemy.getBounds().overlaps(rect)) {
 					if (enemy.getMovingRight()) {
@@ -217,17 +219,13 @@ public class GameScreen implements Screen {
 					}
 				}
 			}
-		}
 
-		
-		// Enemy falling
-		for (Enemy enemy : enemies) {
+			// Enemy falling
 			enemy.changeSpeed(enemy.getA());
 			enemy.changePos(0, enemy.getSpeedY());
-		}
-		
-		// Enemy Y collisions
-		for (Enemy enemy : enemies) {
+
+
+			// Enemy Y collisions
 			for (Rectangle rect : platforms) {
 				if (enemy.getBounds().overlaps(rect)) {
 						enemy.setPos(enemy.getX(), rect.getY() + rect.getHeight());
@@ -245,12 +243,6 @@ public class GameScreen implements Screen {
 				enemy.setMovingRight(false);
 			}
 		}
-		
-		// press SPACE to pause game
-		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
-			game.changeScreen(ScreenManager.PAUSE);
-		
-
 	}
 
 	@Override
