@@ -18,6 +18,7 @@ import core.ScreenManager;
 public class PauseScreen implements Screen {
 	final ScreenManager game;
 	public Stage stage;
+	private Label titleLabel; 
 
 	public PauseScreen(ScreenManager game) {
 		this.game = game;
@@ -40,6 +41,10 @@ public class PauseScreen implements Screen {
 		TextButton continueButton = new TextButton("Continue", skin);
 		TextButton newGame = new TextButton("New Game", skin);
 		TextButton exit = new TextButton("Exit", skin);
+		titleLabel = new Label( "Game paused", skin, "big");
+        
+		table.add(titleLabel);
+        table.row().pad(10,0,0,10);
         table.row().pad(10,0,0,10);
 		table.add(continueButton).fillX().uniform();
         table.row().pad(10,0,0,10);
@@ -56,6 +61,7 @@ public class PauseScreen implements Screen {
 		newGame.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				// reset game ..
 				game.changeScreen(ScreenManager.GAME); 
 			}
 		});

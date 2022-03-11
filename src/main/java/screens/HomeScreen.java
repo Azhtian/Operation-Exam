@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 //import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -31,6 +32,7 @@ public class HomeScreen implements Screen {
 	public Stage stage;
 	public Table table;
 	public Skin skin;
+	private Label titleLabel; 
 	
 	public HomeScreen(ScreenManager game) {
 		this.game = game;
@@ -61,14 +63,16 @@ public class HomeScreen implements Screen {
 		TextButton playerMode = new TextButton("Player Mode", skin);
 		TextButton preferences = new TextButton("Preferences", skin);
 		TextButton exit = new TextButton("Exit", skin);
-		
-		// Adding the buttons to the screen table
+		titleLabel = new Label( "Main menu", skin, "big");
+        // Adding title and buttons to the screen table
+		table.add(titleLabel).colspan(2);
+        table.row().pad(10,0,0,10);
 		table.add(newGame).fillX().uniform();
-		table.row().pad(10,0,10,0);
+//		table.row().pad(10,0,10,0);
 		table.add(playerMode).fillX().uniform();
 		table.row().pad(10,0,10,0);
 		table.add(preferences).fillX().uniform();
-		table.row().pad(10,0,10,0);
+//		table.row().pad(10,0,10,0);
 		table.add(exit).fillX().uniform();
 		//table.row().pad(10,0,10,0);
 		

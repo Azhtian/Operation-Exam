@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapObject;
@@ -124,13 +125,15 @@ public class GameScreen implements Screen {
 
 		// start batch
 		game.batch.begin();
-		game.font.draw(game.batch, "Score: " + p1.getScore(), 0, height);
+		game.font.draw(game.batch, "Score: " + p1.getScore(), 5, height-5);
 		game.batch.draw(enemy.getPlayerImage(), enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
 		game.batch.draw(p1.getPlayerImage(), p1.getX(), p1.getY(), p1.getWidth(), p1.getHeight());
+		game.font.draw(game.batch, "Press SPACE to pause game", width-150, height-5);
 		game.batch.end();
 
 		// TODO player death
 		if (p1.getBounds().overlaps(enemy.getBounds())) {
+			game.changeScreen(ScreenManager.GAMEOVER);
 			p1.setPos(16, 16);
 		}
 
@@ -146,6 +149,7 @@ public class GameScreen implements Screen {
 
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 			p1.changePos(5, 0);
+			
 		}
 			for (Rectangle rect : platforms) {
 				if (p1.getBounds().overlaps(rect)) {
@@ -180,6 +184,11 @@ public class GameScreen implements Screen {
 		// player x constraint
 		if (p1.getX() < 0) p1.setPos(0, p1.getY());
 		if (p1.getX() > width - p1.getWidth()) p1.setPos(width - p1.getWidth(), p1.getY());
+		
+		// press SPACE to pause game
+		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
+			game.changeScreen(ScreenManager.PAUSE);
+		
 	}
 
 	@Override
@@ -189,22 +198,14 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
+		//map = new TmxMapLoader().load("assets/maps/map.tmx");
+		//renderer = new OrthogonalTiledMapRenderer(tileMap);
+		//camera = new OrthographicCamera();
+		//player = new Player(new Sprite(new Texture(Gdx.files.internal("assets/sprites/player.png")), (Tiled;
+
 		stage.clear();
 		Gdx.input.setInputProcessor(stage);
-		
-		Table table = new Table();
-		table.setFillParent(true);
-		table.setDebug(true);
-		stage.addActor(table);
-		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-		TextButton pause = new TextButton("Pause", skin);
-		table.add(pause).fillX().uniform();
-		pause.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.PAUSE);
-			}
-		});
+	
 	}
 
 	@Override
