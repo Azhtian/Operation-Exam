@@ -32,6 +32,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import core.ScreenManager;
+import objects.Goal;
 import sprites.Player;
 
 import com.badlogic.gdx.utils.Array;
@@ -48,9 +49,9 @@ public class GameScreen implements Screen {
 
 	private Texture fullHeart;
 	private Texture emptyHeart;
-	private Enemy enemy;
 	private Texture enemyImage;
 	private Texture playerImage;
+	private Goal goal;
 	private OrthographicCamera camera;
 	private TiledMap tileMap;
 	private TiledMapTileLayer bgLayer, platformsLayer, playerLayer, itemsLayer;
@@ -98,6 +99,10 @@ public class GameScreen implements Screen {
 				}
 				else if (object.getProperties().get("type").equals("scoreItem")) {
 					
+				} 
+				else if (object.getProperties().get("type").equals("Goal")) {
+					Rectangle goalRect = ((RectangleMapObject) object).getRectangle();
+					goal = new Goal(goalRect.x, goalRect.y, goalRect.width, goalRect.height);
 				}
 				else if (object.getProperties().get("type").equals("Enemy")) {
 					Rectangle enemyRect = ((RectangleMapObject) object).getRectangle();
@@ -232,6 +237,7 @@ public class GameScreen implements Screen {
 						enemy.setSpeed(0);
 				}
 			}
+			
 			// Enemy border constraint
 			// TODO remove when bounds are implemented
 			if (enemy.getX() < 0){
@@ -241,6 +247,14 @@ public class GameScreen implements Screen {
 			if (enemy.getX() > width - enemy.getWidth()){
 				enemy.setPos(width - enemy.getWidth(), enemy.getY());
 				enemy.setMovingRight(false);
+			}
+		}
+		
+		// test victory
+		
+		for (Player player: players) {
+			if (player.getBounds().overlaps(goal.getBounds())) {
+				game.changeScreen(7);
 			}
 		}
 	}
