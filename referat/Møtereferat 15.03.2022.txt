@@ -6,6 +6,8 @@ Finne ut hva vi vil gjøre med MVC Model view controller
 Bruke MVC ved:
 Main starter GameScreen som instansierer en controller og en model. User input sendes til controlleren, og controlleren styrer endringer på Model klassen
 
+Andre bestemmelser:
+Ha kort gjennomgang om hva som ble gjort i løpet av uken
 
 Bestemmelser om ting som må fikses:
 MVP 
@@ -17,4 +19,5 @@ Til neste gang:
 Prøve å implementere Model, View, Controller
 Se om flowchart kan lages
 Code review
+
 
