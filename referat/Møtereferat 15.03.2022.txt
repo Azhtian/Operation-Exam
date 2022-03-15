@@ -1,0 +1,20 @@
+Møtereferat 15.03.2022
+
+Alle til stede (Marita over discord)
+
+Finne ut hva vi vil gjøre med MVC Model view controller
+Bruke MVC ved:
+Main starter GameScreen som instansierer en controller og en model. User input sendes til controlleren, og controlleren styrer endringer på Model klassen
+
+
+Bestemmelser om ting som må fikses:
+MVP 
+Handlingsreferat må skje hele tiden
+Bestemme oss for et større prosjekt
+
+
+Til neste gang:
+Prøve å implementere Model, View, Controller
+Se om flowchart kan lages
+Code review
+
