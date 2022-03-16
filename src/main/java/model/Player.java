@@ -1,4 +1,4 @@
-package sprites;
+package model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -8,6 +8,7 @@ public class Player extends Sprite {
 
 	private float x;
 	private float y;
+	private int maxHealth = 3;
 	private int health;
 	private int speedY = 0;
 	Boolean grounded;
@@ -115,6 +116,10 @@ public class Player extends Sprite {
 
 	public int getHealth(){
 		return this.health;
+	}
+
+	public int getMaxHealth() {
+		return maxHealth;
 	}
 
 }

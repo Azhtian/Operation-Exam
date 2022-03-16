@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import controls.Controls;
+import model.Model;
 import screens.GameOverScreen;
 import screens.GameScreen;
 import screens.HomeScreen;
@@ -21,6 +23,8 @@ import screens.WinnerScreen;
 public class ScreenManager extends Game {
 	public SpriteBatch batch;
     public BitmapFont font;
+    
+    private Model model;
 	
 	private LoadingScreen loadingScreen;
 	private HomeScreen homeScreen;
@@ -42,6 +46,7 @@ public class ScreenManager extends Game {
 	public final static int WINNER = 7;
 	
 	public AppPreferences preferences;
+	private Controls controls;
 
 	@Override
 	public void create() {
@@ -85,7 +90,11 @@ public class ScreenManager extends Game {
 			this.setScreen(levelSelect);
 			break;
 		case GAME:
-			if (gameScreen == null) gameScreen = new GameScreen(this);
+			if (gameScreen == null) {
+					model = new Model();
+					controls = new Controls();
+					gameScreen = new GameScreen(this, model, controls);
+			}
 			this.setScreen(gameScreen);
 			this.batch = new SpriteBatch();
 			this.font = new BitmapFont();
@@ -100,6 +109,7 @@ public class ScreenManager extends Game {
 			break;
 		case WINNER:
 			if (winnerScreen == null) winnerScreen = new WinnerScreen(this);
+			this.setScreen(winnerScreen);
 			break;
 		}
 	}
