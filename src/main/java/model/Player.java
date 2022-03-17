@@ -27,6 +27,7 @@ public class Player extends Sprite {
 		this.width = width;
 		this.height = height;
 		this.playerImage = playerImage;
+		this.grounded = true;
 
 		bounds = new Rectangle(x, y, width, height);
 	}

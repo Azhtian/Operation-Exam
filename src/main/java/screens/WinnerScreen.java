@@ -57,6 +57,7 @@ public class WinnerScreen implements Screen {
 		newGame.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				game.newGame();
 				game.changeScreen(ScreenManager.GAME);
 			}
 		});
