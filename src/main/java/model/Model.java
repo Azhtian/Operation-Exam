@@ -61,6 +61,9 @@ public class Model {
 				else if (object.getProperties().get("type").equals("Enemy")) {
 					Rectangle enemyRect = ((RectangleMapObject) object).getRectangle();
 					Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					if (object.getProperties().get("stationary").equals(false)) {
+						enemy.setStationary(false);
+					}
 					enemies.add(enemy);
 				}
 				else if (object.getProperties().get("type").equals("Player")) {

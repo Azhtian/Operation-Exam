@@ -78,7 +78,7 @@ public class Controls {
 
 		// Enemy movement
 		for (Enemy enemy : model.getEnemies()) {
-			enemy.move();
+			enemy.moveX();
 
 			// Enemy X collisions
 			for (Rectangle rect : model.getPlatforms()) {
@@ -87,16 +87,14 @@ public class Controls {
 						enemy.setPos(rect.x - enemy.width, enemy.getY());
 						enemy.setMovingRight(false);
 					} else {
-						enemy.setPos(rect.x + enemy.width, enemy.getY());
+						enemy.setPos(rect.x + rect.width, enemy.getY());
 						enemy.setMovingRight(true);
 					}
 				}
 			}
 
 			// Enemy falling
-			enemy.changeSpeed(enemy.getA());
-			enemy.changePos(0, enemy.getSpeedY());
-
+			enemy.moveY();
 
 			// Enemy Y collisions
 			for (Rectangle rect : model.getPlatforms()) {
@@ -105,21 +103,9 @@ public class Controls {
 						enemy.setSpeed(0);
 				}
 			}
-			
-			// Enemy border constraint
-			// TODO remove when bounds are implemented
-			if (enemy.getX() < 0){
-				enemy.setPos(0, enemy.getY());
-				enemy.setMovingRight(true);
-			}
-			if (enemy.getX() > model.getWidth() - enemy.getWidth()){
-				enemy.setPos(model.getHeight() - enemy.getWidth(), enemy.getY());
-				enemy.setMovingRight(false);
-			}
 		}
 		
 		// test victory
-		
 		for (Player player: model.getPlayers()) {
 			if (player.getBounds().overlaps(model.getGoal().getBounds())) {
 				model.setScreen(7);

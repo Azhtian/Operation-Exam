@@ -5,18 +5,28 @@ import com.badlogic.gdx.graphics.Texture;
 public class Enemy extends Player {
 	
 	private Boolean movingRight = false;
+	private Boolean stationary = true;
 	private int moveSpeed;
 
 	public Enemy(float x, float y, float width, float height, Texture playerImage) {
 		super(x, y, width, height, playerImage);
-		this.moveSpeed = 3;
+		this.moveSpeed = 2;
 	}
 	
-	public void move () {
-		if (movingRight) {
-			this.changePos(moveSpeed, 0);
-		} else {
-			this.changePos(-moveSpeed, 0);
+	public void moveX () {
+		if (!stationary) {
+			if (movingRight) {
+				this.changePos(moveSpeed, 0);
+			} else {
+				this.changePos(-moveSpeed, 0);
+			}
+		} 
+	}
+	
+	public void moveY () {
+		if (!stationary) {
+			this.changeSpeed(this.getA());
+			this.changePos(0, this.getSpeedY());
 		}
 	}
 	
@@ -32,4 +42,7 @@ public class Enemy extends Player {
 		movingRight = value;
 	}
 	
+	public void setStationary(Boolean value) {
+		stationary = value;
+	}	
 }
