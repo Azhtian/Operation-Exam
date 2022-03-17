@@ -1,4 +1,4 @@
-package sprites;
+package model;
 
 import com.badlogic.gdx.graphics.Texture;
 
