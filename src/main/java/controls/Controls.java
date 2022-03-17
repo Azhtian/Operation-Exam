@@ -45,6 +45,7 @@ public class Controls {
 						p.setPos(p.getX(), rect.y - p.height);
 					}
 					p.setSpeed(0);
+					p.setOnGround(true);
 				}
 			}
 			
@@ -66,7 +67,10 @@ public class Controls {
 				}
 			}
 			// Jump
-			if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) p.setSpeed(10);
+			if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p.getGrounded()) {
+				p.setSpeed(10);
+				p.setOnGround(false);
+			}
 		}
 		// press SPACE to pause game
 		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
