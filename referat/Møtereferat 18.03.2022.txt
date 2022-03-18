@@ -13,3 +13,4 @@ Marita - Lyd / musikk
 Daniel - Enemies og player
 Stian - Level design
 Marius - Score items og merge til master
+       - Begynner også å jobbe med to-spiller modus.
