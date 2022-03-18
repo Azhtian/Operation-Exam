@@ -41,11 +41,12 @@ public class Controls {
 				if (p.getBounds().overlaps(rect)) {
 					if (p.getSpeedY() < 0) {
 						p.setPos(p.getX(), rect.height + rect.y);
+						p.setOnGround(true); // Fun bug potential
 					} else {
 						p.setPos(p.getX(), rect.y - p.height);
 					}
 					p.setSpeed(0);
-					p.setOnGround(true);
+					// Move fun bug here for fun 
 				}
 			}
 			
