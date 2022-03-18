@@ -59,7 +59,6 @@ public class Model {
 				}
 				else if (object.getProperties().get("type").equals("scoreItem")) {
 					String itemName = object.getName();
-					System.out.println(itemName);
 					Item item = new Item(TextureManager.getTexture(itemName), scoreValueHelper.getScoreValue(itemName), (float) object.getProperties().get("x"), (float) object.getProperties().get("y"), 16, 16);
 					scoreItems.add(item);
 				} 
