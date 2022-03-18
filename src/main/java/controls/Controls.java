@@ -8,6 +8,9 @@ import core.ScreenManager;
 import model.Enemy;
 import model.Model;
 import model.Player;
+import sprites.Item;
+
+import java.util.ListIterator;
 
 public class Controls {
 	
@@ -72,7 +75,21 @@ public class Controls {
 				p.setSpeed(10);
 				p.setOnGround(false);
 			}
+
+			//Score item
+			ListIterator<Item> iter = model.getScoreItems().listIterator();
+			while(iter.hasNext()){
+				Item item = iter.next();
+				if(p.getBounds().overlaps(item.getBoundingRectangle())){
+					p.addScore(item.getScoreValue());
+					iter.remove();
+				}
+			}
 		}
+
+
+
+
 		// press SPACE to pause game
 		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
 			model.setScreen(5);

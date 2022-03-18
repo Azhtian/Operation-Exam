@@ -41,6 +41,7 @@ import model.Player;
 import com.badlogic.gdx.utils.Array;
 
 import core.Exam;
+import sprites.Item;
 
 public class GameScreen implements Screen {
 	private final ScreenManager game;
@@ -100,6 +101,15 @@ public class GameScreen implements Screen {
 		for (Player e : model.getEnemies()) {
 			game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
 		}
+
+		//Draw score items
+		if (model.getScoreItems() != null) {
+			for (Item item : model.getScoreItems()) {
+				game.batch.draw(item.getImage(), item.getX(), item.getY());
+			}
+		}
+
+
 		// Draw heart containers
 		for (int iter = 0; iter < model.getPlayers().get(0).getMaxHealth(); iter++){
 			if (iter < model.getPlayers().get(0).getHealth()) {
