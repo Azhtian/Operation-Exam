@@ -2,6 +2,7 @@ package model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -12,6 +13,11 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 import core.ScreenManager;
+import core.TextureManager;
+import core.scoreValueHelper;
+import sprites.Item;
+
+import java.util.ArrayList;
 
 public class Model {
 	
@@ -26,23 +32,23 @@ public class Model {
     private MapObjects objects;
     private Array<Rectangle> platforms = new Array<Rectangle>(100);
     private Array<Enemy> enemies = new Array<Enemy>(100);
-    // TODO private Array<Item> scoreItems;
+    private ArrayList<Item> scoreItems = new ArrayList<>();
     private Array<Player> players = new Array<Player>(4);
     
     // Texture
 	private Texture enemyImage;
 	private Texture playerImage;
-    
+
     public Model() {
-		
-    	// load images
-		enemyImage = new Texture(Gdx.files.internal("assets/sprites/enemy.png"));
-		playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
-		
-    	
+
     	// Create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
-		
+
+		// load images
+		enemyImage = new Texture(Gdx.files.internal("assets/sprites/enemy.png"));
+		playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
+		//bombTexture = tileMap.getTileSets().getTile(64).getTextureRegion();
+
 		// Get objects from map
 		objects = tileMap.getLayers().get("objects").getObjects();
 		for (MapObject object : objects) {
@@ -52,7 +58,9 @@ public class Model {
 					platforms.add(rect);
 				}
 				else if (object.getProperties().get("type").equals("scoreItem")) {
-					
+					String itemName = object.getName();
+					Item item = new Item(TextureManager.getTexture(itemName), scoreValueHelper.getScoreValue(itemName), (float) object.getProperties().get("x"), (float) object.getProperties().get("y"), 16, 16);
+					scoreItems.add(item);
 				} 
 				else if (object.getProperties().get("type").equals("Goal")) {
 					Rectangle goalRect = ((RectangleMapObject) object).getRectangle();
@@ -93,6 +101,8 @@ public class Model {
     public Array<Rectangle> getPlatforms() {
     	return platforms;
     }
+
+	public ArrayList<Item> getScoreItems(){return scoreItems;}
    
     public Goal getGoal() {
     	return goal;
