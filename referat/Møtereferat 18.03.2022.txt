@@ -1,0 +1,15 @@
+Møtereferat 18.03.2022
+
+Alle til stede (Marita discord)
+
+Gjennomang av gjort oppgaver
+Daniel begynner sin presentasjon av bevegelse til MVC kode.
+Sondre viser UML diagrammet som er laget
+Stian viser hvilke feil han har fikset
+
+Videre arbeid:
+Sondre - Enemy sprites
+Marita - Lyd / musikk
+Daniel - Enemies og player
+Stian - Level design
+Marius - Score items og merge til master
