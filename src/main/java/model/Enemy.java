@@ -2,34 +2,28 @@ package model;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class Enemy extends Player {
+public class Enemy extends Mob {
 	
 	private Boolean movingRight = false;
 	private Boolean stationary = true;
 	private int moveSpeed;
 
-	public Enemy(float x, float y, float width, float height, Texture playerImage) {
-		super(x, y, width, height, playerImage);
+	public Enemy(float x, float y, float width, float height, Texture image) {
+		super(x, y, width, height, image);
 		this.moveSpeed = 2;
 	}
 	
-	public void moveX () {
+	public void doAction () {
 		if (!stationary) {
 			if (movingRight) {
-				this.changePos(moveSpeed, 0);
+				this.changeX(moveSpeed);
 			} else {
-				this.changePos(-moveSpeed, 0);
+				this.changeX(-moveSpeed);
 			}
 		} 
 	}
 	
-	public void moveY (int gravity) {
-		if (!stationary) {
-			this.changeYSpeed(gravity);
-			this.changePos(0, this.getYSpeed());
-		}
-	}
-	
+
 	public boolean getMovingRight() {
 		return movingRight;
 	}

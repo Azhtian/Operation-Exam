@@ -98,7 +98,7 @@ public class GameScreen implements Screen {
 			game.batch.draw(p.getPlayerImage(), p.getX(), p.getY(), p.getWidth(), p.getHeight());
 			game.font.draw(game.batch, "Score: " + p.getScore(), 0, model.getHeight());
 		}
-		for (Player e : model.getEnemies()) {
+		for (Enemy e : model.getEnemies()) {
 			game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
 		}
 

@@ -22,11 +22,12 @@ public class Controls {
 		// ALL PLAYER ACTIONS
 		for (Player p : model.getPlayers()) {
 			// TODO Death
-			for (Player e : model.getEnemies()) {
+			for (Enemy e : model.getEnemies()) {
 				// If player touches an enemy
 				if (p.getBounds().overlaps(e.getBounds())) {
 					// Reset player to start-pos
-					p.setPos(16, 16);
+					p.setX(16);
+					p.setY(16);
 					// Player takes damage
 					p.damage(1);
 					if (p.getHealth() <= 0){
@@ -36,17 +37,17 @@ public class Controls {
 				}
 			}
 			// Apply Gravity
-			p.changeYSpeed(p.getGravity());
-			p.changePos(0, p.getYSpeed());
+			p.changeYSpeed(model.getGravity());
+			p.changeY(p.getYSpeed());
 			
 			// player Y constraint
 			for (Rectangle rect : model.getPlatforms()) {
 				if (p.getBounds().overlaps(rect)) {
 					if (p.getYSpeed() < 0) {
-						p.setPos(p.getX(), rect.height + rect.y);
+						p.setY(rect.height + rect.y);
 						p.setGrounded(true); // Fun bug potential
 					} else {
-						p.setPos(p.getX(), rect.y - p.height);
+						p.setY(rect.y - p.getHeight());
 					}
 					p.setYSpeed(0);
 					// Move fun bug here for fun 
@@ -55,18 +56,18 @@ public class Controls {
 			
 			// Left right movement
 			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-				p.changePos(-5, 0);
+				p.changeX(-5);
 				for (Rectangle rect : model.getPlatforms()) {
 					if (p.getBounds().overlaps(rect)) {
-						p.setPos(rect.x + rect.width, p.getY());
+						p.setX(rect.x + rect.width);
 					}
 				}
 			}
 			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-				p.changePos(5, 0);
+				p.changeX(5);
 				for (Rectangle rect : model.getPlatforms()) {
 					if (p.getBounds().overlaps(rect)) {
-						p.setPos(rect.x - p.width, p.getY());
+						p.setX(rect.x - p.getWidth());
 					}
 				}
 			}
@@ -74,16 +75,7 @@ public class Controls {
 			if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p.isGrounded()) {
 				p.setYSpeed(10);
 				p.setGrounded(false);
-			}
 
-			//Score item
-			ListIterator<Item> iter = model.getScoreItems().listIterator();
-			while(iter.hasNext()){
-				Item item = iter.next();
-				if(p.getBounds().overlaps(item.getBoundingRectangle())){
-					p.addScore(item.getScoreValue());
-					iter.remove();
-				}
 			}
 		}
 
@@ -96,28 +88,29 @@ public class Controls {
 
 		// Enemy movement
 		for (Enemy enemy : model.getEnemies()) {
-			enemy.moveX();
+			enemy.doAction();
 
 			// Enemy X collisions
 			for (Rectangle rect : model.getPlatforms()) {
 				if (enemy.getBounds().overlaps(rect)) {
 					if (enemy.getMovingRight()) {
-						enemy.setPos(rect.x - enemy.width, enemy.getY());
+						enemy.setX(rect.x - enemy.getWidth());
 						enemy.setMovingRight(false);
 					} else {
-						enemy.setPos(rect.x + rect.width, enemy.getY());
+						enemy.setX(rect.x + rect.width);
 						enemy.setMovingRight(true);
 					}
 				}
 			}
 
 			// Enemy falling
-			enemy.moveY(model.getGravity());
+			enemy.changeYSpeed(model.getGravity());
+			enemy.changeY(enemy.getYSpeed());
 
 			// Enemy Y collisions
 			for (Rectangle rect : model.getPlatforms()) {
 				if (enemy.getBounds().overlaps(rect)) {
-						enemy.setPos(enemy.getX(), rect.getY() + rect.getHeight());
+						enemy.setY(rect.getY() + rect.getHeight());
 						enemy.setYSpeed(0);
 				}
 			}
