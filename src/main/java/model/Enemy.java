@@ -38,5 +38,9 @@ public class Enemy extends Mob {
 	
 	public void setStationary(Boolean value) {
 		stationary = value;
-	}	
+	}
+
+    public Boolean getStationary() {
+        return stationary;
+    }
 }

@@ -55,6 +55,13 @@ public class GameScreen implements Screen {
     private Texture fullHeart;
 	private Texture emptyHeart;
 	private Controls controls;
+    private Texture enemyMovingRight1;
+    private Texture enemyMovingRight2;
+    private Texture enemyMovingLeft1;
+    private Texture enemyMovingLeft2;
+
+    private int enemyAnimationCounter;
+    private int enemyAnimationPointer;
 
 	public GameScreen(final ScreenManager game, Model model, Controls controls) {
 		this.game = game;
@@ -67,6 +74,12 @@ public class GameScreen implements Screen {
 		// Load images
 		fullHeart = new Texture("assets/sprites/fullHeartContainer.png");
 		emptyHeart = new Texture("assets/sprites/emptyHeartContainer.png");
+        enemyMovingRight1 = new Texture("assets/sprites/professorMoveRight1.png");
+        enemyMovingRight2 = new Texture("assets/sprites/professorMoveRight2.png");
+
+        enemyMovingLeft1 = new Texture("assets/sprites/professorMoveLeft1.png");
+        enemyMovingLeft2 = new Texture("assets/sprites/professorMoveLeft2.png");
+
 		
 		// Renderer
 		renderer = new OrthogonalTiledMapRenderer(model.getTileMap());
@@ -77,7 +90,9 @@ public class GameScreen implements Screen {
 		camera.setToOrtho(false, 800, 320); // dimensions of castle board
 		camera.position.set(400, 160, 3); // centers the camera to middle of board instead of (by default) window.
 
-		
+        // Enemy animation counter
+        enemyAnimationCounter = 0;
+        enemyAnimationPointer = 0;
 
 	}
 
@@ -98,9 +113,22 @@ public class GameScreen implements Screen {
 			game.batch.draw(p.getPlayerImage(), p.getX(), p.getY(), p.getWidth(), p.getHeight());
 			game.font.draw(game.batch, "Score: " + p.getScore(), 0, model.getHeight());
 		}
+
+        // Updates enemy texture every 20 frames
+        enemyAnimationCounter = (enemyAnimationCounter + 1) % 20;
 		for (Enemy e : model.getEnemies()) {
 			game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
-		}
+
+            // Update enemy texture
+            if (enemyAnimationCounter == 0) {
+                enemyAnimationPointer = (enemyAnimationPointer + 1) % 2;
+                if (enemyAnimationPointer == 0) {
+                    controls.changeEnemyTexture(e, enemyMovingRight1, enemyMovingLeft1);
+                } else {
+                    controls.changeEnemyTexture(e, enemyMovingRight2, enemyMovingLeft2);
+                }
+            }
+        }
 
 		//Draw score items
 		if (model.getScoreItems() != null) {

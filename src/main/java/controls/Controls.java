@@ -2,6 +2,7 @@ package controls;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 import core.ScreenManager;
@@ -80,11 +81,10 @@ public class Controls {
 		}
 
 
-
-
-		// press SPACE to pause game
-		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
-			model.setScreen(5);
+		// press SPACE to pause game (or escaoe)
+		if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+            model.setScreen(5);
+        }
 
 		// Enemy movement
 		for (Enemy enemy : model.getEnemies()) {
@@ -123,5 +123,13 @@ public class Controls {
 			}
 		}
 	}
+
+    public void changeEnemyTexture(Enemy e, Texture right, Texture left) {
+        if (e.getMovingRight()){
+            e.setPlayerImage(right);
+        } else {
+            e.setPlayerImage(left);
+        }
+    }
 }
 

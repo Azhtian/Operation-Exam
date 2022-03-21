@@ -121,4 +121,8 @@ public abstract class Mob extends Sprite{
 	public void changeXSpeed(float xSpeed) {
 		this.xSpeed += xSpeed;
 	}
+
+    public void setPlayerImage(Texture texture) {
+        playerImage = texture;
+    }
 }
