@@ -26,7 +26,10 @@ public class Player extends Mob {
 		this.health = this.maxHealth;
 	}
 
-	public void setHealth(int health){
+
+
+
+    public void setHealth(int health){
 		this.health = health;
 	}
 
@@ -41,7 +44,6 @@ public class Player extends Mob {
 	public void setScore(int score){this.score = score;}
 
 	public void addScore(int score){this.score += score;}
-	}
 
 	public Texture getPlayerImage() {
 		return playerImage;

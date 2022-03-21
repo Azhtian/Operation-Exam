@@ -36,19 +36,19 @@ public class Controls {
 				}
 			}
 			// Apply Gravity
-			p.changeSpeed(p.getA());
-			p.changePos(0, p.getSpeedY());
+			p.changeYSpeed(p.getGravity());
+			p.changePos(0, p.getYSpeed());
 			
 			// player Y constraint
 			for (Rectangle rect : model.getPlatforms()) {
 				if (p.getBounds().overlaps(rect)) {
-					if (p.getSpeedY() < 0) {
+					if (p.getYSpeed() < 0) {
 						p.setPos(p.getX(), rect.height + rect.y);
-						p.setOnGround(true); // Fun bug potential
+						p.setGrounded(true); // Fun bug potential
 					} else {
 						p.setPos(p.getX(), rect.y - p.height);
 					}
-					p.setSpeed(0);
+					p.setYSpeed(0);
 					// Move fun bug here for fun 
 				}
 			}
@@ -71,9 +71,9 @@ public class Controls {
 				}
 			}
 			// Jump
-			if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p.getGrounded()) {
-				p.setSpeed(10);
-				p.setOnGround(false);
+			if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p.isGrounded()) {
+				p.setYSpeed(10);
+				p.setGrounded(false);
 			}
 
 			//Score item
@@ -118,7 +118,7 @@ public class Controls {
 			for (Rectangle rect : model.getPlatforms()) {
 				if (enemy.getBounds().overlaps(rect)) {
 						enemy.setPos(enemy.getX(), rect.getY() + rect.getHeight());
-						enemy.setSpeed(0);
+						enemy.setYSpeed(0);
 				}
 			}
 		}

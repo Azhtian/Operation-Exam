@@ -25,8 +25,8 @@ public class Enemy extends Player {
 	
 	public void moveY (int gravity) {
 		if (!stationary) {
-			this.changeSpeed(gravity);
-			this.changePos(0, this.getSpeedY());
+			this.changeYSpeed(gravity);
+			this.changePos(0, this.getYSpeed());
 		}
 	}
 	

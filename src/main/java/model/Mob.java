@@ -15,16 +15,29 @@ public abstract class Mob extends Sprite{
 	private float x;
 	private float ySpeed;
 	private float xSpeed;
+    private float gravity;
 	
 	public Mob(float x, float y, float width, float height, Texture image) {
-		this.setX(x);
+        this.bounds = new Rectangle(x, y, width, height);
+        this.playerImage = image;
+        this.setX(x);
 		this.setY(y);
 		this.width = width;
 		this.height = height;
-		this.playerImage = image;
 		this.setGrounded(true);
-		this.bounds = new Rectangle(x, y, width, height);
+        this.gravity = -4;
 	}
+
+    public void setPos(float x, float y){
+        this.x = x;
+        this.y = y;
+        this.bounds.x = x;
+        this.bounds.y = y;
+    }
+
+    public float getGravity(){
+        return gravity;
+    }
 
 	public float getX() {
 		return x;
@@ -53,6 +66,13 @@ public abstract class Mob extends Sprite{
 		this.bounds.y += y;
 		this.y += y;
 	}
+
+    public void changePos(float x, float y) {
+        this.x += x;
+        this.y += y;
+        bounds.x += x;
+        bounds.y += y;
+    }
 	
 	public float getYSpeed() {
 		return ySpeed;
