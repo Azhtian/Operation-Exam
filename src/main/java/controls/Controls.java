@@ -112,7 +112,7 @@ public class Controls {
 			}
 
 			// Enemy falling
-			enemy.moveY();
+			enemy.moveY(model.getGravity());
 
 			// Enemy Y collisions
 			for (Rectangle rect : model.getPlatforms()) {

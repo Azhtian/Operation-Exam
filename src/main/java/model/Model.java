@@ -35,6 +35,8 @@ public class Model {
     private ArrayList<Item> scoreItems = new ArrayList<>();
     private Array<Player> players = new Array<Player>(4);
     
+    private int gravity = -1;
+    
     // Texture
 	private Texture enemyImage;
 	private Texture playerImage;
@@ -122,6 +124,10 @@ public class Model {
 
 	public void setScreen(int screen) {
 		this.screen = screen;
+	}
+
+	public int getGravity() {
+		return gravity;
 	}
     
 }
