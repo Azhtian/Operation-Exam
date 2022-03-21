@@ -17,8 +17,8 @@ public abstract class Mob extends Sprite{
 	private float xSpeed;
 	
 	public Mob(float x, float y, float width, float height, Texture image) {
-		this.setX(x);
-		this.setY(y);
+		this.x = x;
+		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.playerImage = image;
