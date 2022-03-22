@@ -123,9 +123,9 @@ public class GameScreen implements Screen {
             if (enemyAnimationCounter == 0) {
                 enemyAnimationPointer = (enemyAnimationPointer + 1) % 2;
                 if (enemyAnimationPointer == 0) {
-                    controls.changeEnemyTexture(e, enemyMovingRight1, enemyMovingLeft1);
+                    controls.changeMobTexture(e, enemyMovingRight1, enemyMovingLeft1);
                 } else {
-                    controls.changeEnemyTexture(e, enemyMovingRight2, enemyMovingLeft2);
+                    controls.changeMobTexture(e, enemyMovingRight2, enemyMovingLeft2);
                 }
             }
         }

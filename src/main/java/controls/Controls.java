@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 import core.ScreenManager;
 import model.Enemy;
+import model.Mob;
 import model.Model;
 import model.Player;
 import sprites.Item;
@@ -58,6 +59,7 @@ public class Controls {
 			// Left right movement
 			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
 				p.changeX(-5);
+                p.setMovingRight(false);
 				for (Rectangle rect : model.getPlatforms()) {
 					if (p.getBounds().overlaps(rect)) {
 						p.setX(rect.x + rect.width);
@@ -66,6 +68,7 @@ public class Controls {
 			}
 			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 				p.changeX(5);
+                p.setMovingRight(true);
 				for (Rectangle rect : model.getPlatforms()) {
 					if (p.getBounds().overlaps(rect)) {
 						p.setX(rect.x - p.getWidth());
@@ -78,7 +81,16 @@ public class Controls {
 				p.setGrounded(false);
 
 			}
-		}
+            //Score item
+            ListIterator<Item> iter = model.getScoreItems().listIterator();
+            while(iter.hasNext()){
+                Item item = iter.next();
+                if(p.getBounds().overlaps(item.getBoundingRectangle())){
+                    p.addScore(item.getScoreValue());
+                    iter.remove();
+                }
+            }
+        }
 
 
 		// press SPACE to pause game (or escaoe)
@@ -124,11 +136,11 @@ public class Controls {
 		}
 	}
 
-    public void changeEnemyTexture(Enemy e, Texture right, Texture left) {
-        if (e.getMovingRight()){
-            e.setPlayerImage(right);
+    public void changeMobTexture(Mob m, Texture right, Texture left) {
+        if (m.getMovingRight()){
+            m.setPlayerImage(right);
         } else {
-            e.setPlayerImage(left);
+            m.setPlayerImage(left);
         }
     }
 }

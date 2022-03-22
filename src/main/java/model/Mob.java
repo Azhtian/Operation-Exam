@@ -16,6 +16,7 @@ public abstract class Mob extends Sprite{
 	private float ySpeed;
 	private float xSpeed;
     private float gravity;
+    private Boolean movingRight = false;
 	
 	public Mob(float x, float y, float width, float height, Texture image) {
         this.bounds = new Rectangle(x, y, width, height);
@@ -47,6 +48,14 @@ public abstract class Mob extends Sprite{
 		this.bounds.x = x;
 		this.x = x;
 	}
+
+    public void setMovingRight(Boolean value) {
+        movingRight = value;
+    }
+
+    public boolean getMovingRight() {
+        return movingRight;
+    }
 	
 	public void changeX(float x) {
 		this.bounds.x += x;
