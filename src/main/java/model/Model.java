@@ -36,6 +36,8 @@ public class Model {
     private ArrayList<Item> scoreItems = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
     
+    private int gravity = -1;
+    
     // Texture
 	private Texture enemyImage;
 	private Texture playerImage;
@@ -69,8 +71,10 @@ public class Model {
 				}
 				else if (object.getProperties().get("type").equals("Enemy")) {
 					Rectangle enemyRect = ((RectangleMapObject) object).getRectangle();
-					Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
-					if (object.getProperties().get("stationary").equals(false)) {
+					// Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					// Temporary hardcoded
+                    Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, 16 ,27, enemyImage);
+                    if (object.getProperties().get("stationary").equals(false)) {
 						enemy.setStationary(false);
 					}
 					enemies.add(enemy);
@@ -123,6 +127,10 @@ public class Model {
 
 	public void setScreen(int screen) {
 		this.screen = screen;
+	}
+
+	public int getGravity() {
+		return gravity;
 	}
     
 }

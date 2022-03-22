@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PlayerTest {
 
     static Exam exam = new Exam();
-    Texture playerImage = new Texture(Gdx.files.internal("assets/player.png"));
+    Texture playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
     Player player;
 
 
@@ -47,13 +47,13 @@ public class PlayerTest {
 
     @Test
     void testSpeed(){
-        assertEquals(player.getSpeedY(), 0);
-        player.setSpeed(5);
-        assertEquals(player.getSpeedY(), 5);
-        player.changeSpeed(-5);
-        assertEquals(player.getSpeedY(), 0);
-        player.changeSpeed(-5);
-        assertEquals(player.getSpeedY(), -5);
+        assertEquals(player.getYSpeed(), 0);
+        player.setYSpeed(5);
+        assertEquals(player.getYSpeed(), 5);
+        player.changeYSpeed(-5);
+        assertEquals(player.getYSpeed(), 0);
+        player.changeYSpeed(-5);
+        assertEquals(player.getYSpeed(), -5);
     }
 
 
