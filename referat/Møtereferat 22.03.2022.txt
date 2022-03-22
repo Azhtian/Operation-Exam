@@ -5,3 +5,6 @@ Tilstede: Daniel, Marius, Sondre
 Daniel begynner med å presentere hva han har gjort
 Marius forklarer hvordan vi kan bruke arbeidet hans
 Sondre viste hvordan han hadde lagt til animasjoner på ene enemy classen. 
+
+Til neste gang:
+Fullføre oblig 2
