@@ -111,7 +111,7 @@ public class GameScreen implements Screen {
 		game.batch.begin();
 		for (Player p : model.getPlayers()) {
 			game.batch.draw(p.getPlayerImage(), p.getX(), p.getY(), p.getWidth(), p.getHeight());
-			game.font.draw(game.batch, "Score: " + p.getScore(), 0, model.getHeight());
+			game.font.draw(game.batch, "Score: " + model.getGameScore(), 0, model.getHeight());
 		}
 
         // Updates enemy texture every 20 frames

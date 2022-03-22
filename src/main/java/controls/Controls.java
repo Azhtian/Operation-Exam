@@ -57,7 +57,7 @@ public class Controls {
 			}
 			
 			// Left right movement
-			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+			if (Gdx.input.isKeyPressed(p.getLeftControl())) {
 				p.changeX(-5);
                 p.setMovingRight(false);
 				for (Rectangle rect : model.getPlatforms()) {
@@ -66,7 +66,7 @@ public class Controls {
 					}
 				}
 			}
-			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+			if (Gdx.input.isKeyPressed(p.getRightControl())){
 				p.changeX(5);
                 p.setMovingRight(true);
 				for (Rectangle rect : model.getPlatforms()) {
@@ -76,7 +76,7 @@ public class Controls {
 				}
 			}
 			// Jump
-			if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p.isGrounded()) {
+			if (Gdx.input.isKeyJustPressed(p.getJumpControl()) && p.isGrounded()) {
 				p.setYSpeed(10);
 				p.setGrounded(false);
 
@@ -86,7 +86,7 @@ public class Controls {
             while(iter.hasNext()){
                 Item item = iter.next();
                 if(p.getBounds().overlaps(item.getBoundingRectangle())){
-                    p.addScore(item.getScoreValue());
+                    model.addScore(item.getScoreValue());
                     iter.remove();
                 }
             }

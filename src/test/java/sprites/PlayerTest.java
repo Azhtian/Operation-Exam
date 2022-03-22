@@ -2,6 +2,7 @@ package sprites;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
@@ -41,7 +42,7 @@ public class PlayerTest {
 
     @BeforeEach
     void setupPlayer(){
-        player = new Player(0, 0, 0, 0, playerImage);
+        player = new Player(0, 0, 0, 0, playerImage, new int[] {Input.Keys.LEFT, Input.Keys.UP, Input.Keys.RIGHT, Input.Keys.DOWN});
     }
 
 

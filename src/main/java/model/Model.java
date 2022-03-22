@@ -35,7 +35,8 @@ public class Model {
     private Array<Enemy> enemies = new Array<Enemy>(100);
     private ArrayList<Item> scoreItems = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
-    
+
+	private int gameScore = 0;
     private int gravity = -1;
     
     // Texture
@@ -132,5 +133,12 @@ public class Model {
 	public int getGravity() {
 		return gravity;
 	}
-    
+
+	public int getGameScore(){
+		return gameScore;
+	}
+
+	public void addScore(int scoreValue) {
+		this.gameScore += scoreValue;
+	}
 }
