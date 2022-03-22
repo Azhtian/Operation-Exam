@@ -16,8 +16,14 @@ public abstract class Mob extends Sprite{
 	private float ySpeed;
 	private float xSpeed;
     private float gravity;
-    private Boolean movingRight = false;
-	
+
+    private boolean movingRight = false;
+    private boolean wasMovingRight = false;
+
+    // Animation counters
+    private int animationCounter;
+    private int animationPointer;
+
 	public Mob(float x, float y, float width, float height, Texture image) {
         this.bounds = new Rectangle(x, y, width, height);
         this.playerImage = image;
@@ -27,6 +33,8 @@ public abstract class Mob extends Sprite{
 		this.height = height;
 		this.setGrounded(true);
         this.gravity = -4;
+        this.animationCounter = 0;
+        this.animationPointer = 0;
 	}
 
     public void setPos(float x, float y){
@@ -48,6 +56,29 @@ public abstract class Mob extends Sprite{
 		this.bounds.x = x;
 		this.x = x;
 	}
+
+    public boolean getWasMovingRight(){
+        return wasMovingRight;
+    }
+
+    public void setWasMovingRight(boolean wasMovingRight) {
+        this.wasMovingRight = wasMovingRight;
+    }
+
+    public void setAnimationCounter(int animationCounter) {
+        this.animationCounter = animationCounter;
+    }
+    public int getAnimationCounter() {
+        return  animationCounter;
+    }
+
+    public void setAnimationPointer(int animationPointer) {
+        this.animationPointer = animationPointer;
+    }
+
+    public int getAnimationPointer() {
+        return animationPointer;
+    }
 
     public void setMovingRight(Boolean value) {
         movingRight = value;
