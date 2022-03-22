@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Array;
 
 import core.ScreenManager;
 import core.TextureManager;
+import core.playerInputManager;
 import core.scoreValueHelper;
 import sprites.Item;
 
@@ -33,7 +34,7 @@ public class Model {
     private Array<Rectangle> platforms = new Array<Rectangle>(100);
     private Array<Enemy> enemies = new Array<Enemy>(100);
     private ArrayList<Item> scoreItems = new ArrayList<>();
-    private Array<Player> players = new Array<Player>(4);
+    private ArrayList<Player> players = new ArrayList<>();
     
     // Texture
 	private Texture enemyImage;
@@ -76,7 +77,7 @@ public class Model {
 				}
 				else if (object.getProperties().get("type").equals("Player")) {
 					Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
-					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage);
+					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, playerInputManager.getControls(players.size()));
 					players.add(player);
 				}
 				else {
@@ -90,7 +91,7 @@ public class Model {
     	return tileMap;
     }
     
-    public Array<Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
     	return players;
     }
     

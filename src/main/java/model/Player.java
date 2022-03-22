@@ -18,16 +18,19 @@ public class Player extends Sprite {
 	public float height = 16;
 	private Rectangle bounds;
 	private Texture playerImage;
+	private int[] controlSet;
 	// String playerName;
 
 
-	public Player(float x, float y, float width, float height, Texture playerImage) {
+	public Player(float x, float y, float width, float height, Texture playerImage, int[] controlSet) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.playerImage = playerImage;
 		this.grounded = true;
+		this.health = this.maxHealth;
+		this.controlSet = controlSet;
 
 		bounds = new Rectangle(x, y, width, height);
 	}
