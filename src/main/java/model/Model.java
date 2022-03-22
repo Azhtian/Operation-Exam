@@ -43,7 +43,7 @@ public class Model {
 	private Texture enemyImage;
 	private Texture playerImage;
 
-    public Model() {
+	public Model(int numberOfPlayers) {
 
     	// Create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
@@ -81,6 +81,9 @@ public class Model {
 					enemies.add(enemy);
 				}
 				else if (object.getProperties().get("type").equals("Player")) {
+					if (numberOfPlayers == players.size()){
+						continue;
+					}
 					Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
 					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, playerInputManager.getControls(players.size()));
 					players.add(player);
