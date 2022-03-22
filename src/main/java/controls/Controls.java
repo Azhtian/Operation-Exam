@@ -2,10 +2,12 @@ package controls;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 import core.ScreenManager;
 import model.Enemy;
+import model.Mob;
 import model.Model;
 import model.Player;
 import sprites.Item;
@@ -55,16 +57,18 @@ public class Controls {
 			}
 			
 			// Left right movement
-			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+			if (Gdx.input.isKeyPressed(p.getLeftControl())) {
 				p.changeX(-5);
+                p.setMovingRight(false);
 				for (Rectangle rect : model.getPlatforms()) {
 					if (p.getBounds().overlaps(rect)) {
 						p.setX(rect.x + rect.width);
 					}
 				}
 			}
-			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+			if (Gdx.input.isKeyPressed(p.getRightControl())){
 				p.changeX(5);
+                p.setMovingRight(true);
 				for (Rectangle rect : model.getPlatforms()) {
 					if (p.getBounds().overlaps(rect)) {
 						p.setX(rect.x - p.getWidth());
@@ -72,28 +76,27 @@ public class Controls {
 				}
 			}
 			// Jump
-			if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && p.isGrounded()) {
+			if (Gdx.input.isKeyJustPressed(p.getJumpControl()) && p.isGrounded()) {
 				p.setYSpeed(10);
 				p.setGrounded(false);
+
 			}
-
-			//Score item
-			ListIterator<Item> iter = model.getScoreItems().listIterator();
-			while(iter.hasNext()){
-				Item item = iter.next();
-				if(p.getBounds().overlaps(item.getBoundingRectangle())){
-					p.addScore(item.getScoreValue());
-					iter.remove();
-				}
-			}
-		}
-
+            //Score item
+            ListIterator<Item> iter = model.getScoreItems().listIterator();
+            while(iter.hasNext()){
+                Item item = iter.next();
+                if(p.getBounds().overlaps(item.getBoundingRectangle())){
+                    model.addScore(item.getScoreValue());
+                    iter.remove();
+                }
+            }
+        }
 
 
-
-		// press SPACE to pause game
-		if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
-			model.setScreen(5);
+		// press SPACE to pause game (or escaoe)
+		if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+            model.setScreen(5);
+        }
 
 		// Enemy movement
 		for (Enemy enemy : model.getEnemies()) {
@@ -132,5 +135,13 @@ public class Controls {
 			}
 		}
 	}
+
+    public void changeMobTexture(Mob m, Texture right, Texture left) {
+        if (m.getMovingRight()){
+            m.setPlayerImage(right);
+        } else {
+            m.setPlayerImage(left);
+        }
+    }
 }
 

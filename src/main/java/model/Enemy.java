@@ -3,8 +3,7 @@ package model;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Enemy extends Mob {
-	
-	private Boolean movingRight = false;
+
 	private Boolean stationary = true;
 	private int moveSpeed;
 
@@ -15,27 +14,24 @@ public class Enemy extends Mob {
 	
 	public void doAction () {
 		if (!stationary) {
-			if (movingRight) {
+			if (this.getMovingRight()) {
 				this.changeX(moveSpeed);
 			} else {
 				this.changeX(-moveSpeed);
 			}
 		} 
 	}
-	
-	public boolean getMovingRight() {
-		return movingRight;
-	}
+
 
 	public void setMoveSpeed(int speed){
 		moveSpeed = speed;
 	}
 	
-	public void setMovingRight(Boolean value) {
-		movingRight = value;
-	}
-	
 	public void setStationary(Boolean value) {
 		stationary = value;
-	}	
+	}
+
+    public Boolean getStationary() {
+        return stationary;
+    }
 }

@@ -59,7 +59,8 @@ public class PlayerModeScreen implements Screen {
 		duo.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.LEVELSELECT); 
+				game.setNumberOfPlayers(2);
+				game.changeScreen(ScreenManager.LEVELSELECT);
 			}
 		});
        back.addListener(new ChangeListener() {

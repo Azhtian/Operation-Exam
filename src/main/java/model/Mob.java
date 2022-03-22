@@ -15,16 +15,30 @@ public abstract class Mob extends Sprite{
 	private float x;
 	private float ySpeed;
 	private float xSpeed;
+    private float gravity;
+    private Boolean movingRight = false;
 	
 	public Mob(float x, float y, float width, float height, Texture image) {
-		this.x = x;
-		this.y = y;
+        this.bounds = new Rectangle(x, y, width, height);
+        this.playerImage = image;
+        this.setX(x);
+		this.setY(y);
 		this.width = width;
 		this.height = height;
-		this.playerImage = image;
 		this.setGrounded(true);
-		this.bounds = new Rectangle(x, y, width, height);
+        this.gravity = -4;
 	}
+
+    public void setPos(float x, float y){
+        this.x = x;
+        this.y = y;
+        this.bounds.x = x;
+        this.bounds.y = y;
+    }
+
+    public float getGravity(){
+        return gravity;
+    }
 
 	public float getX() {
 		return x;
@@ -34,6 +48,14 @@ public abstract class Mob extends Sprite{
 		this.bounds.x = x;
 		this.x = x;
 	}
+
+    public void setMovingRight(Boolean value) {
+        movingRight = value;
+    }
+
+    public boolean getMovingRight() {
+        return movingRight;
+    }
 	
 	public void changeX(float x) {
 		this.bounds.x += x;
@@ -53,6 +75,13 @@ public abstract class Mob extends Sprite{
 		this.bounds.y += y;
 		this.y += y;
 	}
+
+    public void changePos(float x, float y) {
+        this.x += x;
+        this.y += y;
+        bounds.x += x;
+        bounds.y += y;
+    }
 	
 	public float getYSpeed() {
 		return ySpeed;
@@ -101,4 +130,8 @@ public abstract class Mob extends Sprite{
 	public void changeXSpeed(float xSpeed) {
 		this.xSpeed += xSpeed;
 	}
+
+    public void setPlayerImage(Texture texture) {
+        playerImage = texture;
+    }
 }

@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Array;
 
 import core.ScreenManager;
 import core.TextureManager;
+import core.playerInputManager;
 import core.scoreValueHelper;
 import sprites.Item;
 
@@ -33,15 +34,16 @@ public class Model {
     private Array<Rectangle> platforms = new Array<Rectangle>(100);
     private Array<Enemy> enemies = new Array<Enemy>(100);
     private ArrayList<Item> scoreItems = new ArrayList<>();
-    private Array<Player> players = new Array<Player>(4);
-    
+    private ArrayList<Player> players = new ArrayList<>();
+
+	private int gameScore = 0;
     private int gravity = -1;
     
     // Texture
 	private Texture enemyImage;
 	private Texture playerImage;
 
-    public Model() {
+	public Model(int numberOfPlayers) {
 
     	// Create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
@@ -70,15 +72,20 @@ public class Model {
 				}
 				else if (object.getProperties().get("type").equals("Enemy")) {
 					Rectangle enemyRect = ((RectangleMapObject) object).getRectangle();
-					Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
-					if (object.getProperties().get("stationary").equals(false)) {
+					// Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					// Temporary hardcoded
+                    Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, 16 ,27, enemyImage);
+                    if (object.getProperties().get("stationary").equals(false)) {
 						enemy.setStationary(false);
 					}
 					enemies.add(enemy);
 				}
 				else if (object.getProperties().get("type").equals("Player")) {
+					if (numberOfPlayers == players.size()){
+						continue;
+					}
 					Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
-					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage);
+					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, playerInputManager.getControls(players.size()));
 					players.add(player);
 				}
 				else {
@@ -92,7 +99,7 @@ public class Model {
     	return tileMap;
     }
     
-    public Array<Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
     	return players;
     }
     
@@ -129,5 +136,12 @@ public class Model {
 	public int getGravity() {
 		return gravity;
 	}
-    
+
+	public int getGameScore(){
+		return gameScore;
+	}
+
+	public void addScore(int scoreValue) {
+		this.gameScore += scoreValue;
+	}
 }

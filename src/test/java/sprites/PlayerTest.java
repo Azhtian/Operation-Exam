@@ -2,6 +2,7 @@ package sprites;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PlayerTest {
 
     static Exam exam = new Exam();
-    Texture playerImage = new Texture(Gdx.files.internal("assets/player.png"));
+    Texture playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
     Player player;
 
 
@@ -41,19 +42,19 @@ public class PlayerTest {
 
     @BeforeEach
     void setupPlayer(){
-        player = new Player(0, 0, 0, 0, playerImage);
+        player = new Player(0, 0, 0, 0, playerImage, new int[] {Input.Keys.LEFT, Input.Keys.UP, Input.Keys.RIGHT, Input.Keys.DOWN});
     }
 
 
     @Test
     void testSpeed(){
-        assertEquals(player.getSpeedY(), 0);
-        player.setSpeed(5);
-        assertEquals(player.getSpeedY(), 5);
-        player.changeSpeed(-5);
-        assertEquals(player.getSpeedY(), 0);
-        player.changeSpeed(-5);
-        assertEquals(player.getSpeedY(), -5);
+        assertEquals(player.getYSpeed(), 0);
+        player.setYSpeed(5);
+        assertEquals(player.getYSpeed(), 5);
+        player.changeYSpeed(-5);
+        assertEquals(player.getYSpeed(), 0);
+        player.changeYSpeed(-5);
+        assertEquals(player.getYSpeed(), -5);
     }
 
 

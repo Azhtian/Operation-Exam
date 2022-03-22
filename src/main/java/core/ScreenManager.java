@@ -44,6 +44,8 @@ public class ScreenManager extends Game {
 	public final static int PAUSE = 5;
 	public final static int GAMEOVER = 6;
 	public final static int WINNER = 7;
+
+	private int numberOfPlayers = 1;
 	
 	public AppPreferences preferences;
 	private Controls controls;
@@ -91,9 +93,9 @@ public class ScreenManager extends Game {
 			break;
 		case GAME:
 			if (gameScreen == null) {
-					model = new Model();
-					controls = new Controls();
-					gameScreen = new GameScreen(this, model, controls);
+				model = new Model(numberOfPlayers);
+				controls = new Controls();
+				gameScreen = new GameScreen(this, model, controls);
 			}
 			this.setScreen(gameScreen);
 			this.batch = new SpriteBatch();
@@ -116,6 +118,10 @@ public class ScreenManager extends Game {
 
 	public AppPreferences getPreferences() {
 		return this.preferences;
+	}
+
+	public void setNumberOfPlayers(int numberOfPlayers){
+		this.numberOfPlayers = numberOfPlayers;
 	}
 
 }

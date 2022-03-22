@@ -12,11 +12,11 @@ public class Jumper extends Enemy{
 	}
 	
 	public void doAction () {
-		if (!stationary) {
-			if (movingRight) {
-				this.changeX(moveSpeed);
+		if (!getStationary()) {
+			if (getMovingRight()) {
+				this.changeX(getXSpeed());
 			} else {
-				this.changeX(-moveSpeed);
+				this.changeX(-getXSpeed());
 			}
 		} 
 	}
