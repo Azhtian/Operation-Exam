@@ -33,6 +33,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import controls.Controls;
 import core.ScreenManager;
+import core.TextureManager;
 import model.Enemy;
 import model.Goal;
 import model.Model;
@@ -60,8 +61,6 @@ public class GameScreen implements Screen {
     private Texture enemyMovingLeft1;
     private Texture enemyMovingLeft2;
 
-    private int enemyAnimationCounter;
-    private int enemyAnimationPointer;
 
 	public GameScreen(final ScreenManager game, Model model, Controls controls) {
 		this.game = game;
@@ -72,13 +71,14 @@ public class GameScreen implements Screen {
 		stage.draw();
 		
 		// Load images
-		fullHeart = new Texture("assets/sprites/fullHeartContainer.png");
-		emptyHeart = new Texture("assets/sprites/emptyHeartContainer.png");
-        enemyMovingRight1 = new Texture("assets/sprites/professorMoveRight1.png");
-        enemyMovingRight2 = new Texture("assets/sprites/professorMoveRight2.png");
+		fullHeart = TextureManager.getTexture("fullHeart");
+		emptyHeart = TextureManager.getTexture("emptyHeart");
 
-        enemyMovingLeft1 = new Texture("assets/sprites/professorMoveLeft1.png");
-        enemyMovingLeft2 = new Texture("assets/sprites/professorMoveLeft2.png");
+        enemyMovingRight1 = TextureManager.getTexture("enemyRight1");
+        enemyMovingRight2 = TextureManager.getTexture("enemyRight2");
+
+        enemyMovingLeft1 = TextureManager.getTexture("enemyLeft1");
+        enemyMovingLeft2 = TextureManager.getTexture("enemyLeft2");
 
 		
 		// Renderer
@@ -90,9 +90,6 @@ public class GameScreen implements Screen {
 		camera.setToOrtho(false, 800, 320); // dimensions of castle board
 		camera.position.set(400, 160, 3); // centers the camera to middle of board instead of (by default) window.
 
-        // Enemy animation counter
-        enemyAnimationCounter = 0;
-        enemyAnimationPointer = 0;
 
 	}
 
@@ -114,20 +111,18 @@ public class GameScreen implements Screen {
 			game.font.draw(game.batch, "Score: " + model.getGameScore(), 0, model.getHeight());
 		}
 
+
         // Updates enemy texture every 20 frames
-        enemyAnimationCounter = (enemyAnimationCounter + 1) % 20;
 		for (Enemy e : model.getEnemies()) {
 			game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
-
-            // Update enemy texture
-            if (enemyAnimationCounter == 0) {
-                enemyAnimationPointer = (enemyAnimationPointer + 1) % 2;
-                if (enemyAnimationPointer == 0) {
+            if (e.updateAnimation()){
+                if (e.getAnimationPointer() == 0) {
                     controls.changeMobTexture(e, enemyMovingRight1, enemyMovingLeft1);
                 } else {
                     controls.changeMobTexture(e, enemyMovingRight2, enemyMovingLeft2);
                 }
             }
+
         }
 
 		//Draw score items
@@ -153,6 +148,9 @@ public class GameScreen implements Screen {
 		// Change screen
 		if (model.getScreen() != game.GAME) {
 			game.changeScreen(model.getScreen());
+            if (model.getScreen() == game.PAUSE){
+                model.setScreen(game.GAME);
+            }
 		}
 	}
 

@@ -96,10 +96,11 @@ public class ScreenManager extends Game {
 				model = new Model(numberOfPlayers);
 				controls = new Controls();
 				gameScreen = new GameScreen(this, model, controls);
+                this.batch = new SpriteBatch();
+                this.font = new BitmapFont();
 			}
 			this.setScreen(gameScreen);
-			this.batch = new SpriteBatch();
-			this.font = new BitmapFont();
+
 			break;
 		case PAUSE:
 			if (pauseScreen == null) pauseScreen = new PauseScreen(this);

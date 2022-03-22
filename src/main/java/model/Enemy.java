@@ -22,6 +22,21 @@ public class Enemy extends Mob {
 		} 
 	}
 
+    public boolean updateAnimation() {
+        setAnimationCounter((getAnimationCounter() + 1) % 20);
+
+        if (getWasMovingRight() != getMovingRight()){
+            setWasMovingRight(getMovingRight());
+            setAnimationCounter(0);
+            return true;
+        }
+        // Update enemy texture
+        if (getAnimationCounter() == 0) {
+            setAnimationPointer((getAnimationPointer() + 1) % 2);
+            return true;
+        }
+        return false;
+    }
 
 	public void setMoveSpeed(int speed){
 		moveSpeed = speed;

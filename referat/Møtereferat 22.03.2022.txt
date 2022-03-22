@@ -8,3 +8,4 @@ Sondre viste hvordan han hadde lagt til animasjoner på ene enemy classen.
 
 Til neste gang:
 Fullføre oblig 2
+
