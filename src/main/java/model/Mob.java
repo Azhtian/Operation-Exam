@@ -15,6 +15,7 @@ public abstract class Mob extends Sprite{
 	private float x;
 	private float ySpeed;
 	private float xSpeed;
+	private float jumpStrength;
 	
 	public Mob(float x, float y, float width, float height, Texture image) {
 		this.x = x;
@@ -100,5 +101,13 @@ public abstract class Mob extends Sprite{
 	
 	public void changeXSpeed(float xSpeed) {
 		this.xSpeed += xSpeed;
+	}
+
+	public float getJumpStrength() {
+		return jumpStrength;
+	}
+
+	public void setJumpStrength(float jumpStrength) {
+		this.jumpStrength = jumpStrength;
 	}
 }

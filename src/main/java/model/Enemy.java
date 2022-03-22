@@ -2,40 +2,42 @@ package model;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class Enemy extends Mob {
+public abstract class Enemy extends Mob {
 	
-	private Boolean movingRight = false;
-	private Boolean stationary = true;
-	private int moveSpeed;
+	private Boolean movingRight;
+	private float moveSpeed;
+	private Boolean hasGravity;
 
 	public Enemy(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);
-		this.moveSpeed = 2;
+		
+		this.setMovingRight(false);
 	}
 	
 	public void doAction () {
-		if (!stationary) {
-			if (movingRight) {
-				this.changeX(moveSpeed);
-			} else {
-				this.changeX(-moveSpeed);
-			}
-		} 
 	}
-	
-	public boolean getMovingRight() {
+
+	public Boolean getMovingRight() {
 		return movingRight;
 	}
 
-	public void setMoveSpeed(int speed){
-		moveSpeed = speed;
+	public void setMovingRight(Boolean movingRight) {
+		this.movingRight = movingRight;
 	}
-	
-	public void setMovingRight(Boolean value) {
-		movingRight = value;
+
+	public float getMoveSpeed() {
+		return moveSpeed;
 	}
-	
-	public void setStationary(Boolean value) {
-		stationary = value;
-	}	
+
+	public void setMoveSpeed(float moveSpeed) {
+		this.moveSpeed = moveSpeed;
+	}
+
+	public Boolean getHasGravity() {
+		return hasGravity;
+	}
+
+	public void setHasGravity(Boolean hasGravity) {
+		this.hasGravity = hasGravity;
+	}
 }

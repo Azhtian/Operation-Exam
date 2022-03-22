@@ -62,9 +62,17 @@ public class Model {
 				}
 				else if (object.getProperties().get("type").equals("Enemy")) {
 					Rectangle enemyRect = ((RectangleMapObject) object).getRectangle();
-					Enemy enemy = new Enemy(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
-					if (object.getProperties().get("stationary").equals(false)) {
-						enemy.setStationary(false);
+					Enemy enemy;
+					if (object.getName().equals("Jumper")) {
+						enemy = new Jumper(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					} else if (object.getName().equals("Runner")) {
+						enemy = new Runner(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					} else if (object.getName().equals("Stationary")) {
+						enemy = new Stationary(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					} else if (object.getName().equals("Walker")) {
+						enemy = new Walker(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					} else {
+						throw new IllegalArgumentException("Invalid enemy type");
 					}
 					enemies.add(enemy);
 				}

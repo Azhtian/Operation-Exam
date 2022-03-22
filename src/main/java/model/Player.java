@@ -8,7 +8,6 @@ public class Player extends Mob {
 
 	private int maxHealth = 3;
 	private int health;
-	Boolean grounded;
 	private int score = 0;
 	// String playerName;
 
@@ -16,6 +15,7 @@ public class Player extends Mob {
 	public Player(float x, float y, float width, float height, Texture playerImage) {
 		super(x, y, width, height, playerImage);
 		this.health = this.maxHealth;
+		this.setJumpStrength(10);
 	}
 
 	public void setHealth(int health){
