@@ -33,6 +33,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import controls.Controls;
 import core.ScreenManager;
+import core.TextureManager;
 import model.Enemy;
 import model.Goal;
 import model.Model;
@@ -72,13 +73,14 @@ public class GameScreen implements Screen {
 		stage.draw();
 		
 		// Load images
-		fullHeart = new Texture("assets/sprites/fullHeartContainer.png");
-		emptyHeart = new Texture("assets/sprites/emptyHeartContainer.png");
-        enemyMovingRight1 = new Texture("assets/sprites/professorMoveRight1.png");
-        enemyMovingRight2 = new Texture("assets/sprites/professorMoveRight2.png");
+		fullHeart = TextureManager.getTexture("fullHeart");
+		emptyHeart = TextureManager.getTexture("emptyHeart");
 
-        enemyMovingLeft1 = new Texture("assets/sprites/professorMoveLeft1.png");
-        enemyMovingLeft2 = new Texture("assets/sprites/professorMoveLeft2.png");
+        enemyMovingRight1 = TextureManager.getTexture("enemyRight1");
+        enemyMovingRight2 = TextureManager.getTexture("enemyRight2");
+
+        enemyMovingLeft1 = TextureManager.getTexture("enemyLeft1");
+        enemyMovingLeft2 = TextureManager.getTexture("enemyLeft2");
 
 		
 		// Renderer
@@ -153,6 +155,9 @@ public class GameScreen implements Screen {
 		// Change screen
 		if (model.getScreen() != game.GAME) {
 			game.changeScreen(model.getScreen());
+            if (model.getScreen() == game.PAUSE){
+                model.setScreen(game.GAME);
+            }
 		}
 	}
 

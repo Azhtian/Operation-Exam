@@ -1,5 +1,7 @@
 Møtereferat 22.03.2022
 
+Tilstede: Daniel, Marius, Sondre
+
 Daniel begynner med å presentere hva han har gjort
 Marius forklarer hvordan vi kan bruke arbeidet hans
-Sondre viste hvordan han hadde lagt til animasjoner på ene enemy classen.  
+Sondre viste hvordan han hadde lagt til animasjoner på ene enemy classen. 
