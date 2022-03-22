@@ -47,8 +47,8 @@ public class Model {
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
 
 		// load images
-		enemyImage = new Texture(Gdx.files.internal("assets/sprites/enemy.png"));
-		playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
+		enemyImage = TextureManager.getTexture("enemyLeft1");
+		playerImage = TextureManager.getTexture("playerImage");
 		//bombTexture = tileMap.getTileSets().getTile(64).getTextureRegion();
 
 		// Get objects from map

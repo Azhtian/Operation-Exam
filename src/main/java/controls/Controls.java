@@ -94,8 +94,8 @@ public class Controls {
 
 
 		// press SPACE to pause game (or escaoe)
-		if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-            model.setScreen(5);
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+                model.setScreen(5);
         }
 
 		// Enemy movement

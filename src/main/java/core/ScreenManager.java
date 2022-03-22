@@ -91,13 +91,14 @@ public class ScreenManager extends Game {
 			break;
 		case GAME:
 			if (gameScreen == null) {
-					model = new Model();
-					controls = new Controls();
-					gameScreen = new GameScreen(this, model, controls);
+				model = new Model();
+				controls = new Controls();
+                this.batch = new SpriteBatch();
+                this.font = new BitmapFont();
+                gameScreen = new GameScreen(this, model, controls);
 			}
 			this.setScreen(gameScreen);
-			this.batch = new SpriteBatch();
-			this.font = new BitmapFont();
+
 			break;
 		case PAUSE:
 			if (pauseScreen == null) pauseScreen = new PauseScreen(this);
