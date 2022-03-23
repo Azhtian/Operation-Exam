@@ -42,7 +42,7 @@ import model.Player;
 import com.badlogic.gdx.utils.Array;
 
 import core.Exam;
-import sprites.Item;
+import model.Item;
 
 public class GameScreen implements Screen {
 	private final ScreenManager game;

@@ -10,7 +10,7 @@ import model.Enemy;
 import model.Mob;
 import model.Model;
 import model.Player;
-import sprites.Item;
+import model.Item;
 
 import java.util.ListIterator;
 

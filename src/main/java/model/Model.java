@@ -16,7 +16,7 @@ import core.ScreenManager;
 import core.TextureManager;
 import core.playerInputManager;
 import core.scoreValueHelper;
-import sprites.Item;
+import model.Item;
 
 import java.util.ArrayList;
 
