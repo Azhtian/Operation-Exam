@@ -15,6 +15,7 @@ public abstract class Mob extends Sprite{
 	private float x;
 	private float ySpeed;
 	private float xSpeed;
+
     private float gravity;
 
     private boolean movingRight = false;
@@ -23,6 +24,10 @@ public abstract class Mob extends Sprite{
     // Animation counters
     private int animationCounter;
     private int animationPointer;
+
+
+	private float jumpStrength;
+	
 
 	public Mob(float x, float y, float width, float height, Texture image) {
         this.bounds = new Rectangle(x, y, width, height);
@@ -162,7 +167,32 @@ public abstract class Mob extends Sprite{
 		this.xSpeed += xSpeed;
 	}
 
+
     public void setPlayerImage(Texture texture) {
         playerImage = texture;
+    }
+
+	public float getJumpStrength() {
+		return jumpStrength;
+	}
+
+	public void setJumpStrength(float jumpStrength) {
+		this.jumpStrength = jumpStrength;
+	}
+
+    public boolean updateAnimation() {
+        setAnimationCounter((getAnimationCounter() + 1) % 20);
+
+        if (getWasMovingRight() != getMovingRight()){
+            setWasMovingRight(getMovingRight());
+            setAnimationCounter(0);
+            return true;
+        }
+        // Update enemy texture
+        if (getAnimationCounter() == 0) {
+            setAnimationPointer((getAnimationPointer() + 1) % 2);
+            return true;
+        }
+        return false;
     }
 }

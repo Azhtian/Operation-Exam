@@ -14,6 +14,7 @@ public class Player extends Mob {
 	private Rectangle bounds;
 	private Texture playerImage;
 	private int[] controlSet;
+	private int score = 0;
 	// String playerName;
 
 
@@ -24,6 +25,7 @@ public class Player extends Mob {
 		this.controlSet = controlSet;
 		bounds = new Rectangle(x, y, width, height);
 		this.health = this.maxHealth;
+		this.setJumpStrength(10);
 	}
 
 
