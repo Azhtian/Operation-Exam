@@ -166,6 +166,14 @@ public abstract class Mob extends Sprite{
 	public void changeXSpeed(float xSpeed) {
 		this.xSpeed += xSpeed;
 	}
+	
+	public float getCentreX() {
+			return this.getX() + this.getWidth()/2;
+	}
+	
+	public float getCentreY() {
+		return this.getY() + this.getHeight()/2;
+	}
 
 
     public void setPlayerImage(Texture texture) {

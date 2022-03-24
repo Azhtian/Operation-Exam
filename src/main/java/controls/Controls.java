@@ -91,42 +91,18 @@ public class Controls {
                 }
             }
         }
+		// Enemy movement
+		for (Enemy enemy : model.getEnemies()) {
+			enemy.doMovement(model);
+		}
 
 
-		// press SPACE to pause game (or escaoe)
+		// press SPACE to pause game (or escape)
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
                 model.setScreen(5);
         }
 
-		// Enemy movement
-		for (Enemy enemy : model.getEnemies()) {
-			enemy.doAction();
-
-			// Enemy X collisions
-			for (Rectangle rect : model.getPlatforms()) {
-				if (enemy.getBounds().overlaps(rect)) {
-					if (enemy.getMovingRight()) {
-						enemy.setX(rect.x - enemy.getWidth());
-						enemy.setMovingRight(false);
-					} else {
-						enemy.setX(rect.x + rect.width);
-						enemy.setMovingRight(true);
-					}
-				}
-			}
-
-			// Enemy falling
-			enemy.changeYSpeed(model.getGravity());
-			enemy.changeY(enemy.getYSpeed());
-
-			// Enemy Y collisions
-			for (Rectangle rect : model.getPlatforms()) {
-				if (enemy.getBounds().overlaps(rect)) {
-						enemy.setY(rect.getY() + rect.getHeight());
-						enemy.setYSpeed(0);
-				}
-			}
-		}
+		
 		
 		// test victory
 		for (Player player: model.getPlayers()) {
