@@ -7,7 +7,7 @@ public class Goal{
 	private float y;
 	private float width;
 	private float height;
-	private Rectangle bounds;
+	private final Rectangle bounds;
 
 	public Goal(float x, float y, float width, float height) {
 		bounds = new Rectangle(x, y, width, height);

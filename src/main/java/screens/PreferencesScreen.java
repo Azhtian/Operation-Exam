@@ -20,8 +20,8 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import core.ScreenManager;
 
 public class PreferencesScreen implements Screen {
-	private ScreenManager game;
-	private Stage stage;
+	private final ScreenManager game;
+	private final Stage stage;
 	private Label titleLabel; 
 	private Label musicVolumeLabel;
 	private Label soundVolumeLabel;

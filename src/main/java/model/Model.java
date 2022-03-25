@@ -28,20 +28,20 @@ public class Model {
 	private int screen = 4;
 	
 	private Goal goal;
-	private TiledMap tileMap;
+	private final TiledMap tileMap;
 	private TiledMapTileLayer bgLayer, platformsLayer, playerLayer, itemsLayer;
-    private MapObjects objects;
-    private Array<Rectangle> platforms = new Array<Rectangle>(100);
-    private Array<Enemy> enemies = new Array<Enemy>(100);
-    private ArrayList<Item> scoreItems = new ArrayList<>();
-    private ArrayList<Player> players = new ArrayList<>();
+    private final MapObjects objects;
+    private final Array<Rectangle> platforms = new Array<Rectangle>(100);
+    private final Array<Enemy> enemies = new Array<Enemy>(100);
+    private final ArrayList<Item> scoreItems = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
 
 	private int gameScore = 0;
-    private int gravity = -1;
+    private final int gravity = -1;
     
     // Texture
-	private Texture enemyImage;
-	private Texture playerImage;
+	private final Texture enemyImage;
+	private final Texture playerImage;
 
 	public Model(int numberOfPlayers) {
 

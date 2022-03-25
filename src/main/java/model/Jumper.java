@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Jumper extends Enemy{
 
-	private Rectangle sensor;
+	private final Rectangle sensor;
 	private Boolean sensorActivation;
 	
 	public Jumper(float x, float y, float width, float height, Texture image) {
@@ -19,7 +19,7 @@ public class Jumper extends Enemy{
 	public void doAction () {
 		// Jump if on edge
 		if (!this.sensorActivation && this.isGrounded()) {
-			this.setYSpeed(this.getJumpStrength());
+			jump();
 		}
 		// Move
 		if (getMovingRight()) {
@@ -79,5 +79,9 @@ public class Jumper extends Enemy{
 	public void setSensor() {
 		sensor.setX(this.getX() + this.getWidth() / 8);
 		sensor.setY(this.getY() - 16);
+	}
+
+	public void jump(){
+		this.setYSpeed(this.getJumpStrength());
 	}
 }

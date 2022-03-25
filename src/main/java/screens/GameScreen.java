@@ -46,20 +46,20 @@ import model.Item;
 
 public class GameScreen implements Screen {
 	private final ScreenManager game;
-	private Model model;
+	private final Model model;
 	
-	private OrthographicCamera camera;
-	private OrthogonalTiledMapRenderer renderer;
+	private final OrthographicCamera camera;
+	private final OrthogonalTiledMapRenderer renderer;
     public Stage stage;
     
     // Texture
-    private Texture fullHeart;
-	private Texture emptyHeart;
-	private Controls controls;
-    private Texture enemyMovingRight1;
-    private Texture enemyMovingRight2;
-    private Texture enemyMovingLeft1;
-    private Texture enemyMovingLeft2;
+    private final Texture fullHeart;
+	private final Texture emptyHeart;
+	private final Controls controls;
+    private final Texture enemyMovingRight1;
+    private final Texture enemyMovingRight2;
+    private final Texture enemyMovingLeft1;
+    private final Texture enemyMovingLeft2;
 
 
 	public GameScreen(final ScreenManager game, Model model, Controls controls) {
@@ -146,10 +146,10 @@ public class GameScreen implements Screen {
 		controls.doControls(model);
 		
 		// Change screen
-		if (model.getScreen() != game.GAME) {
+		if (model.getScreen() != ScreenManager.GAME) {
 			game.changeScreen(model.getScreen());
-            if (model.getScreen() == game.PAUSE){
-                model.setScreen(game.GAME);
+            if (model.getScreen() == ScreenManager.PAUSE){
+                model.setScreen(ScreenManager.GAME);
             }
 		}
 	}

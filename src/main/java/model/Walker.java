@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Walker extends Enemy{
-	private Rectangle sensorLeft;
-	private Rectangle sensorRight;
+	private final Rectangle sensorLeft;
+	private final Rectangle sensorRight;
 	private Boolean sensorLeftActivation;
 	private Boolean sensorRightActivation;
 

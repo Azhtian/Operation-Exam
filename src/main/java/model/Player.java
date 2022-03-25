@@ -6,15 +6,15 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Player extends Mob {
 
-	private int maxHealth = 3;
+	private final int maxHealth = 3;
 	private int health;
 	Boolean grounded;
 	public float width = 16;
 	public float height = 16;
-	private Rectangle bounds;
+	private final Rectangle bounds;
 	private Texture playerImage;
-	private int[] controlSet;
-	private int score = 0;
+	private final int[] controlSet;
+	private final int score = 0;
 	// String playerName;
 
 
