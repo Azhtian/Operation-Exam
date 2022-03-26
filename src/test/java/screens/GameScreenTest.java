@@ -4,14 +4,13 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import core.Exam;
+import core.ScreenManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameScreenTest {
-    Exam exam = new Exam();
     GameScreen game;
     ApplicationListener listener;
 
@@ -23,7 +22,7 @@ public class GameScreenTest {
         // Application Title and Window Size
         cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
         cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
-        lw3 = new Lwjgl3Application(exam, cfg);
+        lw3 = new Lwjgl3Application(new ScreenManager(), cfg);
         listener = lw3.getApplicationListener();
         //game = new GameScreen(exam);
 

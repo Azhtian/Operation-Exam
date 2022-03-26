@@ -7,7 +7,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import core.Exam;
+import core.ScreenManager;
 import model.Player;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -21,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
 
-    static Exam exam = new Exam();
     Texture playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
     Player player;
 
@@ -36,7 +35,7 @@ public class PlayerTest {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
         cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
-        Lwjgl3Application lw3 = new Lwjgl3Application(exam, cfg);
+        Lwjgl3Application lw3 = new Lwjgl3Application(new ScreenManager(), cfg);
     }
 
 
