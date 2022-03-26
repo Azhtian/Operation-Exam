@@ -20,22 +20,44 @@
 
 ## Deloppgave 1
 
-
-* Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamlead eller kundekontakt?
+<ul>
+<li>Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamlead eller kundekontakt?</li>
   Trenger dere andre roller? Skriv ned noen linjer om hva de ulike rollene faktisk innebærer for dere.
-    * Rollene har vi ikke vært så strenge med. Det har for eksempel vært lite behov for en leder, da gruppen tar beslutninger i fellesskap.
-    * Leder innebærer å ta beslutninger når man ikke kommer til enighet, eller sørge for at gruppen holder seg på rett spor. Dette har ikke vært særlig til problem, da vi, som sagt, diskuterer problemer som kommer opp. Er leder usikker samarbeider den med nestleder.
-    * Stian og Marita tar på seg mer ansvar innen grafisk design, som innebærer utseende på spillobjekter og menyer.
-    * Sondre får ansvaret for dokumentering og møtereferat.
-    * Daniel er sjefsutvikler og dermed fikk han hovedansvaret for å restrukturere koden til et MVC-produkt. Han vil også ha hovedansvar for slike store refaktoreringer i fremtiden dersom det skulle bli relevant.
-    * Marius har som logistikkansvarlig pådratt seg ansvaret for å planlegge og reservere grupperom til regelmessige møter med teamet.
+  <ul>
+    <li>
+      Rollene har vi ikke vært så strenge med. Det har for eksempel vært lite behov for en leder, da gruppen tar beslutninger i fellesskap.
+    </li>    
+    <li> 
+      Leder innebærer å ta beslutninger når man ikke kommer til enighet, eller sørge for at gruppen holder seg på rett spor. Dette har ikke vært særlig til problem, da vi, som sagt, diskuterer problemer som kommer opp. Er leder usikker samarbeider den med nestleder.
+    </li>    
+    <li>
+      Stian og Marita tar på seg mer ansvar innen grafisk design, som innebærer utseende på spillobjekter og menyer.
+    </li>
+    <li>
+      Sondre får ansvaret for dokumentering og møtereferat.
+    </li>
+    <li>
+      Daniel er sjefsutvikler og dermed fikk han hovedansvaret for å restrukturere koden til et MVC-produkt. Han vil også ha hovedansvar for slike store refaktoreringer i fremtiden dersom det skulle bli relevant.
+    </li>    
+    <li>
+      Marius har som logistikkansvarlig pådratt seg ansvaret for å planlegge og reservere grupperom til regelmessige møter med teamet.
+    </li>  
+  </ul>
+</ul>
 
-
-
-* Er det noen erfaringer enten team-messig eller mtp prosjektmetodikk som er verdt å nevne?
-    * Kanban har fungert veldig bra for oss. Det har vært oversiktlig og lett å jobbe med, med god oversikt over alle oppgavene som må gjøres. Det har vært til stor hjelp å se hvor langt vi er kommet på vei og hvem som har jobbet med de forskjellige oppgavene. Det har vært motiverende å flytte oppgaver fra “doing” til “fullført”.
-    * Videre vil vi se på nytten av å bruke ideer fra scrum mer bevisst. Vi har jobbet litt med scrum ved å dele oppgaver i mindre biter og dele dem ut i løpet av gruppetimen. Vi prøver så å få oppgavene ferdige innen neste møte.
-
+<ul>
+  <li> 
+    Er det noen erfaringer enten team-messig eller mtp prosjektmetodikk som er verdt å nevne?
+  </li>
+  <ul>
+    <li>
+      Kanban har fungert veldig bra for oss. Det har vært oversiktlig og lett å jobbe med, med god oversikt over alle oppgavene som må gjøres. Det har vært til stor hjelp å se hvor langt vi er kommet på vei og hvem som har jobbet med de forskjellige oppgavene. Det har vært motiverende å flytte oppgaver fra “doing” til “fullført”.
+    </li>    
+    <li> 
+      Videre vil vi se på nytten av å bruke ideer fra scrum mer bevisst. Vi har jobbet litt med scrum ved å dele oppgaver i mindre biter og dele dem ut i løpet av gruppetimen. Vi prøver så å få oppgavene ferdige innen neste møte.
+    </li>
+  </ul>
+</ul>
 
 
 * Synes teamet at de valgene dere har tatt er gode? Hvis ikke, hva kan dere gjøre annerledes for å forbedre måten teamet fungerer på?
