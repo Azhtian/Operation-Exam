@@ -36,7 +36,6 @@ public class GameScreen implements Screen {
     private Texture enemyMovingLeft1;
     private Texture enemyMovingLeft2;
 
-
 	public GameScreen(final ScreenManager game, Model model, Controls controls) {
 		this.game = game;
 		this.model = model;
@@ -55,15 +54,13 @@ public class GameScreen implements Screen {
         enemyMovingLeft1 = TextureManager.getTexture("enemyLeft1");
         enemyMovingLeft2 = TextureManager.getTexture("enemyLeft2");
 
-		
 		// Renderer
 		renderer = new OrthogonalTiledMapRenderer(model.getTileMap());
-
-
+		
 		// create camera and viewport
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 320); // dimensions of castle board
-		camera.position.set(400, 160, 3); // centers the camera to middle of board instead of (by default) window.
+		camera.setToOrtho(false, model.getWidth(), model.getHeight()); // dimensions of castle board
+		camera.position.set(model.getWidth()/2, model.getHeight()/2, 3); // centers the camera to middle of board instead of (by default) window.
 
 
 	}
@@ -116,6 +113,8 @@ public class GameScreen implements Screen {
 				game.batch.draw(emptyHeart, 5 + iter * (30 + 5), model.getHeight() - 50, 30, 30);
 			}
 		}
+		// TODO Put FPS counter in preference
+		//game.font.draw(game.batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);	
 		game.batch.end();
 		
 		controls.doControls(model);
@@ -136,11 +135,6 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
-		//map = new TmxMapLoader().load("assets/maps/map.tmx");
-		//renderer = new OrthogonalTiledMapRenderer(tileMap);
-		//camera = new OrthographicCamera();
-		//player = new Player(new Sprite(new Texture(Gdx.files.internal("assets/sprites/player.png")), (Tiled;
-
 		stage.clear();
 		Gdx.input.setInputProcessor(stage);
 	

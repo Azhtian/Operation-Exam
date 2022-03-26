@@ -3,6 +3,8 @@ package core;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 import controls.Controls;
 import model.Model;
@@ -39,12 +41,13 @@ public class ScreenManager extends Game {
 	public final static int PREFERENCES = 2;
 	public final static int LEVELSELECT = 3;
 	public final static int GAME = 4;
+	public final static int GAME2 = 8;
 	public final static int PAUSE = 5;
 	public final static int GAMEOVER = 6;
 	public final static int WINNER = 7;
 
 	private int numberOfPlayers = 1;
-	
+	private TiledMap tileMap;
 	public AppPreferences preferences;
 	private Controls controls;
 
@@ -87,14 +90,25 @@ public class ScreenManager extends Game {
 			break;
 		case GAME:
 			if (gameScreen == null) {
-				model = new Model(numberOfPlayers);
+				tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
+				model = new Model(numberOfPlayers, tileMap);
 				controls = new Controls();
 				gameScreen = new GameScreen(this, model, controls);
                 this.batch = new SpriteBatch();
                 this.font = new BitmapFont();
 			}
 			this.setScreen(gameScreen);
-
+			break;
+		case GAME2:
+			if (gameScreen == null) {
+				tileMap = new TmxMapLoader().load("assets/maps/map2.tmx");
+				model = new Model(numberOfPlayers, tileMap);
+				controls = new Controls();
+				gameScreen = new GameScreen(this, model, controls);
+                this.batch = new SpriteBatch();
+                this.font = new BitmapFont();
+			}
+			this.setScreen(gameScreen);
 			break;
 		case PAUSE:
 			if (pauseScreen == null) pauseScreen = new PauseScreen(this);

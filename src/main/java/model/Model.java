@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class Model {
 	
-	private final int width = 800;
+	private final int width = 1280;
 	private final int height = 320;
 	
 	private int screen = 4;
@@ -37,10 +37,8 @@ public class Model {
 	private Texture enemyImage;
 	private Texture playerImage;
 
-	public Model(int numberOfPlayers) {
-
-    	// Create tilemap. Tilemap source: https://0x72.itch.io/16x16-dungeon-tileset
-		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
+	public Model(int numberOfPlayers, TiledMap tileMap) {
+		this.tileMap = tileMap;
 
 		// load images
 		enemyImage = TextureManager.getTexture("enemyLeft1");
@@ -98,7 +96,7 @@ public class Model {
     }
     
     public TiledMap getTileMap() {
-    	return tileMap;
+    	return this.tileMap;
     }
     
     public ArrayList<Player> getPlayers() {
