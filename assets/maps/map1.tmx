@@ -84,9 +84,9 @@
   <object id="22" type="Platform" x="176" y="144" width="96" height="32"/>
   <object id="23" type="Platform" x="0" y="192" width="80" height="32"/>
   <object id="24" type="Platform" x="0" y="304" width="448" height="48"/>
-  <object id="25" type="Platform" x="592" y="288" width="16" height="16"/>
+  <object id="25" type="Platform" x="592" y="282.792" width="16" height="21.2073"/>
   <object id="26" type="Platform" x="624" y="272" width="16" height="32"/>
-  <object id="27" type="Platform" x="640" y="288" width="16" height="16"/>
+  <object id="27" type="Platform" x="640" y="283.537" width="16" height="20.4635"/>
   <object id="28" type="Platform" x="464" y="144" width="128" height="48"/>
   <object id="29" type="Platform" x="592" y="176" width="96" height="32"/>
   <object id="30" type="Platform" x="688" y="192" width="16" height="16"/>
