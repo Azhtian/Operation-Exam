@@ -2,9 +2,6 @@ package model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
-import java.awt.*;
 
 public class Item extends Sprite{
     private int scoreValue;

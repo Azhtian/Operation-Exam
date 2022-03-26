@@ -12,7 +12,6 @@ import screens.HomeScreen;
 import screens.LevelSelectScreen;
 import screens.LoadingScreen;
 import screens.PauseScreen;
-import screens.PlayerModeScreen;
 import screens.PreferencesScreen;
 import screens.WinnerScreen;
 
@@ -28,7 +27,6 @@ public class ScreenManager extends Game {
 	
 	private LoadingScreen loadingScreen;
 	private HomeScreen homeScreen;
-	private PlayerModeScreen playerSelect;
 	private LevelSelectScreen levelSelect;
 	private PreferencesScreen preferencesScreen;
 	private GameScreen gameScreen;
@@ -78,10 +76,6 @@ public class ScreenManager extends Game {
 		case HOME: 
 			if (homeScreen == null) homeScreen = new HomeScreen(this);
 			this.setScreen(homeScreen);
-			break;
-		case PLAYERMODE: 
-			if (playerSelect == null) playerSelect = new PlayerModeScreen(this);
-			this.setScreen(playerSelect);
 			break;
 		case PREFERENCES: 
 			if (preferencesScreen == null) preferencesScreen = new PreferencesScreen(this);

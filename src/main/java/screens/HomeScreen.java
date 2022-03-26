@@ -1,7 +1,6 @@
 package screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 //import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -14,9 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.ScreenUtils;
-import core.Exam;
 
 
 import core.ScreenManager;
@@ -59,17 +55,17 @@ public class HomeScreen implements Screen {
 		stage.addActor(table);
 		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
 		// Creating buttons using skins
-		TextButton newGame = new TextButton("New Game", skin);
-		TextButton playerMode = new TextButton("Player Mode", skin);
+		TextButton onePlayer = new TextButton("One Player", skin);
+		TextButton twoPlayer = new TextButton("Two Player", skin);
 		TextButton preferences = new TextButton("Preferences", skin);
 		TextButton exit = new TextButton("Exit", skin);
 		titleLabel = new Label( "Main menu", skin, "big");
         // Adding title and buttons to the screen table
 		table.add(titleLabel).colspan(2);
         table.row().pad(10,0,0,10);
-		table.add(newGame).fillX().uniform();
+		table.add(onePlayer).fillX().uniform();
 //		table.row().pad(10,0,10,0);
-		table.add(playerMode).fillX().uniform();
+		table.add(twoPlayer).fillX().uniform();
 		table.row().pad(10,0,10,0);
 		table.add(preferences).fillX().uniform();
 //		table.row().pad(10,0,10,0);
@@ -77,16 +73,18 @@ public class HomeScreen implements Screen {
 		//table.row().pad(10,0,10,0);
 		
 		// Adding actions of pressing a button
-		newGame.addListener(new ChangeListener() {
+		onePlayer.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.GAME);
+				game.setNumberOfPlayers(1);
+				game.changeScreen(ScreenManager.LEVELSELECT);
 			}
 		});
-		playerMode.addListener(new ChangeListener() {
+		twoPlayer.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.PLAYERMODE);
+				game.setNumberOfPlayers(2);
+				game.changeScreen(ScreenManager.LEVELSELECT);
 			}
 		});
 		preferences.addListener(new ChangeListener() {
