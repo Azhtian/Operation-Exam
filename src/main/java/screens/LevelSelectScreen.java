@@ -16,8 +16,7 @@ import core.ScreenManager;
 
 public class LevelSelectScreen implements Screen {
 	final ScreenManager game;
-	public Stage stage;
-	private Label titleLabel; 
+	public final Stage stage;
 
 	public LevelSelectScreen(ScreenManager game) {
 		this.game = game;
@@ -36,8 +35,8 @@ public class LevelSelectScreen implements Screen {
 		//table.setDebug(true);
 		stage.addActor(table);
 		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-		
-		titleLabel = new Label( "Select Level", skin, "big");
+
+		Label titleLabel = new Label("Select Level", skin, "big");
 		TextButton level1 = new TextButton("1", skin);
 		TextButton level2 = new TextButton("2", skin);
 		TextButton back = new TextButton("Back", skin);

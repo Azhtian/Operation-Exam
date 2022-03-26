@@ -4,8 +4,9 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Player extends Mob {
 
-	private int maxHealth = 3;
+	private static final int maxHealth = 3;
 	private int health;
+
 	Boolean grounded;
 	public float width = 16;
 	public float height = 16;
@@ -13,13 +14,15 @@ public class Player extends Mob {
 	// String playerName;
 
 
+
 	public Player(float x, float y, float width, float height, Texture playerImage, int[] controlSet) {
 		super(x, y, width, height, playerImage);
 		this.grounded = true;
 		this.health = this.maxHealth;
-		this.controlSet = controlSet;
-		this.health = this.maxHealth;
+		this.controlSet = controlSet.clone();
+		//Rectangle bounds = new Rectangle(x, y, width, height);
 		this.setJumpStrength(10);
+		this.health = maxHealth;
 	}
 
 

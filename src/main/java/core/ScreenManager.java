@@ -24,10 +24,7 @@ import screens.WinnerScreen;
 public class ScreenManager extends Game {
 	public SpriteBatch batch;
     public BitmapFont font;
-    
-    private Model model;
-	
-	private LoadingScreen loadingScreen;
+
 	private HomeScreen homeScreen;
 	private LevelSelectScreen levelSelect;
 	private PreferencesScreen preferencesScreen;
@@ -49,14 +46,13 @@ public class ScreenManager extends Game {
 	private int numberOfPlayers = 1;
 	private TiledMap tileMap;
 	public AppPreferences preferences;
-	private Controls controls;
 
 	@Override
 	public void create() {
 //		batch = new SpriteBatch();
 //		font = new BitmapFont();
 		// Setting the default screen
-		loadingScreen = new LoadingScreen(this);
+		LoadingScreen loadingScreen = new LoadingScreen(this);
 		setScreen(loadingScreen);
 		preferences = new AppPreferences();
 	}
@@ -65,15 +61,10 @@ public class ScreenManager extends Game {
 		gameScreen = null;
 	}
 
-	public void render() {
-		super.render();
-	}
-	
 	public void dispose() {
-//		batch.dispose();
-//		font.dispose();
 	}
 	
+	//@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("SF_SWITCH_NO_DEFAULT")
 	public void changeScreen(int screen) {
 		switch(screen) {
 		case HOME: 
@@ -91,8 +82,8 @@ public class ScreenManager extends Game {
 		case GAME:
 			if (gameScreen == null) {
 				tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
-				model = new Model(numberOfPlayers, tileMap);
-				controls = new Controls();
+				Model model = new Model(numberOfPlayers, tileMap);
+				Controls controls = new Controls();
 				gameScreen = new GameScreen(this, model, controls);
                 this.batch = new SpriteBatch();
                 this.font = new BitmapFont();
@@ -102,8 +93,8 @@ public class ScreenManager extends Game {
 		case GAME2:
 			if (gameScreen == null) {
 				tileMap = new TmxMapLoader().load("assets/maps/map2.tmx");
-				model = new Model(numberOfPlayers, tileMap);
-				controls = new Controls();
+				Model model = new Model(numberOfPlayers, tileMap);
+				Controls controls = new Controls();
 				gameScreen = new GameScreen(this, model, controls);
                 this.batch = new SpriteBatch();
                 this.font = new BitmapFont();

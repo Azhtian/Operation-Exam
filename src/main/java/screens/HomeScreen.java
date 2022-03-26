@@ -25,11 +25,8 @@ public class HomeScreen implements Screen {
 
 	final ScreenManager game;
 //	OrthographicCamera camera;
-	public Stage stage;
-	public Table table;
-	public Skin skin;
-	private Label titleLabel; 
-	
+	public final Stage stage;
+
 	public HomeScreen(ScreenManager game) {
 		this.game = game;
 //		camera = new OrthographicCamera();
@@ -59,7 +56,7 @@ public class HomeScreen implements Screen {
 		TextButton twoPlayer = new TextButton("Two Player", skin);
 		TextButton preferences = new TextButton("Preferences", skin);
 		TextButton exit = new TextButton("Exit", skin);
-		titleLabel = new Label( "Main menu", skin, "big");
+		Label titleLabel = new Label("Main menu", skin, "big");
         // Adding title and buttons to the screen table
 		table.add(titleLabel).colspan(2);
         table.row().pad(10,0,0,10);
@@ -107,18 +104,6 @@ public class HomeScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
-//		ScreenUtils.clear(0, 0, .2f, 0);
-//		
-//		camera.update();
-//		game.batch.begin();
-//		game.font.draw(game.batch, "OPERATION EXAM", 500, 600);
-//		game.font.draw(game.batch, "choose 1 or 2 players", 500, 200);
-//		game.batch.end();
-//		
-//		if (Gdx.input.isTouched()) {
-//			game.setScreen(new GameScreen(game));
-//			dispose();
-//		}
 
 	}
 

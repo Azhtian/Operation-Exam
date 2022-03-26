@@ -10,8 +10,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 import core.TextureManager;
-import core.playerInputManager;
-import core.scoreValueHelper;
+import core.PlayerInputManager;
+import core.ScoreValueHelper;
 
 import java.util.ArrayList;
 
@@ -19,9 +19,9 @@ public class Model {
 	
 	private final int width = 1280;
 	private final int height = 320;
-	
+
 	private int screen = 4;
-	
+
 	private Goal goal;
 	private TiledMap tileMap;
     private MapObjects objects;
@@ -31,22 +31,18 @@ public class Model {
     private ArrayList<Player> players = new ArrayList<>();
 
 	private int gameScore = 0;
-    private int gravity = -1;
-    
-    // Texture
-	private Texture enemyImage;
-	private Texture playerImage;
 
 	public Model(int numberOfPlayers, TiledMap tileMap) {
 		this.tileMap = tileMap;
 
 		// load images
-		enemyImage = TextureManager.getTexture("enemyLeft1");
-		playerImage = TextureManager.getTexture("playerImage");
+		// Texture
+		Texture enemyImage = TextureManager.getTexture("enemyLeft1");
+		Texture playerImage = TextureManager.getTexture("playerImage");
 		//bombTexture = tileMap.getTileSets().getTile(64).getTextureRegion();
 
 		// Get objects from map
-		objects = tileMap.getLayers().get("objects").getObjects();
+		MapObjects objects = tileMap.getLayers().get("objects").getObjects();
 		for (MapObject object : objects) {
 			if (object instanceof RectangleMapObject) {
 				if (object.getProperties().get("type").equals("Platform")) {
@@ -55,7 +51,7 @@ public class Model {
 				}
 				else if (object.getProperties().get("type").equals("scoreItem")) {
 					String itemName = object.getName();
-					Item item = new Item(TextureManager.getTexture(itemName), scoreValueHelper.getScoreValue(itemName), (float) object.getProperties().get("x"), (float) object.getProperties().get("y"), 16, 16);
+					Item item = new Item(TextureManager.getTexture(itemName), ScoreValueHelper.getScoreValue(itemName), (float) object.getProperties().get("x"), (float) object.getProperties().get("y"));
 					scoreItems.add(item);
 				} 
 				else if (object.getProperties().get("type").equals("Goal")) {
@@ -85,7 +81,7 @@ public class Model {
 						continue;
 					}
 					Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
-					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, playerInputManager.getControls(players.size()));
+					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, PlayerInputManager.getControls(players.size()));
 					players.add(player);
 				}
 				else {
@@ -100,7 +96,7 @@ public class Model {
     }
     
     public ArrayList<Player> getPlayers() {
-    	return players;
+		return new ArrayList<>(players);
     }
     
     public Array<Enemy> getEnemies() {
@@ -111,18 +107,20 @@ public class Model {
     	return platforms;
     }
 
-	public ArrayList<Item> getScoreItems(){return scoreItems;}
+	public ArrayList<Item> getScoreItems(){
+		return scoreItems;
+	}
    
     public Goal getGoal() {
     	return goal;
     }
 
 	public int getWidth() {
-		return width;
+		return 800;
 	}
 
 	public int getHeight() {
-		return height;
+		return 320;
 	}
 
 	public int getScreen() {
@@ -134,7 +132,7 @@ public class Model {
 	}
 
 	public int getGravity() {
-		return gravity;
+		return -1;
 	}
 
 	public int getGameScore(){

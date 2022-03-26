@@ -3,14 +3,18 @@ package model;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Goal{
-	private float x;
-	private float y;
-	private float width;
-	private float height;
-	private Rectangle bounds;
+	private final float x;
+	private final float y;
+	private final float width;
+	private final float height;
+	private final Rectangle bounds;
 
 	public Goal(float x, float y, float width, float height) {
 		bounds = new Rectangle(x, y, width, height);
+		this.width = width;
+		this.height = height;
+		this.x = x;
+		this.y = y;
 	}
 
 	public float getX() {

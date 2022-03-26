@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Runner extends Enemy{
-	private Rectangle sensorLeft;
-	private Rectangle sensorRight;
+	private final Rectangle sensorLeft;
+	private final Rectangle sensorRight;
 	private Boolean sensorLeftActivation;
 	private Boolean sensorRightActivation;
-	private int detectionDistance; 
+	private final int detectionDistance;
 	private Player closePlayer;
 
 	public Runner(float x, float y, float width, float height, Texture image) {
@@ -32,11 +32,7 @@ public class Runner extends Enemy{
 			this.setMoveSpeed((float)1.2);
 		} else {
 			this.setMoveSpeed(2);
-			if (closePlayer.getCentreX() - this.getCentreX() < 0) {
-				this.setMovingRight(false);
-			} else {
-				this.setMovingRight(true);
-			}
+			this.setMovingRight(!(closePlayer.getCentreX() - this.getCentreX() < 0));
 		}
 	
 		

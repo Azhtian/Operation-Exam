@@ -16,9 +16,8 @@ import core.ScreenManager;
 
 public class GameOverScreen implements Screen {
 	final ScreenManager game;
-	public Stage stage;
-	private Label titleLabel; 
-	
+	public final Stage stage;
+
 	public GameOverScreen(ScreenManager game) {
 		this.game = game;
 		stage = new Stage(new ScreenViewport());
@@ -36,7 +35,7 @@ public class GameOverScreen implements Screen {
 		//table.setDebug(true);
 		stage.addActor(table);
 		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-		titleLabel = new Label( "You Loose !", skin, "big");
+		Label titleLabel = new Label("You Loose !", skin, "big");
         
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);

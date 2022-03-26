@@ -1,16 +1,13 @@
 package screens;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import core.ScreenManager;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameScreenTest {
+
     GameScreen game;
     ApplicationListener listener;
 
@@ -26,12 +23,5 @@ public class GameScreenTest {
         listener = lw3.getApplicationListener();
         //game = new GameScreen(exam);
 
-    }
-
-    @Test
-    void dummy(){
-        assertEquals(true, true);
-        System.out.println(lw3.getFiles());
-        System.out.println(listener);
     }
 }

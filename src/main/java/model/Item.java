@@ -4,12 +4,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Item extends Sprite{
-    private int scoreValue;
-    private Texture image;
-    private float x;
-    private float y;
+    private final int scoreValue;
+    private final Texture image;
+    private final float x;
+    private final float y;
 
-    public Item(Texture image, int scoreValue, float x, float y, int height, int width){
+    public Item(Texture image, int scoreValue, float x, float y){
         this.image = image;
         this.scoreValue = scoreValue;
         this.x = x;

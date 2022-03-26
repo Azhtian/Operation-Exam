@@ -10,15 +10,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import core.ScreenManager;
 
-public class PauseScreen implements Screen {
+public class PlayerModeScreen implements Screen {
 	final ScreenManager game;
 	public final Stage stage;
 
-	public PauseScreen(ScreenManager game) {
+	public PlayerModeScreen(ScreenManager game) {
 		this.game = game;
 		stage = new Stage(new ScreenViewport());
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
@@ -35,42 +36,36 @@ public class PauseScreen implements Screen {
 		//table.setDebug(true);
 		stage.addActor(table);
 		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
+
+		Label titleLabel = new Label("Select Player Mode", skin, "big");
+		TextButton single = new TextButton("Single Player", skin);
+		TextButton duo = new TextButton("Duo player", skin);
+		TextButton back = new TextButton("Back", skin);
+		table.add(titleLabel).colspan(2);
+        table.row().pad(10,0,0,10);
+		table.add(single).fillX().uniform();
+		table.row().pad(10,0,0,10);
+		table.add(duo).fillX().uniform();
+		table.row().pad(10,0,0,10);
+        table.add(back);
 		
-		TextButton continueButton = new TextButton("Continue", skin);
-
-		TextButton levelSelect = new TextButton("Level Select", skin);
-		TextButton home = new TextButton("Main Menu", skin);
-		Label titleLabel = new Label( "Game paused", skin, "big");
-
-		TextButton newGame = new TextButton("New Game", skin);
-		TextButton exit = new TextButton("Exit", skin);
-
-        
-		table.add(titleLabel);
-        table.row().pad(10,0,0,10);
-        table.row().pad(10,0,0,10);
-		table.add(continueButton).fillX().uniform();
-        table.row().pad(10,0,0,10);
-		table.add(levelSelect).fillX().uniform();
-        table.row().pad(10,0,0,10);
-        table.add(home).fillX().uniform();
-		
-		continueButton.addListener(new ChangeListener() {
+		single.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.GAME);
+				game.changeScreen(ScreenManager.LEVELSELECT);
 			}
 		});
-		levelSelect.addListener(new ChangeListener() {
+		duo.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.LEVELSELECT); 
+				game.setNumberOfPlayers(2);
+				game.changeScreen(ScreenManager.LEVELSELECT);
 			}
 		});
-		home.addListener(new ChangeListener() {
+       back.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.HOME); 
+				game.changeScreen(ScreenManager.HOME);
 			}
         });
 	}
@@ -108,7 +103,7 @@ public class PauseScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		//stage.dispose();
+		stage.dispose();
 	}
 
 }

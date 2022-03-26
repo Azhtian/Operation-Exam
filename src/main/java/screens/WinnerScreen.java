@@ -16,9 +16,8 @@ import core.ScreenManager;
 
 public class WinnerScreen implements Screen {
 	final ScreenManager game;
-	public Stage stage;
-	private Label titleLabel; 
-	
+	public final Stage stage;
+
 	public WinnerScreen(ScreenManager game) {
 		this.game = game;
 		stage = new Stage(new ScreenViewport());
@@ -40,7 +39,7 @@ public class WinnerScreen implements Screen {
 		// Same screen for Win/Loose?
 		// if (gameScore == 0) {titleLabel = new Label( "You Loose !", skin, "big");} 
 		// else:
-		titleLabel = new Label( "You Won !", skin, "big");
+		Label titleLabel = new Label("You Won !", skin, "big");
         
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);

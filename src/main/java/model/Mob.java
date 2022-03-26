@@ -6,17 +6,17 @@ import com.badlogic.gdx.math.Rectangle;
 
 public abstract class Mob extends Sprite{	
 	
-	private Rectangle bounds;
+	private final Rectangle bounds;
 	private boolean grounded;
 	private Texture playerImage;
-	private float height;
-	private float width;
+	private final float height;
+	private final float width;
 	private float y;
 	private float x;
 	private float ySpeed;
 	private float xSpeed;
 
-    private float gravity;
+    private final float gravity;
 
     private boolean movingRight = false;
     private boolean wasMovingRight = false;

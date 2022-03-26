@@ -1,6 +1,5 @@
 package sprites;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
@@ -14,14 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
 
-    Texture playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
+    final Texture playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
     Player player;
 
 
