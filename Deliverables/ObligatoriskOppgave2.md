@@ -21,7 +21,7 @@
 ## Deloppgave 1
 
 <ul>
-<li>Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamlead eller kundekontakt?</li>
+<li>Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamlead eller kundekontakt?
   Trenger dere andre roller? Skriv ned noen linjer om hva de ulike rollene faktisk innebærer for dere.
   <ul>
     <li>
@@ -43,12 +43,12 @@
       Marius har som logistikkansvarlig pådratt seg ansvaret for å planlegge og reservere grupperom til regelmessige møter med teamet.
     </li>  
   </ul>
+</li>
 </ul>
 
 <ul>
   <li> 
     Er det noen erfaringer enten team-messig eller mtp prosjektmetodikk som er verdt å nevne?
-  </li>
   <ul>
     <li>
       Kanban har fungert veldig bra for oss. Det har vært oversiktlig og lett å jobbe med, med god oversikt over alle oppgavene som må gjøres. Det har vært til stor hjelp å se hvor langt vi er kommet på vei og hvem som har jobbet med de forskjellige oppgavene. Det har vært motiverende å flytte oppgaver fra “doing” til “fullført”.
@@ -57,6 +57,7 @@
       Videre vil vi se på nytten av å bruke ideer fra scrum mer bevisst. Vi har jobbet litt med scrum ved å dele oppgaver i mindre biter og dele dem ut i løpet av gruppetimen. Vi prøver så å få oppgavene ferdige innen neste møte.
     </li>
   </ul>
+  </li>
 </ul>
 
 
