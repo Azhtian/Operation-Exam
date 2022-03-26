@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import core.ScreenManager;
@@ -47,12 +46,12 @@ public class WinnerScreen implements Screen {
         table.row().pad(10,0,0,10);
 		TextButton newGame = new TextButton("New Game", skin);
 		TextButton levelSelect = new TextButton("Select Level", skin);
-		TextButton exit = new TextButton("Exit", skin);
+		TextButton home = new TextButton("Main Menu", skin);
 		table.add(newGame).fillX().uniform();
 		table.row().pad(10,0,10,0);
 		table.add(levelSelect).fillX().uniform();
 		table.row().pad(10,0,10,0);
-		table.add(exit).fillX().uniform();
+		table.add(home).fillX().uniform();
 		
 		newGame.addListener(new ChangeListener() {
 			@Override
@@ -67,10 +66,10 @@ public class WinnerScreen implements Screen {
 				game.changeScreen(ScreenManager.LEVELSELECT); 
 			}
 		});
-		exit.addListener(new ChangeListener() {
+		home.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				Gdx.app.exit();
+				game.changeScreen(ScreenManager.HOME);
 			}
 		});
 	}

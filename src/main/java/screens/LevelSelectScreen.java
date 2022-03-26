@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import core.ScreenManager;
@@ -53,19 +52,21 @@ public class LevelSelectScreen implements Screen {
 		level1.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				game.newGame();
 				game.changeScreen(ScreenManager.GAME);
 			}
 		});
 		level2.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				game.newGame();
 				game.changeScreen(ScreenManager.GAME); //change to GAME2 when another level is made
 			}
 		});
 		back.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.changeScreen(ScreenManager.PLAYERMODE);
+				game.changeScreen(ScreenManager.HOME);
 			}
         });
 	}

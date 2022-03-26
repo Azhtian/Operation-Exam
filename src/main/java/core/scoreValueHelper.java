@@ -1,8 +1,5 @@
 package core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-
 public class scoreValueHelper {
     public static int getScoreValue(String textureName) {
         switch (textureName) {

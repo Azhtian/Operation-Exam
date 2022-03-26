@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import core.ScreenManager;
@@ -39,8 +38,8 @@ public class PauseScreen implements Screen {
 		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
 		
 		TextButton continueButton = new TextButton("Continue", skin);
-		TextButton newGame = new TextButton("New Game", skin);
-		TextButton exit = new TextButton("Exit", skin);
+		TextButton levelSelect = new TextButton("Level Select", skin);
+		TextButton home = new TextButton("Main Menu", skin);
 		titleLabel = new Label( "Game paused", skin, "big");
         
 		table.add(titleLabel);
@@ -48,9 +47,9 @@ public class PauseScreen implements Screen {
         table.row().pad(10,0,0,10);
 		table.add(continueButton).fillX().uniform();
         table.row().pad(10,0,0,10);
-		table.add(newGame).fillX().uniform();
+		table.add(levelSelect).fillX().uniform();
         table.row().pad(10,0,0,10);
-        table.add(exit).fillX().uniform();
+        table.add(home).fillX().uniform();
 		
 		continueButton.addListener(new ChangeListener() {
 			@Override
@@ -58,18 +57,16 @@ public class PauseScreen implements Screen {
 				game.changeScreen(ScreenManager.GAME);
 			}
 		});
-		newGame.addListener(new ChangeListener() {
+		levelSelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				// reset game ..
-				game.newGame();
-				game.changeScreen(ScreenManager.GAME); 
+				game.changeScreen(ScreenManager.LEVELSELECT); 
 			}
 		});
-		exit.addListener(new ChangeListener() {
+		home.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				Gdx.app.exit();
+				game.changeScreen(ScreenManager.HOME); 
 			}
         });
 	}

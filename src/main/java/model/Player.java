@@ -1,8 +1,6 @@
 package model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Rectangle;
 
 public class Player extends Mob {
 
@@ -11,10 +9,7 @@ public class Player extends Mob {
 	Boolean grounded;
 	public float width = 16;
 	public float height = 16;
-	private Rectangle bounds;
-	private Texture playerImage;
 	private int[] controlSet;
-	private int score = 0;
 	// String playerName;
 
 
@@ -23,7 +18,6 @@ public class Player extends Mob {
 		this.grounded = true;
 		this.health = this.maxHealth;
 		this.controlSet = controlSet;
-		bounds = new Rectangle(x, y, width, height);
 		this.health = this.maxHealth;
 		this.setJumpStrength(10);
 	}

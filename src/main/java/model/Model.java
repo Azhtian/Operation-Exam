@@ -1,22 +1,17 @@
 package model;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
-import core.ScreenManager;
 import core.TextureManager;
 import core.playerInputManager;
 import core.scoreValueHelper;
-import model.Item;
 
 import java.util.ArrayList;
 
@@ -29,7 +24,6 @@ public class Model {
 	
 	private Goal goal;
 	private TiledMap tileMap;
-	private TiledMapTileLayer bgLayer, platformsLayer, playerLayer, itemsLayer;
     private MapObjects objects;
     private Array<Rectangle> platforms = new Array<Rectangle>(100);
     private Array<Enemy> enemies = new Array<Enemy>(100);

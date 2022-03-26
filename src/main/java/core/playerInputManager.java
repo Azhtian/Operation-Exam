@@ -1,10 +1,6 @@
 package core;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
-
-import java.util.ArrayList;
 
 public class playerInputManager {
     public static int[] getControls(int controlSet){
