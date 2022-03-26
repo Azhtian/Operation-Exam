@@ -1,16 +1,11 @@
 package core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-
 public class scoreValueHelper {
     public static int getScoreValue(String textureName) {
-        switch (textureName) {
-            case "book":
-                return 20;
-            case "bomb":
-                return -50;
-        }
-        return 10;
+        return switch (textureName) {
+            case "book" -> 20;
+            case "bomb" -> -50;
+            default -> 10;
+        };
     }
 }

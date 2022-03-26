@@ -23,10 +23,7 @@ import screens.WinnerScreen;
 public class ScreenManager extends Game {
 	public SpriteBatch batch;
     public BitmapFont font;
-    
-    private Model model;
-	
-	private LoadingScreen loadingScreen;
+
 	private HomeScreen homeScreen;
 	private PlayerModeScreen playerSelect;
 	private LevelSelectScreen levelSelect;
@@ -48,14 +45,13 @@ public class ScreenManager extends Game {
 	private int numberOfPlayers = 1;
 	
 	public AppPreferences preferences;
-	private Controls controls;
 
 	@Override
 	public void create() {
 //		batch = new SpriteBatch();
 //		font = new BitmapFont();
 		// Setting the default screen
-		loadingScreen = new LoadingScreen(this);
+		LoadingScreen loadingScreen = new LoadingScreen(this);
 		setScreen(loadingScreen);
 		preferences = new AppPreferences();
 	}
@@ -64,56 +60,49 @@ public class ScreenManager extends Game {
 		gameScreen = null;
 	}
 
-	public void render() {
-		super.render();
-	}
-	
 	public void dispose() {
-//		batch.dispose();
-//		font.dispose();
 	}
 	
 	public void changeScreen(int screen) {
-		switch(screen) {
-		case HOME: 
-			if (homeScreen == null) homeScreen = new HomeScreen(this);
-			this.setScreen(homeScreen);
-			break;
-		case PLAYERMODE: 
-			if (playerSelect == null) playerSelect = new PlayerModeScreen(this);
-			this.setScreen(playerSelect);
-			break;
-		case PREFERENCES: 
-			if (preferencesScreen == null) preferencesScreen = new PreferencesScreen(this);
-			this.setScreen(preferencesScreen);
-			break;
-		case LEVELSELECT: 
-			if (levelSelect == null) levelSelect = new LevelSelectScreen(this);
-			this.setScreen(levelSelect);
-			break;
-		case GAME:
-			if (gameScreen == null) {
-				model = new Model(numberOfPlayers);
-				controls = new Controls();
-				gameScreen = new GameScreen(this, model, controls);
-                this.batch = new SpriteBatch();
-                this.font = new BitmapFont();
+		switch (screen) {
+			case HOME -> {
+				if (homeScreen == null) homeScreen = new HomeScreen(this);
+				this.setScreen(homeScreen);
 			}
-			this.setScreen(gameScreen);
-
-			break;
-		case PAUSE:
-			if (pauseScreen == null) pauseScreen = new PauseScreen(this);
-			this.setScreen(pauseScreen);
-			break;
-		case GAMEOVER:
-			if (gameOverScreen == null) gameOverScreen = new GameOverScreen(this);
-			this.setScreen(gameOverScreen);
-			break;
-		case WINNER:
-			if (winnerScreen == null) winnerScreen = new WinnerScreen(this);
-			this.setScreen(winnerScreen);
-			break;
+			case PLAYERMODE -> {
+				if (playerSelect == null) playerSelect = new PlayerModeScreen(this);
+				this.setScreen(playerSelect);
+			}
+			case PREFERENCES -> {
+				if (preferencesScreen == null) preferencesScreen = new PreferencesScreen(this);
+				this.setScreen(preferencesScreen);
+			}
+			case LEVELSELECT -> {
+				if (levelSelect == null) levelSelect = new LevelSelectScreen(this);
+				this.setScreen(levelSelect);
+			}
+			case GAME -> {
+				if (gameScreen == null) {
+					Model model = new Model(numberOfPlayers);
+					Controls controls = new Controls();
+					gameScreen = new GameScreen(this, model, controls);
+					this.batch = new SpriteBatch();
+					this.font = new BitmapFont();
+				}
+				this.setScreen(gameScreen);
+			}
+			case PAUSE -> {
+				if (pauseScreen == null) pauseScreen = new PauseScreen(this);
+				this.setScreen(pauseScreen);
+			}
+			case GAMEOVER -> {
+				if (gameOverScreen == null) gameOverScreen = new GameOverScreen(this);
+				this.setScreen(gameOverScreen);
+			}
+			case WINNER -> {
+				if (winnerScreen == null) winnerScreen = new WinnerScreen(this);
+				this.setScreen(winnerScreen);
+			}
 		}
 	}
 

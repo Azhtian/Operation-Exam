@@ -2,9 +2,6 @@ package model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
-import java.awt.*;
 
 public class Item extends Sprite{
     private final int scoreValue;
@@ -12,7 +9,7 @@ public class Item extends Sprite{
     private final float x;
     private final float y;
 
-    public Item(Texture image, int scoreValue, float x, float y, int height, int width){
+    public Item(Texture image, int scoreValue, float x, float y){
         this.image = image;
         this.scoreValue = scoreValue;
         this.x = x;

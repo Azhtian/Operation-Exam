@@ -17,9 +17,8 @@ import core.ScreenManager;
 
 public class PlayerModeScreen implements Screen {
 	final ScreenManager game;
-	public Stage stage;
-	private Label titleLabel; 
-	
+	public final Stage stage;
+
 	public PlayerModeScreen(ScreenManager game) {
 		this.game = game;
 		stage = new Stage(new ScreenViewport());
@@ -37,8 +36,8 @@ public class PlayerModeScreen implements Screen {
 		//table.setDebug(true);
 		stage.addActor(table);
 		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-		
-		titleLabel = new Label( "Select Player Mode", skin, "big" );
+
+		Label titleLabel = new Label("Select Player Mode", skin, "big");
 		TextButton single = new TextButton("Single Player", skin);
 		TextButton duo = new TextButton("Duo player", skin);
 		TextButton back = new TextButton("Back", skin);

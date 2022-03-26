@@ -1,6 +1,5 @@
 package screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 import core.ScreenManager;

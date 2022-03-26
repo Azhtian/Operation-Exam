@@ -3,7 +3,6 @@ package core;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import screens.HomeScreen;
 
 public class Exam extends Game{
     public SpriteBatch batch;
@@ -13,15 +12,6 @@ public class Exam extends Game{
 	public void create() {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
-		//this.setScreen(new HomeScreen(this));
 	}
-	
-	public void render() {
-		super.render();
-	}
-	
-	public void dispose() {
-		batch.dispose();
-		font.dispose();
-	}
+
 }

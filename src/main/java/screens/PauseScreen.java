@@ -17,8 +17,7 @@ import core.ScreenManager;
 
 public class PauseScreen implements Screen {
 	final ScreenManager game;
-	public Stage stage;
-	private Label titleLabel; 
+	public final Stage stage;
 
 	public PauseScreen(ScreenManager game) {
 		this.game = game;
@@ -41,7 +40,7 @@ public class PauseScreen implements Screen {
 		TextButton continueButton = new TextButton("Continue", skin);
 		TextButton newGame = new TextButton("New Game", skin);
 		TextButton exit = new TextButton("Exit", skin);
-		titleLabel = new Label( "Game paused", skin, "big");
+		Label titleLabel = new Label("Game paused", skin, "big");
         
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);

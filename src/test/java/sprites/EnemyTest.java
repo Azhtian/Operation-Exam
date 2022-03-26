@@ -1,27 +1,21 @@
 package sprites;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 import core.Exam;
 import core.playerInputManager;
 import model.*;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EnemyTest {
 
-    static Exam exam = new Exam();
+    static final Exam exam = new Exam();
     static Model model;
-    Texture enemyImage = new Texture("assets/sprites/enemy.png");
+    final Texture enemyImage = new Texture("assets/sprites/enemy.png");
 
     /*
      * Due to LibGDX using a special file handler that is not

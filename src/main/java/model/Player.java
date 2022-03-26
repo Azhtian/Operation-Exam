@@ -1,17 +1,15 @@
 package model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Player extends Mob {
 
 	private final int maxHealth = 3;
 	private int health;
-	Boolean grounded;
+	final Boolean grounded;
 	public float width = 16;
 	public float height = 16;
-	private final Rectangle bounds;
 	private Texture playerImage;
 	private final int[] controlSet;
 	private final int score = 0;
@@ -21,11 +19,10 @@ public class Player extends Mob {
 	public Player(float x, float y, float width, float height, Texture playerImage, int[] controlSet) {
 		super(x, y, width, height, playerImage);
 		this.grounded = true;
-		this.health = this.maxHealth;
 		this.controlSet = controlSet;
-		bounds = new Rectangle(x, y, width, height);
-		this.health = this.maxHealth;
+		Rectangle bounds = new Rectangle(x, y, width, height);
 		this.setJumpStrength(10);
+		this.health = this.maxHealth;
 	}
 
 
