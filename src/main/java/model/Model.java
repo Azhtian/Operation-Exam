@@ -5,24 +5,23 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 import core.TextureManager;
-import core.playerInputManager;
-import core.scoreValueHelper;
+import core.PlayerInputManager;
+import core.ScoreValueHelper;
 
 import java.util.ArrayList;
 
 public class Model {
 
 	private int screen = 4;
-	
+
 	private Goal goal;
 	private final TiledMap tileMap;
-	private TiledMapTileLayer bgLayer, platformsLayer, playerLayer, itemsLayer;
+	//private TiledMapTileLayer bgLayer, platformsLayer, playerLayer, itemsLayer;
 	private final Array<Rectangle> platforms = new Array<>(100);
     private final Array<Enemy> enemies = new Array<>(100);
     private final ArrayList<Item> scoreItems = new ArrayList<>();
@@ -51,7 +50,7 @@ public class Model {
 				}
 				else if (object.getProperties().get("type").equals("scoreItem")) {
 					String itemName = object.getName();
-					Item item = new Item(TextureManager.getTexture(itemName), scoreValueHelper.getScoreValue(itemName), (float) object.getProperties().get("x"), (float) object.getProperties().get("y"));
+					Item item = new Item(TextureManager.getTexture(itemName), ScoreValueHelper.getScoreValue(itemName), (float) object.getProperties().get("x"), (float) object.getProperties().get("y"));
 					scoreItems.add(item);
 				} 
 				else if (object.getProperties().get("type").equals("Goal")) {
@@ -81,7 +80,7 @@ public class Model {
 						continue;
 					}
 					Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
-					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, playerInputManager.getControls(players.size()));
+					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, PlayerInputManager.getControls(players.size()));
 					players.add(player);
 				}
 				else {
@@ -96,7 +95,7 @@ public class Model {
     }
     
     public ArrayList<Player> getPlayers() {
-    	return players;
+		return new ArrayList<>(players);
     }
     
     public Array<Enemy> getEnemies() {
@@ -107,7 +106,9 @@ public class Model {
     	return platforms;
     }
 
-	public ArrayList<Item> getScoreItems(){return scoreItems;}
+	public ArrayList<Item> getScoreItems(){
+		return new ArrayList<>(scoreItems);
+	}
    
     public Goal getGoal() {
     	return goal;

@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import core.Exam;
-import core.playerInputManager;
+import core.PlayerInputManager;
 import model.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -42,7 +42,7 @@ public class EnemyTest {
     @Test
     void runnerRuns(){
         Runner runner = new Runner(0, 0, 16, 16, enemyImage);
-        Player player = new Player(5, 0, 16, 16, enemyImage, playerInputManager.getControls(0));
+        Player player = new Player(5, 0, 16, 16, enemyImage, PlayerInputManager.getControls(0));
 
         float moveSpeed = runner.getMoveSpeed();
 

@@ -26,8 +26,6 @@ public class HomeScreen implements Screen {
 	final ScreenManager game;
 //	OrthographicCamera camera;
 	public final Stage stage;
-	public Table table;
-	public Skin skin;
 
 	public HomeScreen(ScreenManager game) {
 		this.game = game;

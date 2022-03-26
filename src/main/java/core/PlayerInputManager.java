@@ -2,7 +2,7 @@ package core;
 
 import com.badlogic.gdx.Input;
 
-public class playerInputManager {
+public class PlayerInputManager {
     public static int[] getControls(int controlSet){
         return switch (controlSet) {
             case 0 -> new int[]{Input.Keys.LEFT, Input.Keys.UP, Input.Keys.RIGHT, Input.Keys.DOWN};

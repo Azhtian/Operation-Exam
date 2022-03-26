@@ -1,6 +1,6 @@
 package core;
 
-public class scoreValueHelper {
+public class ScoreValueHelper {
     public static int getScoreValue(String textureName) {
         return switch (textureName) {
             case "book" -> 20;
