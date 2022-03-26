@@ -63,7 +63,7 @@ public class ScreenManager extends Game {
 	public void dispose() {
 	}
 	
-	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("SF_SWITCH_NO_DEFAULT")
+	//@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("SF_SWITCH_NO_DEFAULT")
 	public void changeScreen(int screen) {
 		switch (screen) {
 			case HOME -> {

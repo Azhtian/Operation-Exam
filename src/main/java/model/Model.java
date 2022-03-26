@@ -107,7 +107,7 @@ public class Model {
     }
 
 	public ArrayList<Item> getScoreItems(){
-		return new ArrayList<>(scoreItems);
+		return scoreItems;
 	}
    
     public Goal getGoal() {
