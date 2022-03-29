@@ -1,0 +1,16 @@
+Møtereferat 29.03.2022
+
+Til stede: Marius, Daniel, Sondre, Marita (Discord), Stian (Discord)
+
+Marius foreslår å refaktorere mob-classen slik at den ikke avhenger av en Texture
+Foreslår jevnere fokus på oblig 3 - begynne med å sette opp akseptansekriterier. 
+Diskuterer om vi skal endre hvordan kamera og spiller interagerer
+  - Innspill om å fokusere på fremgangsmåte tester over ny funksjonalitet
+Prioritere tester og testdekning sammen med brukerhistorier
+Diskuterer hvordan vi kan lettere endre klasser slik at de blir testbare
+  - Kommer til å prøve flere løsninger, men lage en ny initializer som ikke tar noen argument virker som en potensielt god ide. 
+
+
+Videre arbeid:
+Marius - Refaktorere mob-klassen og dens avhengigheter til å ikke avhenge av en Texture
+Daniel - Legge til på player movement (dash, crouch)
