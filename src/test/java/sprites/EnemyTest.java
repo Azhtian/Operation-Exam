@@ -33,8 +33,9 @@ public class EnemyTest {
 
     @Test
     void runnerRuns(){
-        Runner runner = new Runner(45, 288, 16, 16);
-        Player player = new Player(113, 287, 16, 16);
+        Runner runner = new Runner(70, 0, 16, 16);
+        Player player = new Player(113, 0, 16, 16);
+        model.addPlayer(player);
 
         float moveSpeed = runner.getMoveSpeed();
 
