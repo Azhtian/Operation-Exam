@@ -32,6 +32,9 @@ public class Model {
 
 	private int gameScore = 0;
 
+	public Model(){
+	}
+
 	public Model(int numberOfPlayers, TiledMap tileMap) {
 		this.tileMap = tileMap;
 
@@ -133,6 +136,10 @@ public class Model {
 
 	public int getGravity() {
 		return -1;
+	}
+
+	public void addPlayer(Player player){
+		players.add(player);
 	}
 
 	public int getGameScore(){

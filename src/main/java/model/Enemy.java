@@ -10,6 +10,11 @@ public abstract class Enemy extends Mob {
 	private float moveSpeed;
 	private Boolean hasGravity;
 
+	public Enemy(float x, float y, float width, float height) {
+		super(x, y, width, height);
+
+		this.setMovingRight(false);
+	}
 
 	public Enemy(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);

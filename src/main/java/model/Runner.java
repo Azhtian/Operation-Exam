@@ -11,6 +11,14 @@ public class Runner extends Enemy{
 	private final int detectionDistance;
 	private Player closePlayer;
 
+	public Runner(float x, float y, float width, float height) {
+		super(x, y, width, height);
+		this.setMoveSpeed((float)1.2);
+		this.sensorRight = new Rectangle( 0, 0 , 2,16);
+		this.sensorLeft = new Rectangle( 0, 0 , 2,16);
+		this.detectionDistance = 10;
+	}
+
 	public Runner(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);
 		this.setMoveSpeed((float)1.2);

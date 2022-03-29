@@ -27,7 +27,18 @@ public abstract class Mob extends Sprite{
 
 
 	private float jumpStrength;
-	
+
+	public Mob(float x, float y, float width, float height){
+		this.bounds = new Rectangle(x, y, width, height);
+		this.setX(x);
+		this.setY(y);
+		this.width = width;
+		this.height = height;
+		this.setGrounded(true);
+		this.gravity = -4;
+		this.animationCounter = 0;
+		this.animationPointer = 0;
+	}
 
 	public Mob(float x, float y, float width, float height, Texture image) {
         this.bounds = new Rectangle(x, y, width, height);
