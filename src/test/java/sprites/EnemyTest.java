@@ -8,6 +8,7 @@ import core.PlayerInputManager;
 import core.ScreenManager;
 import model.*;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,25 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class EnemyTest {
 
     static Model model;
-    final Texture enemyImage = new Texture("assets/sprites/enemy.png");
 
-    /*
-     * Due to LibGDX using a special file handler that is not
-     * initialized unless an application is run, this code has to run
-     * for the tests to not throw a 'null' error upon running
-     */
-    @BeforeAll
-    static void setup(){
-        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
-        cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
-        Lwjgl3Application lw3 = new Lwjgl3Application(new ScreenManager(), cfg);
-        model = new Model(1, new TmxMapLoader().load("assets/maps/map1.tmx"));
+
+    @BeforeEach
+    void setup(){
+        model = new Model();
     }
 
     @Test
     void testJumperCanJump() {
-        Jumper jumper = new Jumper(0, 0, 16, 16, enemyImage);
+        Jumper jumper = new Jumper(0, 0, 16, 16);
         assertEquals(0, jumper.getY());
         jumper.doMovement(model);
         assertNotEquals(0, jumper.getY());
@@ -41,8 +33,8 @@ public class EnemyTest {
 
     @Test
     void runnerRuns(){
-        Runner runner = new Runner(0, 0, 16, 16, enemyImage);
-        Player player = new Player(5, 0, 16, 16, enemyImage, PlayerInputManager.getControls(0));
+        Runner runner = new Runner(45, 288, 16, 16);
+        Player player = new Player(113, 287, 16, 16);
 
         float moveSpeed = runner.getMoveSpeed();
 
@@ -54,7 +46,7 @@ public class EnemyTest {
 
     @Test
     void stationaryDoesNotMove(){
-        Stationary stationary = new Stationary(0, 0, 16, 16, enemyImage);
+        Stationary stationary = new Stationary(0, 0, 16, 16);
         assertEquals(0, stationary.getXSpeed());
         stationary.doMovement(model);
         assertEquals(0, stationary.getXSpeed());
@@ -62,7 +54,7 @@ public class EnemyTest {
 
     @Test
     void enemyMovement(){
-        Enemy enemy = new Walker(0, 0, 16, 16, enemyImage);
+        Enemy enemy = new Walker(0, 0, 16, 16);
         assertEquals(0, enemy.getXSpeed());
         enemy.changeX(10);
         enemy.doMovement(model);

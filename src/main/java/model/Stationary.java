@@ -9,6 +9,10 @@ public class Stationary extends Enemy{
 	}
 
 
+	public Stationary(float x, float y, float width, float height) {
+		super(x, y, width, height);
+	}
+
 	public void doMovement(Model model) {
 	}
 	

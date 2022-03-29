@@ -32,6 +32,10 @@ public class Model {
 
 	private int gameScore = 0;
 
+	public Model(){
+		platforms.add(new Rectangle(0,304,448, 48));
+	}
+
 	public Model(int numberOfPlayers, TiledMap tileMap) {
 		this.tileMap = tileMap;
 

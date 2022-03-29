@@ -7,7 +7,15 @@ public class Jumper extends Enemy{
 
 	private final Rectangle sensor;
 	private Boolean sensorActivation;
-	
+
+
+	public Jumper(float x, float y, float width, float height) {
+		super(x, y, width, height);
+		this.setMoveSpeed((float)1.2);
+		this.setJumpStrength(10);
+		this.sensor = new Rectangle(0, 0, (float) (width * 0.75), 16);
+	}
+
 	public Jumper(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);
 		

@@ -9,6 +9,13 @@ public class Walker extends Enemy{
 	private Boolean sensorLeftActivation;
 	private Boolean sensorRightActivation;
 
+	public Walker(float x, float y, float width, float height) {
+		super(x, y, width, height);
+		this.setMoveSpeed((float)1.2);
+		this.sensorRight = new Rectangle( 0, 0 , 2,16);
+		this.sensorLeft = new Rectangle( 0, 0 , 2,16);
+	}
+
 	public Walker(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);
 		this.setMoveSpeed((float)1.2);
