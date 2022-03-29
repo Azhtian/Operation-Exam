@@ -8,8 +8,8 @@ public class Player extends Mob {
 	private int health;
 
 	Boolean grounded;
-	public float width = 16;
-	public float height = 16;
+	public float width;
+	public float height;
 	private int[] controlSet;
 	// String playerName;
 

@@ -78,28 +78,105 @@
  <objectgroup id="4" name="objects">
   <properties>
    <property name="itemType" value="bomb"/>
+   <property name="thin" type="bool" value="false"/>
   </properties>
-  <object id="19" type="Platform" x="320" y="128" width="96" height="32"/>
-  <object id="21" type="Platform" x="160" y="144" width="16" height="16"/>
-  <object id="22" type="Platform" x="176" y="144" width="96" height="32"/>
-  <object id="23" type="Platform" x="0" y="192" width="80" height="32"/>
-  <object id="24" type="Platform" x="0" y="304" width="448" height="48"/>
-  <object id="25" type="Platform" x="592" y="282.792" width="16" height="21.2073"/>
-  <object id="26" type="Platform" x="624" y="272" width="16" height="32"/>
-  <object id="27" type="Platform" x="640" y="283.537" width="16" height="20.4635"/>
-  <object id="28" type="Platform" x="464" y="144" width="128" height="48"/>
-  <object id="29" type="Platform" x="592" y="176" width="96" height="32"/>
-  <object id="30" type="Platform" x="688" y="192" width="16" height="16"/>
-  <object id="31" type="Platform" x="672" y="256" width="48" height="16"/>
-  <object id="32" type="Platform" x="704" y="240" width="32" height="16"/>
-  <object id="33" type="Platform" x="736" y="224" width="64" height="32"/>
-  <object id="34" type="Platform" x="752" y="256" width="48" height="16"/>
-  <object id="35" type="Platform" x="496" y="112" width="16" height="32"/>
+  <object id="19" type="Platform" x="320" y="128" width="96" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="21" type="Platform" x="160" y="144" width="16" height="16">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="22" type="Platform" x="176" y="144" width="96" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="23" type="Platform" x="0" y="192" width="80" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="24" type="Platform" x="0" y="304" width="448" height="48">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="25" type="Platform" x="592" y="282.792" width="16" height="21.2073">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="26" type="Platform" x="624" y="272" width="16" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="27" type="Platform" x="640" y="283.537" width="16" height="20.4635">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="28" type="Platform" x="464" y="144" width="128" height="48">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="29" type="Platform" x="592" y="176" width="96" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="30" type="Platform" x="688" y="192" width="16" height="16">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="31" type="Platform" x="672" y="256" width="48" height="16">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="32" type="Platform" x="704" y="240" width="32" height="16">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="33" type="Platform" x="736" y="224" width="64" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="34" type="Platform" x="752" y="256" width="48" height="16">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="35" type="Platform" x="496" y="112" width="16" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="36" name="book" type="ScoreItem" x="432" y="240" width="16" height="16"/>
   <object id="41" type="Player" x="45" y="288" width="16" height="16"/>
-  <object id="45" type="Platform" x="-32" y="-96" width="32" height="448"/>
-  <object id="46" type="Platform" x="800" y="-96" width="32" height="448"/>
-  <object id="47" type="Platform" x="784" y="304" width="16" height="48"/>
+  <object id="45" type="Platform" x="-32" y="-96" width="32" height="448">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="46" type="Platform" x="800" y="-96" width="32" height="448">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="47" type="Platform" x="784" y="304" width="16" height="48">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="48" name="Stationary" type="Enemy" x="736" y="336" width="48" height="16">
    <properties>
     <property name="stationary" type="bool" value="true"/>
@@ -111,8 +188,16 @@
     <property name="stationary" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="54" type="Platform" x="496" y="304" width="240" height="48"/>
-  <object id="55" type="Platform" x="416" y="128" width="16" height="16"/>
+  <object id="54" type="Platform" x="496" y="304" width="240" height="48">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="55" type="Platform" x="416" y="128" width="16" height="16">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="57" name="book" type="scoreItem" x="512" y="96" width="16" height="16">
    <properties>
     <property name="image" value="book"/>
@@ -124,7 +209,15 @@
   <object id="71" name="Walker" type="Enemy" x="214" y="127" width="16" height="16"/>
   <object id="72" name="Walker" type="Enemy" x="752.093" y="207.55" width="16" height="16"/>
   <object id="73" name="Jumper" type="Enemy" x="473.126" y="125.721" width="16" height="16"/>
-  <object id="76" type="Platform" x="320" y="106.726" width="16" height="21.2741"/>
-  <object id="77" type="Platform" x="80" y="272" width="16" height="32"/>
+  <object id="76" type="Platform" x="320" y="106.726" width="16" height="21.2741">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="77" type="Platform" x="80" y="272" width="16" height="32">
+   <properties>
+    <property name="thin" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

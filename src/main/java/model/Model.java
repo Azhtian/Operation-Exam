@@ -25,7 +25,7 @@ public class Model {
 	private Goal goal;
 	private TiledMap tileMap;
     private MapObjects objects;
-    private Array<Rectangle> platforms = new Array<Rectangle>(100);
+    private Array<Platform> platforms = new Array<Platform>(100);
     private Array<Enemy> enemies = new Array<Enemy>(100);
     private ArrayList<Item> scoreItems = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
@@ -46,7 +46,11 @@ public class Model {
 		for (MapObject object : objects) {
 			if (object instanceof RectangleMapObject) {
 				if (object.getProperties().get("type").equals("Platform")) {
-					Rectangle rect = ((RectangleMapObject) object).getRectangle();
+					Boolean thin = false;
+					if (object.getProperties().get("thin").equals(true)) {
+						thin = true;
+					}
+					Platform rect = new Platform(((RectangleMapObject) object).getRectangle(), thin);
 					platforms.add(rect);
 				}
 				else if (object.getProperties().get("type").equals("scoreItem")) {
@@ -103,7 +107,7 @@ public class Model {
     	return enemies;
     }
     
-    public Array<Rectangle> getPlatforms() {
+    public Array<Platform> getPlatforms() {
     	return platforms;
     }
 
@@ -116,11 +120,11 @@ public class Model {
     }
 
 	public int getWidth() {
-		return 800;
+		return width;
 	}
 
 	public int getHeight() {
-		return 320;
+		return height;
 	}
 
 	public int getScreen() {
@@ -131,8 +135,8 @@ public class Model {
 		this.screen = screen;
 	}
 
-	public int getGravity() {
-		return -1;
+	public float getGravity() {
+		return -0.5f;
 	}
 
 	public int getGameScore(){
