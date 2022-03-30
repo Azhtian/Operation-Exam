@@ -8,14 +8,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 import controls.Controls;
 import model.Model;
-import screens.GameOverScreen;
-import screens.GameScreen;
-import screens.HomeScreen;
-import screens.LevelSelectScreen;
-import screens.LoadingScreen;
-import screens.PauseScreen;
-import screens.PreferencesScreen;
-import screens.WinnerScreen;
+import screens.*;
 
 /*
  * This class extends the Game class to manage and switch between different screens
@@ -32,20 +25,22 @@ public class ScreenManager extends Game {
 	private PauseScreen pauseScreen;
 	private GameOverScreen gameOverScreen;
 	private WinnerScreen winnerScreen;
+	private GameFinishedScreen gameFinishedScreen;
 	 
 	public final static int HOME = 0;
 	public final static int PLAYERMODE = 1;
 	public final static int PREFERENCES = 2;
 	public final static int LEVELSELECT = 3;
 	public final static int GAME = 4;
-	public final static int GAME2 = 8;
 	public final static int PAUSE = 5;
 	public final static int GAMEOVER = 6;
 	public final static int WINNER = 7;
+	public final static int GAMEFINISHED = 8;
 
 	private int numberOfPlayers = 1;
 	private TiledMap tileMap;
 	public AppPreferences preferences;
+	private int currentLevel = 1;
 
 	@Override
 	public void create() {
@@ -81,25 +76,21 @@ public class ScreenManager extends Game {
 			break;
 		case GAME:
 			if (gameScreen == null) {
-				tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
-				Model model = new Model(numberOfPlayers, tileMap);
-				Controls controls = new Controls();
-				gameScreen = new GameScreen(this, model, controls);
-                this.batch = new SpriteBatch();
-                this.font = new BitmapFont();
+				try {
+					String levelPath = "assets/maps/map" + currentLevel + ".tmx";
+					tileMap = new TmxMapLoader().load(levelPath);
+					Model model = new Model(numberOfPlayers, tileMap);
+					Controls controls = new Controls();
+					gameScreen = new GameScreen(this, model, controls);
+					this.batch = new SpriteBatch();
+					this.font = new BitmapFont();
+					this.setScreen(gameScreen);
+				}
+				//If level does not exist assume player has completed the game
+				catch (Exception e){
+					this.changeScreen(GAMEFINISHED);
+				}
 			}
-			this.setScreen(gameScreen);
-			break;
-		case GAME2:
-			if (gameScreen == null) {
-				tileMap = new TmxMapLoader().load("assets/maps/map2.tmx");
-				Model model = new Model(numberOfPlayers, tileMap);
-				Controls controls = new Controls();
-				gameScreen = new GameScreen(this, model, controls);
-                this.batch = new SpriteBatch();
-                this.font = new BitmapFont();
-			}
-			this.setScreen(gameScreen);
 			break;
 		case PAUSE:
 			if (pauseScreen == null) pauseScreen = new PauseScreen(this);
@@ -113,6 +104,10 @@ public class ScreenManager extends Game {
 			if (winnerScreen == null) winnerScreen = new WinnerScreen(this);
 			this.setScreen(winnerScreen);
 			break;
+		case GAMEFINISHED:
+			if (gameFinishedScreen == null) gameFinishedScreen = new GameFinishedScreen(this);
+			this.setScreen(gameFinishedScreen);
+			break;
 		}
 	}
 
@@ -124,4 +119,11 @@ public class ScreenManager extends Game {
 		this.numberOfPlayers = numberOfPlayers;
 	}
 
+	public void goToNextLevel(){
+		this.currentLevel += 1;
+	}
+
+	public void setLevel(int levelNumber) {
+		this.currentLevel = levelNumber;
+	}
 }

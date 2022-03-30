@@ -59,7 +59,8 @@ public class LevelSelectScreen implements Screen {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				game.newGame();
-				game.changeScreen(ScreenManager.GAME2);
+				game.setLevel(2);
+				game.changeScreen(ScreenManager.GAME);
 			}
 		});
 		back.addListener(new ChangeListener() {

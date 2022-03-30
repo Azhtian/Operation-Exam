@@ -31,6 +31,7 @@ public class Model {
     private ArrayList<Player> players = new ArrayList<>();
 
 	private int gameScore = 0;
+	private int currentLevel;
 
 	public Model(){
 	}

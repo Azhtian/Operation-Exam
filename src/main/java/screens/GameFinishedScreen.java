@@ -11,14 +11,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-
 import core.ScreenManager;
 
-public class WinnerScreen implements Screen {
+public class GameFinishedScreen implements Screen {
 	final ScreenManager game;
 	public final Stage stage;
 
-	public WinnerScreen(ScreenManager game) {
+	public GameFinishedScreen(ScreenManager game) {
 		this.game = game;
 		stage = new Stage(new ScreenViewport());
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
@@ -39,24 +38,24 @@ public class WinnerScreen implements Screen {
 		// Same screen for Win/Loose?
 		// if (gameScore == 0) {titleLabel = new Label( "You Loose !", skin, "big");} 
 		// else:
-		Label titleLabel = new Label("You Won !", skin, "big");
+		Label titleLabel = new Label("You completed the whole game !", skin, "big");
         
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);
-		TextButton nextLevel = new TextButton("Next level", skin);
+		TextButton newGame = new TextButton("New game", skin);
 		TextButton levelSelect = new TextButton("Select Level", skin);
 		TextButton home = new TextButton("Main Menu", skin);
-		table.add(nextLevel).fillX().uniform();
+		table.add(newGame).fillX().uniform();
 		table.row().pad(10,0,10,0);
 		table.add(levelSelect).fillX().uniform();
 		table.row().pad(10,0,10,0);
 		table.add(home).fillX().uniform();
 		
-		nextLevel.addListener(new ChangeListener() {
+		newGame.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				game.goToNextLevel();
 				game.newGame();
+				game.setLevel(1);
 				game.changeScreen(ScreenManager.GAME);
 			}
 		});
