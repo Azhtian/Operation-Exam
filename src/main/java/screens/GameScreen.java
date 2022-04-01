@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import controls.Controls;
 import core.ScreenManager;
@@ -26,6 +28,7 @@ public class GameScreen implements Screen {
 	private final OrthographicCamera camera;
 	private final OrthogonalTiledMapRenderer renderer;
     public final Stage stage;
+    private Viewport viewport;
     
     // Texture
     private final Texture fullHeart;
@@ -62,6 +65,7 @@ public class GameScreen implements Screen {
 		camera.setToOrtho(false, model.getWidth(), model.getHeight()); // dimensions of castle board
 		camera.position.set(model.getWidth()/2, model.getHeight()/2, 3); // centers the camera to middle of board instead of (by default) window.
 		
+		viewport = new ExtendViewport(model.getWidth(), model.getHeight(), camera);
 
 	}
 
@@ -131,7 +135,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-
+		viewport.update(width, height);
 	}
 
 	@Override
