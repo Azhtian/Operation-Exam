@@ -14,6 +14,13 @@ public class Player extends Mob {
 	// String playerName;
 
 
+	public Player(float x, float y, float width, float height){
+		super(x, y, width, height);
+		this.grounded = true;
+		this.health = this.maxHealth;
+		this.setJumpStrength(10);
+		this.health = maxHealth;
+	}
 
 	public Player(float x, float y, float width, float height, Texture playerImage, int[] controlSet) {
 		super(x, y, width, height, playerImage);

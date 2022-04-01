@@ -25,9 +25,23 @@ public abstract class Mob extends Sprite{
     private int animationCounter;
     private int animationPointer;
 
+
+	private float jumpStrength;
+
+	public Mob(float x, float y, float width, float height){
+		this.bounds = new Rectangle(x, y, width, height);
+		this.setX(x);
+		this.setY(y);
+		this.width = width;
+		this.height = height;
+		this.setGrounded(true);
+		this.gravity = -4;
+		this.animationCounter = 0;
+		this.animationPointer = 0;
+	}
     private float maxSpeed = 6;
 	private float jumpStrength = 6.5f;
-	
+
 
 	public Mob(float x, float y, float width, float height, Texture image) {
         this.bounds = new Rectangle(x, y, width, height);
@@ -179,11 +193,11 @@ public abstract class Mob extends Sprite{
     public void setPlayerImage(Texture texture) {
         playerImage = texture;
     }
-    
+
     public float getMaxSpeed() {
 		return maxSpeed;
 	}
-    
+
 	public float getJumpStrength() {
 		return jumpStrength;
 	}

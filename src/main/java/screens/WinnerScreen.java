@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import core.ScreenManager;
+import helper.ScreenManager;
 
 public class WinnerScreen implements Screen {
 	final ScreenManager game;
@@ -43,18 +43,19 @@ public class WinnerScreen implements Screen {
         
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);
-		TextButton newGame = new TextButton("New Game", skin);
+		TextButton nextLevel = new TextButton("Next level", skin);
 		TextButton levelSelect = new TextButton("Select Level", skin);
 		TextButton home = new TextButton("Main Menu", skin);
-		table.add(newGame).fillX().uniform();
+		table.add(nextLevel).fillX().uniform();
 		table.row().pad(10,0,10,0);
 		table.add(levelSelect).fillX().uniform();
 		table.row().pad(10,0,10,0);
 		table.add(home).fillX().uniform();
 		
-		newGame.addListener(new ChangeListener() {
+		nextLevel.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				game.goToNextLevel();
 				game.newGame();
 				game.changeScreen(ScreenManager.GAME);
 			}

@@ -12,8 +12,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import controls.Controls;
-import core.ScreenManager;
-import core.TextureManager;
+import helper.ScreenManager;
+import helper.TextureManager;
 import model.Enemy;
 import model.Model;
 import model.Player;

@@ -1,43 +1,19 @@
 package sprites;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import core.ScreenManager;
 import model.Player;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTest {
-
-    final Texture playerImage = new Texture(Gdx.files.internal("assets/sprites/player.png"));
     Player player;
-
-
-    /*
-     * Due to LibGDX using a special file handler that is not
-     * initialized unless an application is run, this code has to run
-     * for the tests to not throw a 'null' error upon running
-     */
-    @BeforeAll
-    static void setup(){
-        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
-        cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
-        Lwjgl3Application lw3 = new Lwjgl3Application(new ScreenManager(), cfg);
-    }
-
 
     @BeforeEach
     void setupPlayer(){
-        player = new Player(0, 0, 0, 0, playerImage, new int[] {Input.Keys.LEFT, Input.Keys.UP, Input.Keys.RIGHT, Input.Keys.DOWN});
+        player = new Player(0, 0, 0, 0);
     }
 
 

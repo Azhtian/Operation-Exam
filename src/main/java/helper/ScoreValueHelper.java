@@ -1,4 +1,4 @@
-package core;
+package helper;
 
 public class ScoreValueHelper {
     public static int getScoreValue(String textureName) {

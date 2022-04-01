@@ -5,13 +5,12 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
-import core.TextureManager;
-import core.PlayerInputManager;
-import core.ScoreValueHelper;
+import helper.TextureManager;
+import helper.PlayerInputManager;
+import helper.ScoreValueHelper;
 
 import java.util.ArrayList;
 
@@ -31,6 +30,10 @@ public class Model {
     private ArrayList<Player> players = new ArrayList<>();
 
 	private int gameScore = 0;
+	private int currentLevel;
+
+	public Model(){
+	}
 
 	public Model(int numberOfPlayers, TiledMap tileMap) {
 		this.tileMap = tileMap;
@@ -137,6 +140,10 @@ public class Model {
 
 	public float getGravity() {
 		return -0.5f;
+	}
+
+	public void addPlayer(Player player){
+		players.add(player);
 	}
 
 	public int getGameScore(){
