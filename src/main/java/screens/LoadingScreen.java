@@ -2,7 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Screen;
 
-import core.ScreenManager;
+import helper.ScreenManager;
 
 public class LoadingScreen implements Screen {
 	//private ScreenManager game;

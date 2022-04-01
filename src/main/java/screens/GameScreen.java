@@ -10,8 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import controls.Controls;
-import core.ScreenManager;
-import core.TextureManager;
+import helper.ScreenManager;
+import helper.TextureManager;
 import model.Enemy;
 import model.Model;
 import model.Player;

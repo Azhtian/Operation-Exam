@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 
-import core.ScreenManager;
+import helper.ScreenManager;
 
 /*
  * This class shows a menu screen with buttons to change to a new screen

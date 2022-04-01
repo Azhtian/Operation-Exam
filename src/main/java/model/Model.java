@@ -5,13 +5,12 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
-import core.TextureManager;
-import core.PlayerInputManager;
-import core.ScoreValueHelper;
+import helper.TextureManager;
+import helper.PlayerInputManager;
+import helper.ScoreValueHelper;
 
 import java.util.ArrayList;
 

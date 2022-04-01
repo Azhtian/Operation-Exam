@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
-import core.ScreenManager;
+import helper.ScreenManager;
 
 public class PreferencesScreen implements Screen {
 	private final ScreenManager game;

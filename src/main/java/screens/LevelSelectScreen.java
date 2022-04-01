@@ -12,17 +12,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import core.ScreenManager;
+import helper.LevelReader;
+import helper.ScreenManager;
 
 public class LevelSelectScreen implements Screen {
 	final ScreenManager game;
 	public final Stage stage;
+	private int numberOfLevels;
 
 	public LevelSelectScreen(ScreenManager game) {
 		this.game = game;
 		stage = new Stage(new ScreenViewport());
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 		stage.draw();
+		numberOfLevels = LevelReader.getLevels();
 	}
 
 	@Override
@@ -35,40 +38,39 @@ public class LevelSelectScreen implements Screen {
 		//table.setDebug(true);
 		stage.addActor(table);
 		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-
 		Label titleLabel = new Label("Select Level", skin, "big");
-		TextButton level1 = new TextButton("1", skin);
-		TextButton level2 = new TextButton("2", skin);
+		table.add(titleLabel).colspan(4);
+		table.row().pad(10, 0, 0 ,0);
+
+		for (int i = 1; i <= numberOfLevels; i++) {
+			TextButton level = new TextButton("" + i, skin);
+			table.add(level).fillX().uniform();
+
+			//Decides how many elements on each row
+			int t = (int) Math.floor(Math.sqrt(numberOfLevels));
+			if (i % t == 0){
+				table.row().pad(10, 0, 0, 0);
+			}
+
+			int finalI = i;
+			level.addListener(new ChangeListener() {
+				@Override
+				public void changed(ChangeEvent event, Actor actor) {
+					game.newGame();
+					game.setLevel(finalI);
+					game.changeScreen(ScreenManager.GAME);
+				}
+			});
+		}
+		table.row().pad(40, 10, 0, 0);
 		TextButton back = new TextButton("Back", skin);
-		table.add(titleLabel);
-        table.row().pad(10,0,0,10);
-		table.add(level1).fillX().uniform();
-        table.row().pad(10,0,0,10);
-		table.add(level2).fillX().uniform();
-        table.row().pad(10,0,0,10);
-        table.add(back).fillX().uniform();
-		
-		level1.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				game.newGame();
-				game.changeScreen(ScreenManager.GAME);
-			}
-		});
-		level2.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				game.newGame();
-				game.setLevel(2);
-				game.changeScreen(ScreenManager.GAME);
-			}
-		});
+		table.add(back).fillX().uniform().colspan(4);
 		back.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				game.changeScreen(ScreenManager.HOME);
 			}
-        });
+		});
 	}
 
 	@Override

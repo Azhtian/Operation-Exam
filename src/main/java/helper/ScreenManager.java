@@ -1,4 +1,4 @@
-package core;
+package helper;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 import controls.Controls;
+import core.AppPreferences;
 import model.Model;
 import screens.*;
 
