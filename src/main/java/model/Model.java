@@ -41,7 +41,8 @@ public class Model {
 		// load images
 		// Texture
 		Texture enemyImage = TextureManager.getTexture("enemyLeft1");
-		Texture playerImage = TextureManager.getTexture("playerImage");
+		Texture playerImage1 = TextureManager.getTexture("player1idle");
+        Texture playerImage2 = TextureManager.getTexture("player2idle");
 		//bombTexture = tileMap.getTileSets().getTile(64).getTextureRegion();
 
 		// Get objects from map
@@ -87,9 +88,14 @@ public class Model {
 					if (numberOfPlayers == players.size()){
 						continue;
 					}
-					Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
-					Player player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage, PlayerInputManager.getControls(players.size()));
-					players.add(player);
+                    Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
+                    Player player;
+                    if (players.size() == 0) {
+                        player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage1, PlayerInputManager.getControls(players.size()));
+                    } else {
+                        player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage2, PlayerInputManager.getControls(players.size()));
+                    }
+                    players.add(player);
 				}
 				else {
 					System.out.println(object.getProperties().get("type") + " not added from map");
