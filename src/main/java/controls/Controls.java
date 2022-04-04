@@ -40,8 +40,11 @@ public class Controls {
 			}
 			// Apply Gravity
 			p.changeYSpeed(model.getGravity());
-			if (p.getYSpeed() > p.getMaxSpeed()) p.getMaxSpeed();
-			else p.changeY(p.getYSpeed());
+			if (p.getYSpeed() > p.getMaxSpeed()) {
+                p.getMaxSpeed();
+            } else {
+                p.changeY(p.getYSpeed());
+            }
 			
 			
 			// player Y constraint
@@ -79,8 +82,9 @@ public class Controls {
 						p.setX(rect.x + rect.width);
 					}
 				}
+                p.setMoving(true);
 			}
-			if (Gdx.input.isKeyPressed(p.getRightControl())){
+			else if (Gdx.input.isKeyPressed(p.getRightControl())){
 				p.changeX(p.getXSpeed());
                 p.setMovingRight(true);
 				for (Platform rect : model.getPlatforms()) {
@@ -88,7 +92,10 @@ public class Controls {
 						p.setX(rect.x - p.getWidth());
 					}
 				}
-			}
+                p.setMoving(true);
+			} else {
+                p.setMoving(false);
+            }
 			// Jump
 			if (Gdx.input.isKeyJustPressed(p.getJumpControl()) && p.isGrounded()) {
 				p.setYSpeed(6.5f); // Using getter for strength here delays the jump for some reason

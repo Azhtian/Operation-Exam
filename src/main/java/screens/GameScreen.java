@@ -39,6 +39,18 @@ public class GameScreen implements Screen {
     private final Texture enemyMovingLeft1;
     private final Texture enemyMovingLeft2;
 
+    private final Texture player1movingRight1;
+    private final Texture player1movingRight2;
+    private final Texture player1movingLeft1;
+    private final Texture player1movingLeft2;
+    private final Texture player1idle;
+
+    private final Texture player2movingRight1;
+    private final Texture player2movingRight2;
+    private final Texture player2movingLeft1;
+    private final Texture player2movingLeft2;
+    private final Texture player2idle;
+
 	public GameScreen(final ScreenManager game, Model model, Controls controls) {
 		this.game = game;
 		this.model = model;
@@ -56,6 +68,18 @@ public class GameScreen implements Screen {
 
         enemyMovingLeft1 = TextureManager.getTexture("enemyLeft1");
         enemyMovingLeft2 = TextureManager.getTexture("enemyLeft2");
+
+        player1movingRight1 = TextureManager.getTexture("player1mvr1");
+        player1movingRight2 = TextureManager.getTexture("player1mvr2");
+        player1movingLeft1 = TextureManager.getTexture("player1mvl1");
+        player1movingLeft2 = TextureManager.getTexture("player1mvl2");
+        player1idle = TextureManager.getTexture("player1idle");
+
+        player2movingRight1 = TextureManager.getTexture("player2mvr1");
+        player2movingRight2 = TextureManager.getTexture("player2mvr2");
+        player2movingLeft1 = TextureManager.getTexture("player2mvl1");
+        player2movingLeft2 = TextureManager.getTexture("player2mvl2");
+        player2idle = TextureManager.getTexture("player2idle");
 
 		// Renderer
 		renderer = new OrthogonalTiledMapRenderer(model.getTileMap());
@@ -85,6 +109,26 @@ public class GameScreen implements Screen {
 		game.batch.begin();
 		for (Player p : model.getPlayers()) {
 			game.batch.draw(p.getPlayerImage(), p.getX(), p.getY(), p.getWidth(), p.getHeight());
+            if (p.updateAnimation() || p.getIdleCounter() > 60 || p.getIdleCounter() == 0) {
+                if (p.equals(model.getPlayers().get(0))) {
+                    if (p.getIdleCounter() > 60) {
+                        controls.changeMobTexture(p, player1idle, player1idle);
+                    } else if (p.getAnimationPointer() == 0) {
+                        controls.changeMobTexture(p, player1movingRight1, player1movingLeft1);
+                    } else {
+                        controls.changeMobTexture(p, player1movingRight2, player1movingLeft2);
+                    }
+                } else {
+                    if (p.getIdleCounter() > 60) {
+                        controls.changeMobTexture(p, player2idle, player2idle);
+                    } else if (p.getAnimationPointer() == 0) {
+                        controls.changeMobTexture(p, player2movingRight1, player2movingLeft1);
+                    } else {
+                        controls.changeMobTexture(p, player2movingRight2, player2movingLeft2);
+                    }
+                }
+            }
+
 			game.font.draw(game.batch, "Score: " + model.getGameScore(), 0, model.getHeight());
 		}
 

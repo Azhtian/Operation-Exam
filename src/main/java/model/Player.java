@@ -11,6 +11,8 @@ public class Player extends Mob {
 	public float width;
 	public float height;
 	private int[] controlSet;
+    private boolean isMoving = false;
+    private int idleCounter = 0;
 	// String playerName;
 
 
@@ -32,8 +34,15 @@ public class Player extends Mob {
 		this.health = maxHealth;
 	}
 
+    public void setMoving(boolean moving){
+        isMoving = moving;
+    }
 
-	public int getLeftControl(){
+    public boolean isMoving() {
+        return isMoving;
+    }
+
+    public int getLeftControl(){
 		return controlSet[0];
 	}
 
@@ -65,4 +74,17 @@ public class Player extends Mob {
 		return maxHealth;
 	}
 
+    public int getIdleCounter() {
+        return idleCounter;
+    }
+
+    @Override
+    public boolean updateAnimation() {
+        if (this.isMoving) {
+            idleCounter = 0;
+            return super.updateAnimation();
+        }
+        idleCounter += 1;
+        return false;
+    }
 }
