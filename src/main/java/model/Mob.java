@@ -9,12 +9,12 @@ public abstract class Mob extends Sprite{
 	private final Rectangle bounds;
 	private boolean grounded;
 	private Texture playerImage;
-	private final float height;
+	private float height;
 	private final float width;
 	private float y;
 	private float x;
 	private float ySpeed;
-	private float xSpeed = 3;
+	private float xSpeed;
 
     private final float gravity;
 
@@ -137,6 +137,10 @@ public abstract class Mob extends Sprite{
 
 	public float getHeight() {
 		return height;
+	}
+	
+	public void setHeight(float height) {
+		this.height = height;
 	}
 
 	public Texture getPlayerImage() {
