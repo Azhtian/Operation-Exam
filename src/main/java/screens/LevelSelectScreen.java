@@ -18,14 +18,13 @@ import helper.ScreenManager;
 public class LevelSelectScreen implements Screen {
 	final ScreenManager game;
 	public final Stage stage;
-	private int numberOfLevels;
+	private int numberOfLevels = LevelReader.getLevels();
 
 	public LevelSelectScreen(ScreenManager game) {
 		this.game = game;
 		stage = new Stage(new ScreenViewport());
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 		stage.draw();
-		numberOfLevels = LevelReader.getLevels();
 	}
 
 	@Override
