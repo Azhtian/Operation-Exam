@@ -12,7 +12,12 @@ public class TextureManager {
             case "enemyRight2" -> new Texture(Gdx.files.internal("assets/sprites/professorMoveRight2.png"));
             case "enemyLeft1" -> new Texture(Gdx.files.internal("assets/sprites/professorMoveLeft1.png"));
             case "enemyLeft2" -> new Texture(Gdx.files.internal("assets/sprites/professorMoveLeft2.png"));
+<<<<<<< HEAD:src/main/java/helper/TextureManager.java
             // Misc
+=======
+            case "stamina" -> new Texture(Gdx.files.internal("assets/sprites/Stamina.png"));
+            case "staminaFrame" -> new Texture(Gdx.files.internal("assets/sprites/StaminaFrame.png"));
+>>>>>>> PlayerMovementOptions:src/main/java/core/TextureManager.java
             case "fullHeart" -> new Texture(Gdx.files.internal("assets/sprites/fullHeartContainer.png"));
             case "emptyHeart" -> new Texture(Gdx.files.internal("assets/sprites/emptyHeartContainer.png"));
             case "playerImage" -> new Texture(Gdx.files.internal("assets/sprites/player.png"));

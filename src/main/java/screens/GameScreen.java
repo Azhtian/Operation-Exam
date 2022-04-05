@@ -31,6 +31,8 @@ public class GameScreen implements Screen {
     private Viewport viewport;
     
     // Texture
+    private final Texture staminaFrame;
+    private final Texture stamina;
     private final Texture fullHeart;
 	private final Texture emptyHeart;
 	private final Controls controls;
@@ -60,6 +62,9 @@ public class GameScreen implements Screen {
 		stage.draw();
 		
 		// Load images
+		staminaFrame = TextureManager.getTexture("staminaFrame");
+		stamina = TextureManager.getTexture("stamina");
+		
 		fullHeart = TextureManager.getTexture("fullHeart");
 		emptyHeart = TextureManager.getTexture("emptyHeart");
 
@@ -152,8 +157,15 @@ public class GameScreen implements Screen {
 				game.batch.draw(item.getImage(), item.getX(), item.getY());
 			}
 		}
-
-
+		
+		// Draw stamina bar
+		int playerNumber = 0;
+		for (Player p : model.getPlayers()){
+			game.batch.draw(staminaFrame, model.getWidth()-150-playerNumber*150, model.getHeight()-65, 100, 40);
+			game.batch.draw(stamina, model.getWidth()-140 -playerNumber*150, model.getHeight()-65, p.getStamina(), 40);
+			playerNumber += 1;
+		}
+		
 		// Draw heart containers
 		for (int iter = 0; iter < model.getPlayers().get(0).getMaxHealth(); iter++){
 			if (iter < model.getPlayers().get(0).getHealth()) {

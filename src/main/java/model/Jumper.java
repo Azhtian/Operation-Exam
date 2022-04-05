@@ -20,7 +20,7 @@ public class Jumper extends Enemy{
 		super(x, y, width, height, image);
 		
 		this.setMoveSpeed((float)1.2);
-		this.setJumpStrength(10);
+		this.setJumpStrength(6);
 		this.sensor = new Rectangle(0, 0, (float) (width * 0.75), 16);
 	}
 	
