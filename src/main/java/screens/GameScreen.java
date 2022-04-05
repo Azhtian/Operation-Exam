@@ -111,9 +111,13 @@ public class GameScreen implements Screen {
 		}
 		
 		// Draw stamina bar
-		game.batch.draw(staminaFrame, model.getWidth()-150, model.getHeight()-65, 100, 40);
-		game.batch.draw(stamina, model.getWidth()-140, model.getHeight()-65, model.getPlayers().get(0).getStamina(), 40);
-
+		int playerNumber = 0;
+		for (Player p : model.getPlayers()){
+			game.batch.draw(staminaFrame, model.getWidth()-150-playerNumber*150, model.getHeight()-65, 100, 40);
+			game.batch.draw(stamina, model.getWidth()-140 -playerNumber*150, model.getHeight()-65, p.getStamina(), 40);
+			playerNumber += 1;
+		}
+		
 		// Draw heart containers
 		for (int iter = 0; iter < model.getPlayers().get(0).getMaxHealth(); iter++){
 			if (iter < model.getPlayers().get(0).getHealth()) {
