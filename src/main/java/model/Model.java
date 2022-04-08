@@ -49,11 +49,20 @@ public class Model {
 		MapObjects objects = tileMap.getLayers().get("objects").getObjects();
 		for (MapObject object : objects) {
 			if (object instanceof RectangleMapObject) {
+				if (object.getProperties().get("type") == null){
+					continue;
+				}
 				if (object.getProperties().get("type").equals("Platform")) {
+					com.badlogic.gdx.maps.MapProperties o = object.getProperties();
 					Boolean thin = false;
-					if (object.getProperties().get("thin").equals(true)) {
-						thin = true;
+					try{
+						if (object.getProperties().get("thin").equals(true)) {
+							thin = true;
+						}
 					}
+					catch(Exception e){
+					}
+
 					Platform rect = new Platform(((RectangleMapObject) object).getRectangle(), thin);
 					platforms.add(rect);
 				}

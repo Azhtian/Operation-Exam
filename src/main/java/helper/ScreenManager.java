@@ -89,6 +89,7 @@ public class ScreenManager extends Game {
 				}
 				//If level does not exist assume player has completed the game
 				catch (Exception e){
+					System.out.println(e);
 					this.changeScreen(GAMEFINISHED);
 				}
 			}
