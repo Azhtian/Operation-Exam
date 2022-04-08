@@ -165,15 +165,17 @@ public class GameScreen implements Screen {
 			game.batch.draw(stamina, model.getWidth()-140 -playerNumber*150, model.getHeight()-65, p.getStamina(), 40);
 			playerNumber += 1;
 		}
-		
-		// Draw heart containers
-		for (int iter = 0; iter < model.getPlayers().get(0).getMaxHealth(); iter++){
-			if (iter < model.getPlayers().get(0).getHealth()) {
-				game.batch.draw(fullHeart, 5 + iter * (30 + 5), model.getHeight() - 50, 30, 30);
-			} else {
-				game.batch.draw(emptyHeart, 5 + iter * (30 + 5), model.getHeight() - 50, 30, 30);
-			}
-		}
+
+        // Draw heart containers
+        for (int i = 0; i < model.getPlayers().size(); i++) {
+            for (int iter = 0; iter < model.getPlayers().get(0).getMaxHealth(); iter++) {
+                if (iter < model.getPlayers().get(i).getHealth()) {
+                    game.batch.draw(fullHeart, 5 + iter * (30 + 5), model.getHeight() - 50 - i*(28), 30, 30);
+                } else {
+                    game.batch.draw(emptyHeart, 5 + iter * (30 + 5), model.getHeight() - 50 - i*(28), 30, 30);
+                }
+            }
+        }
 		// TODO Put FPS counter in preference
 		//game.font.draw(game.batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);	
 		game.batch.end();
