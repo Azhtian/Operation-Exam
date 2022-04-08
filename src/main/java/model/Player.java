@@ -34,6 +34,7 @@ public class Player extends Mob {
 		this.health = this.maxHealth;
 		this.setJumpStrength(10);
 		this.health = maxHealth;
+		this.stamina = this.getMaxStamina();
 	}
 
 	public Player(float x, float y, float width, float height, Texture playerImage, int[] controlSet) {
