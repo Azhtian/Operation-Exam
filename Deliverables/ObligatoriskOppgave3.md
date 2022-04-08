@@ -85,7 +85,7 @@ Dropp multiplayer fra MVP om dere velger noe annet her ;)
   * Vi ønsker å implementere en boss-fiende som kan være på den siste banen. Dette vil gi oss en mer tilfredsstillende avslutning. Denne vil ikke være klar før Oblig 4, men vi har implementert lokal flerspiller, som var det forrige stretch-goalet .
 
 
-# MVP
+## MVP
 [Brukerhistorier](./Deliverables/brukerhistorier3.md)
 * Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang. Er dere kommet forbi MVP? Forklar hvordan dere prioriterer ny funksjonalitet.
   * Vi har oppnådd MVP, og jobber nå hovedsakelig med å ferdigstille det produktet vi allerede har. Ny funksjonalitet havner derfor lengre bak i køen, og bug-fixing og forbedringer av brukeropplevelsen prioriteres.
@@ -128,4 +128,54 @@ Dropp multiplayer fra MVP om dere velger noe annet her ;)
   * Ved å bruke et slikt analyseverktøy så vi at vi hadde en del imports som ikke ble brukt, samt et par steder hvor kode var mer eller mindre duplisert. Dette er noe vi kommer til å jobbe med å redusere fremover.
   * Ved hjelp av `spotbugs` så vi også at det var en del optimalisering vi kunne gjøre, samt noe kode som ble klassifisert som “dodgy”. Dette er noe vi vil arbeide med å fikse.
 
-## Vedlegg Møtereferat
+
+# Vedlegg Møtereferat
+
+### Møtereferat 29.03.2022
+
+Til stede: Marius, Daniel, Sondre, Marita (Discord), Stian (Discord)  
+
+Marius foreslår å refaktorere mob-classen slik at den ikke avhenger av en Texture  
+Foreslår jevnere fokus på oblig 3 - begynne med å sette opp akseptansekriterier. 
+Diskuterer om vi skal endre hvordan kamera og spiller interagerer  
+  - Innspill om å fokusere på fremgangsmåte tester over ny funksjonalitet  
+Prioritere tester og testdekning sammen med brukerhistorier  
+Diskuterer hvordan vi kan lettere endre klasser slik at de blir testbare  
+  - Kommer til å prøve flere løsninger, men lage en ny initializer som ikke tar noen argument virker som en potensielt god ide. 
+
+
+Videre arbeid:  
+Marius - Refaktorere mob-klassen og dens avhengigheter til å ikke avhenge av en Texture  
+Daniel - Legge til på player movement (dash, crouch)  
+
+
+### Møtereferat 01.04.2022
+
+Digitalt discord møte; alle møtte, Marita er syk og delto ikke.
+
+
+Stian jobber med enveisplatformer; dersom spilleren beveger seg for fort hver frame så vil den gå gjennom platformen. Spillerens hastighet er derfor redusert.  
+Daniel jobber med å forbedre player movement, og flytter en del fra controls til spilleren. Control kaller derfor på player.doAction() for å få spilleren til å gjøre det den ønsker. 
+Marius jobber med "level select" skjermen, slik at vi lettere kan legge til flere leveler. Alle skal lage en level hver. 
+
+
+Til neste gang:  
+Folk jobber videre med det de var begynt på.  
+Sondre - Se om han får laget en player-sprite  
+Dersom man blir ferdige : begynne på oblig 3  
+
+
+### Møtereferat 05.04.2022
+
+Til stede: Daniel, Sondre  
+
+Daniel presenterer hva han har gjort med player movement - ved å ha lagt til dash og sprint.  
+Marius viser hvordan han har endret screenmanager til å støtte flere leveller dynamisk. Det blir da lettere å legge til flere levler. Han har også lagt til en ny level  
+Sondre viste hva han hadde gjort med player sprites, og hvordan han ønsker å fikse screen-resizing.  
+
+
+
+Jobbe med: Obligatorisk innlevering 3  
+
+
+
