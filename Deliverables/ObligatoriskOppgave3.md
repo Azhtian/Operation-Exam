@@ -2,6 +2,15 @@
 
 * Team: *Biosoft productions* (Gruppe 2, Team 3) *Marius Lokøen Hatland, Stian Adrian Rykkje, Marita Aakre, Daniel Beadle, Sondre Nordmoen*
 
+### Innhold 
+
+[Deloppgave 1](##deloppgave-1)  
+[Deloppgave 2](##deloppgave-2)  
+[Deloppgave 3](##deloppgave-3)  
+[MVP](##mvp)  
+[Møtereferat](#vedlegg-møtereferat)  
+[Brukerhistorier og akseptansekriterier](brukerhistorier-og-akseptansekriterier)  
+
 
 ###  Rollefordeling:
 
@@ -86,13 +95,13 @@ Dropp multiplayer fra MVP om dere velger noe annet her ;)
 
 
 ## MVP
-[Brukerhistorier](#brukerhistorier)
+[Brukerhistorier](#brukerhistorier-og-akseptansekriterier) ligger på bunn av filen
 * Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang. Er dere kommet forbi MVP? Forklar hvordan dere prioriterer ny funksjonalitet.
   * Vi har oppnådd MVP, og jobber nå hovedsakelig med å ferdigstille det produktet vi allerede har. Ny funksjonalitet havner derfor lengre bak i køen, og bug-fixing og forbedringer av brukeropplevelsen prioriteres.
 
 * For hvert krav dere jobber med, må dere lage 1) ordentlige brukerhistorier, 2) akseptansekriterier og 3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
 
-  * Fullførte krav fra MVP liste \([Original MVP-liste](./ObligatoriskOppgave1.md#Brukerhistoriermvp)\)
+  * Fullførte krav fra MVP liste \([Original MVP-liste](./ObligatoriskOppgave1.md#brukerhistoriermvp)\)
     * Vise spillbrett, spiller, og fiender på spillbrettet fungerer uten feil. Spillere og fiender har den størrelsen de fremstår som på spillbrettet.
     * Spiller kan interagere med terreng og kan bevege seg ved hjelp av piltastene. Dette fungerer også uten problem. Spiller kan også kun hoppe når spiller står på bakken.
     * Spiller interagerer også med poenggjenstander, og har en poengteller man kan lese av.
@@ -130,6 +139,8 @@ Dropp multiplayer fra MVP om dere velger noe annet her ;)
 
 
 # Vedlegg Møtereferat
+
+[Top](#oblig-3-operation-exam)
 
 ### Møtereferat 29.03.2022
 
@@ -178,7 +189,9 @@ Sondre viste hva han hadde gjort med player sprites, og hvordan han ønsker å f
 Jobbe med: Obligatorisk innlevering 3  
 
 
-# Brukerhistorier
+# Brukerhistorier og akseptansekriterier
+
+[Top](#oblig-3-operation-exam)
 
 ## Brukerhistorier:
 
