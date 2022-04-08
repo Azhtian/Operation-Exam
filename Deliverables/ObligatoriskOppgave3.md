@@ -75,6 +75,7 @@ Alle har bidratt jevnt til kommunikasjon og deltatt på møter. Alle har hatt go
 * Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også designfiler)
   * Antall commits er ikke representativt for hvor mye noen bidrar til teamet. 
     * Det viser seg at Sondre har mange flere commits enn mange andre i gruppen. Dette har mye med at han ofte fikser merge-conflicts, eller committer små feilrettinger. Dette gjør at han får mange flere commits på mindre størrelse, mens andre i gruppen ofte har større endringer i kodebasen.
+    * Ved å gjøre svarene om til markdown format får man lett mange commits, da det er mange småting å endre på hele tiden. Dette har også gjort at Sondre har flere commits. 
     * Daniel, som er en av dem med færrest commits har restrukturert hele kodebasen, og har veldig ofte store endringer i kodestruktur.
     * Marita er også i samme kategori som Daniel, hvor hun har gjort store endringer når hun committer. Hun er ansvarlig for å ha laget hele `ScreenManager` systemet vi bruker.
 
@@ -198,7 +199,8 @@ Jobbe med: Obligatorisk innlevering 3
 
 # Brukerhistorier og akseptansekriterier
 
-[Top](#oblig-3-operation-exam)
+[Top](#oblig-3-operation-exam)  
+[Original MVP-liste](./ObligatoriskOppgave1.md#brukerhistoriermvp) 
 
 ## Brukerhistorier:
 
