@@ -4,12 +4,12 @@
 
 ### Innhold 
 
-[Deloppgave 1](##deloppgave-1)  
-[Deloppgave 2](##deloppgave-2)  
-[Deloppgave 3](##deloppgave-3)  
-[MVP](##mvp)  
+[Deloppgave 1](#deloppgave-1)  
+[Deloppgave 2](#deloppgave-2)  
+[Deloppgave 3](#deloppgave-3)  
+[MVP](#mvp)  
 [Møtereferat](#vedlegg-møtereferat)  
-[Brukerhistorier og akseptansekriterier](brukerhistorier-og-akseptansekriterier)  
+[Brukerhistorier og akseptansekriterier](#brukerhistorier-og-akseptansekriterier)  
 
 
 ###  Rollefordeling:
@@ -78,7 +78,7 @@ Alle har bidratt jevnt til kommunikasjon og deltatt på møter. Alle har hatt go
 
 
 * Referat fra møter siden forrige leveranse skal legges ved (mange av punktene over er typisk ting som havner i referat) 
-  * [Referat](vedlegg-møtereferat) ligger vedlagt i bunnen
+  * [Referat](#vedlegg-møtereferat) ligger vedlagt i bunnen
 
 * Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint.
 
