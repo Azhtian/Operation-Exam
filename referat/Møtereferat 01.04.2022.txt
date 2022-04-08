@@ -1,0 +1,15 @@
+Møtereferat 01.04.2022
+
+Digitalt discord møte; alle møtte, Marita er syk og delto ikke.
+
+
+Stian jobber med enveisplatformer; dersom spilleren beveger seg for fort hver frame så vil den gå gjennom platformen. Spillerens hastighet er derfor redusert.
+Daniel jobber med å forbedre player movement, og flytter en del fra controls til spilleren. Control kaller derfor på player.doAction() for å få spilleren til å gjøre det den ønsker. 
+Marius jobber med "level select" skjermen, slik at vi lettere kan legge til flere leveler. Alle skal lage en level hver. 
+
+
+Til neste gang:
+Folk jobber videre med det de var begynt på.
+Sondre - Se om han får laget en player-sprite
+Dersom man blir ferdige : begynne på oblig 3
+
