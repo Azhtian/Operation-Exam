@@ -69,7 +69,7 @@ Alle har bidratt jevnt til kommunikasjon og deltatt på møter. Alle har hatt go
 
 
 * Referat fra møter siden forrige leveranse skal legges ved (mange av punktene over er typisk ting som havner i referat) 
-  * Referat ligger vedlagt i bunnen
+  * [Referat](vedlegg-møtereferat) ligger vedlagt i bunnen
 
 * Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint.
 
@@ -86,13 +86,13 @@ Dropp multiplayer fra MVP om dere velger noe annet her ;)
 
 
 ## MVP
-[Brukerhistorier](./Deliverables/brukerhistorier3.md)
+[Brukerhistorier](#brukerhistorier)
 * Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang. Er dere kommet forbi MVP? Forklar hvordan dere prioriterer ny funksjonalitet.
   * Vi har oppnådd MVP, og jobber nå hovedsakelig med å ferdigstille det produktet vi allerede har. Ny funksjonalitet havner derfor lengre bak i køen, og bug-fixing og forbedringer av brukeropplevelsen prioriteres.
 
 * For hvert krav dere jobber med, må dere lage 1) ordentlige brukerhistorier, 2) akseptansekriterier og 3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
 
-  * Fullførte krav fra MVP liste
+  * Fullførte krav fra MVP liste \([Original MVP-liste](./ObligatoriskOppgave1.md#Brukerhistoriermvp)\)
     * Vise spillbrett, spiller, og fiender på spillbrettet fungerer uten feil. Spillere og fiender har den størrelsen de fremstår som på spillbrettet.
     * Spiller kan interagere med terreng og kan bevege seg ved hjelp av piltastene. Dette fungerer også uten problem. Spiller kan også kun hoppe når spiller står på bakken.
     * Spiller interagerer også med poenggjenstander, og har en poengteller man kan lese av.
@@ -178,4 +178,57 @@ Sondre viste hva han hadde gjort med player sprites, og hvordan han ønsker å f
 Jobbe med: Obligatorisk innlevering 3  
 
 
+# Brukerhistorier
 
+## Brukerhistorier:
+
+### Player movement
+
+Som spillet ønsker jeg å ha kontroll på om karakteren dukker eller ikke for å vite hvor høy hit-boxen til spilleren skal være.  
+Som spillet ønsker jeg å vite om spilleren dasher slik at jeg kan vite om jeg skal kjøre dash-movement eller vanlig movement.  
+Som spillet ønsker jeg å vite om spilleren sprinter slik at jeg kan vite hvor fort spilleren skal flyttes.  
+Som spiller ønsker jeg å vite hvordan karakteren beveger seg for å kunne gi de beste inputene for å klare spillet.  
+
+### Neste level
+
+Som spiller trenger jeg å enkelt kunne navigere til neste level når jeg har fullført målet for gjeldende level slik at jeg kan ha framgang og fortsette spillet.  
+Som utvikler trenger jeg at det er enkelt å legge inn nye levels slik at jeg ikke må bruke lang tid på å legge til knapper og hard-kode inn verdier hver gang et nytt level opprettes. Dette gjør at jeg kan fokusere på å level-design og enkelt kan utvide spillet.  
+
+
+### Player Sprite
+
+Som spiller ønsker jeg å se karakteren min, slik at jeg vet hvem jeg er.  
+Som spiller ønsker jeg å ha forskjellig utseende fra fiender, slik at jeg vet hvem jeg er.  
+Som  spiller 1 ønsker jeg å ha forskjellig utseende fra spiller 2 slik at jeg vet hvem jeg er.  
+Som spiller 2 ønsker jeg å ha forskjellig utseende fra spiller 1 slik at jeg vet hvem jeg er.  
+Som spiller ønsker jeg å kunne se på karakteren om spillet registrerer det jeg trykker.  
+Som spiller ønsker jeg å vite hvilken retning karakteren min beveger seg i visuelt.  
+
+### Player health
+Som spiller ønsker jeg å vite hvor mye liv jeg har slik at jeg vet hvor nær jeg er å tape.  
+Som spill ønsker jeg å vite hvor mye liv spillerne har slik at jeg vet når de taper.  
+Som spill ønsker jeg å vite når spiller taper slik at de får beskjed.  
+Som spill ønsker jeg å kunne avslutte spillet når spiller taper.  
+
+
+## Akseptansekriterier:
+
+### Player Movement
+Alle spillere skal kunne dukke, hoppe og sprinte. Sprint og hopp skal bruke stramina. Stamina skal regenereres over tid. Hit boksen til spilleren skal bli mindre nå spilleren dukker. Spilleren skal ikke kunne sprinteog dukke samtidig. Sprint skal øke spillerens hastighet. Dash skal bevege spilleren fort et kort stykke i x retning. Spilleren skal kun få gjøre bevegelser som koster stamina om den har nok stamina
+
+
+### Neste level
+
+Når level er ferdig skal det komme opp en skjerm som sier at du har fullført levelet og det skal være en knapp som tar deg videre til neste level.  
+Når man har fullført det siste levelet skal man komme til en game finished screen.
+
+
+### Player sprite
+
+Når spilleren trykker på venstre eller høyre piltast skal spilleren snu seg i den retningen man trykker. Dersom spiller trykker høyre piltast skal spiller snu seg mot høyre og bevege seg mot høyre (om mulig). Dersom spiller trykker venstre piltast skal spiller snu seg mot venstre og bevege seg mot venstre (om mulig). Dersom spiller ikke beveger seg mot venstre eller høyre skal spilleren snu seg mot skjermen slik at man vet man står i ro. 
+Spiller 1 skal ha et utseende som ikke er likt spiller 2. Både spiller 1 og spiller 2 skal være forskjellige fra fiender og lett kunne skilles. 
+
+
+### Player health
+
+Spillet skal vise hvor mye liv spilleren har oppe i venstre hjørne sammen med hvor mye liv spilleren kan ha. Når antall liv når 0, skal spilleren tape og skal få beskjed om dette. Når spilleren taper skal spillet ikke kunne fortsettes fra der man tapte, man må enten starte banen på ny eller velge en annen bane. 
