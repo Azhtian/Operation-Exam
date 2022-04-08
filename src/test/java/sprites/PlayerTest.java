@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
     Player player;
@@ -49,5 +50,30 @@ public class PlayerTest {
         assertEquals(rect.getY(), player.getY());
     }
 
-
+    @Test
+    void testAddStamina() {
+    	float temp = player.getStamina();
+    	player.addStamina();
+    	assertEquals(temp, player.getStamina());
+    	player.exhaustStamina(10);
+    	temp = player.getStamina();
+    	player.addStamina();
+    	assertTrue(temp < player.getStamina());
+    }
+    
+    @Test
+    void testCrouch() {
+    	player.stand();
+    	float temp = player.getHeight();
+    	player.crouch();
+    	assertTrue(temp > player.getHeight());
+    	player.stand();
+    	assertEquals(temp, player.getHeight());
+    }
+    
+    @Test
+    void testExhaustStamina() {
+    	player.exhaustStamina(10);
+    	assertEquals(player.getStamina(), player.getMaxStamina()-10);
+    }
 }
