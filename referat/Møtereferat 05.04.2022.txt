@@ -1,0 +1,12 @@
+Møtereferat 05.04.2022
+
+Til stede: Daniel, Sondre
+
+Daniel presenterer hva han har gjort med player movement - ved å ha lagt til dash og sprint. 
+Marius viser hvordan han har endret screenmanager til å støtte flere leveller dynamisk. Det blir da lettere å legge til flere levler. Han har også lagt til en ny level 
+Sondre viste hva han hadde gjort med player sprites, og hvordan han ønsker å fikse screen-resizing. 
+
+
+
+Jobbe med: Obligatorisk innlevering 3
+
