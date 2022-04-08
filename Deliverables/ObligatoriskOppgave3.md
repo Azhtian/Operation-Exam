@@ -33,6 +33,8 @@
 
 ## Deloppgave 1
 
+[Top](#oblig-3-operation-exam)  
+
 * Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamlead eller kundekontakt?
 Trenger dere andre roller? Skriv ned noen linjer om hva de ulike rollene faktisk innebærer for dere.
   * Rollene har fungert bra. I denne omgang har vi valgt å ikke oppdatere rollene. Vi merket at endringene vi bestemte oss for forrige oblig har hjulpet oss og det har fungert bedre.
@@ -87,7 +89,10 @@ Alle har bidratt jevnt til kommunikasjon og deltatt på møter. Alle har hatt go
   * Vi har lyst å lage et ferdigstilt produkt. Til nå har vi hatt en del uferdige funksjonaliteter som vi har latt bli i prosjektet. Siden neste innlevering er den siste, har vi lyst å passe på at alt fungerer på en god måte til slutt.
   * Det siste vi ønsker å forbedre er test-coverage. Flere tester, automatiske tester og bedre tester generelt. Mange av testene våre har til nå vært manuelle tester. 
 
+
 ## Deloppgave 2
+
+[Top](#oblig-3-operation-exam)  
 
 * Bestem dere for én litt mer avansert ting som dere vil prøve å få til utover et vanlig single-player platform spill. Dette kan være f.eks.: multiplayer (på samme maskin eller over nett), å porte til en annen platform (Android eller Web, f.eks.), å bytte ut grafikk-frontenden, e.l.
 Dropp multiplayer fra MVP om dere velger noe annet her ;)
@@ -114,6 +119,8 @@ Dropp multiplayer fra MVP om dere velger noe annet her ;)
 
 
 ## Deloppgave 3
+
+[Top](#oblig-3-operation-exam)  
 
 * Utbedring av feil: hvis dere har rettet / forbedret noe som dere har fått trekk for tidligere, lag en liste med «Dette har vi fikset siden sist», så det er lett for gruppelederne å få oversikt.
   * Vi har gjort utbedringer på alle elemente vi fikk tilbakemelding på av gruppeleder.
