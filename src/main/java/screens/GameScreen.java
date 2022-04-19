@@ -148,6 +148,9 @@ public class GameScreen implements Screen {
             }
 
         }
+		
+		// Draw foreground elements in front of player
+		renderer.render(new int[] {6});
 
 		//Draw score items
 		if (model.getScoreItems() != null) {

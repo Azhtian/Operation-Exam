@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class Model {
 	
-	private final int width = 1280;
-	private final int height = 320;
+	private final int width = 800;
+	private final int height = 400;
 
 	private int screen = 4;
 
