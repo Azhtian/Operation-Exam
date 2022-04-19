@@ -8,4 +8,4 @@ Gikk gjennom trello for å sette prioritetsliste.
  - Stretch-goal
  - Nye funksjonaliteter
 
-
+Alle som ikke har lagd en level til neste gang lager en level til fredag.
