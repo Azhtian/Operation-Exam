@@ -1,5 +1,6 @@
 package model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -55,12 +56,8 @@ public class Model {
 				if (object.getProperties().get("type").equals("Platform")) {
 					com.badlogic.gdx.maps.MapProperties o = object.getProperties();
 					Boolean thin = false;
-					try{
-						if (object.getProperties().get("thin").equals(true)) {
-							thin = true;
-						}
-					}
-					catch(Exception e){
+					if (object.getProperties().containsKey("thin") && object.getProperties().get("thin").equals(true)) {
+						thin = true;
 					}
 
 					Platform rect = new Platform(((RectangleMapObject) object).getRectangle(), thin);
