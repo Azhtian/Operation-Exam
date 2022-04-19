@@ -14,12 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import controls.Controls;
 import helper.ScreenManager;
 import helper.TextureManager;
-import model.Enemy;
-import model.Model;
-import model.Player;
-
-
-import model.Item;
+import model.*;
 
 public class GameScreen implements Screen {
 	private final ScreenManager game;
@@ -140,6 +135,9 @@ public class GameScreen implements Screen {
 
         // Updates enemy texture every 20 frames
 		for (Enemy e : model.getEnemies()) {
+			if(e instanceof Stationary){
+				continue;
+			}
 			game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
             if (e.updateAnimation()){
                 if (e.getAnimationPointer() == 0) {
