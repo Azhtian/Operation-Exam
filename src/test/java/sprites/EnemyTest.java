@@ -53,5 +53,38 @@ public class EnemyTest {
         enemy.changeX(10);
         enemy.doMovement(model);
         assertNotEquals(0, enemy.getX());
+
+        enemy.setWasMovingRight(true);
+        enemy.setMovingRight(false);
+        assertTrue(enemy.getWasMovingRight());
+        assertFalse(enemy.getMovingRight());
+    }
+
+    @Test
+    void enemyAnimationCounter(){
+        Enemy enemy = new Walker(0, 0, 16, 16);
+
+        enemy.setMovingRight(true);
+        enemy.setWasMovingRight(true);
+        assertEquals(enemy.getAnimationCounter(), 0);
+        assertEquals(enemy.getAnimationPointer(), 0);
+
+        assertFalse(enemy.updateAnimation());
+
+        assertEquals(enemy.getAnimationCounter(), 1);
+        assertEquals(enemy.getAnimationPointer(), 0);
+        for (int i = 0; i < 18; i++){
+            enemy.updateAnimation();
+        }
+        assertTrue(enemy.updateAnimation());
+        assertEquals(enemy.getAnimationCounter(), 0);
+        assertEquals(enemy.getAnimationPointer(), 1);
+
+        enemy.updateAnimation();
+        assertNotEquals(enemy.getAnimationCounter(),0);
+
+        enemy.setMovingRight(false);
+        assertTrue(enemy.updateAnimation());
+        assertEquals(enemy.getAnimationCounter(), 0);
     }
 }
