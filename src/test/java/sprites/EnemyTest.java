@@ -27,6 +27,9 @@ public class EnemyTest {
     @Test
     void runnerRuns(){
         Runner runner = new Runner(70, 0, 16, 16);
+        runner.doMovement(model);
+        assertEquals(1.2f, runner.getMoveSpeed());
+
         Player player = new Player(113, 0, 16, 16);
         model.addPlayer(player);
 
@@ -34,8 +37,13 @@ public class EnemyTest {
 
         runner.findClosePlayer(model);
         runner.doMovement(model);
+        //runner.doAction();
 
         assertNotEquals(moveSpeed, runner.getMoveSpeed());
+
+        player.setPos(50, 0);
+        runner.doMovement(model);
+        assertFalse(runner.getMovingRight());
     }
 
     @Test
