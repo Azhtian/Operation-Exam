@@ -92,7 +92,9 @@ public class ScreenManager extends Game {
 					System.out.println(e);
 					this.changeScreen(GAMEFINISHED);
 				}
-			}
+			} else {
+                this.setScreen(gameScreen);
+            }
 			break;
 		case PAUSE:
 			if (pauseScreen == null) pauseScreen = new PauseScreen(this);

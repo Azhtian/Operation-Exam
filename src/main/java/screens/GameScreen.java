@@ -98,6 +98,11 @@ public class GameScreen implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 		//camera.position.set(Gdx.input.getX(), model.getHeight()-Gdx.input.getY(), 3); // centers the camera to middle of board instead of (by default) window.
+
+		//Makes camera follow player
+//		camera.position.x = model.getPlayers().get(0).getX();
+//		camera.position.y = model.getPlayers().get(0).getY();
+//		camera.update();
 		
 		// render tilemap
 		renderer.setView(camera);
