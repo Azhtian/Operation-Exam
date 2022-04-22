@@ -324,11 +324,6 @@
     <property name="thin" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="157" name="Runner" type="Enemy" x="554.524" y="53.2468" width="16" height="24">
-   <properties>
-    <property name="stationary" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="158" name="Runner" type="Enemy" x="395.971" y="257.03" width="16" height="24">
    <properties>
     <property name="stationary" type="bool" value="false"/>
