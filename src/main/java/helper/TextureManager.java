@@ -3,6 +3,9 @@ package helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * This class handles textures
+ */
 public class TextureManager {
     public static Texture getTexture(String textureName){
         return switch (textureName) {

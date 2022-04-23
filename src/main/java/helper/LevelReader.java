@@ -3,6 +3,10 @@ package helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
+/**
+ * This class handles the number of game levels
+ */
+
 public class LevelReader {
     public static int getLevels(){
         int numberOfLevels = 0;
