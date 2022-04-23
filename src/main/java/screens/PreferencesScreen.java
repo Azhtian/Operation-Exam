@@ -1,18 +1,11 @@
 package screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import helper.ScreenManager;
 
@@ -24,19 +17,21 @@ public class PreferencesScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
-		// Creating volume sliders
+        super.show();
+
+        // Creating volume sliders
         final Slider musicVolumeSlider = new Slider( 0f, 1f, 0.1f, false, skin );
-		musicVolumeSlider.setValue(game.getPreferences().getMusicVolume());
+        musicVolumeSlider.setValue(game.getPreferences().getMusicVolume());
         musicVolumeSlider.addListener(event -> {
-			game.getPreferences().setMusicVolume(musicVolumeSlider.getValue());
-return false;
-});       
+        	game.getPreferences().setMusicVolume(musicVolumeSlider.getValue());
+        	return false;
+        });       
         final Slider soundVolumeSlider = new Slider( 0f, 1f, 0.1f, false, skin );
         soundVolumeSlider.setValue(game.getPreferences().getSoundVolume() );
         soundVolumeSlider.addListener(event -> {
-			game.getPreferences().setSoundVolume(soundVolumeSlider.getValue() );
-return false;
-});
+        	game.getPreferences().setSoundVolume(soundVolumeSlider.getValue() );
+        	return false;
+        });
         
         // Creating on/off checkboxes
         final CheckBox musicCheckbox = new CheckBox(null, skin);

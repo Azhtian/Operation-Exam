@@ -17,6 +17,8 @@ public class LevelSelectScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
+        super.show();
+
 		Label titleLabel = new Label("Select Level", skin, "big");
 		table.add(titleLabel).colspan(4);
 		table.row().pad(10, 0, 0 ,0);

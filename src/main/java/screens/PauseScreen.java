@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+
 import helper.ScreenManager;
 
 public class PauseScreen extends AbstractScreen {
@@ -14,13 +15,12 @@ public class PauseScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
-		
+        super.show();
+
 		TextButton continueButton = new TextButton("Continue", skin);
 		TextButton levelSelect = new TextButton("Level Select", skin);
 		TextButton home = new TextButton("Main Menu", skin);
 		Label titleLabel = new Label( "Game paused", skin, "big");
-		TextButton newGame = new TextButton("New Game", skin);
-		TextButton exit = new TextButton("Exit", skin);
   
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);

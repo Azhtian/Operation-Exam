@@ -14,7 +14,9 @@ public class GameFinishedScreen extends AbstractScreen {
     }
 
 	@Override
-	public void show() {		
+	public void show() {	
+        super.show();
+
 		Label titleLabel = new Label("You completed the whole game !", skin, "big");
         
 		table.add(titleLabel);
