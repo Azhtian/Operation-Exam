@@ -16,30 +16,14 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import helper.ScreenManager;
 
-public class PreferencesScreen implements Screen {
-	private final ScreenManager game;
-	private final Stage stage;
+public class PreferencesScreen extends AbstractScreen {
 
 	public PreferencesScreen(ScreenManager game) {
-		this.game = game;
-		stage = new Stage(new StretchViewport(1200,480));
-		
-		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
-		stage.draw();
+		super(game);
 	}
 
 	@Override
 	public void show() {
-		stage.clear();
-		Gdx.input.setInputProcessor(stage);
-		
-		Table table = new Table();
-		table.setFillParent(true);
-		//table.setDebug(true);
-		stage.addActor(table);
-		
-		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-		
 		// Creating volume sliders
         final Slider musicVolumeSlider = new Slider( 0f, 1f, 0.1f, false, skin );
 		musicVolumeSlider.setValue(game.getPreferences().getMusicVolume());
@@ -102,41 +86,6 @@ return false;
         table.add(soundCheckbox);
         table.row().pad(10,0,0,10);
         table.add(backButton);
-	}
-
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-		stage.draw();
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		stage.getViewport().update(width, height, true);
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void dispose() {
 	}
 
 }
