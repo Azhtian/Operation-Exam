@@ -33,11 +33,11 @@ public abstract class AbstractScreen implements Screen {
         stage.clear();
         Gdx.input.setInputProcessor(stage);
         
-        Table table = new Table(); // A table helps place content on the screen 
+        table = new Table(); // A table helps place content on the screen 
 		table.setFillParent(true);
 		//table.setDebug(true); // Checks how elements in table are lined up
 		stage.addActor(table);
-		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
+		skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
     }
 
     @Override
