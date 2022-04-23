@@ -45,11 +45,8 @@ public class ScreenManager extends Game {
 
 	@Override
 	public void create() {
-//		batch = new SpriteBatch();
-//		font = new BitmapFont();
-		// Setting the default screen
-		LoadingScreen loadingScreen = new LoadingScreen(this);
-		setScreen(loadingScreen);
+		HomeScreen homeScreen = new HomeScreen(this);
+		setScreen(homeScreen);
 		preferences = new AppPreferences();
 	}
 
