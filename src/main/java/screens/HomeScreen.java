@@ -24,17 +24,12 @@ import helper.ScreenManager;
 public class HomeScreen implements Screen {
 
 	final ScreenManager game;
-//	OrthographicCamera camera;
 	public final Stage stage;
-
+	
 	public HomeScreen(ScreenManager game) {
 		this.game = game;
-//		camera = new OrthographicCamera();
-//		camera.setToOrtho(false, 1200, 800); 
 		// Stage is the controller
 		stage = new Stage(new ScreenViewport());
-		
-		//Gdx.input.setInputProcessor(stage);
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 		stage.draw();
 		
