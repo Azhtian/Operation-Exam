@@ -11,10 +11,10 @@ import core.AppPreferences;
 import model.Model;
 import screens.*;
 
-/*
+/**
  * This class extends the Game class to manage and switch between different screens
+ * 
  */
-
 public class ScreenManager extends Game {
 	public SpriteBatch batch;
     public BitmapFont font;
@@ -45,11 +45,8 @@ public class ScreenManager extends Game {
 
 	@Override
 	public void create() {
-//		batch = new SpriteBatch();
-//		font = new BitmapFont();
-		// Setting the default screen
-		LoadingScreen loadingScreen = new LoadingScreen(this);
-		setScreen(loadingScreen);
+		HomeScreen homeScreen = new HomeScreen(this);
+		setScreen(homeScreen);
 		preferences = new AppPreferences();
 	}
 
@@ -60,6 +57,9 @@ public class ScreenManager extends Game {
 	public void dispose() {
 	}
 	
+	/** Change the screen that is displayed 
+	 * @param screen the screen number
+	 */
 	//@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("SF_SWITCH_NO_DEFAULT")
 	public void changeScreen(int screen) {
 		switch(screen) {
