@@ -87,6 +87,8 @@ public class Model {
 						enemy = new Stationary(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
 					} else if (object.getName().equals("Walker")) {
 						enemy = new Walker(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+					} else if (object.getName().equals("Boss")) {
+						enemy = new Boss(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
 					} else {
 						throw new IllegalArgumentException("Invalid enemy type");
 
