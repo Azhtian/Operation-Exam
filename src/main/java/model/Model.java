@@ -32,12 +32,15 @@ public class Model {
 
 	private int gameScore = 0;
 	private int currentLevel;
+	private TimeCounter gameTime;
 
 	public Model(){
 	}
 
 	public Model(int numberOfPlayers, TiledMap tileMap) {
 		this.tileMap = tileMap;
+		//Start timer
+//		gameTime = new TimeCounter();
 
 		// load images
 		// Texture
@@ -165,4 +168,12 @@ public class Model {
 	public void addScore(int scoreValue) {
 		this.gameScore += scoreValue;
 	}
+
+//	public String getTime() {
+//		return gameTime.getTime();
+//	}
+//
+//	public void updateTime(){
+//		gameTime.updateTime(Gdx.graphics.getDeltaTime());
+//	}
 }
