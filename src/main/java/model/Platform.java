@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Platform extends Rectangle {
 
-	private Boolean thin;
+	private final Boolean thin;
 
 	public Platform(float x, float y, float width, float height, Boolean thin) {
 		super(x, y, width, height);

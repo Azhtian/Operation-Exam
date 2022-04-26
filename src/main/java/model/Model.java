@@ -16,19 +16,16 @@ import helper.ScoreValueHelper;
 import java.util.ArrayList;
 
 public class Model {
-	
-	private final int width = 800;
-	private final int height = 400;
 
 	private int screen = 4;
 
 	private Goal goal;
 	private TiledMap tileMap;
     private MapObjects objects;
-    private Array<Platform> platforms = new Array<Platform>(100);
-    private Array<Enemy> enemies = new Array<Enemy>(100);
-    private ArrayList<Item> scoreItems = new ArrayList<>();
-    private ArrayList<Player> players = new ArrayList<>();
+    private final Array<Platform> platforms = new Array<Platform>(100);
+    private final Array<Enemy> enemies = new Array<Enemy>(100);
+    private final ArrayList<Item> scoreItems = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
 
 	private int gameScore = 0;
 	private int currentLevel;
@@ -135,10 +132,12 @@ public class Model {
     }
 
 	public int getWidth() {
+		int width = 800;
 		return width;
 	}
 
 	public int getHeight() {
+		int height = 400;
 		return height;
 	}
 

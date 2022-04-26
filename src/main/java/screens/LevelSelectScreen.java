@@ -18,7 +18,7 @@ import helper.ScreenManager;
 public class LevelSelectScreen implements Screen {
 	final ScreenManager game;
 	public final Stage stage;
-	private int numberOfLevels = LevelReader.getLevels();
+	private final int numberOfLevels = LevelReader.getLevels();
 
 	public LevelSelectScreen(ScreenManager game) {
 		this.game = game;

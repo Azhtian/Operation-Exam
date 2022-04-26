@@ -11,17 +11,14 @@ public class Player extends Mob {
 
 	private static final int maxHealth = 3;
 	private int health;
-	private int crouchingSpeed = 2;
-	private int walkingSpeed = 3;
-	private int runningSpeed = 4;
-	private int dashSpeed = 15;
+	private final int walkingSpeed = 3;
+	private final int runningSpeed = 4;
 	private int dashCounter;
 	private int speed;
 	private float stamina;
-	private int maxStamina = 80;
-	private float maxSpeed = 6;
+	private final int maxStamina = 80;
 
-	Boolean grounded;
+	final Boolean grounded;
 	private int[] controlSet;
     private boolean isMoving = false;
     private int idleCounter = 0;
@@ -31,7 +28,7 @@ public class Player extends Mob {
 	public Player(float x, float y, float width, float height){
 		super(x, y, width, height);
 		this.grounded = true;
-		this.health = this.maxHealth;
+		this.health = maxHealth;
 		this.setJumpStrength(10);
 		this.health = maxHealth;
 		this.stamina = this.getMaxStamina();
@@ -91,7 +88,8 @@ public class Player extends Mob {
 			this.dashCounter += 4;
 		}
 		if (this.dashCounter > 0) {
-			this.setSpeed(this.dashSpeed);
+			int dashSpeed = 15;
+			this.setSpeed(dashSpeed);
 			this.dashCounter -= 1;
 		}
 	}
@@ -107,7 +105,8 @@ public class Player extends Mob {
 	public void crouch () {
 		this.setHeight(16);
 		this.getBounds().setHeight(16);
-		this.setSpeed(this.crouchingSpeed);
+		int crouchingSpeed = 2;
+		this.setSpeed(crouchingSpeed);
 	}
 	
 	public void stand () {
@@ -322,6 +321,7 @@ public class Player extends Mob {
 	}
 
 	public float getMaxSpeed() {
+		float maxSpeed = 6;
 		return maxSpeed;
 	}
 }

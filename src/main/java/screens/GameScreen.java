@@ -23,7 +23,7 @@ public class GameScreen implements Screen {
 	private final OrthographicCamera camera;
 	private final OrthogonalTiledMapRenderer renderer;
     public final Stage stage;
-    private Viewport viewport;
+    private final Viewport viewport;
     
     // Texture
     private final Texture staminaFrame;

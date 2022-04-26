@@ -25,7 +25,6 @@ public abstract class Mob extends Sprite{
     private int animationCounter;
     private int animationPointer;
 
-    private float maxSpeed = 6.5f;
 	private float jumpStrength = 6.5f;
 
 	public Mob(float x, float y, float width, float height){
@@ -197,6 +196,7 @@ public abstract class Mob extends Sprite{
     }
 
     public float getMaxSpeed() {
+		float maxSpeed = 6.5f;
 		return maxSpeed;
 	}
 
