@@ -15,9 +15,6 @@ public class Stationary extends Enemy{
 
 	public void doMovement(Model model) {
 	}
-	
-	
-	public void changeYSpeed(float gravity) {
-	}
+
 
 }
