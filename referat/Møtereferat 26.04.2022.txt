@@ -1,0 +1,25 @@
+Møtereferat 26.04.2022
+
+Til stede: Sondre, Marius, Daniel, Stian, Marita (Discord)
+
+
+Ender opp med å lage en boss-level
+- Hva vi vil ha:
+	- "Super mario spøkelse"
+	- Går gjennom vegger -> Sjekker ikke vegg-collisions
+	- Går sakte rett mot deg
+
+
+Hva som mangler:
+- Antall leveler i readme
+- Tutorial
+	- Readme?
+- Bugs og kodekvalitet
+	- Analysere prosjektet, refaktorere
+	- "Kan ikke reise seg opp når player er under en platform" -> Daniel fikser
+	- "Helikopter runner" når man står rett over eller rett under. -> Sondre fikser
+	- Enemies kolliderer i tynne platformer - Quick fix -> Stian
+- Klokken?
+	- Merger inn
+- Forbedre stegvis hvordan bygge prosjekt i readme
+

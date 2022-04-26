@@ -1,4 +1,4 @@
-package sprites;
+package model;
 
 import model.*;
 import org.junit.jupiter.api.BeforeEach;
