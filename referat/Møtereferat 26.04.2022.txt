@@ -12,6 +12,7 @@ Ender opp med å lage en boss-level
 
 Hva som mangler:
 - Antall leveler i readme
+- Fix level 2
 - Tutorial
 	- Readme?
 - Bugs og kodekvalitet
