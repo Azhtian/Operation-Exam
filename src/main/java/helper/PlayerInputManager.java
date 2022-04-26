@@ -2,6 +2,10 @@ package helper;
 
 import com.badlogic.gdx.Input;
 
+/**
+ * This class handles keyboard input from the player
+ * 
+ */
 public class PlayerInputManager {
     public static int[] getControls(int controlSet){
         return switch (controlSet) {
