@@ -168,12 +168,4 @@ public class Model {
 	public void addScore(int scoreValue) {
 		this.gameScore += scoreValue;
 	}
-
-//	public String getTime() {
-//		return gameTime.getTime();
-//	}
-//
-//	public void updateTime(){
-//		gameTime.updateTime(Gdx.graphics.getDeltaTime());
-//	}
 }
