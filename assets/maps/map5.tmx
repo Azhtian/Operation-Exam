@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="50" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="23" nextobjectid="471">
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="50" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="23" nextobjectid="508">
  <tileset firstgid="1" name="hoytek" tilewidth="16" tileheight="16" tilecount="190" columns="19">
   <image source="tiles.png" width="304" height="160"/>
  </tileset>
@@ -38,7 +38,7 @@
  <imagelayer id="21" name="Sculpture" offsetx="536.359" offsety="225.405">
   <image source="../sprites/sculpture.png" width="121" height="160"/>
  </imagelayer>
- <layer id="19" name="Mellomgrunn" width="50" height="25">
+ <layer id="19" name="wall" width="50" height="25">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -67,7 +67,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="22" name="Platforms" width="50" height="25">
+ <layer id="22" name="platforms" width="50" height="25">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -81,22 +81,22 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,40,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,40,40,40,40,40,40,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,0,0,0,0,0,0,0,40,40,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,40,40,40,40,40,40,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="15" name="Object Layer">
+ <objectgroup id="15" name="objects">
   <object id="381" type="Platform" x="177.794" y="80.3422" width="46.1224" height="254.417"/>
   <object id="382" type="Platform" x="225.405" y="191.929" width="126.465" height="17.1099"/>
   <object id="383" type="Platform" x="225.405" y="288.637" width="125.721" height="14.1343"/>
@@ -128,57 +128,52 @@
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="415" type="Platform" x="224.289" y="258.136" width="15.6221" height="14.8782">
+  <object id="415" type="Platform" x="224.289" y="273.048" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="416" type="Platform" x="224.289" y="225.404" width="15.6221" height="14.8782">
+  <object id="416" type="Platform" x="223.412" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="418" type="Platform" x="240.655" y="225.404" width="15.6221" height="14.8782">
+  <object id="418" type="Platform" x="239.778" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="419" type="Platform" x="257.765" y="225.404" width="15.6221" height="14.8782">
+  <object id="419" type="Platform" x="256.888" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="420" type="Platform" x="273.387" y="225.404" width="15.6221" height="14.8782">
+  <object id="420" type="Platform" x="271.633" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="425" type="Platform" x="289.753" y="225.404" width="15.6221" height="14.8782">
+  <object id="425" type="Platform" x="288.876" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="427" type="Platform" x="303.887" y="225.404" width="15.6221" height="14.8782">
+  <object id="427" type="Platform" x="303.01" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="429" type="Platform" x="319.509" y="225.404" width="15.6221" height="14.8782">
+  <object id="429" type="Platform" x="318.632" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="430" type="Platform" x="333.643" y="225.404" width="15.6221" height="14.8782">
+  <object id="430" type="Platform" x="332.766" y="242.071" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="431" type="Platform" x="351.497" y="225.404" width="15.6221" height="14.8782">
-   <properties>
-    <property name="thin" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="432" type="Platform" x="399.107" y="193.416" width="15.6221" height="14.8782">
+  <object id="432" type="Platform" x="399.107" y="209.205" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
@@ -203,12 +198,12 @@
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="440" type="Platform" x="591.036" y="305.003" width="15.6221" height="14.8782">
+  <object id="440" type="Platform" x="592.79" y="319.038" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="441" type="Platform" x="640.878" y="272.271" width="15.6221" height="14.8782">
+  <object id="441" type="Platform" x="640.878" y="257.359" width="15.6221" height="14.8782">
    <properties>
     <property name="thin" type="bool" value="true"/>
    </properties>
@@ -231,16 +226,88 @@
   <object id="461" type="Goal" x="769.202" y="95.2204" width="14.8782" height="31.2442"/>
   <object id="462" type="Player" x="17.1099" y="353.357" width="16" height="24"/>
   <object id="464" type="Player" x="49.098" y="352.985" width="16" height="24"/>
-  <object id="465" name="Walker" x="272.271" y="177.05" width="16" height="16"/>
-  <object id="469" name="Walker" x="289.564" y="272.454" width="16" height="16"/>
-  <object id="470" name="Walker" x="335.686" y="366.93" width="16" height="16"/>
+  <object id="465" name="Walker" type="Enemy" x="272.271" y="174.05" width="16" height="16"/>
+  <object id="469" name="Walker" type="Enemy" x="288" y="224" width="16" height="16"/>
+  <object id="470" name="Walker" type="Enemy" x="335.686" y="366.93" width="16" height="16"/>
+  <object id="471" type="Platform" x="639.558" y="289.929" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="472" type="Platform" x="335.965" y="176.316" width="15.7895" height="15.7895"/>
+  <object id="475" x="393.86" y="-32" width="6.14035" height="4.80702"/>
+  <object id="476" type="Platform" x="350.084" y="239.929" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="478" type="Platform" x="-12.2807" y="0" width="9.64912" height="399.123"/>
+  <object id="481" type="Platform" x="801.754" y="1.75439" width="14.9123" height="400"/>
+  <object id="482" x="897.368" y="65.7895"/>
+  <object id="484" name="book" type="scoreItem" x="176.316" y="31.5789" width="14.9123" height="14.9123"/>
+  <object id="485" name="book" type="scoreItem" x="1.31578" y="239.035" width="14.9123" height="14.9123"/>
+  <object id="486" name="book" type="scoreItem" x="240.789" y="225" width="14.9123" height="14.9123"/>
+  <object id="487" name="book" type="scoreItem" x="289.035" y="319.737" width="14.9123" height="14.9123"/>
+  <object id="488" name="book" type="scoreItem" x="689.912" y="369.737" width="14.9123" height="14.9123"/>
+  <object id="489" name="book" type="scoreItem" x="641.667" y="175.877" width="14.9123" height="14.9123"/>
+  <object id="495" type="Platform" x="96" y="352" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="496" type="Platform" x="80" y="352" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="498" type="Platform" x="80" y="320" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="499" type="Platform" x="96" y="320" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="500" type="Platform" x="96" y="288" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="501" type="Platform" x="80" y="288" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="504" type="Platform" x="95.2146" y="256" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="505" type="Platform" x="80" y="256" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="506" type="Platform" x="16" y="256" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="507" type="Platform" x="0" y="256" width="15.6221" height="14.8782">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
- <layer id="20" name="Forgrunn" width="50" height="25">
+ <layer id="20" name="foreground" width="50" height="25">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -252,14 +319,13 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+40,40,0,0,0,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,175,176,176,176,176,0,0,0,0,0,0,0,0,0,0,0,0,0,0,176,176,176,2147483824,2147483823,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
