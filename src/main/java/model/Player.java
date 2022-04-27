@@ -157,7 +157,6 @@ public class Player extends Mob {
 			if (this.getBounds().overlaps(rect)) {
 				if (rect.isThin()) {
 					if (this.getYSpeed() >= 0 || Gdx.input.isKeyPressed(this.getDownControl())) {
-						continue;
 					}
 					else if (this.getYSpeed() <= 0 && this.getY() >= rect.y+8) {
 						this.setY(rect.height + rect.y);
@@ -297,8 +296,9 @@ public class Player extends Mob {
 	}
 	
 	public void addStamina() {
-		if (this.stamina < this.getMaxStamina())
-		this.stamina += 0.5;
+		if (this.stamina < this.getMaxStamina()) {
+			this.stamina += 0.5;
+		}
 	}
 	
 	public void exhaustStamina(float loss) {
@@ -321,7 +321,6 @@ public class Player extends Mob {
 	}
 
 	public float getMaxSpeed() {
-		float maxSpeed = 6;
-		return maxSpeed;
+		return (float) 6;
 	}
 }

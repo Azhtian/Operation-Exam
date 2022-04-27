@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Time;
-
 public class TimeCounter {
     private int gameTimeHour = 7;
     private int gameTimeMinutes = 0;
@@ -31,8 +29,8 @@ public class TimeCounter {
     public String getTime(){
         String hours;
         String minutes;
-        minutes = gameTimeMinutes < 10 ? "0" + Integer.toString(gameTimeMinutes) : Integer.toString(gameTimeMinutes);
-        hours = gameTimeHour < 10 ? "0" + Integer.toString(gameTimeHour) : Integer.toString(gameTimeHour);
+        minutes = gameTimeMinutes < 10 ? "0" + gameTimeMinutes : Integer.toString(gameTimeMinutes);
+        hours = gameTimeHour < 10 ? "0" + gameTimeHour : Integer.toString(gameTimeHour);
         return hours + ":" + minutes;
     }
 }

@@ -1,6 +1,5 @@
 package model;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -22,8 +21,8 @@ public class Model {
 	private Goal goal;
 	private TiledMap tileMap;
     private MapObjects objects;
-    private final Array<Platform> platforms = new Array<Platform>(100);
-    private final Array<Enemy> enemies = new Array<Enemy>(100);
+    private final Array<Platform> platforms = new Array<>(100);
+    private final Array<Enemy> enemies = new Array<>(100);
     private final ArrayList<Item> scoreItems = new ArrayList<>();
     private final ArrayList<Player> players = new ArrayList<>();
 
@@ -55,10 +54,7 @@ public class Model {
 				}
 				if (object.getProperties().get("type").equals("Platform")) {
 					com.badlogic.gdx.maps.MapProperties o = object.getProperties();
-					Boolean thin = false;
-					if (object.getProperties().containsKey("thin") && object.getProperties().get("thin").equals(true)) {
-						thin = true;
-					}
+					boolean thin = object.getProperties().containsKey("thin") && object.getProperties().get("thin").equals(true);
 
 					Platform rect = new Platform(((RectangleMapObject) object).getRectangle(), thin);
 					platforms.add(rect);
@@ -97,7 +93,7 @@ public class Model {
                     Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
                     Player player;
                     if (players.size() == 0) {
-                        player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage1, PlayerInputManager.getControls(players.size()));
+                        player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage1, PlayerInputManager.getControls(0));
                     } else {
                         player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage2, PlayerInputManager.getControls(players.size()));
                     }
@@ -135,13 +131,11 @@ public class Model {
     }
 
 	public int getWidth() {
-		int width = 800;
-		return width;
+		return 800;
 	}
 
 	public int getHeight() {
-		int height = 400;
-		return height;
+		return 400;
 	}
 
 	public int getScreen() {

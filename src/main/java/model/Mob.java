@@ -196,8 +196,7 @@ public abstract class Mob extends Sprite{
     }
 
     public float getMaxSpeed() {
-		float maxSpeed = 6.5f;
-		return maxSpeed;
+		return 6.5f;
 	}
 
 	public float getJumpStrength() {
