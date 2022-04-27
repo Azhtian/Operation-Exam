@@ -88,7 +88,7 @@ public class GameScreen implements Screen {
 		// create camera and viewport
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, model.getWidth(), model.getHeight()); // dimensions of castle board
-		camera.position.set(model.getWidth()/2, model.getHeight()/2, 3); // centers the camera to middle of board instead of (by default) window.
+		camera.position.set(model.getWidth()/ (float) 2, model.getHeight()/ (float) 2, 3); // centers the camera to middle of board instead of (by default) window.
 		
 		viewport = new ExtendViewport(model.getWidth(), model.getHeight(), camera);
 

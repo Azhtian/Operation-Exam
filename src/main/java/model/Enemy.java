@@ -8,7 +8,6 @@ public abstract class Enemy extends Mob {
 	
 	private Boolean movingRight;
 	private float moveSpeed;
-	private Boolean hasGravity;
 
 	public Enemy(float x, float y, float width, float height) {
 		super(x, y, width, height);
@@ -74,11 +73,4 @@ public abstract class Enemy extends Mob {
 		this.moveSpeed = moveSpeed;
 	}
 
-	public Boolean getHasGravity() {
-		return hasGravity;
-	}
-
-	public void setHasGravity(Boolean hasGravity) {
-		this.hasGravity = hasGravity;
-	}
 }

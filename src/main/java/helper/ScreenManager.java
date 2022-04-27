@@ -110,6 +110,8 @@ public class ScreenManager extends Game {
 			if (gameFinishedScreen == null) gameFinishedScreen = new GameFinishedScreen(this);
 			this.setScreen(gameFinishedScreen);
 			break;
+		default:
+			this.setScreen(homeScreen);
 		}
 	}
 

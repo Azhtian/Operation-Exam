@@ -20,15 +20,12 @@ public class Model {
 
 	private Goal goal;
 	private TiledMap tileMap;
-    private MapObjects objects;
-    private final Array<Platform> platforms = new Array<>(100);
+	private final Array<Platform> platforms = new Array<>(100);
     private final Array<Enemy> enemies = new Array<>(100);
     private final ArrayList<Item> scoreItems = new ArrayList<>();
     private final ArrayList<Player> players = new ArrayList<>();
 
 	private int gameScore = 0;
-	private int currentLevel;
-	private TimeCounter gameTime;
 
 	public Model(){
 	}
@@ -130,11 +127,11 @@ public class Model {
     	return goal;
     }
 
-	public int getWidth() {
+	public float getWidth() {
 		return 800;
 	}
 
-	public int getHeight() {
+	public float getHeight() {
 		return 400;
 	}
 
@@ -162,11 +159,4 @@ public class Model {
 		this.gameScore += scoreValue;
 	}
 
-//	public String getTime() {
-//		return gameTime.getTime();
-//	}
-//
-//	public void updateTime(){
-//		gameTime.updateTime(Gdx.graphics.getDeltaTime());
-//	}
 }

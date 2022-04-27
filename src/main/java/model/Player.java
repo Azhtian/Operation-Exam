@@ -11,14 +11,13 @@ public class Player extends Mob {
 
 	private static final int maxHealth = 3;
 	private int health;
-	private final int walkingSpeed = 3;
-	private final int runningSpeed = 4;
+	private static final int walkingSpeed = 3;
+	private static final int runningSpeed = 4;
 	private int dashCounter;
 	private int speed;
 	private float stamina;
-	private final int maxStamina = 80;
+	private static final int maxStamina = 80;
 
-	final Boolean grounded;
 	private int[] controlSet;
     private boolean isMoving = false;
     private int idleCounter = 0;
@@ -27,7 +26,6 @@ public class Player extends Mob {
 
 	public Player(float x, float y, float width, float height){
 		super(x, y, width, height);
-		this.grounded = true;
 		this.health = maxHealth;
 		this.setJumpStrength(10);
 		this.health = maxHealth;
@@ -36,7 +34,6 @@ public class Player extends Mob {
 
 	public Player(float x, float y, float width, float height, Texture playerImage, int[] controlSet) {
 		super(x, y, width, height, playerImage);
-		this.grounded = true;
 		this.health = Player.maxHealth;
 		this.controlSet = controlSet.clone();
 		//Rectangle bounds = new Rectangle(x, y, width, height);
@@ -112,18 +109,18 @@ public class Player extends Mob {
 	public void stand () {
 		this.setHeight(24);
 		this.getBounds().setHeight(24);
-		this.setSpeed(this.walkingSpeed);
+		this.setSpeed(walkingSpeed);
 	}
 	
 	public void sprint () {
 		if (Gdx.input.isKeyPressed(this.getSprintControl()) && this.stamina >= 1) {
 			this.exhaustStamina(1);
-			this.setSpeed(this.runningSpeed);
+			this.setSpeed(runningSpeed);
 		}
 	}
 	
 	public void walk () {
-		this.setSpeed(this.walkingSpeed);
+		this.setSpeed(walkingSpeed);
 	}
 	
 	public boolean enemyCollisions (Array<Enemy> enemies) {
@@ -135,7 +132,7 @@ public class Player extends Mob {
 				this.setY(16);
 				// Player takes damage
 				this.damage(1);
-				this.setStamina(this.maxStamina);
+				this.setStamina(maxStamina);
 				if (this.getHealth() <= 0) {
 					// Changes screen to game-over screen
 					return true;
@@ -147,8 +144,12 @@ public class Player extends Mob {
 	
 	public void applyGravity(float gravity) {
 		this.changeYSpeed(gravity);
-		if (this.getYSpeed() > this.getMaxSpeed()) this.getSpeed();
-		else this.changeY(this.getYSpeed());
+		if (this.getYSpeed() > this.getMaxSpeed()){
+			this.changeY(this.getSpeed());
+		}
+		else {
+			this.changeY(this.getYSpeed());
+		}
 	}
 	
 	public void yMovement (Array<Platform> platforms) {
@@ -221,11 +222,7 @@ public class Player extends Mob {
         isMoving = moving;
     }
 
-    public boolean isMoving() {
-        return isMoving;
-    }
-
-    public int getLeftControl(){
+	public int getLeftControl(){
 		return controlSet[0];
 	}
 
@@ -247,10 +244,6 @@ public class Player extends Mob {
 	
 	public int getDashControl(){
 		return controlSet[5];
-	}
-
-    public void setHealth(int health){
-		this.health = health;
 	}
 
 	public void damage(int damage){
@@ -278,14 +271,6 @@ public class Player extends Mob {
         idleCounter += 1;
         return false;
     }
-    
-	public int getWalkingSpeed() {
-		return walkingSpeed;
-	}
-
-	public int getRunningSpeed() {
-		return runningSpeed;
-	}
 
 	public float getStamina() {
 		return stamina;
@@ -320,7 +305,7 @@ public class Player extends Mob {
 		return maxStamina;
 	}
 
-	public float getMaxSpeed() {
+	private float getMaxSpeed() {
 		return (float) 6;
 	}
 }

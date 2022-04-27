@@ -21,7 +21,5 @@ public class GameScreenTest {
         cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
         lw3 = new Lwjgl3Application(new ScreenManager(), cfg);
         listener = lw3.getApplicationListener();
-        //game = new GameScreen(exam);
-
     }
 }

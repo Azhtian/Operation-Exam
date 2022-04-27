@@ -59,10 +59,6 @@ public abstract class Mob extends Sprite{
         this.bounds.y = y;
     }
 
-    public float getGravity(){
-        return gravity;
-    }
-
 	public float getX() {
 		return x;
 	}
@@ -123,13 +119,6 @@ public abstract class Mob extends Sprite{
 		this.y += y;
 	}
 
-    public void changePos(float x, float y) {
-        this.x += x;
-        this.y += y;
-        bounds.x += x;
-        bounds.y += y;
-    }
-	
 	public float getYSpeed() {
 		return ySpeed;
 	}
@@ -177,11 +166,7 @@ public abstract class Mob extends Sprite{
 	public void setXSpeed(float xSpeed) {
 		this.xSpeed = xSpeed;
 	}
-	
-	public void changeXSpeed(float xSpeed) {
-		this.xSpeed += xSpeed;
-	}
-	
+
 	public float getCentreX() {
 			return this.getX() + this.getWidth()/2;
 	}
@@ -194,10 +179,6 @@ public abstract class Mob extends Sprite{
     public void setPlayerImage(Texture texture) {
         playerImage = texture;
     }
-
-    public float getMaxSpeed() {
-		return 6.5f;
-	}
 
 	public float getJumpStrength() {
 		return jumpStrength;
