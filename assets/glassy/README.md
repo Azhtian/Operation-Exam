@@ -1,13 +1,7 @@
 # Glassy UI
 
 ```
-Glassy UI Ver. 1
-
-Created by Raymond "Raeleus" Buckley
-Visit ray3k.wordpress.com for games, tutorials, and much more!
-
-Glassy UI can be used under the CC BY license.
-http://creativecommons.org/licenses/by/4.0/
+https://
 ```
 
 Features styles of most of **Scene2D** widgets. Elegant, glossy look.
