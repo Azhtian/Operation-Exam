@@ -28,21 +28,28 @@ public class Runner extends Enemy{
 	}	
 
 	public void doAction() {
-		// Turn if on edge
-		if (sensorLeftActivation && !sensorRightActivation) {
-			this.setMovingRight(true);
-		} if (!sensorLeftActivation && sensorRightActivation) {
-			this.setMovingRight(false);
-		}
-		
-		// Chase Player
-		if (this.closePlayer == null) {
-			this.setMoveSpeed((float)1.2);
-		} else {
-			this.setMoveSpeed(2);
-			this.setMovingRight(!(closePlayer.getCentreX() - this.getCentreX() < 0));
-		}
-	
+        // Turn if on edge
+        if (sensorLeftActivation && !sensorRightActivation) {
+            this.setMovingRight(true);
+        }
+        if (!sensorLeftActivation && sensorRightActivation) {
+            this.setMovingRight(false);
+        }
+
+        // Chase Player
+        float angle;
+        if (this.closePlayer == null) {
+            this.setMoveSpeed((float) 1.2);
+        }else {
+            angle = Math.abs(this.closePlayer.getCentreX() - this.getCentreX()) / Math.abs(this.closePlayer.getCentreY() - this.getCentreY());
+            if (angle < this.detectionDistance / 128f) {
+                this.setMoveSpeed(0);
+            } else {
+                this.setMoveSpeed(2);
+                this.setMovingRight(!(closePlayer.getCentreX() - this.getCentreX() < 0));
+
+            }
+        }
 		
 		
 		// Turn 
