@@ -52,11 +52,18 @@ public class Runner extends Walker {
 	 * @param p A player to chase
 	 */
 	public void chase(Player p) {
-		if (p == null) {
-			this.setCurrentSpeed(1.2f);
-		} else {
-			this.setCurrentSpeed(2);
-			this.setMovingRight(!(p.getCentreX() - this.getCentreX() < 0));
-		}
-	}	
+        // Chase Player
+        float angle;
+        if (p == null) {
+            this.setCurrentSpeed((float) 1.2);
+        } else {
+            angle = Math.abs(p.getCentreX() - this.getCentreX()) / Math.abs(p.getCentreY() - this.getCentreY());
+            if (angle < this.detectionDistance / 128f) {
+                this.setCurrentSpeed(0);
+            } else {
+                this.setCurrentSpeed(2);
+                this.setMovingRight(!(p.getCentreX() - this.getCentreX() < 0));
+            }
+        }
+	}
 }
