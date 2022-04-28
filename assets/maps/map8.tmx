@@ -223,7 +223,7 @@
     <property name="thin" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="461" type="Goal" x="769.202" y="95.2204" width="14.8782" height="31.2442"/>
+  <object id="461" type="Goal" x="768" y="96" width="14.8782" height="31.2442"/>
   <object id="462" type="Player" x="17.1099" y="353.357" width="16" height="24"/>
   <object id="464" type="Player" x="49.098" y="352.985" width="16" height="24"/>
   <object id="465" name="Walker" type="Enemy" x="272" y="176" width="16" height="16"/>

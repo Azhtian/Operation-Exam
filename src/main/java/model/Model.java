@@ -20,10 +20,10 @@ public class Model implements IModel {
 	private final int height = 400;
 	private int screen = 4;
 	private TiledMap tileMap;
-	private int gameScore = 0;
+	public static int gameScore = 0;
 	private int currentLevel;
 	private TimeCounter gameTime;
-	
+
 	private Goal goal;
     private Array<Platform> platforms = new Array<Platform>(100);
     private Array<Enemy> enemies = new Array<Enemy>(100);
