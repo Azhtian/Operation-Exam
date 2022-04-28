@@ -15,6 +15,8 @@ public class TextureManager {
             case "enemyRight2" -> new Texture(Gdx.files.internal("assets/sprites/professorMoveRight2.png"));
             case "enemyLeft1" -> new Texture(Gdx.files.internal("assets/sprites/professorMoveLeft1.png"));
             case "enemyLeft2" -> new Texture(Gdx.files.internal("assets/sprites/professorMoveLeft2.png"));
+            case "bossRight" -> new Texture(Gdx.files.internal("assets/sprites/bossRight.png"));
+            case "bossLeft" -> new Texture(Gdx.files.internal("assets/sprites/bossLeft.png"));
 
             // Misc
             case "stamina" -> new Texture(Gdx.files.internal("assets/sprites/Stamina.png"));

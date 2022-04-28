@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 
+/** A Mob is a rectangular libGDX Texture that can move, has collisions and superclass of Player and Enemy
+ */
 public abstract class Mob extends Sprite implements IMob {	
 	
 	private final Rectangle bounds;
@@ -100,7 +102,7 @@ public abstract class Mob extends Sprite implements IMob {
 	public void xCollisions(Model model) {
 		for (Platform rect : model.getPlatforms()) {
 			if (this.getBounds().overlaps(rect) && !rect.isThin()) {
-				if (this.getMovingRight()) {
+				if (this.isMovingRight()) {
 					this.setX(rect.x - this.getWidth());
 					if (this instanceof Enemy) {this.setMovingRight(false);}
 				} else {
@@ -234,7 +236,7 @@ public abstract class Mob extends Sprite implements IMob {
         return this.isMoving;
     }
     
-    public boolean getWasMovingRight(){
+    public boolean wasMovingRight(){
         return this.wasMovingRight;
     }
 
@@ -246,7 +248,7 @@ public abstract class Mob extends Sprite implements IMob {
         this.isMovingRight = value;
     }
 
-    public boolean getMovingRight() {
+    public boolean isMovingRight() {
         return this.isMovingRight;
     }
 
@@ -257,12 +259,20 @@ public abstract class Mob extends Sprite implements IMob {
             animationCounter = 0;
             return true;
         }
-        // Update enemy texture
+        // Update enemy texture pointer
         if (animationCounter == 0) {
         	animationPointer = ((animationPointer + 1) % 2);
             return true;
         }
         return false;
+    }
+    
+    public void changeMobTexture(Texture right, Texture left) {
+        if (this.isMovingRight()) {
+            this.setPlayerImage(right);
+        } else {
+            this.setPlayerImage(left);
+        }
     }
    
     public int getAnimationCounter() {

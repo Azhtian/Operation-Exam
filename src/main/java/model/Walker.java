@@ -72,7 +72,7 @@ public class Walker extends Enemy{
 	/** Moves Enemy along
 	 */
 	public void move() {
-		if (getMovingRight()) {
+		if (isMovingRight()) {
 			this.changeX(getCurrentSpeed());
 		} else {
 			this.changeX(-getCurrentSpeed());

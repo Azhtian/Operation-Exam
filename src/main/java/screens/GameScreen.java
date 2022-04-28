@@ -37,6 +37,8 @@ public class GameScreen implements Screen {
     private final Texture enemyMovingRight2;
     private final Texture enemyMovingLeft1;
     private final Texture enemyMovingLeft2;
+    private final Texture bossLeft;
+    private final Texture bossRight;
 
     private final Texture player1movingRight1;
     private final Texture player1movingRight2;
@@ -71,6 +73,9 @@ public class GameScreen implements Screen {
 
         enemyMovingLeft1 = TextureManager.getTexture("enemyLeft1");
         enemyMovingLeft2 = TextureManager.getTexture("enemyLeft2");
+        
+        bossLeft = TextureManager.getTexture("bossLeft");
+        bossRight = TextureManager.getTexture("bossRight");;
 
         player1movingRight1 = TextureManager.getTexture("player1mvr1");
         player1movingRight2 = TextureManager.getTexture("player1mvr2");
@@ -120,19 +125,19 @@ public class GameScreen implements Screen {
             if (p.updateAnimation() || p.getIdleCounter() > 60 || p.getIdleCounter() == 0) {
                 if (p.equals(model.getPlayers().get(0))) {
                     if (p.getIdleCounter() > 60) {
-                        controls.changeMobTexture(p, player1idle, player1idle);
+                        p.changeMobTexture(player1idle, player1idle);
                     } else if (p.getAnimationPointer() == 0) {
-                        controls.changeMobTexture(p, player1movingRight1, player1movingLeft1);
+                        p.changeMobTexture(player1movingRight1, player1movingLeft1);
                     } else {
-                        controls.changeMobTexture(p, player1movingRight2, player1movingLeft2);
+                        p.changeMobTexture(player1movingRight2, player1movingLeft2);
                     }
                 } else {
                     if (p.getIdleCounter() > 60) {
-                        controls.changeMobTexture(p, player2idle, player2idle);
+                        p.changeMobTexture(player2idle, player2idle);
                     } else if (p.getAnimationPointer() == 0) {
-                        controls.changeMobTexture(p, player2movingRight1, player2movingLeft1);
+                        p.changeMobTexture(player2movingRight1, player2movingLeft1);
                     } else {
-                        controls.changeMobTexture(p, player2movingRight2, player2movingLeft2);
+                        p.changeMobTexture(player2movingRight2, player2movingLeft2);
                     }
                 }
             }
@@ -145,15 +150,21 @@ public class GameScreen implements Screen {
 		for (Enemy e : model.getEnemies()) {
 			if(e instanceof Stationary){
 				continue;
+			} else if (e instanceof Boss){
+				e.changeMobTexture(bossRight, bossLeft);
+				game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
+			} else {
+				game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
+	            if (e.updateAnimation()) {
+	                if (e.getAnimationPointer() == 0) {
+	                    e.changeMobTexture(enemyMovingRight1, enemyMovingLeft1);
+	                } else {
+	                    e.changeMobTexture(enemyMovingRight2, enemyMovingLeft2);
+	                }
+	            }
 			}
-			game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
-            if (e.updateAnimation()){
-                if (e.getAnimationPointer() == 0) {
-                    controls.changeMobTexture(e, enemyMovingRight1, enemyMovingLeft1);
-                } else {
-                    controls.changeMobTexture(e, enemyMovingRight2, enemyMovingLeft2);
-                }
-            }
+			
+			
 
         }
 		

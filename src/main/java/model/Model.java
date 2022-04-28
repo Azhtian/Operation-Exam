@@ -52,6 +52,7 @@ public class Model implements IModel {
     
 	public void retrieveObjectsFromMap(TiledMap tileMap, int numberOfPlayers) {
 		Texture enemyImage = TextureManager.getTexture("enemyLeft1");
+		Texture bossImage = TextureManager.getTexture("bossLeft");
 		Texture playerImage1 = TextureManager.getTexture("player1idle");
         Texture playerImage2 = TextureManager.getTexture("player2idle");
 		
@@ -91,7 +92,7 @@ public class Model implements IModel {
 					} else if (object.getName().equals("Walker")) {
 						enemy = new Walker(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
 					} else if (object.getName().equals("Boss")) {
-						enemy = new Boss(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+						enemy = new Boss(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, bossImage);
 					} else {
 						throw new IllegalArgumentException("Invalid enemy type");
 

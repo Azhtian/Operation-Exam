@@ -183,7 +183,7 @@ public interface IMob {
 	/**
      * @return true if mob was moving right
      */
-    public boolean getWasMovingRight();
+    public boolean wasMovingRight();
 
     /** Sets the wasMovingRight variable
      * @param value
@@ -198,7 +198,7 @@ public interface IMob {
     /**
      * @return true if is moving right
      */
-    public boolean getMovingRight();
+    public boolean isMovingRight();
 	
 	
 	// Animations //
@@ -208,6 +208,12 @@ public interface IMob {
      */
     public boolean updateAnimation();
 
+    /** Changes the mob texture based on its horizontal direction
+     * @param right texture
+     * @param left texture
+     */
+    public void changeMobTexture(Texture right, Texture left);
+    
     /** 
      * @return animationCounter value
      */

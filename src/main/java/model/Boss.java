@@ -19,7 +19,19 @@ public class Boss extends Enemy {
 	
 	public void doMovement(Model model){
 		this.closestPlayer = findClosePlayer(model, 1000);
+		facePlayer(this.closestPlayer);
 		this.changeX((float) (this.getCurrentSpeed() * (closestPlayer.getCentreX()-this.getCentreX())/(Math.sqrt(Math.pow(closestPlayer.getCentreX()-this.getCentreX(),2) + Math.pow(closestPlayer.getCentreY()-this.getCentreY(),2)))));
 		this.changeY((float) (this.getCurrentSpeed() * (closestPlayer.getCentreY()-this.getCentreY())/(Math.sqrt(Math.pow(closestPlayer.getCentreX()-this.getCentreX(),2) + Math.pow(closestPlayer.getCentreY()-this.getCentreY(),2)))));
+	}
+	
+	/** Turns the boss towards the player
+	 * @param p Player to face
+	 */
+	public void facePlayer(Player p) {
+		if (this.getCentreX() >= p.getCentreX()) {
+			this.setMovingRight(false);
+		} else {
+			this.setMovingRight(true);
+		}
 	}
 }

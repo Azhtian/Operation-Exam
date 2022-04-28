@@ -43,7 +43,7 @@ public class EnemyTest {
 
         player.setPos(50, 0);
         runner.doMovement(model);
-        assertFalse(runner.getMovingRight());
+        assertFalse(runner.isMovingRight());
     }
 
     @Test
@@ -64,8 +64,8 @@ public class EnemyTest {
 
         enemy.setWasMovingRight(true);
         enemy.setMovingRight(false);
-        assertTrue(enemy.getWasMovingRight());
-        assertFalse(enemy.getMovingRight());
+        assertTrue(enemy.wasMovingRight());
+        assertFalse(enemy.isMovingRight());
     }
 
     @Test

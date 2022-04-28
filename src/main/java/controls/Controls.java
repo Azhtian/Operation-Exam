@@ -25,22 +25,19 @@ public class Controls {
 		
 		// Player actions
 		for (Player p : model.getPlayers()) {
-
 			p.doMovement(model);
         }
+		
 		// Enemy actions
 		for (Enemy enemy : model.getEnemies()) {
 			enemy.doMovement(model);
 		}
-
 
 		// press SPACE to pause game (or escape)
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
                 model.setScreen(5);
         }
 
-		
-		
 		// test victory
 		for (Player player: model.getPlayers()) {
 			if (player.getBounds().overlaps(model.getGoal().getBounds())) {
@@ -48,13 +45,5 @@ public class Controls {
 			}
 		}
 	}
-
-    public void changeMobTexture(Mob m, Texture right, Texture left) {
-        if (m.getMovingRight()){
-            m.setPlayerImage(right);
-        } else {
-            m.setPlayerImage(left);
-        }
-    }
 }
 
