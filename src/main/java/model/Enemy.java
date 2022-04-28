@@ -30,8 +30,9 @@ public abstract class Enemy extends Mob {
 	}
 	
 	/** Makes Enemy do a series of actions
+	 * @param model Game model
 	 */
-	public void doAction () {
+	public void doAction (Model model) {
 	}
 	
 	/** Updates Enemy and performs actions
@@ -39,7 +40,7 @@ public abstract class Enemy extends Mob {
 	 */
 	public void doMovement(Model model) {
 		// Action
-		doAction();
+		doAction(model);
 		
 		// X collisions
 		xCollisions(model);

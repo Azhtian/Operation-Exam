@@ -18,13 +18,14 @@ public class Runner extends Walker {
 	}	
 
 	@Override
-	public void doAction() {
+	public void doAction(Model model) {
 		// Turn if on edge
 		doTurn();
 		
 		// Chase Player
-		chase();
-
+		Player p = findClosePlayer(model, detectionDistance);
+		chase(p);
+		
 		// Move
 		move();
 	}     
@@ -34,10 +35,8 @@ public class Runner extends Walker {
 		// Sensor
 		updateSensor(model);
 		
-		findClosePlayer(model, detectionDistance);
-		
 		// Action
-		doAction();
+		doAction(model);
 		
 		// X collisions
 		xCollisions(model);
@@ -50,13 +49,14 @@ public class Runner extends Walker {
 	}
 	
 	/** Changes speed to chase player
+	 * @param p A player to chase
 	 */
-	public void chase() {
-		if (this.closePlayer == null) {
+	public void chase(Player p) {
+		if (p == null) {
 			this.setCurrentSpeed(1.2f);
 		} else {
 			this.setCurrentSpeed(2);
-			this.setMovingRight(!(closePlayer.getCentreX() - this.getCentreX() < 0));
+			this.setMovingRight(!(p.getCentreX() - this.getCentreX() < 0));
 		}
 	}	
 }

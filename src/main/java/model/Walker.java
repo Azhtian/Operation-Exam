@@ -33,7 +33,7 @@ public class Walker extends Enemy{
 	}	
 
 	@Override
-	public void doAction() {
+	public void doAction(Model model) {
 		// Turn if on edge
 		doTurn();
 		// Move
@@ -46,7 +46,7 @@ public class Walker extends Enemy{
 		updateSensor(model);
 		
 		// Action
-		doAction();
+		doAction(model);
 		
 		// X collisions
 		xCollisions(model);

@@ -28,18 +28,18 @@ public class EnemyTest {
     void runnerRuns(){
         Runner runner = new Runner(70, 0, 16, 16);
         runner.doMovement(model);
-        assertEquals(1.2f, runner.getMoveSpeed());
+        assertEquals(1.2f, runner.getCurrentSpeed());
 
         Player player = new Player(113, 0, 16, 16);
         model.addPlayer(player);
 
-        float moveSpeed = runner.getMoveSpeed();
+        float moveSpeed = runner.getCurrentSpeed();
 
-        runner.findClosePlayer(model);
+        runner.findClosePlayer(model, 16);
         runner.doMovement(model);
         //runner.doAction();
 
-        assertNotEquals(moveSpeed, runner.getMoveSpeed());
+        assertNotEquals(moveSpeed, runner.getCurrentSpeed());
 
         player.setPos(50, 0);
         runner.doMovement(model);

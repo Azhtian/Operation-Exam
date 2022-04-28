@@ -33,7 +33,7 @@ public class Jumper extends Walker {
 	}
 	
 	@Override
-	public void doAction () {
+	public void doAction (Model model) {
 		// Jump if on edge
 		jump();
 		// Move
@@ -52,7 +52,7 @@ public class Jumper extends Walker {
 		}
 		updateSensor(model);
 		// Action
-		doAction();
+		doAction(model);
 		
 		// X collisions
 		xCollisions(model);
