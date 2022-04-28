@@ -16,67 +16,51 @@ public class Player extends Mob {
 	private int runningSpeed = 4;
 	private int dashSpeed = 15;
 	private int dashCounter;
-	private int speed;
+	private final int maxStamina = 80;
 	private float stamina;
-	private int maxStamina = 80;
-	private float maxSpeed = 6;
-
-	Boolean grounded;
 	private int[] controlSet;
-    private boolean isMoving = false;
-    private int idleCounter = 0;
-	// String playerName;
+	private int idleCounter = 0;
 
 
 	public Player(float x, float y, float width, float height){
 		super(x, y, width, height);
-		this.grounded = true;
-		this.health = this.maxHealth;
-		this.setJumpStrength(10);
 		this.health = maxHealth;
-		this.stamina = this.getMaxStamina();
+		this.stamina = maxStamina;
 	}
-
-	public Player(float x, float y, float width, float height, Texture playerImage, int[] controlSet) {
-		super(x, y, width, height, playerImage);
-		this.grounded = true;
-		this.health = Player.maxHealth;
-		this.controlSet = controlSet.clone();
-		//Rectangle bounds = new Rectangle(x, y, width, height);
-		this.setJumpStrength(10);
+    
+	public Player(float x, float y, float width, float height, Texture image, int[] controlSet){
+		super(x, y, width, height);
 		this.health = maxHealth;
-		this.setSpeed(walkingSpeed);
-		this.stamina = this.getMaxStamina();
+		this.stamina = maxStamina;
+		this.controlSet = controlSet.clone();
+		this.setPlayerImage(image);
 	}
 	
 	public void doMovement(Model model) {
 		// Death
-		if (this.enemyCollisions(model.getEnemies())) {
-			model.setScreen(6);
-		}
+		if (this.enemyCollisions(model.getEnemies())) model.setScreen(6);
 		
 		// Apply Gravity
-		this.applyGravity(model.getGravity());	
+		applyGravity();
+		setGrounded(false);
 					
-		// Y movement
-		this.yMovement(model.getPlatforms());
-					
-		// Player X Movement
-		this.xMovement(model.getPlatforms());
-					
-		// Advanced movement (Sprint,crouch,jump,dash
-		this.resetMovementOptions();
+		// Player XY movement'
+		yCollisions(model, Gdx.input.isKeyPressed(this.getDownControl()));
+		xMovement(model);
+		
+		// Advanced movement (Sprint,crouch,jump,dash)
+		resetMovementOptions();
 		
 		if (Gdx.input.isKeyPressed(this.getDownControl())) {
-			this.crouch();
+			crouch();
 		} else {
-			this.jump();
-			this.sprint();
+			jump();
+			sprint();
 		}
-		this.dash();
+		dash();
 		
 		//Score item
-		model.addScore(this.score(model.getScoreItems()));
+		model.addScore(score(model.getScoreItems()));
 	}
 	
 	public void resetMovementOptions() {
@@ -91,14 +75,14 @@ public class Player extends Mob {
 			this.dashCounter += 4;
 		}
 		if (this.dashCounter > 0) {
-			this.setSpeed(this.dashSpeed);
+			this.setCurrentSpeed(this.dashSpeed);
 			this.dashCounter -= 1;
 		}
 	}
 	
 	public void jump() {
 		if (Gdx.input.isKeyJustPressed(this.getJumpControl()) && this.isGrounded() && this.stamina >= 20) {
-			this.setYSpeed(6.5f); // Using getter for strength here delays the jump for some reason
+			this.setYSpeed(6.5f); // TODO Using getter for strength here delays the jump for some reason
 			this.setGrounded(false);
 			this.exhaustStamina(20);
 		}
@@ -107,38 +91,36 @@ public class Player extends Mob {
 	public void crouch () {
 		this.setHeight(16);
 		this.getBounds().setHeight(16);
-		this.setSpeed(this.crouchingSpeed);
+		this.setCurrentSpeed(this.crouchingSpeed);
 	}
 	
 	public void stand () {
 		this.setHeight(24);
 		this.getBounds().setHeight(24);
-		this.setSpeed(this.walkingSpeed);
+		this.setCurrentSpeed(this.walkingSpeed);
 	}
 	
 	public void sprint () {
 		if (Gdx.input.isKeyPressed(this.getSprintControl()) && this.stamina >= 1) {
 			this.exhaustStamina(1);
-			this.setSpeed(this.runningSpeed);
+			this.setCurrentSpeed(this.runningSpeed);
 		}
 	}
 	
 	public void walk () {
-		this.setSpeed(this.walkingSpeed);
+		this.setCurrentSpeed(this.walkingSpeed);
 	}
 	
 	public boolean enemyCollisions (Array<Enemy> enemies) {
 		for (Enemy e : enemies) {
-			// If player touches an enemy
 			if (this.getBounds().overlaps(e.getBounds())) {
-				// Reset player to start-pos TODO Checkpoints
-				this.setX(16);
-				this.setY(16);
+				// Reset player to start-pos 
+				// TODO should be from map
+				this.setPos(16, 16);
 				// Player takes damage
 				this.damage(1);
 				this.setStamina(this.maxStamina);
 				if (this.getHealth() <= 0) {
-					// Changes screen to game-over screen
 					return true;
 				}
 			}
@@ -146,64 +128,21 @@ public class Player extends Mob {
 		return false;
 	}
 	
-	public void applyGravity(float gravity) {
-		this.changeYSpeed(gravity);
-		if (this.getYSpeed() > this.getMaxSpeed()) this.getSpeed();
-		else this.changeY(this.getYSpeed());
-	}
-	
-	public void yMovement (Array<Platform> platforms) {
-		this.setGrounded(false);
-		for (Platform rect : platforms) {
-			if (this.getBounds().overlaps(rect)) {
-				if (rect.isThin()) {
-					if (this.getYSpeed() >= 0 || Gdx.input.isKeyPressed(this.getDownControl())) {
-						continue;
-					}
-					else if (this.getYSpeed() <= 0 && this.getY() >= rect.y+8) {
-						this.setY(rect.height + rect.y);
-						this.setYSpeed(0);
-						this.setGrounded(true);
-					} 
-				}
-				else if (!rect.isThin()) {
-					if (this.getYSpeed() < 0) {
-						this.setY(rect.height + rect.y);
-						this.setGrounded(true); // Fun bug potential
-					} else {
-						this.setY(rect.y - this.getHeight());
-					}
-					this.setYSpeed(0);
-					// Move fun bug here for fun 
-				}
-			}
-		}
-	}
-	
-	public void xMovement (Array<Platform> platforms) {
+	public void xMovement(Model model) {
 		this.setMoving(false);
 		if (Gdx.input.isKeyPressed(this.getLeftControl())) {
-			 this.setMovingRight(false);
-			this.setXSpeed(-this.getSpeed());
+			this.setMovingRight(false);
+			this.setXSpeed(-getCurrentSpeed());
 			this.setMoving(true);
 		}
 		if (Gdx.input.isKeyPressed(this.getRightControl())){
-			 this.setMovingRight(true);
-			this.setXSpeed(this.getSpeed());
+			this.setMovingRight(true);
+			this.setXSpeed(getCurrentSpeed());
 			this.setMoving(true);
-			
 		}
 		this.changeX(this.getXSpeed());
 		this.setXSpeed(0);
-		for (Platform rect : platforms) {
-			if (this.getBounds().overlaps(rect) && !rect.isThin()) {
-				if (this.getMovingRight()) {
-					this.setX(rect.x - this.getWidth());
-				} else {
-					this.setX(rect.x + rect.width);
-				}
-			}
-		}
+		this.xCollisions(model);
 	}
 	
 	public int score(ArrayList<Item> scoreitems) {
@@ -218,14 +157,6 @@ public class Player extends Mob {
         }
 		return score;
 	}
-
-    public void setMoving(boolean moving){
-        isMoving = moving;
-    }
-
-    public boolean isMoving() {
-        return isMoving;
-    }
 
     public int getLeftControl(){
 		return controlSet[0];
@@ -267,13 +198,9 @@ public class Player extends Mob {
 		return maxHealth;
 	}
 
-    public int getIdleCounter() {
-        return idleCounter;
-    }
-
     @Override
     public boolean updateAnimation() {
-        if (this.isMoving) {
+        if (this.isMoving()) {
             idleCounter = 0;
             return super.updateAnimation();
         }
@@ -281,13 +208,9 @@ public class Player extends Mob {
         return false;
     }
     
-	public int getWalkingSpeed() {
-		return walkingSpeed;
-	}
-
-	public int getRunningSpeed() {
-		return runningSpeed;
-	}
+    public int getIdleCounter() {
+        return idleCounter;
+    }
 
 	public float getStamina() {
 		return stamina;
@@ -309,19 +232,7 @@ public class Player extends Mob {
 		}
 	}
 
-	public int getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
 	public int getMaxStamina() {
-		return maxStamina;
-	}
-
-	public float getMaxSpeed() {
-		return maxSpeed;
+		return this.maxStamina;
 	}
 }

@@ -89,10 +89,10 @@ public class GameScreen implements Screen {
 		
 		// create camera and viewport
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, model.getWidth(), model.getHeight()); // dimensions of castle board
-		camera.position.set(model.getWidth()/2, model.getHeight()/2, 3); // centers the camera to middle of board instead of (by default) window.
+		camera.setToOrtho(false, model.getCameraWidth(), model.getCameraHeight()); // dimensions of castle board
+		camera.position.set(model.getCameraWidth()/2, model.getCameraHeight()/2, 3); // centers the camera to middle of board instead of (by default) window.
 		
-		viewport = new ExtendViewport(model.getWidth(), model.getHeight(), camera);
+		viewport = new ExtendViewport(model.getCameraWidth(), model.getCameraHeight(), camera);
 
 	}
 
@@ -137,7 +137,7 @@ public class GameScreen implements Screen {
                 }
             }
 
-			game.font.draw(game.batch, "Score: " + model.getGameScore(), 0, model.getHeight());
+			game.font.draw(game.batch, "Score: " + model.getGameScore(), 0, model.getCameraHeight());
 		}
 
 
@@ -170,8 +170,8 @@ public class GameScreen implements Screen {
 		// Draw stamina bar
 		int playerNumber = 0;
 		for (Player p : model.getPlayers()){
-			game.batch.draw(staminaFrame, model.getWidth()-150-playerNumber*150, model.getHeight()-65, 100, 40);
-			game.batch.draw(stamina, model.getWidth()-140 -playerNumber*150, model.getHeight()-65, p.getStamina(), 40);
+			game.batch.draw(staminaFrame, model.getCameraWidth()-150-playerNumber*150, model.getCameraHeight()-65, 100, 40);
+			game.batch.draw(stamina, model.getCameraWidth()-140 -playerNumber*150, model.getCameraHeight()-65, p.getStamina(), 40);
 			playerNumber += 1;
 		}
 
@@ -179,16 +179,16 @@ public class GameScreen implements Screen {
         for (int i = 0; i < model.getPlayers().size(); i++) {
             for (int iter = 0; iter < model.getPlayers().get(0).getMaxHealth(); iter++) {
                 if (iter < model.getPlayers().get(i).getHealth()) {
-                    game.batch.draw(fullHeart, 5 + iter * (30 + 5), model.getHeight() - 50 - i*(28), 30, 30);
+                    game.batch.draw(fullHeart, 5 + iter * (30 + 5), model.getCameraHeight() - 50 - i*(28), 30, 30);
                 } else {
-                    game.batch.draw(emptyHeart, 5 + iter * (30 + 5), model.getHeight() - 50 - i*(28), 30, 30);
+                    game.batch.draw(emptyHeart, 5 + iter * (30 + 5), model.getCameraHeight() - 50 - i*(28), 30, 30);
                 }
             }
         }
 
 		//Update time
 		gameTime.updateTime(delta);
-		game.font.draw(game.batch, gameTime.getTime(),model.getWidth()/2, model.getHeight());
+		game.font.draw(game.batch, gameTime.getTime(),model.getCameraWidth()/2, model.getCameraHeight());
 
 		// TODO Put FPS counter in preference
 		//game.font.draw(game.batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);	

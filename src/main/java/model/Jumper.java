@@ -3,44 +3,45 @@ package model;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Jumper extends Enemy{
+public class Jumper extends Walker {
 
 	private final Rectangle sensor;
 	private Boolean sensorActivation;
 
 
+	/** Creates a Jumper Enemy that jumps when its about to fall off a platform
+	 * @param x position bottom left
+	 * @param y position bottom left
+	 * @param width
+	 * @param height
+	 */
 	public Jumper(float x, float y, float width, float height) {
 		super(x, y, width, height);
-		this.setMoveSpeed((float)1.2);
-		this.setJumpStrength(10);
 		this.sensor = new Rectangle(0, 0, (float) (width * 0.75), 16);
 	}
 
+	/** Creates a Jumper Enemy that jumps when its about to fall off a platform
+	 * @param x position bottom left
+	 * @param y position bottom left
+	 * @param width
+	 * @param height
+	 * @param image
+	 */
 	public Jumper(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);
-		
-		this.setMoveSpeed((float)1.2);
-		this.setJumpStrength(6);
 		this.sensor = new Rectangle(0, 0, (float) (width * 0.75), 16);
 	}
 	
+	@Override
 	public void doAction () {
 		// Jump if on edge
-		if (!this.sensorActivation && this.isGrounded()) {
-			jump();
-		}
+		jump();
 		// Move
-		if (getMovingRight()) {
-			this.changeX(getMoveSpeed());
-			this.sensor.x += getMoveSpeed();
-		} else {
-			this.changeX(-getMoveSpeed());
-			this.sensor.x -= getMoveSpeed();
-		}
+		move();
 	}
 	
+	@Override
 	public void doMovement(Model model) {
-		
 		// Sensor
 		this.setSensor();
 		this.sensorActivation = false;
@@ -49,47 +50,32 @@ public class Jumper extends Enemy{
 				this.sensorActivation = true;
 			}
 		}
-		
+		updateSensor(model);
 		// Action
-		this.doAction();
+		doAction();
 		
 		// X collisions
-		for (Rectangle rect : model.getPlatforms()) {
-			if (this.getBounds().overlaps(rect)) {
-				if (this.getMovingRight()) {
-					this.setX(rect.x - this.getWidth());
-					this.setMovingRight(false);
-				} else {
-					this.setX(rect.x + rect.width);
-					this.setMovingRight(true);
-				}
-			}
-		}
+		xCollisions(model);
+		
 		// Falling
-		this.changeYSpeed(model.getGravity());
-		this.changeY(this.getYSpeed());
-		this.setGrounded(false);
+		setGrounded(false);
+		applyGravity();
 		
 		// Y collisions
-		for (Rectangle rect : model.getPlatforms()) {
-			if (this.getBounds().overlaps(rect)) {
-				if (this.getYSpeed() < 0) {
-					this.setY(rect.getY() + rect.getHeight());
-					this.setGrounded(true);
-				} else {
-					this.setY(rect.getY() - rect.getHeight());
-				}
-					this.setYSpeed(0);
-			}
-		}	
+		yCollisions(model, false);
 	}
 	
+	@Override
 	public void setSensor() {
 		sensor.setX(this.getX() + this.getWidth() / 8);
 		sensor.setY(this.getY() - 16);
 	}
 
-	public void jump(){
-		this.setYSpeed(this.getJumpStrength());
+	/** Enemy performs a jump
+	 */
+	public void jump() {
+		if (!this.sensorActivation && this.isGrounded()) {
+			this.setYSpeed(this.getJumpStrength());
+		}
 	}
 }

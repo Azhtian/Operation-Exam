@@ -1,84 +1,73 @@
 package model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 
 
 public abstract class Enemy extends Mob {
-	
-	private Boolean movingRight;
-	private float moveSpeed;
-	private Boolean hasGravity;
 
+	/** Creates an Enemy
+	 * @param x position bottom left
+	 * @param y position bottom left
+	 * @param width
+	 * @param height
+	 */
 	public Enemy(float x, float y, float width, float height) {
 		super(x, y, width, height);
-
 		this.setMovingRight(false);
 	}
 
+	/** Creates an Enemy with image
+	 * @param x position bottom left
+	 * @param y position bottom left
+	 * @param width
+	 * @param height
+	 * @param image
+	 */
 	public Enemy(float x, float y, float width, float height, Texture image) {
-		super(x, y, width, height, image);
-		
+		super(x, y, width, height);
+		this.setPlayerImage(image);
 		this.setMovingRight(false);
 	}
 	
+	/** Makes Enemy do a series of actions
+	 */
 	public void doAction () {
 	}
 	
+	/** Updates Enemy and performs actions
+	 * @param model Game model
+	 */
 	public void doMovement(Model model) {
-		
 		// Action
-		this.doAction();
-
+		doAction();
+		
 		// X collisions
-		for (Rectangle rect : model.getPlatforms()) {
-			if (this.getBounds().overlaps(rect)) {
-				if (this.getMovingRight()) {
-					this.setX(rect.x - this.getWidth());
-					this.setMovingRight(false);
-				} else {
-					this.setX(rect.x + rect.width);
-					this.setMovingRight(true);
+		xCollisions(model);
+		
+		// Falling
+		applyGravity();
+		setGrounded(false);
+		
+		// Y collisions
+		yCollisions(model, false);
+	}
+	
+	/** 
+	 * @param model Game model
+	 * @param detectionDistance in units
+	 * @return the closest player
+	 */
+	public Player findClosePlayer(Model model, int detectionDistance) {
+		Player close = null;
+		for (Player p : model.getPlayers()) {
+			if (Math.sqrt(Math.pow(p.getCentreX()-this.getCentreX(),2) + Math.pow(p.getCentreY()-this.getCentreY(),2)) < detectionDistance*16) {
+				if (close == null){
+					close = p;
+				} else if (Math.pow(p.getCentreX()-this.getCentreX(),2) + Math.pow(p.getCentreY()-this.getCentreY(),2) < Math.pow(close.getCentreX()-this.getCentreX(),2) + Math.pow(close.getCentreY()-this.getCentreY(),2)) {
+					close = p;
 				}
 			}
 		}
-		// Falling
-		this.changeYSpeed(model.getGravity());
-		this.changeY(this.getYSpeed());
-		this.setGrounded(false);
-		
-		// Y collisions
-		for (Rectangle rect : model.getPlatforms()) {
-			if (this.getBounds().overlaps(rect)) {
-					this.setY(rect.getY() + rect.getHeight());
-					this.setYSpeed(0);
-					this.setGrounded(true);
-			}
-		}
-	}
-
-	public boolean getMovingRight() {
-		return movingRight;
-	}
-
-	public void setMovingRight(Boolean movingRight) {
-		this.movingRight = movingRight;
-	}
-
-
-	public float getMoveSpeed() {
-		return moveSpeed;
-	}
-
-	public void setMoveSpeed(float moveSpeed) {
-		this.moveSpeed = moveSpeed;
-	}
-
-	public Boolean getHasGravity() {
-		return hasGravity;
-	}
-
-	public void setHasGravity(Boolean hasGravity) {
-		this.hasGravity = hasGravity;
+		return close;
 	}
 }
