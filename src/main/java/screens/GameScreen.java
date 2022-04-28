@@ -33,10 +33,22 @@ public class GameScreen implements Screen {
     private final Texture fullHeart;
 	private final Texture emptyHeart;
 	private final Controls controls;
-    private final Texture enemyMovingRight1;
-    private final Texture enemyMovingRight2;
-    private final Texture enemyMovingLeft1;
-    private final Texture enemyMovingLeft2;
+    // Walker
+    private final Texture walkerMovingRight1;
+    private final Texture walkerMovingRight2;
+    private final Texture walkerMovingLeft1;
+    private final Texture walkerMovingLeft2;
+    // Runner
+    private final Texture runnerLeft1;
+    private final Texture runnerLeft2;
+    private final Texture runnerRight1;
+    private final Texture runnerRight2;
+    // Jumper
+    private final Texture jumperLeft1;
+    private final Texture jumperLeft2;
+    private final Texture jumperRight1;
+    private final Texture jumperRight2;
+    // Boss
     private final Texture bossLeft;
     private final Texture bossRight;
 
@@ -68,12 +80,23 @@ public class GameScreen implements Screen {
 		fullHeart = TextureManager.getTexture("fullHeart");
 		emptyHeart = TextureManager.getTexture("emptyHeart");
 
-        enemyMovingRight1 = TextureManager.getTexture("enemyRight1");
-        enemyMovingRight2 = TextureManager.getTexture("enemyRight2");
-
-        enemyMovingLeft1 = TextureManager.getTexture("enemyLeft1");
-        enemyMovingLeft2 = TextureManager.getTexture("enemyLeft2");
-        
+        // Enemies
+        // Walker
+        walkerMovingRight1 = TextureManager.getTexture("enemyRight1");
+        walkerMovingRight2 = TextureManager.getTexture("enemyRight2");
+        walkerMovingLeft1 = TextureManager.getTexture("enemyLeft1");
+        walkerMovingLeft2 = TextureManager.getTexture("enemyLeft2");
+        // Runner
+        runnerRight1 = TextureManager.getTexture("runnerRight1");
+        runnerRight2 = TextureManager.getTexture("runnerRight2");
+        runnerLeft1 = TextureManager.getTexture("runnerLeft1");
+        runnerLeft2 = TextureManager.getTexture("runnerLeft2");
+        // Jumper
+        jumperRight1 = TextureManager.getTexture("jumperRight1");
+        jumperRight2 = TextureManager.getTexture("jumperRight2");
+        jumperLeft1 = TextureManager.getTexture("jumperLeft1");
+        jumperLeft2 = TextureManager.getTexture("jumperLeft2");
+        //Boss
         bossLeft = TextureManager.getTexture("bossLeft");
         bossRight = TextureManager.getTexture("bossRight");;
 
@@ -153,13 +176,31 @@ public class GameScreen implements Screen {
 			} else if (e instanceof Boss){
 				e.changeMobTexture(bossRight, bossLeft);
 				game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
-			} else {
+			} else if (e instanceof Runner) {
+                game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
+                if (e.updateAnimation()) {
+                    if (e.getAnimationPointer() == 0) {
+                        e.changeMobTexture(runnerRight1, runnerLeft1);
+                    } else {
+                        e.changeMobTexture(runnerRight2, runnerLeft2);
+                    }
+                }
+            } else if (e instanceof Jumper) {
+                game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
+                if (e.updateAnimation()) {
+                    if (e.getAnimationPointer() == 0) {
+                        e.changeMobTexture(jumperRight1, jumperLeft1);
+                    } else {
+                        e.changeMobTexture(jumperRight2, jumperLeft2);
+                    }
+                }
+            } else if (e instanceof Walker) {
 				game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
 	            if (e.updateAnimation()) {
 	                if (e.getAnimationPointer() == 0) {
-	                    e.changeMobTexture(enemyMovingRight1, enemyMovingLeft1);
+	                    e.changeMobTexture(walkerMovingRight1, walkerMovingLeft1);
 	                } else {
-	                    e.changeMobTexture(enemyMovingRight2, enemyMovingLeft2);
+	                    e.changeMobTexture(walkerMovingRight2, walkerMovingLeft2);
 	                }
 	            }
 			}

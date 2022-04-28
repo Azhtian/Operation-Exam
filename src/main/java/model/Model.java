@@ -51,7 +51,9 @@ public class Model implements IModel {
     }
     
 	public void retrieveObjectsFromMap(TiledMap tileMap, int numberOfPlayers) {
-		Texture enemyImage = TextureManager.getTexture("enemyLeft1");
+		Texture walkerImage = TextureManager.getTexture("enemyLeft1");
+        Texture runnerImage = TextureManager.getTexture("runnerLeft1");
+        Texture jumperImage = TextureManager.getTexture("jumperLeft1");
 		Texture bossImage = TextureManager.getTexture("bossLeft");
 		Texture playerImage1 = TextureManager.getTexture("player1idle");
         Texture playerImage2 = TextureManager.getTexture("player2idle");
@@ -63,7 +65,7 @@ public class Model implements IModel {
 					continue;
 				}
 				if (object.getProperties().get("type").equals("Platform")) {
-					Boolean thin = false;
+					boolean thin = false;
 					if (object.getProperties().containsKey("thin") && object.getProperties().get("thin").equals(true)) {
 						thin = true;
 					}
@@ -84,13 +86,13 @@ public class Model implements IModel {
 
 					Enemy enemy;
 					if (object.getName().equals("Jumper")) {
-						enemy = new Jumper(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+						enemy = new Jumper(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, jumperImage);
 					} else if (object.getName().equals("Runner")) {
-						enemy = new Runner(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+						enemy = new Runner(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, runnerImage);
 					} else if (object.getName().equals("Stationary")) {
-						enemy = new Stationary(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+						enemy = new Stationary(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, walkerImage);
 					} else if (object.getName().equals("Walker")) {
-						enemy = new Walker(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, enemyImage);
+						enemy = new Walker(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, walkerImage);
 					} else if (object.getName().equals("Boss")) {
 						enemy = new Boss(enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, bossImage);
 					} else {
