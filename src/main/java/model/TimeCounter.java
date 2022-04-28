@@ -28,6 +28,14 @@ public class TimeCounter {
         }
     }
 
+    public int getHour(){
+        return gameTimeHour;
+    }
+
+    public int getMinutes(){
+        return gameTimeMinutes;
+    }
+
     public String getTime(){
         String hours;
         String minutes;
