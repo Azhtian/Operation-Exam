@@ -66,6 +66,8 @@ public interface IMob {
 	 */
 	void changeY(float y);
 
+	void changePos(float x, float y);
+
 	/**
 	 * @return current xSpeed of mob
 	 */
@@ -74,6 +76,8 @@ public interface IMob {
 	/** Sets the xSpeed of mob
 	 */
 	void setXSpeed(float xSpeed);
+
+	void changeXSpeed(float xSpeed);
 
 	/**
 	 * @return current ySpeed of mob
@@ -146,7 +150,9 @@ public interface IMob {
 	
 	
 	// Movement directions
-	
+
+	void setJumpStrength(float jumpStrength);
+
 	/** Sets whether mob is moving or not
 	 */
 	void setMoving(boolean moving);
