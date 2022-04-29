@@ -28,8 +28,12 @@ Det gjøres enkelt ved å kalle `java -jar Operation-Exam-<versjon>-fat.jar`.
 
 
 ### Screenshots
-![Hovedmeny](./assets/screenshots/screenshot6.png)  
-![1. Etasje](./assets/screenshots/screenshot1.png)  
+![Tutorial](./assets/screenshots/screenshot7.png)
+![Hovedmeny](./assets/screenshots/screenshot6.png)
+![Støtte for flerspiller](./assets/screenshots/screenshot5.png)
+![Boss-fight](./assets/screenshots/screenshot8.png)
 ![Spiller med poeng objekter og helse indikator](./assets/screenshots/screenshot2.png)  
 ![2. Etasje](./assets/screenshots/screenshot3.png)  
-![Støtte for flerspiller](./assets/screenshots/screenshot5.png)  
+![6. Etasje](./assets/screenshots/screenshot9.png)  
+
+
