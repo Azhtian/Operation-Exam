@@ -25,7 +25,7 @@ public class HomeScreen extends AbstractScreen {
 		// Creating buttons using skins
 		TextButton onePlayer = new TextButton("One Player", skin);
 		TextButton twoPlayer = new TextButton("Two Player", skin);
-		TextButton preferences = new TextButton("Preferences", skin);
+		TextButton preferences = new TextButton("Settings", skin);
 		TextButton exit = new TextButton("Exit", skin);
 		Label titleLabel = new Label("Main menu", skin, "big");
 		
