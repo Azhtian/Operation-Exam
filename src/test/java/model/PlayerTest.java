@@ -1,7 +1,7 @@
 package model;
 
 import com.badlogic.gdx.math.Rectangle;
-import model.Player;
+import com.badlogic.gdx.utils.Array;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,11 +63,11 @@ public class PlayerTest {
     
     @Test
     void testCrouch() {
-    	player.stand();
+    	player.stand(new Array<Platform>());
     	float temp = player.getHeight();
     	player.crouch();
     	assertTrue(temp > player.getHeight());
-    	player.stand();
+    	player.stand(new Array<Platform>());
     	assertEquals(temp, player.getHeight());
     }
     
