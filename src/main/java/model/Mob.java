@@ -31,7 +31,6 @@ public abstract class Mob extends Sprite implements IMob {
     // Points to which animation frame to render
     private int animationPointer;
 
-    
 
 	/** Creates a new Mob with lower right corner position and dimensions
 	 * @param x x-position
@@ -53,7 +52,8 @@ public abstract class Mob extends Sprite implements IMob {
 	public Texture getPlayerImage() {
 		return playerImage;
 	}
-	
+
+    @Override
 	public void setPlayerImage(Texture image) {
 		this.playerImage = image;
 	}
@@ -77,6 +77,7 @@ public abstract class Mob extends Sprite implements IMob {
 		else this.changeY(this.getYSpeed()); 
 	}
     
+
 	public float getX() {
 		return x;
 	}
@@ -149,12 +150,14 @@ public abstract class Mob extends Sprite implements IMob {
 		this.y += y;
 	}
 
+
     public void changePos(float x, float y) {
         this.x += x;
         this.y += y;
         bounds.x += x;
         bounds.y += y;
     }
+
 
 	public float getXSpeed() {
 		return xSpeed;
@@ -207,7 +210,7 @@ public abstract class Mob extends Sprite implements IMob {
 	public void setGrounded(boolean grounded) {
 		this.grounded = grounded;
 	}
-	
+
 	public float getCentreX() {
 			return this.getX() + this.getWidth()/2;
 	}

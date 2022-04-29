@@ -17,7 +17,7 @@ public class GameOverScreen extends AbstractScreen {
 	public void show() {
         super.show();
 
-		Label titleLabel = new Label("You Loose !", skin, "big");        
+		Label titleLabel = new Label("You Lose !", skin, "big");
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);
 		TextButton newGame = new TextButton("Try again", skin);

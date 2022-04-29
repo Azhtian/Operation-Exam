@@ -3,16 +3,11 @@ package controls;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 
 import model.Enemy;
 import model.Mob;
 import model.Model;
-import model.Platform;
 import model.Player;
-import model.Item;
-
-import java.util.ListIterator;
 
 public class Controls {
 	

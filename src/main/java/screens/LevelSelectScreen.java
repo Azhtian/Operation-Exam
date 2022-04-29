@@ -8,8 +8,9 @@ import helper.LevelReader;
 
 import helper.ScreenManager;
 
+
 public class LevelSelectScreen extends AbstractScreen {
-	private int numberOfLevels = LevelReader.getLevels();
+	private final int numberOfLevels = LevelReader.getLevels();
 
 	public LevelSelectScreen(ScreenManager game) {
 		super(game);

@@ -39,7 +39,6 @@ public class ScreenManager extends Game {
 	public final static int GAMEFINISHED = 8;
 
 	private int numberOfPlayers = 1;
-	private TiledMap tileMap;
 	public AppPreferences preferences;
 	private int currentLevel = 1;
 
@@ -79,7 +78,7 @@ public class ScreenManager extends Game {
 			if (gameScreen == null) {
 				try {
 					String levelPath = "assets/maps/map" + currentLevel + ".tmx";
-					tileMap = new TmxMapLoader().load(levelPath);
+					TiledMap tileMap = new TmxMapLoader().load(levelPath);
 					Model model = new Model(numberOfPlayers, tileMap);
 					Controls controls = new Controls();
 					gameScreen = new GameScreen(this, model, controls);
@@ -89,7 +88,6 @@ public class ScreenManager extends Game {
 				}
 				//If level does not exist assume player has completed the game
 				catch (Exception e){
-					System.out.println(e);
 					this.changeScreen(GAMEFINISHED);
 				}
 			} else {
@@ -112,6 +110,8 @@ public class ScreenManager extends Game {
 			if (gameFinishedScreen == null) gameFinishedScreen = new GameFinishedScreen(this);
 			this.setScreen(gameFinishedScreen);
 			break;
+		default:
+			this.setScreen(homeScreen);
 		}
 	}
 

@@ -25,12 +25,12 @@ public class Model implements IModel {
 	private TimeCounter gameTime;
 
 	private Goal goal;
-    private Array<Platform> platforms = new Array<Platform>(100);
-    private Array<Enemy> enemies = new Array<Enemy>(100);
-    private ArrayList<Item> scoreItems = new ArrayList<>();
-    private ArrayList<Player> players = new ArrayList<>();
-
 	public static ArrayList<Item> books = new ArrayList<>();
+	private final Array<Platform> platforms = new Array<>(100);
+    private final Array<Enemy> enemies = new Array<>(100);
+    private final ArrayList<Item> scoreItems = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
+
 
     
 	/**Empty Model used for tests*/
@@ -67,10 +67,10 @@ public class Model implements IModel {
 					continue;
 				}
 				if (object.getProperties().get("type").equals("Platform")) {
-					boolean thin = false;
-					if (object.getProperties().containsKey("thin") && object.getProperties().get("thin").equals(true)) {
-						thin = true;
-					}
+
+					com.badlogic.gdx.maps.MapProperties o = object.getProperties();
+					boolean thin = object.getProperties().containsKey("thin") && object.getProperties().get("thin").equals(true);
+
 					Platform rect = new Platform(((RectangleMapObject) object).getRectangle(), thin);
 					platforms.add(rect);
 				}
@@ -111,7 +111,7 @@ public class Model implements IModel {
                     Rectangle playerRect = ((RectangleMapObject) object).getRectangle();
                     Player player;
                     if (players.size() == 0) {
-                        player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage1, PlayerInputManager.getControls(players.size()));
+                        player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage1, PlayerInputManager.getControls(0));
                     } else {
                         player = new Player(playerRect.x, playerRect.y, playerRect.width, playerRect.height, playerImage2, PlayerInputManager.getControls(players.size()));
                     }
@@ -147,10 +147,6 @@ public class Model implements IModel {
     public Goal getGoal() {
     	return goal;
     }
-
-	public void addPlayer(Player player) {
-		players.add(player);
-	}
 	
 	public void addEnemy(Enemy enemy) {
 		enemies.add(enemy);
@@ -186,5 +182,13 @@ public class Model implements IModel {
 
 	public void setScreen(int screen) {
 		this.screen = screen;
+	}
+
+	public float getGravity() {
+		return -0.5f;
+	}
+
+	public void addPlayer(Player player){
+		players.add(player);
 	}
 }

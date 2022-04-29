@@ -21,7 +21,7 @@ public class PauseScreen extends AbstractScreen {
 		TextButton levelSelect = new TextButton("Level Select", skin);
 		TextButton home = new TextButton("Main Menu", skin);
 		Label titleLabel = new Label( "Game paused", skin, "big");
-  
+
 		table.add(titleLabel);
         table.row().pad(10,0,0,10);
         table.row().pad(10,0,0,10);

@@ -12,10 +12,10 @@ public class Player extends Mob {
 
 	private static final int maxHealth = 3;
 	private int health;
-	private int crouchingSpeed = 2;
-	private int walkingSpeed = 3;
-	private int runningSpeed = 4;
-	private int dashSpeed = 15;
+    private final int dashSpeed = 15;
+    private final int crouchingSpeed = 2;
+	private static final int walkingSpeed = 3;
+	private static final int runningSpeed = 4;
 	private int dashCounter;
 	private final int maxStamina = 80;
 	private float stamina;
@@ -129,7 +129,7 @@ public class Player extends Mob {
 				this.setPos(16, 16);
 				// Player takes damage
 				this.damage(1);
-				this.setStamina(this.maxStamina);
+				this.setStamina(maxStamina);
 				if (this.getHealth() <= 0) {
 					return true;
 				}
@@ -137,7 +137,7 @@ public class Player extends Mob {
 		}
 		return false;
 	}
-	
+
 	public void xMovement(Model model) {
 		this.setMoving(false);
 		if (Gdx.input.isKeyPressed(this.getLeftControl())) {
@@ -196,10 +196,6 @@ public class Player extends Mob {
 		return controlSet[5];
 	}
 
-    public void setHealth(int health){
-		this.health = health;
-	}
-
 	public void damage(int damage){
 		this.health = this.health - damage;
 	}
@@ -235,8 +231,9 @@ public class Player extends Mob {
 	}
 	
 	public void addStamina() {
-		if (this.stamina < this.getMaxStamina())
-		this.stamina += 0.5;
+		if (this.stamina < this.getMaxStamina()) {
+			this.stamina += 0.5;
+		}
 	}
 	
 	public void exhaustStamina(float loss) {
@@ -249,4 +246,5 @@ public class Player extends Mob {
 	public int getMaxStamina() {
 		return this.maxStamina;
 	}
+
 }

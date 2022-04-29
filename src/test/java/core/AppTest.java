@@ -45,11 +45,8 @@ public class AppTest {
 
 	/**
 	 * Parameterized test case, reading arguments from comma-separated strings
-	 * 
-	 * @param a
-	 * @param b
-	 * @param c
-	 */
+	 *
+     */
 	@CsvSource(value = { "1,1,2", "1,2,3", "2,3,5", "3,5,8", "5,8,13", "8,13,21" })
 	@ParameterizedTest(name = "{0}+{1} == {2}")
 	void addTest(int a, int b, int c) {

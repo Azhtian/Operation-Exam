@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Platform extends Rectangle {
 
-	private Boolean thin;
+	private final Boolean thin;
 
 	/** Create a platform using position and dimensions.
 	 * A Platform might have the property thin, meaning players can pass through them in alot of ways.

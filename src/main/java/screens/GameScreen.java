@@ -16,8 +16,6 @@ import helper.ScreenManager;
 import helper.TextureManager;
 import model.*;
 
-import java.sql.Time;
-
 public class GameScreen implements Screen {
 	private final ScreenManager game;
 	private final Model model;
@@ -25,7 +23,7 @@ public class GameScreen implements Screen {
 	private final OrthographicCamera camera;
 	private final OrthogonalTiledMapRenderer renderer;
     public final Stage stage;
-    private Viewport viewport;
+    private final Viewport viewport;
     
     // Texture
     private final Texture staminaFrame;
@@ -63,7 +61,7 @@ public class GameScreen implements Screen {
     private final Texture player2movingLeft1;
     private final Texture player2movingLeft2;
     private final Texture player2idle;
-	private TimeCounter gameTime = TimeCounter.getInstance();
+	private final TimeCounter gameTime = TimeCounter.getInstance();
 
 	public GameScreen(final ScreenManager game, Model model, Controls controls) {
 		this.game = game;

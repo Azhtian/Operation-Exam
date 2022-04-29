@@ -12,15 +12,15 @@ public class Goal {
 	/** Creates a Goal
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
+	 * @param width of object
+	 * @param height of object
 	 */
 	public Goal(float x, float y, float width, float height) {
 		bounds = new Rectangle(x, y, width, height);
-		this.width = width;
-		this.height = height;
-		this.x = x;
-		this.y = y;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
 	}
 
 	/** @return x position*/
