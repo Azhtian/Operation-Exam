@@ -23,7 +23,7 @@ public class GameFinishedScreen extends AbstractScreen {
         super.show();
 		Label titleLabel = new Label("You completed the whole game !", skin, "big");
 		int booksCollected = Model.gameScore/ScoreValueHelper.getScoreValue("book");
-		Label scoreLabel = new Label("You collected " +  booksCollected + " books and got to the exam at " + gameTime.getTime() + ", this gives a final grade of: ", skin);
+		Label scoreLabel = new Label("You collected " +  booksCollected + " books ouf of " + Model.books.size() + " and got to the exam at " + gameTime.getTime() + ", this gives a final grade of: ", skin);
 		Label finalGrade = new Label("" + FinalGrade.calculate(booksCollected), skin, "big");
 		table.add(titleLabel);
 		table.row().pad(10, 0, 0, 0);

@@ -30,6 +30,8 @@ public class Model implements IModel {
     private ArrayList<Item> scoreItems = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
 
+	public static ArrayList<Item> books = new ArrayList<>();
+
     
 	/**Empty Model used for tests*/
 	public Model(){
@@ -76,6 +78,7 @@ public class Model implements IModel {
 					String itemName = object.getName();
 					Item item = new Item(TextureManager.getTexture(itemName), ScoreValueHelper.getScoreValue(itemName), (float) object.getProperties().get("x"), (float) object.getProperties().get("y"));
 					scoreItems.add(item);
+					books.add(item);
 				} 
 				else if (object.getProperties().get("type").equals("Goal")) {
 					Rectangle goalRect = ((RectangleMapObject) object).getRectangle();

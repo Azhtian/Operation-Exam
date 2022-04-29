@@ -5,7 +5,6 @@ import model.TimeCounter;
 
 public class FinalGrade {
     static TimeCounter gameTime = TimeCounter.getInstance();
-    private final static float totalNumberOfBooks = 56;
 
     /**
      * This function calculates the grade of the player. The grade is based on how many books the player collected and how much time they spent.
@@ -20,6 +19,7 @@ public class FinalGrade {
      * @return
      */
     public static String calculate(int numberOfBooksCollected){
+        float totalNumberOfBooks = Model.books.size();
 
         float percentageOfBooksCollected = numberOfBooksCollected/totalNumberOfBooks;
         int pointsForGrade = ((int) (percentageOfBooksCollected * 10)) - (gameTime.getHour() - 9);
