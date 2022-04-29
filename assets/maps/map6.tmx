@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="50" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="380">
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="50" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="385">
  <tileset firstgid="1" name="hoytek" tilewidth="16" tileheight="16" tilecount="190" columns="19">
   <image source="tiles.png" width="304" height="160"/>
  </tileset>
@@ -103,7 +103,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,28,28,28,0,0,0,28,28,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,28,28,0,0,0,0,0,28,28,0,0,0,0,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-40,0,0,0,0,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,0,0,59,0,0,59,0,0,59,59,59,59,59,59,59,59,59,40,40,62,62,62,62,62,40,40,
+40,0,0,0,0,59,59,40,40,59,59,59,59,59,59,59,59,59,59,59,59,59,59,59,0,0,59,0,0,59,0,0,59,59,59,59,59,59,59,59,59,40,40,62,62,62,62,62,40,40,
 0,0,40,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,59,59,2,59,59,2,59,59,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,62,62,62,62,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,2,62,62,62,62,62,62,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,59,0,0,0,0,0,0,28,0,0,0,0,0,0,0,0,0,
@@ -177,7 +177,7 @@
   <object id="253" type="Platform" x="336" y="224" width="16" height="64"/>
   <object id="254" type="Platform" x="176" y="288" width="176" height="16"/>
   <object id="255" type="Platform" x="176" y="224" width="16" height="64"/>
-  <object id="256" type="Platform" x="80" y="80" width="304" height="16"/>
+  <object id="256" type="Platform" x="80" y="80" width="32" height="16"/>
   <object id="257" type="Platform" x="624" y="80" width="32" height="16"/>
   <object id="258" type="Platform" x="688" y="80" width="80" height="16"/>
   <object id="259" type="Platform" x="656" y="160" width="48" height="16"/>
@@ -480,5 +480,14 @@
   <object id="377" name="book" type="scoreItem" x="161.01" y="101.519" width="16" height="16"/>
   <object id="378" type="Platform" x="112" y="128" width="128" height="16"/>
   <object id="379" type="Platform" x="224" y="96" width="16" height="32"/>
+  <object id="380" type="Platform" x="144" y="80" width="240" height="16"/>
+  <object id="381" type="Platform" x="368" y="96" width="16" height="16"/>
+  <object id="382" type="Platform" x="416" y="96" width="16" height="16"/>
+  <object id="383" type="Platform" x="464" y="96" width="16" height="16"/>
+  <object id="384" type="Platform" x="112" y="80" width="32" height="16">
+   <properties>
+    <property name="thin" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
