@@ -102,7 +102,7 @@ Som stretch-goal til oblig 4 har vi laget et bosslevel. Dette gir en god avslutt
 
 * For hvert krav dere jobber med, må dere lage 1) ordentlige brukerhistorier, 2) akseptansekriterier og 3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
 
-  * Fullførte krav fra MVP liste \([Original MVP-liste](./ObligatoriskOppgave1.md#brukerhistoriermvp)\) \([MVP-liste for Oblig 3](./ObligatoriskOppgave3.md#brukerhistorier-og-akseptansekriterier)\)
+  * Fullførte krav fra MVP liste \([Original MVP-liste](./ObligatoriskOppgave1.md#brukerhistoriermvp)\) \([Brukerhistorier fra Oblig 3](./ObligatoriskOppgave3.md#brukerhistorier-og-akseptansekriterier)\)
     * Vise spillbrett, spiller, og fiender på spillbrettet fungerer uten feil. Spillere og fiender har den størrelsen de fremstår som på spillbrettet.
     * Spiller kan interagere med terreng og kan bevege seg ved hjelp av piltastene. Dette fungerer også uten problem. Spiller kan også kun hoppe når spiller står på bakken.
     * Spiller interagerer også med poenggjenstander, og har en poengteller man kan lese av.
@@ -193,7 +193,7 @@ Hva som mangler:
 
 [Top](#oblig-4-operation-exam)  
 [Original MVP-liste](./ObligatoriskOppgave1.md#brukerhistoriermvp)  
-[MVP-liste for Oblig 3](./ObligatoriskOppgave3.md#brukerhistorier-og-akseptansekriterier)
+[Brukerhistorier fra Oblig 3](./ObligatoriskOppgave3.md#brukerhistorier-og-akseptansekriterier)
 
 
 ## Brukerhistorier:
