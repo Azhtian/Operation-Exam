@@ -1,6 +1,6 @@
 # Operation Exam
 
-Det er eksamensdag og Kurt Mario har forsovet seg! Etter en hektisk dusj og frokost løper Kurt Mario til bybanen for å komme seg til høyteknologisenteret. Når han kommer frem ser han et skilt hvor det står at eksamen er i 6. etasje! Og ikke nok med det, Kurt Mario sovnet halveis inn i skippertaks-økten kvelden før! Hjelp Kurt Mario med å komme seg forbi proffessorene i gangene og nå frem til eksamenslokalet i tide. Plukk opp så mange bøker du klarer på veien for å sørge for at Kurt Mario får en god karakter på eksamen.
+Det er eksamensdag og Kurt Mario har forsovet seg! Etter en hektisk dusj og frokost løper Kurt Mario til bybanen for å komme seg til høyteknologisenteret. Når han kommer frem ser han et skilt hvor det står at eksamen er i 8. etasje! Og ikke nok med det, Kurt Mario sovnet halveis inn i skippertaks-økten kvelden før! Hjelp Kurt Mario med å komme seg forbi proffessorene i gangene og nå frem til eksamenslokalet i tide. Plukk opp så mange bøker du klarer på veien for å sørge for at Kurt Mario får en god karakter på eksamen.
 
 
 ## Prosjekt beskrivelse
@@ -28,8 +28,12 @@ Det gjøres enkelt ved å kalle `java -jar Operation-Exam-<versjon>-fat.jar`.
 
 
 ### Screenshots
-![Hovedmeny](./assets/screenshots/screenshot6.png)  
-![1. Etasje](./assets/screenshots/screenshot1.png)  
+![Tutorial](./assets/screenshots/screenshot7.png)
+![Hovedmeny](./assets/screenshots/screenshot6.png)
+![Støtte for flerspiller](./assets/screenshots/screenshot5.png)
+![Boss-fight](./assets/screenshots/screenshot8.png)
 ![Spiller med poeng objekter og helse indikator](./assets/screenshots/screenshot2.png)  
 ![2. Etasje](./assets/screenshots/screenshot3.png)  
-![Støtte for flerspiller](./assets/screenshots/screenshot5.png)  
+![6. Etasje](./assets/screenshots/screenshot9.png)  
+
+
