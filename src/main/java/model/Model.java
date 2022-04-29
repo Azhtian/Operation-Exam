@@ -1,4 +1,4 @@
-package model;
+	package model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapObject;
@@ -21,9 +21,6 @@ public class Model implements IModel {
 	private int screen = 4;
 	private TiledMap tileMap;
 	public static int gameScore = 0;
-	private int currentLevel;
-	private TimeCounter gameTime;
-
 	private Goal goal;
 	public static ArrayList<Item> books = new ArrayList<>();
 	private final Array<Platform> platforms = new Array<>(100);
@@ -161,7 +158,7 @@ public class Model implements IModel {
 	}
 	
 	public void addScore(int scoreValue) {
-		this.gameScore += scoreValue;
+		Model.gameScore += scoreValue;
 	}
 	
 	public int getGameScore() {

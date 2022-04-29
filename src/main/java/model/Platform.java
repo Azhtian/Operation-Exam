@@ -2,6 +2,7 @@ package model;
 
 import com.badlogic.gdx.math.Rectangle;
 
+@SuppressWarnings("serial")
 public class Platform extends Rectangle {
 
 	private final Boolean thin;
