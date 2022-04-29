@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Time;
-
 public class TimeCounter {
     private int gameTimeHour = 7;
     private int gameTimeMinutes = 0;

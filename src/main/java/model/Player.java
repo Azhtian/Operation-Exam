@@ -97,6 +97,10 @@ public class Player extends Mob {
 		this.setCurrentSpeed(this.crouchingSpeed);
 	}
 	
+	public Rectangle getStandSensor() {
+		return this.standSensor;
+	}
+	
 	public void stand (Array<Platform> platforms) {
 		this.updateSensor();
 		for (Platform p : platforms) {

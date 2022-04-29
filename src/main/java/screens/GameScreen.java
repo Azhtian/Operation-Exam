@@ -16,8 +16,6 @@ import helper.ScreenManager;
 import helper.TextureManager;
 import model.*;
 
-import java.sql.Time;
-
 public class GameScreen implements Screen {
 	private final ScreenManager game;
 	private final Model model;

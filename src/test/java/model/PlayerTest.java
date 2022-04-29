@@ -72,6 +72,15 @@ public class PlayerTest {
     }
     
     @Test
+    void testSensor() {
+    	player.changeX(100);
+    	player.changeY(100);
+    	player.updateSensor();
+    	assertEquals(player.getX(), player.getStandSensor().getX());
+    	assertEquals(player.getY(), player.getStandSensor().getY());
+    }
+    
+    @Test
     void testExhaustStamina() {
     	player.exhaustStamina(10);
     	assertEquals(player.getStamina(), player.getMaxStamina()-10);
