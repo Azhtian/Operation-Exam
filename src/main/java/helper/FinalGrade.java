@@ -4,7 +4,7 @@ import model.Model;
 import model.TimeCounter;
 
 public class FinalGrade {
-    static TimeCounter gameTime = TimeCounter.getInstance();
+    static final TimeCounter gameTime = TimeCounter.getInstance();
 
     /**
      * This function calculates the grade of the player. The grade is based on how many books the player collected and how much time they spent.
@@ -15,8 +15,6 @@ public class FinalGrade {
      * Then every hour the player arrives after 09:00 is deducted from the score, for example if the player arrives at 10, 1 point is deducted.
      * This gives a final score of 7 which gives the grade B
      *
-     * @param numberOfBooksCollected
-     * @return
      */
     public static String calculate(int numberOfBooksCollected){
         float totalNumberOfBooks = Model.books.size();

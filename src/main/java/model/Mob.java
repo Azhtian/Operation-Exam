@@ -17,7 +17,6 @@ public abstract class Mob extends Sprite implements IMob {
 	private float x;
 	private float ySpeed;
 	private float xSpeed;
-	private float maxSpeed = 6f;
 	private float currentSpeed;
 	private float jumpStrength = 6f;
     private final float gravity;
@@ -70,11 +69,8 @@ public abstract class Mob extends Sprite implements IMob {
     }
     
     public void applyGravity() { 
-		this.changeYSpeed(getGravity()); 
-		if (this.getYSpeed() < -this.getMaxSpeed()) {
-			this.changeY(-this.getMaxSpeed());  
-		}
-		else this.changeY(this.getYSpeed()); 
+		this.changeYSpeed(getGravity());
+		this.changeY(Math.max(this.getYSpeed(), -this.getMaxSpeed()));
 	}
     
 
@@ -108,7 +104,7 @@ public abstract class Mob extends Sprite implements IMob {
 					if (this instanceof Enemy) {this.setMovingRight(false);}
 				} else {
 					this.setX(rect.x + rect.width);
-					if (this instanceof Enemy) {this.setMovingRight(true);};
+					if (this instanceof Enemy) {this.setMovingRight(true);}
 				}
 			}
 		}
@@ -119,7 +115,6 @@ public abstract class Mob extends Sprite implements IMob {
 			if (this.getBounds().overlaps(rect)) {
 				if (rect.isThin()) {
 					if (this.getYSpeed() >= 0 || downIsPressed) {
-						continue;
 					}
 					else if (this.getYSpeed() <= 0 && this.getY() >= rect.y+8) {
 						this.setY(rect.height + rect.y);
@@ -220,7 +215,7 @@ public abstract class Mob extends Sprite implements IMob {
 	}
 
     public float getMaxSpeed() {
-		return maxSpeed;
+		return 6f;
 	}
 
 	public float getJumpStrength() {

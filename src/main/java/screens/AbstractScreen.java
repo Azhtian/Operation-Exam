@@ -16,8 +16,8 @@ import helper.ScreenManager;
  */
 public abstract class AbstractScreen implements Screen {
 	
-	public ScreenManager game;
-    public Stage stage;
+	public final ScreenManager game;
+    public final Stage stage;
     public Table table;
     public Skin skin;
 

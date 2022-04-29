@@ -1,15 +1,13 @@
 package screens;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import helper.ScreenManager;
 import org.junit.jupiter.api.BeforeEach;
 
 public class GameScreenTest {
 
-    GameScreen game;
-    ApplicationListener listener;
+    //GameScreen game;
+    //ApplicationListener listener;
 
     Lwjgl3Application lw3;
 
@@ -19,7 +17,7 @@ public class GameScreenTest {
         // Application Title and Window Size
         cfg.setTitle("Absolutely Fantastic and Utterly Brilliant Title");
         cfg.setWindowedMode(1200, 480); // scaled as 1.5x castle board size
-        lw3 = new Lwjgl3Application(new ScreenManager(), cfg);
-        listener = lw3.getApplicationListener();
+        //lw3 = new Lwjgl3Application(new ScreenManager(), cfg);
+        //listener = lw3.getApplicationListener();
     }
 }

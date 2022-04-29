@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EnemyTest {
 
-    static Model model;
+    private Model model;
 
 
     @BeforeEach

@@ -21,9 +21,7 @@ public class Platform extends Rectangle {
 	
 	/** Create a platform using a Rectangle.
 	 * A Platform might have the property thin, meaning players can pass through them in alot of ways.
-	 * @param rect
-	 * @param thin
-	 */
+     */
 	public Platform(Rectangle rect, Boolean thin) {
 		this.x = rect.x;
 		this.y = rect.y;

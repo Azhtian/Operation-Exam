@@ -12,9 +12,7 @@ public class Jumper extends Walker {
 	/** Creates a Jumper Enemy that jumps when its about to fall off a platform
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
-	 */
+     */
 	public Jumper(float x, float y, float width, float height) {
 		super(x, y, width, height);
 		this.sensor = new Rectangle(0, 0, (float) (width * 0.75), 16);
@@ -23,10 +21,7 @@ public class Jumper extends Walker {
 	/** Creates a Jumper Enemy that jumps when its about to fall off a platform
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
-	 * @param image
-	 */
+     */
 	public Jumper(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);
 		this.sensor = new Rectangle(0, 0, (float) (width * 0.75), 16);

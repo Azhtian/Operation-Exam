@@ -5,15 +5,13 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Walker extends Enemy{
 	private final Rectangle sensorLeft = new Rectangle(0, 0, 2, 16);
-	private final Rectangle sensorRight = new Rectangle(0, 0, 2, 16);;
-	private Boolean sensorLeftActivation;
+	private final Rectangle sensorRight = new Rectangle(0, 0, 2, 16);
+    private Boolean sensorLeftActivation;
 	private Boolean sensorRightActivation;
 
 	/** Creates a Jumper Enemy that turns around when it encounters a wall of is about to fall off a platform
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
 	 */
 	public Walker(float x, float y, float width, float height) {
 		super(x, y, width, height);
@@ -23,9 +21,6 @@ public class Walker extends Enemy{
 	/** Creates a Walker Enemy that turns around when it encounters a wall of is about to fall off a platform
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
-	 * @param image
 	 */
 	public Walker(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height, image);

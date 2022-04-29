@@ -1,11 +1,10 @@
 package model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 
 public class Runner extends Walker {
 	private final int detectionDistance;
-	private Player closePlayer;
+	//private Player closePlayer;
 
 	public Runner(float x, float y, float width, float height) {
 		super(x, y, width, height);

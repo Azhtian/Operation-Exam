@@ -5,14 +5,12 @@ import com.badlogic.gdx.graphics.Texture;
 
 public abstract class Enemy extends Mob {
 	
-	private Boolean movingRight;
-	private float moveSpeed;
+	//private Boolean movingRight;
+	//private float moveSpeed;
 
 	/** Creates an Enemy
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
 	 */
 	public Enemy(float x, float y, float width, float height) {
 		super(x, y, width, height);
@@ -22,9 +20,6 @@ public abstract class Enemy extends Mob {
 	/** Creates an Enemy with image
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
-	 * @param image
 	 */
 	public Enemy(float x, float y, float width, float height, Texture image) {
 		super(x, y, width, height);

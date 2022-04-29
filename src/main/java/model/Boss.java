@@ -3,13 +3,10 @@ package model;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Boss extends Enemy {
-	private Player closestPlayer;
-	
+
 	/** Creates a Boss enemy (Anya) which follows the closest player
 	 * @param x position bottom left
 	 * @param y position bottom left
-	 * @param width
-	 * @param height
 	 * @param image of boss
 	 */
 	public Boss(float x, float y, float width, float height, Texture image){
@@ -18,8 +15,8 @@ public class Boss extends Enemy {
 	}
 	
 	public void doMovement(Model model){
-		this.closestPlayer = findClosePlayer(model, 1000);
-		facePlayer(this.closestPlayer);
+		Player closestPlayer = findClosePlayer(model, 1000);
+		facePlayer(closestPlayer);
 		this.changeX((float) (this.getCurrentSpeed() * (closestPlayer.getCentreX()-this.getCentreX())/(Math.sqrt(Math.pow(closestPlayer.getCentreX()-this.getCentreX(),2) + Math.pow(closestPlayer.getCentreY()-this.getCentreY(),2)))));
 		this.changeY((float) (this.getCurrentSpeed() * (closestPlayer.getCentreY()-this.getCentreY())/(Math.sqrt(Math.pow(closestPlayer.getCentreX()-this.getCentreX(),2) + Math.pow(closestPlayer.getCentreY()-this.getCentreY(),2)))));
 	}
@@ -28,10 +25,6 @@ public class Boss extends Enemy {
 	 * @param p Player to face
 	 */
 	public void facePlayer(Player p) {
-		if (this.getCentreX() >= p.getCentreX()) {
-			this.setMovingRight(false);
-		} else {
-			this.setMovingRight(true);
-		}
+		this.setMovingRight(!(this.getCentreX() >= p.getCentreX()));
 	}
 }

@@ -12,7 +12,7 @@ import model.Model;
 import model.TimeCounter;
 
 public class GameFinishedScreen extends AbstractScreen {
-	TimeCounter gameTime = TimeCounter.getInstance();
+	final TimeCounter gameTime = TimeCounter.getInstance();
 	
 	public GameFinishedScreen(ScreenManager game) {
 		super(game);

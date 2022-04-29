@@ -63,11 +63,11 @@ public class PlayerTest {
     
     @Test
     void testCrouch() {
-    	player.stand();
+    	//player.stand();
     	float temp = player.getHeight();
     	player.crouch();
     	assertTrue(temp > player.getHeight());
-    	player.stand();
+    	//player.stand();
     	assertEquals(temp, player.getHeight());
     }
     

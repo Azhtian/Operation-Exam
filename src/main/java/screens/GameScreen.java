@@ -96,7 +96,7 @@ public class GameScreen implements Screen {
         jumperLeft2 = TextureManager.getTexture("jumperLeft2");
         //Boss
         bossLeft = TextureManager.getTexture("bossLeft");
-        bossRight = TextureManager.getTexture("bossRight");;
+        bossRight = TextureManager.getTexture("bossRight");
 
         player1movingRight1 = TextureManager.getTexture("player1mvr1");
         player1movingRight2 = TextureManager.getTexture("player1mvr2");
@@ -116,7 +116,7 @@ public class GameScreen implements Screen {
 		// create camera and viewport
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, model.getCameraWidth(), model.getCameraHeight()); // dimensions of castle board
-		camera.position.set(model.getCameraWidth()/2, model.getCameraHeight()/2, 3); // centers the camera to middle of board instead of (by default) window.
+		camera.position.set(model.getCameraWidth()/(float)2, model.getCameraHeight()/(float)2, 3); // centers the camera to middle of board instead of (by default) window.
 		
 		viewport = new ExtendViewport(model.getCameraWidth(), model.getCameraHeight(), camera);
 
@@ -170,8 +170,7 @@ public class GameScreen implements Screen {
         // Updates enemy texture every 20 frames
 		for (Enemy e : model.getEnemies()) {
 			if(e instanceof Stationary){
-				continue;
-			} else if (e instanceof Boss){
+            } else if (e instanceof Boss){
 				e.changeMobTexture(bossRight, bossLeft);
 				game.batch.draw(e.getPlayerImage(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
 			} else if (e instanceof Runner) {
@@ -238,7 +237,7 @@ public class GameScreen implements Screen {
 
 		//Update time
 		gameTime.updateTime(delta);
-		game.font.draw(game.batch, gameTime.getTime(),model.getCameraWidth()/2, model.getCameraHeight());
+		game.font.draw(game.batch, gameTime.getTime(),model.getCameraWidth()/(float)2, model.getCameraHeight());
 
 		// TODO Put FPS counter in preference
 		//game.font.draw(game.batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);	

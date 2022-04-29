@@ -12,16 +12,15 @@ public class Player extends Mob {
 
 	private static final int maxHealth = 3;
 	private int health;
-    private final int dashSpeed = 15;
-    private final int crouchingSpeed = 2;
+	private final static int crouchingSpeed = 2;
 	private static final int walkingSpeed = 3;
 	private static final int runningSpeed = 4;
 	private int dashCounter;
-	private final int maxStamina = 80;
+	private final static int maxStamina = 80;
 	private float stamina;
 	private int[] controlSet;
 	private int idleCounter = 0;
-	private Rectangle standSensor = new Rectangle(0, 0, 16, 24);
+	private final Rectangle standSensor = new Rectangle(0, 0, 16, 24);
 
 
 	public Player(float x, float y, float width, float height){
@@ -78,7 +77,8 @@ public class Player extends Mob {
 			this.dashCounter += 4;
 		}
 		if (this.dashCounter > 0) {
-			this.setCurrentSpeed(this.dashSpeed);
+			int dashSpeed = 15;
+			this.setCurrentSpeed(dashSpeed);
 			this.dashCounter -= 1;
 		}
 	}
@@ -94,7 +94,7 @@ public class Player extends Mob {
 	public void crouch () {
 		this.setHeight(16);
 		this.getBounds().setHeight(16);
-		this.setCurrentSpeed(this.crouchingSpeed);
+		this.setCurrentSpeed(crouchingSpeed);
 	}
 	
 	public void stand (Array<Platform> platforms) {
@@ -107,18 +107,18 @@ public class Player extends Mob {
 		}
 		this.setHeight(24);
 		this.getBounds().setHeight(24);
-		this.setCurrentSpeed(this.walkingSpeed);
+		this.setCurrentSpeed(walkingSpeed);
 	}
 	
 	public void sprint () {
 		if (Gdx.input.isKeyPressed(this.getSprintControl()) && this.stamina >= 1) {
 			this.exhaustStamina(1);
-			this.setCurrentSpeed(this.runningSpeed);
+			this.setCurrentSpeed(runningSpeed);
 		}
 	}
 	
 	public void walk () {
-		this.setCurrentSpeed(this.walkingSpeed);
+		this.setCurrentSpeed(walkingSpeed);
 	}
 	
 	public boolean enemyCollisions (Array<Enemy> enemies) {
@@ -244,7 +244,7 @@ public class Player extends Mob {
 	}
 
 	public int getMaxStamina() {
-		return this.maxStamina;
+		return maxStamina;
 	}
 
 }
