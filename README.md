@@ -13,11 +13,16 @@ Prosjektet kan enkelt bygges, testes, og kjøres gjennom en IDE som IntelliJ IDE
 Maven brukes da av editorene til å installere `LibGDX`, som er den eneste dependencien til prosjektet. Her er linker til å laste ned [InelliJ](https://www.jetbrains.com/idea/download/#section=linux) og [Eclipse](https://www.eclipse.org/downloads/).
 Etter du har lastet ned enten IntelliJ eller Eclipse, kan du [importere prosjekt fra gitlab til IntelliJ](https://www.jetbrains.com/help/idea/set-up-a-git-repository.html#clone-repo) eller [importere det i Eclipse](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-import-a-Maven-project-from-GitHub-into-Eclipse). (GitLab fungerer likt som GitHub så du kan bruke linkene selv om de har tatt utgangspunkt i GitHub). 
 Når du har har klart å åpne prosjektet i IDE'en kan du navigere deg frem til Main klassen (src > main > java > core > Main) og derertter høyre-klikke på den og velge run i IntelliJ elles run as Java Application. 
-For å kjøre testene må du høyre-klikke på src/test/java mappen og velge Run all tests i IntelliJ og run as JUnit test i Eclipse.
+For å kjøre testene må du høyre-klikke på src/test/java mappen og velge Run all tests i IntelliJ og run as JUnit test i Eclipse.  
+For å bygge en `.jar` fil som kan kjøres hvor som helst uten å trenge resten av prosjektet så kan man i IntelliJ åpne maven sidepanelet og trykke på `execute maven goals` og så kjøre `maven clean` og så `maven package`. 
+I den nye mappen `target` som da kommer opp vil det ligge en `Operation-Exam-<version>-SNAPSHOT-fat.jar` fil som kan kjøres uavhengig av koden.
 
 Man kan også bruke maven manuelt til å kunne kjøre og bygge programmet. For å installere dependencies kan man kjøre
-`mvn install`, og for å bygge programmet kan man kjøre `mvn package`. Package funksjonen vil gi oss en `.jar` fil som kan kjøres, dersom `javac` peker til rett java versjon (17).
-For at denne `.jar` filen skal kunne kjøres må man kopiere `assets` mappen inn i `targets` mappen, da den leter etter disse filene i mappen den er i
+`mvn install`, og for å bygge programmet kan man kjøre `mvn clean` og så `mvn package`. Package funksjonen vil gi oss en `.jar` fil som kan kjøres, dersom `javac` peker til rett java versjon (17).
+Dette vil gi oss samme fil som over, `Operation-Exam-<versjon>-SNAPSHOT-fat.jar` som ligger i `target` mappen.  
+
+`-fat.jar` filen kan kjøres fra en hvilken som helst datamaskin med Java 17 på.
+Det gjøres enkelt ved å kalle `java -jar Operation-Exam-<versjon>-fat.jar`.
 
 
 ### Screenshots
