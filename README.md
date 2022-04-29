@@ -17,7 +17,9 @@ For å kjøre testene må du høyre-klikke på src/test/java mappen og velge Run
 For å bygge en `.jar` fil som kan kjøres hvor som helst uten å trenge resten av prosjektet så kan man i IntelliJ åpne maven sidepanelet og trykke på `execute maven goals` og så kjøre `maven clean` og så `maven package`. 
 I den nye mappen `target` som da kommer opp vil det ligge en `Operation-Exam-<version>-SNAPSHOT-fat.jar` fil som kan kjøres uavhengig av koden.
 
-Man kan også bruke maven manuelt til å kunne kjøre og bygge programmet. For å installere dependencies kan man kjøre
+Man kan også bruke maven manuelt til å kunne kjøre og bygge programmet. Da trenger man `git`, `java` og `maven` installert på datamaskinen. 
+Man kjører da `git clone https://git.app.uib.no/biosoft-productions/Operation-Exam.git` i terminalen og flytter seg inn i prosjektmappen med `cd Operation-Exam`.
+For å installere dependencies kan man kjøre
 `mvn install`, og for å bygge programmet kan man kjøre `mvn clean` og så `mvn package`. Package funksjonen vil gi oss en `.jar` fil som kan kjøres, dersom `javac` peker til rett java versjon (17).
 Dette vil gi oss samme fil som over, `Operation-Exam-<versjon>-SNAPSHOT-fat.jar` som ligger i `target` mappen.  
 
