@@ -5,6 +5,7 @@ import java.util.ListIterator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 
 public class Player extends Mob {
@@ -20,6 +21,7 @@ public class Player extends Mob {
 	private float stamina;
 	private int[] controlSet;
 	private int idleCounter = 0;
+	private Rectangle standSensor = new Rectangle(0, 0, 16, 24);
 
 
 	public Player(float x, float y, float width, float height){
@@ -49,7 +51,7 @@ public class Player extends Mob {
 		xMovement(model);
 		
 		// Advanced movement (Sprint,crouch,jump,dash)
-		resetMovementOptions();
+		resetMovementOptions(model.getPlatforms());
 		
 		if (Gdx.input.isKeyPressed(this.getDownControl())) {
 			crouch();
@@ -63,10 +65,11 @@ public class Player extends Mob {
 		model.addScore(score(model.getScoreItems()));
 	}
 	
-	public void resetMovementOptions() {
+	public void resetMovementOptions(Array<Platform> p) {
 		this.addStamina();
-		this.stand();
 		this.walk();
+		this.stand(p);
+		
 	}
 	
 	public void dash() {
@@ -94,7 +97,14 @@ public class Player extends Mob {
 		this.setCurrentSpeed(this.crouchingSpeed);
 	}
 	
-	public void stand () {
+	public void stand (Array<Platform> platforms) {
+		this.updateSensor();
+		for (Platform p : platforms) {
+			if (p.overlaps(this.standSensor) && !p.isThin()) {
+				this.setCurrentSpeed(crouchingSpeed);
+				return;
+			}
+		}
 		this.setHeight(24);
 		this.getBounds().setHeight(24);
 		this.setCurrentSpeed(this.walkingSpeed);
@@ -156,6 +166,10 @@ public class Player extends Mob {
             }
         }
 		return score;
+	}
+	public void updateSensor() {
+		this.standSensor.setX(this.getX());
+		this.standSensor.setY(this.getY());
 	}
 
     public int getLeftControl(){
