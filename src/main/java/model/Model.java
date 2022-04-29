@@ -1,4 +1,4 @@
-package model;
+	package model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapObject;
@@ -15,13 +15,14 @@ import helper.ScoreValueHelper;
 import java.util.ArrayList;
 
 public class Model implements IModel {
-
+	
+	private final int width = 800;
+	private final int height = 400;
 	private int screen = 4;
 	private TiledMap tileMap;
 	public static int gameScore = 0;
-
 	private Goal goal;
-	public static final ArrayList<Item> books = new ArrayList<>();
+	public static ArrayList<Item> books = new ArrayList<>();
 	private final Array<Platform> platforms = new Array<>(100);
     private final Array<Enemy> enemies = new Array<>(100);
     private final ArrayList<Item> scoreItems = new ArrayList<>();
@@ -35,6 +36,8 @@ public class Model implements IModel {
 
 	/** Creates a Model that sets up everything the game needs.
 	 * Fetches locations of all Platforms, Players, Enemies etc. from a TileMap,
+	 * @param numberOfPlayers
+	 * @param tileMap
 	 */
 	public Model(int numberOfPlayers, TiledMap tileMap) {
 		this.tileMap = tileMap;
@@ -155,7 +158,7 @@ public class Model implements IModel {
 	}
 	
 	public void addScore(int scoreValue) {
-		gameScore += scoreValue;
+		Model.gameScore += scoreValue;
 	}
 	
 	public int getGameScore() {
@@ -163,11 +166,11 @@ public class Model implements IModel {
 	}
 	
 	public int getCameraWidth() {
-		return 800;
+		return width;
 	}
 
 	public int getCameraHeight() {
-		return 400;
+		return height;
 	}
 
 	public int getScreen() {
@@ -176,6 +179,10 @@ public class Model implements IModel {
 
 	public void setScreen(int screen) {
 		this.screen = screen;
+	}
+
+	public float getGravity() {
+		return -0.5f;
 	}
 
 	public void addPlayer(Player player){

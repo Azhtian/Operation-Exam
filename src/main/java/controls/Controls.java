@@ -2,7 +2,6 @@ package controls;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-
 import model.Enemy;
 import model.Model;
 import model.Player;

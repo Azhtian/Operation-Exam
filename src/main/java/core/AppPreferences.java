@@ -8,19 +8,17 @@ import com.badlogic.gdx.Preferences;
  */
 
 public class AppPreferences {
-	private static final String PREF_MUSIC_VOL = "volume";
 	private static final String PREF_MUSIC_ON = "music.on";
+	private static final String PREF_MUSIC_VOL = "music.volume";
 	private static final String PREF_SOUND_ON = "sound.on";
-	private static final String PREF_SOUND_VOL = "sound";
 	private static final String PREFS_NAME = "OperationExam";
-	// screen size, texture quality,... options
 	
 	protected Preferences getPrefs() {
 		return Gdx.app.getPreferences(PREFS_NAME);
 	}
 	
 	public boolean isMusicOn() {
-		return getPrefs().getBoolean(PREF_MUSIC_VOL, true);
+		return getPrefs().getBoolean(PREF_MUSIC_ON, true);
 	}
 	
 	public void setMusicChoice(boolean musicOn) {
@@ -46,12 +44,4 @@ public class AppPreferences {
 		getPrefs().flush();
 	}
 	
-	public float getSoundVolume() {
-		return getPrefs().getFloat(PREF_SOUND_VOL, 0.5f);
-	}
-	
-	public void setSoundVolume(float volume) {
-		getPrefs().putFloat(PREF_SOUND_VOL, volume);
-		getPrefs().flush();
-	}
 }

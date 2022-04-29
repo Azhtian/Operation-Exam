@@ -17,8 +17,10 @@ public abstract class Mob extends Sprite implements IMob {
 	private float x;
 	private float ySpeed;
 	private float xSpeed;
+	private float maxSpeed = 6f;
 	private float currentSpeed;
-	private final float gravity;
+	private float jumpStrength = 6f;
+    private final float gravity;
     private boolean isMoving = false;
     private boolean isMovingRight = false;
     private boolean wasMovingRight = false;
@@ -47,6 +49,7 @@ public abstract class Mob extends Sprite implements IMob {
 		this.animationPointer = 0;
 	}
 
+    @Override
 	public Texture getPlayerImage() {
 		return playerImage;
 	}
@@ -55,7 +58,8 @@ public abstract class Mob extends Sprite implements IMob {
 	public void setPlayerImage(Texture image) {
 		this.playerImage = image;
 	}
-	
+
+    @Override
     public void setPos(float x, float y){
         this.x = x;
         this.y = y;
@@ -63,38 +67,49 @@ public abstract class Mob extends Sprite implements IMob {
         this.bounds.y = y;
     }
 
+    @Override
     public float getGravity(){
         return gravity;
     }
-    
+
+    @Override
     public void applyGravity() { 
-		this.changeYSpeed(getGravity());
-		this.changeY(Math.max(this.getYSpeed(), -this.getMaxSpeed()));
+		this.changeYSpeed(getGravity()); 
+		if (this.getYSpeed() < -this.getMaxSpeed()) {
+			this.changeY(-this.getMaxSpeed());  
+		}
+		else this.changeY(this.getYSpeed()); 
 	}
     
 
+    @Override
 	public float getX() {
 		return x;
 	}
 
+    @Override
 	public void setX(float x) {
 		this.bounds.x = x;
 		this.x = x;
 	}
-	
+
+    @Override
 	public float getY() {
 		return y;
 	}
-	
+
+    @Override
 	public void setY(float y) {
 		this.bounds.y = y;
 		this.y = y;
 	}
 
+    @Override
     public Rectangle getBounds() {
 		return this.bounds;
 	}
-  
+
+    @Override
 	public void xCollisions(Model model) {
 		for (Platform rect : model.getPlatforms()) {
 			if (this.getBounds().overlaps(rect) && !rect.isThin()) {
@@ -103,17 +118,19 @@ public abstract class Mob extends Sprite implements IMob {
 					if (this instanceof Enemy) {this.setMovingRight(false);}
 				} else {
 					this.setX(rect.x + rect.width);
-					if (this instanceof Enemy) {this.setMovingRight(true);}
+					if (this instanceof Enemy) {this.setMovingRight(true);};
 				}
 			}
 		}
 	}
-    
+
+    @Override
 	public void yCollisions(Model model, Boolean downIsPressed) {
 		for (Platform rect : model.getPlatforms()) {
 			if (this.getBounds().overlaps(rect)) {
 				if (rect.isThin()) {
 					if (this.getYSpeed() >= 0 || downIsPressed) {
+						continue;
 					}
 					else if (this.getYSpeed() <= 0 && this.getY() >= rect.y+8) {
 						this.setY(rect.height + rect.y);
@@ -133,34 +150,53 @@ public abstract class Mob extends Sprite implements IMob {
 			}
 		}
 	}
-	
+
+    @Override
 	public void changeX(float x) {
 		this.bounds.x += x;
 		this.x += x;
 	}
 
+    @Override
 	public void changeY(float y) {
 		this.bounds.y += y;
 		this.y += y;
 	}
 
+    @Override
+    public void changePos(float x, float y) {
+        this.x += x;
+        this.y += y;
+        bounds.x += x;
+        bounds.y += y;
+    }
 
+    @Override
 	public float getXSpeed() {
 		return xSpeed;
 	}
 
+    @Override
 	public void setXSpeed(float xSpeed) {
 		this.xSpeed = xSpeed;
 	}
 
+    @Override
+	public void changeXSpeed(float xSpeed) {
+		this.xSpeed += xSpeed;
+	}
+
+    @Override
 	public float getYSpeed() {
 		return ySpeed;
 	}
 
+    @Override
 	public void setYSpeed(float ySpeed) {
 		this.ySpeed = ySpeed;
 	}
-	
+
+    @Override
 	public void changeYSpeed(float ySpeed) {
 		this.ySpeed += ySpeed;
 	}
@@ -172,67 +208,88 @@ public abstract class Mob extends Sprite implements IMob {
 	public void setCurrentSpeed(float currentSpeed) {
 		this.currentSpeed = currentSpeed;
 	}
-	
+
+    @Override
 	public float getWidth() {
 		return width;
 	}
 
+    @Override
 	public float getHeight() {
 		return height;
 	}
 
+    @Override
 	public void setHeight(float height) {
 		this.height = height;
 	}
-	
+
+    @Override
 	public boolean isGrounded() {
 		return grounded;
 	}
 
+    @Override
 	public void setGrounded(boolean grounded) {
 		this.grounded = grounded;
 	}
 
+    @Override
 	public float getCentreX() {
 			return this.getX() + this.getWidth()/2;
 	}
-	
+
+    @Override
 	public float getCentreY() {
 		return this.getY() + this.getHeight()/2;
 	}
 
+    @Override
     public float getMaxSpeed() {
-		return 6f;
+		return maxSpeed;
 	}
 
+    @Override
 	public float getJumpStrength() {
-		return 6f;
+		return jumpStrength;
 	}
 
+    @Override
+	public void setJumpStrength(float jumpStrength) {
+		this.jumpStrength = jumpStrength;
+	}
+
+    @Override
 	public void setMoving(boolean moving){
         this.isMoving = moving;
     }
 
+    @Override
     public boolean isMoving() {
         return this.isMoving;
     }
-    
+
+    @Override
     public boolean wasMovingRight(){
         return this.wasMovingRight;
     }
 
+    @Override
     public void setWasMovingRight(boolean value) {
         this.wasMovingRight = value;
     }
 
+    @Override
     public void setMovingRight(boolean value) {
         this.isMovingRight = value;
     }
 
+    @Override
     public boolean isMovingRight() {
         return this.isMovingRight;
     }
 
+    @Override
     public boolean updateAnimation() {
         animationCounter = ((animationCounter + 1) % 20);
         if (wasMovingRight != isMovingRight) {
@@ -247,7 +304,8 @@ public abstract class Mob extends Sprite implements IMob {
         }
         return false;
     }
-    
+
+    @Override
     public void changeMobTexture(Texture right, Texture left) {
         if (this.isMovingRight()) {
             this.setPlayerImage(right);
@@ -255,11 +313,13 @@ public abstract class Mob extends Sprite implements IMob {
             this.setPlayerImage(left);
         }
     }
-   
+
+    @Override
     public int getAnimationCounter() {
         return  animationCounter;
     }
 
+    @Override
     public int getAnimationPointer() {
         return animationPointer;
     }

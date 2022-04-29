@@ -4,24 +4,32 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+
+import core.AppPreferences;
 
 public class Player extends Mob {
 
 	private static final int maxHealth = 3;
 	private int health;
-	private final static int crouchingSpeed = 2;
+    private final int dashSpeed = 15;
+    private final int crouchingSpeed = 2;
 	private static final int walkingSpeed = 3;
 	private static final int runningSpeed = 4;
 	private int dashCounter;
-	private final static int maxStamina = 80;
+	private final int maxStamina = 80;
 	private float stamina;
 	private int[] controlSet;
 	private int idleCounter = 0;
-	private final Rectangle standSensor = new Rectangle(0, 0, 16, 24);
-
+	private Rectangle standSensor = new Rectangle(0, 0, 16, 24);
+	
+	public AppPreferences preferences;
+	private Sound jumpSound;
+	private Sound enemyHitSound;
+	private Sound scoreSound;
 
 	public Player(float x, float y, float width, float height){
 		super(x, y, width, height);
@@ -35,6 +43,11 @@ public class Player extends Mob {
 		this.stamina = maxStamina;
 		this.controlSet = controlSet.clone();
 		this.setPlayerImage(image);
+		
+		jumpSound = Gdx.audio.newSound(Gdx.files.internal("assets/audio/jumpsound.wav"));
+		enemyHitSound = Gdx.audio.newSound(Gdx.files.internal("assets/audio/death.wav"));
+		scoreSound = Gdx.audio.newSound(Gdx.files.internal("assets/audio/pointSound.mp3"));
+		preferences = new AppPreferences();		
 	}
 	
 	public void doMovement(Model model) {
@@ -77,8 +90,7 @@ public class Player extends Mob {
 			this.dashCounter += 4;
 		}
 		if (this.dashCounter > 0) {
-			int dashSpeed = 15;
-			this.setCurrentSpeed(dashSpeed);
+			this.setCurrentSpeed(this.dashSpeed);
 			this.dashCounter -= 1;
 		}
 	}
@@ -88,13 +100,20 @@ public class Player extends Mob {
 			this.setYSpeed(6.5f); // TODO Using getter for strength here delays the jump for some reason
 			this.setGrounded(false);
 			this.exhaustStamina(20);
+			if(preferences.isSoundOn()) {
+				jumpSound.play();
+			}
 		}
 	}
 	
 	public void crouch () {
 		this.setHeight(16);
 		this.getBounds().setHeight(16);
-		this.setCurrentSpeed(crouchingSpeed);
+		this.setCurrentSpeed(this.crouchingSpeed);
+	}
+	
+	public Rectangle getStandSensor() {
+		return this.standSensor;
 	}
 	
 	public void stand (Array<Platform> platforms) {
@@ -107,23 +126,26 @@ public class Player extends Mob {
 		}
 		this.setHeight(24);
 		this.getBounds().setHeight(24);
-		this.setCurrentSpeed(walkingSpeed);
+		this.setCurrentSpeed(this.walkingSpeed);
 	}
 	
 	public void sprint () {
 		if (Gdx.input.isKeyPressed(this.getSprintControl()) && this.stamina >= 1) {
 			this.exhaustStamina(1);
-			this.setCurrentSpeed(runningSpeed);
+			this.setCurrentSpeed(this.runningSpeed);
 		}
 	}
 	
 	public void walk () {
-		this.setCurrentSpeed(walkingSpeed);
+		this.setCurrentSpeed(this.walkingSpeed);
 	}
 	
 	public boolean enemyCollisions (Array<Enemy> enemies) {
 		for (Enemy e : enemies) {
 			if (this.getBounds().overlaps(e.getBounds())) {
+				if(preferences.isSoundOn()) {
+					enemyHitSound.play();
+				}
 				// Reset player to start-pos 
 				// TODO should be from map
 				this.setPos(16, 16);
@@ -161,6 +183,9 @@ public class Player extends Mob {
         while(iter.hasNext()){
             Item item = iter.next();
             if(this.getBounds().overlaps(item.getBoundingRectangle())){
+            	if(preferences.isSoundOn()) {
+					scoreSound.play();
+				}
                 score += item.getScoreValue();
                 iter.remove();
             }
@@ -208,7 +233,7 @@ public class Player extends Mob {
 		return maxHealth;
 	}
 
-	@Override
+    @Override
     public boolean updateAnimation() {
         if (this.isMoving()) {
             idleCounter = 0;
@@ -244,7 +269,7 @@ public class Player extends Mob {
 	}
 
 	public int getMaxStamina() {
-		return maxStamina;
+		return this.maxStamina;
 	}
 
 }
