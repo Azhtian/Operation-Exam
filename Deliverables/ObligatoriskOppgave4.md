@@ -5,6 +5,7 @@
 ### Innhold
 
 [Deloppgave 1](#deloppgave-1)  
+[Større retrospektiv for oblig 4](#større-retrospektiv-for-oblig-4)  
 [Deloppgave 2](#deloppgave-2)  
 [Deloppgave 3](#deloppgave-3)  
 [MVP](#mvp)  
@@ -77,7 +78,9 @@ Alle har bidratt jevnt til kommunikasjon og deltatt på møter. Alle har hatt go
     * Vi har lyst å bruke scrum-metodikken i større grad. Vi tenker det er mer passende til oblig 4 siden vi da har litt større oppgaver som må på plass, spesielt stretch goalet.
   * Vi har lyst å lage et ferdigstilt produkt. Til nå har vi hatt en del uferdige funksjonaliteter som vi har latt bli i prosjektet. Siden neste innlevering er den siste, har vi lyst å passe på at alt fungerer på en god måte til slutt.
   * Det siste vi ønsker å forbedre er test-coverage. Flere tester, automatiske tester og bedre tester generelt. Mange av testene våre har til nå vært manuelle tester.
-* For siste innlevering (Oblig 4): Gjør et retrospektiv hvor dere vurderer prosjektet har gått. Hva har dere gjort bra, hva hadde dere gjort annerledes hvis dere begynte på nytt? 
+
+### Større retrospektiv for oblig 4
+* Gjør et retrospektiv hvor dere vurderer prosjektet har gått. Hva har dere gjort bra, hva hadde dere gjort annerledes hvis dere begynte på nytt? 
   * Gruppetimene og arbeid i gruppetimene er noe av det som har fungert veldig bra. Vi har hatt en strategi hvor vi i starten av hver gruppetime har hatt en gjennomgang av hovedessensen av det hver av oss har gjort, slik at vi alle vet hva som er endret og hvordan det er endret. Vi diskuterer så hva som er det viktigste å ordne til neste gang, og blir enige om hvordan vi skal fordele oppgavene rundt dette. Vi jobber så gruppevis hvor de som jobber med samme del av oppgaven gjerne jobber sammen, og diskuterer seg imellom. Dette er en strategi som har vist seg å være svært effektiv for oss. Dersom vi skulle begynt med prosjektet i dag er dette trolig noe vi ville hatt mer fokus på fra starten av.  
   * Kanban er utviklingsstrategien vi har brukt i all hovedsak, litt i sammenheng med scrum. Når det gjelder Kanban har tavlen (Vi har brukt trello) vært veldig nyttig til å få en tydelig oversikt over hva som må gjøres, og hva som er gjort. Det har også vært lett å prioritere ting ved hjelp av tavlen. Dette var noe vi startet tidlig med, men vi ble bedre på å bruke tavlen mer effektivt utover i prosjektet. Dersom vi startet prosjektet på ny med den kunnskapen vi nå har hadde det vært en stor fordel i å effektivisere startfasen av prosjektet, men ettersom det er noe vi allerede brukte fra starten er det bare et effektiviseringsspørsmål.
   * Når det kommer til scrum, som er den andre utviklingsstrategien vi brukte, var det litt vanskeligere. Scrum fungerer veldig godt sammen med kanban, men ettersom vi i starten ikke helt visste når de forskjellige innleveringsfristene var, ble det vanskelig å sette opp en såkalt “sprint”. Dette ble lettere når obligatoriske innlevering 2 ble lagt ut, da den kom med innleveringsfristene til alle de resterende innleveringene. Dersom vi startet på nytt burde vi diskutert en fast “sprint” lengde som vi kunne brukt mer uavhengig av når innleveringsoppgavene kom. Vi kunne trolig vært mer effektive dersom vi kom i gang med dette med en gang, men det kunne muligens gitt redusert effekt da vi allerede jobbet effektivt. Det scrum kunne ha hjulpet med var å sette konkrete mål innen visse datoer, for selv om vi jobbet effektivt ble noen oppgaver utsatt eller gjort senere enn vi hadde planlagt. Dette var ikke et stort problem da oppgaver som regel ble gjort på tiden, men det kunne fanget opp en og annen oppgave.
