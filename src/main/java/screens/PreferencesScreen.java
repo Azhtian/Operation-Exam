@@ -19,20 +19,14 @@ public class PreferencesScreen extends AbstractScreen {
 	public void show() {
         super.show();
 
-        // Creating volume sliders
+        // Creating music volume slider
         final Slider musicVolumeSlider = new Slider( 0f, 1f, 0.1f, false, skin );
         musicVolumeSlider.setValue(game.getPreferences().getMusicVolume());
         musicVolumeSlider.addListener(event -> {
         	game.getPreferences().setMusicVolume(musicVolumeSlider.getValue());
         	return false;
         });       
-        final Slider soundVolumeSlider = new Slider( 0f, 1f, 0.1f, false, skin );
-        soundVolumeSlider.setValue(game.getPreferences().getSoundVolume() );
-        soundVolumeSlider.addListener(event -> {
-        	game.getPreferences().setSoundVolume(soundVolumeSlider.getValue() );
-        	return false;
-        });
-        
+
         // Creating on/off checkboxes
         final CheckBox musicCheckbox = new CheckBox(null, skin);
         musicCheckbox.setChecked(game.getPreferences().isMusicOn());
@@ -62,9 +56,8 @@ public class PreferencesScreen extends AbstractScreen {
         // Creating labels and adding the controls to table
 		Label titleLabel = new Label("Preferences", skin, "big");
 		Label musicVolumeLabel = new Label("Music Volume", skin);
-		Label soundVolumeLabel = new Label("Sound Volume", skin);
-		Label musicOnOffLabel = new Label("On/Off", skin);
-		Label soundOnOffLabel = new Label("On/Off", skin);
+		Label musicOnOffLabel = new Label("Music On/Off", skin);
+		Label soundOnOffLabel = new Label("Volume On/Off", skin);
         	
         table.add(titleLabel).colspan(2);
         table.row().pad(10,0,0,10);
@@ -73,9 +66,6 @@ public class PreferencesScreen extends AbstractScreen {
         table.row().pad(10,0,0,10);
         table.add(musicOnOffLabel).left(); 
         table.add(musicCheckbox);
-        table.row().pad(10,0,0,10);
-        table.add(soundVolumeLabel);
-        table.add(soundVolumeSlider);
         table.row().pad(10,0,0,10);
         table.add(soundOnOffLabel).left();
         table.add(soundCheckbox);

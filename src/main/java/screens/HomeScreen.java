@@ -22,12 +22,6 @@ public class HomeScreen extends AbstractScreen {
 	public void show() {
         super.show();
         
-//      Table table = new Table(); // A table helps place content on the screen 
-//		table.setFillParent(true);
-//		//table.setDebug(true); // Checks how elements in table are lined up
-//		stage.addActor(table);
-//		Skin skin = new Skin(Gdx.files.internal("assets/glassy/skin/glassy-ui.json"));
-		
 		// Creating buttons using skins
 		TextButton onePlayer = new TextButton("One Player", skin);
 		TextButton twoPlayer = new TextButton("Two Player", skin);

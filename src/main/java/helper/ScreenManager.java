@@ -1,6 +1,9 @@
 package helper;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -42,12 +45,21 @@ public class ScreenManager extends Game {
 	private TiledMap tileMap;
 	public AppPreferences preferences;
 	private int currentLevel = 1;
+	
+	private Music gameMusic; 
+    private Sound winSound; 
+    private Music gameFinishedMusic;
 
 	@Override
 	public void create() {
 		HomeScreen homeScreen = new HomeScreen(this);
 		setScreen(homeScreen);
 		preferences = new AppPreferences();
+		
+		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/gameMusic.mp3"));
+		winSound = Gdx.audio.newSound(Gdx.files.internal("assets/audio/win.wav"));
+		gameFinishedMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/gameFinished.wav"));
+		
 	}
 
 	public void newGame(){
@@ -66,6 +78,8 @@ public class ScreenManager extends Game {
 		case HOME: 
 			if (homeScreen == null) homeScreen = new HomeScreen(this);
 			this.setScreen(homeScreen);
+			gameMusic.stop();
+			gameFinishedMusic.stop();
 			break;
 		case PREFERENCES: 
 			if (preferencesScreen == null) preferencesScreen = new PreferencesScreen(this);
@@ -74,9 +88,14 @@ public class ScreenManager extends Game {
 		case LEVELSELECT: 
 			if (levelSelect == null) levelSelect = new LevelSelectScreen(this);
 			this.setScreen(levelSelect);
+			gameMusic.stop();
+			gameFinishedMusic.stop();
 			break;
 		case GAME:
 			if (gameScreen == null) {
+				gameFinishedMusic.stop();
+				gameMusic.play();
+				gameMusic.setLooping(true);
 				try {
 					String levelPath = "assets/maps/map" + currentLevel + ".tmx";
 					tileMap = new TmxMapLoader().load(levelPath);
@@ -103,14 +122,19 @@ public class ScreenManager extends Game {
 		case GAMEOVER:
 			if (gameOverScreen == null) gameOverScreen = new GameOverScreen(this);
 			this.setScreen(gameOverScreen);
+			gameMusic.stop();
 			break;
 		case WINNER:
 			if (winnerScreen == null) winnerScreen = new WinnerScreen(this);
 			this.setScreen(winnerScreen);
+			winSound.play();
+			gameMusic.stop();
 			break;
 		case GAMEFINISHED:
 			if (gameFinishedScreen == null) gameFinishedScreen = new GameFinishedScreen(this);
 			this.setScreen(gameFinishedScreen);
+			gameMusic.stop();
+			gameFinishedMusic.play();
 			break;
 		}
 	}
@@ -129,5 +153,19 @@ public class ScreenManager extends Game {
 
 	public void setLevel(int levelNumber) {
 		this.currentLevel = levelNumber;
+	}
+	
+	@Override
+	public void render() {
+		super.render();
+		gameMusic.setVolume(preferences.getMusicVolume());
+		if(!preferences.isMusicOn()) {
+			gameMusic.setVolume(0);
+		}
+		
+		gameFinishedMusic.setVolume(preferences.getMusicVolume());
+		if(!preferences.isMusicOn()) {
+			gameFinishedMusic.setVolume(0);
+		}
 	}
 }

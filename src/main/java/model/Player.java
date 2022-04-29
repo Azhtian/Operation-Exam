@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+
+import core.AppPreferences;
 
 public class Player extends Mob {
 
@@ -22,7 +25,11 @@ public class Player extends Mob {
 	private int[] controlSet;
 	private int idleCounter = 0;
 	private Rectangle standSensor = new Rectangle(0, 0, 16, 24);
-
+	
+	public AppPreferences preferences;
+	private Sound jumpSound;
+	private Sound enemyHitSound;
+	private Sound scoreSound;
 
 	public Player(float x, float y, float width, float height){
 		super(x, y, width, height);
@@ -36,6 +43,11 @@ public class Player extends Mob {
 		this.stamina = maxStamina;
 		this.controlSet = controlSet.clone();
 		this.setPlayerImage(image);
+		
+		jumpSound = Gdx.audio.newSound(Gdx.files.internal("assets/audio/jumpsound.wav"));
+		enemyHitSound = Gdx.audio.newSound(Gdx.files.internal("assets/audio/death.wav"));
+		scoreSound = Gdx.audio.newSound(Gdx.files.internal("assets/audio/pointSound.mp3"));
+		preferences = new AppPreferences();		
 	}
 	
 	public void doMovement(Model model) {
@@ -88,6 +100,9 @@ public class Player extends Mob {
 			this.setYSpeed(6.5f); // TODO Using getter for strength here delays the jump for some reason
 			this.setGrounded(false);
 			this.exhaustStamina(20);
+			if(preferences.isSoundOn()) {
+				jumpSound.play();
+			}
 		}
 	}
 	
@@ -124,6 +139,9 @@ public class Player extends Mob {
 	public boolean enemyCollisions (Array<Enemy> enemies) {
 		for (Enemy e : enemies) {
 			if (this.getBounds().overlaps(e.getBounds())) {
+				if(preferences.isSoundOn()) {
+					enemyHitSound.play();
+				}
 				// Reset player to start-pos 
 				// TODO should be from map
 				this.setPos(16, 16);
@@ -161,6 +179,9 @@ public class Player extends Mob {
         while(iter.hasNext()){
             Item item = iter.next();
             if(this.getBounds().overlaps(item.getBoundingRectangle())){
+            	if(preferences.isSoundOn()) {
+					scoreSound.play();
+				}
                 score += item.getScoreValue();
                 iter.remove();
             }
