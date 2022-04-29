@@ -19,8 +19,6 @@ public class Model implements IModel {
 	private int screen = 4;
 	private TiledMap tileMap;
 	public static int gameScore = 0;
-	//private int currentLevel;
-	//private TimeCounter gameTime;
 
 	private Goal goal;
 	public static final ArrayList<Item> books = new ArrayList<>();
@@ -178,10 +176,6 @@ public class Model implements IModel {
 
 	public void setScreen(int screen) {
 		this.screen = screen;
-	}
-
-	public float getGravity() {
-		return -0.5f;
 	}
 
 	public void addPlayer(Player player){

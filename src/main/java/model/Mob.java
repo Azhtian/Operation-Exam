@@ -18,8 +18,7 @@ public abstract class Mob extends Sprite implements IMob {
 	private float ySpeed;
 	private float xSpeed;
 	private float currentSpeed;
-	private float jumpStrength = 6f;
-    private final float gravity;
+	private final float gravity;
     private boolean isMoving = false;
     private boolean isMovingRight = false;
     private boolean wasMovingRight = false;
@@ -146,14 +145,6 @@ public abstract class Mob extends Sprite implements IMob {
 	}
 
 
-    public void changePos(float x, float y) {
-        this.x += x;
-        this.y += y;
-        bounds.x += x;
-        bounds.y += y;
-    }
-
-
 	public float getXSpeed() {
 		return xSpeed;
 	}
@@ -161,11 +152,7 @@ public abstract class Mob extends Sprite implements IMob {
 	public void setXSpeed(float xSpeed) {
 		this.xSpeed = xSpeed;
 	}
-	
-	public void changeXSpeed(float xSpeed) {
-		this.xSpeed += xSpeed;
-	}
-	
+
 	public float getYSpeed() {
 		return ySpeed;
 	}
@@ -219,11 +206,7 @@ public abstract class Mob extends Sprite implements IMob {
 	}
 
 	public float getJumpStrength() {
-		return jumpStrength;
-	}
-
-	public void setJumpStrength(float jumpStrength) {
-		this.jumpStrength = jumpStrength;
+		return 6f;
 	}
 
 	public void setMoving(boolean moving){

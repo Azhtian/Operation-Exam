@@ -66,13 +66,7 @@ public interface IMob {
 	 */
 	void changeY(float y);
 
-	/** Moves x- and y-position relative to self
-	 * @param x to move
-	 * @param y to move
-	 */
-	void changePos(float x, float y);
-    
-	/** 
+	/**
 	 * @return current xSpeed of mob
 	 */
 	float getXSpeed();
@@ -80,11 +74,7 @@ public interface IMob {
 	/** Sets the xSpeed of mob
 	 */
 	void setXSpeed(float xSpeed);
-	
-	/** Changes xSpeed relative to current
-	 */
-	void changeXSpeed(float xSpeed);
-	
+
 	/**
 	 * @return current ySpeed of mob
 	 */
@@ -141,11 +131,6 @@ public interface IMob {
 	 * @return jump strength of mob
 	 */
 	float getJumpStrength();
-
-	/** Sets the jump strength om mob
-	 * @param value positive value
-	 */
-	void setJumpStrength(float value);
 
 	// Collisions
 	/** Constrains mob in y direction by checking collisions between this mob and platforms

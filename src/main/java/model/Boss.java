@@ -27,4 +27,5 @@ public class Boss extends Enemy {
 	public void facePlayer(Player p) {
 		this.setMovingRight(!(this.getCentreX() >= p.getCentreX()));
 	}
+
 }

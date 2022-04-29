@@ -208,7 +208,7 @@ public class Player extends Mob {
 		return maxHealth;
 	}
 
-    @Override
+	@Override
     public boolean updateAnimation() {
         if (this.isMoving()) {
             idleCounter = 0;

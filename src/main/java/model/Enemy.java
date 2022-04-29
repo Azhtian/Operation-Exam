@@ -4,9 +4,6 @@ import com.badlogic.gdx.graphics.Texture;
 
 
 public abstract class Enemy extends Mob {
-	
-	//private Boolean movingRight;
-	//private float moveSpeed;
 
 	/** Creates an Enemy
 	 * @param x position bottom left

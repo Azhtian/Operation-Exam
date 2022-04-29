@@ -114,4 +114,5 @@ public class Walker extends Enemy{
 	public Rectangle getSensorRight() {
 		return sensorRight;
 	}
+
 }

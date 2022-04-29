@@ -21,4 +21,5 @@ public class Stationary extends Enemy {
 	@Override
 	public void doMovement(Model model) {
 	}
+
 }
