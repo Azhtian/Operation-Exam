@@ -54,10 +54,10 @@ public class PreferencesScreen extends AbstractScreen {
 			}
         });
         // Creating labels and adding the controls to table
-		Label titleLabel = new Label("Preferences", skin, "big");
+		Label titleLabel = new Label("Settings", skin, "big");
 		Label musicVolumeLabel = new Label("Music Volume", skin);
 		Label musicOnOffLabel = new Label("Music On/Off", skin);
-		Label soundOnOffLabel = new Label("Volume On/Off", skin);
+		Label soundOnOffLabel = new Label("Sound Effects On/Off", skin);
         	
         table.add(titleLabel).colspan(2);
         table.row().pad(10,0,0,10);
