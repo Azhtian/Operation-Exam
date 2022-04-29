@@ -189,8 +189,9 @@ Hva som mangler:
 # Brukerhistorier og akseptansekriterier
 
 [Top](#oblig-4-operation-exam)  
-[Original MVP-liste](./ObligatoriskOppgave1.md#brukerhistoriermvp)
+[Original MVP-liste](./ObligatoriskOppgave1.md#brukerhistoriermvp)  
 [MVP-liste for Oblig 3](./ObligatoriskOppgave3.md#brukerhistorier-og-akseptansekriterier)
+
 
 ## Brukerhistorier:
 
