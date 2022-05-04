@@ -36,4 +36,30 @@ Det gjøres enkelt ved å kalle `java -jar Operation-Exam-<versjon>-fat.jar`.
 ![2. Etasje](./assets/screenshots/screenshot3.png)  
 ![6. Etasje](./assets/screenshots/screenshot9.png)  
 
+## English Description
 
+It's exam day and Kurt Mario has fallen asleep! After a hectic shower and breakfast, Kurt Mario runs to the light rail to get to the high-tech center. When he arrives, he sees a sign that says the exam is on the 8th floor! And not only that, Kurt Mario fell asleep halfway into the skipper's session the night before! Help Kurt Mario get past the professors in the hallways and reach the exam room on time. Pick up as many books as you can on the way to make sure Kurt Mario gets a good grade on the exam.
+
+
+## Project description
+In this project we have created a 2D platform that has been programmed in Java. We have also used the java library LibGDX. In the game you can control a game character that can move left / right, jump, duck, run and make a quick leap forward. Support for local multiplayer mode has also been added. The player interacts with the platforms, enemies and points objects in the game world. We have created a great game menu to be able to start a new game, navigate between the different levels, choose single-player or multi-player mode, and change settings.
+
+
+## Build, run, test
+
+The project can be easily built, tested, and run through an IDE such as IntelliJ IDEA or Eclipse, as long as the stomach is installed.
+Maven is then used by the editors to install `LibGDX`, which is the only dependency of the project. Here are links to download [InelliJ] (https://www.jetbrains.com/idea/download/#section=linux) and [Eclipse] (https://www.eclipse.org/downloads/).
+After downloading either IntelliJ or Eclipse, you can [import project from gitlab to IntelliJ] (https://www.jetbrains.com/help/idea/set-up-a-git-repository.html#clone-repo ) or [import it into Eclipse] (https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-import-a-Maven-project-from-GitHub -into-Eclipse). (GitLab works the same as GitHub so you can use the links even if they are based on GitHub).
+Once you have managed to open the project in the IDE, you can navigate to the Main class (src> main> java> core> Main) and then right-click on it and select run in IntelliJ otherwise run as Java Application.
+To run the tests, right-click on the src / test / java folder and select Run all tests in IntelliJ and run as JUnit test in Eclipse.
+To build a `.jar` file that can be run anywhere without needing the rest of the project, you can in IntelliJ open the maven side panel and press` execute maven goals` and then run `maven clean` and then` maven package` .
+In the new folder `target` that will appear, there will be an` Operation-Exam- <version> -SNAPSHOT-fat.jar` file that can be run independently of the code.
+
+You can also use your stomach manually to run and build the program. Then you need `git`,` java` and `maven` installed on the computer.
+You then run `git clone https: // git.app.uib.no / biosoft-productions / Operation-Exam.git` in the terminal and move into the project folder with` cd Operation-Exam`.
+To install dependencies you can run
+`mvn install`, and to build the program you can run` mvn clean` and then `mvn package`. The package function will give us a `.jar` file that can be run, if` javac` points to the correct java version (17).
+This will give us the same file as above, `Operation-Exam- <Version> -SNAPSHOT-fat.jar` which is located in the` target` folder.
+
+The `-fat.jar` file can be run from any computer running Java 17.
+This is easily done by calling `java -jar Operation-Exam- <version> -fat.jar`.
